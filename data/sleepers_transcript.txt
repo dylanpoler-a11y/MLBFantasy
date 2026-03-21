@@ -1,0 +1,529 @@
+[00:00] About one year ago, I posted this video
+[00:02] saying that Junior Camero was a star
+[00:04] before he played 50 games in the majors.
+[00:06] He went from hitting six home runs and
+[00:08] being worth.7 war to 45 home runs in 4.6
+[00:12] war. That is quite the breakout. Around
+[00:15] the same time, I also posted this video
+[00:17] talking about how good Christopher
+[00:19] Sanchez will be in 2025 and he would
+[00:21] have won the NLI Young if it wasn't for
+[00:23] Paul Ske. Now, I know what you're
+[00:25] saying. You're probably telling me that
+[00:27] I am so smart and I know everything. But
+[00:30] in fact, the opposite is true. I'm not
+[00:32] actually doing much. The numbers are the
+[00:34] ones doing all the hard work. So today,
+[00:36] I'm putting the numbers back to work and
+[00:38] I'm going to go through 1,173
+[00:42] different players and narrow it down to
+[00:44] one single breakout candidate. Now, this
+[00:47] might sound like a hard task, but with
+[00:48] the data available and the data that I
+[00:50] have in my possession, it's actually
+[00:52] pretty reasonable. We have a lot of work
+[00:54] to do, so let's get started.
+[00:57] These 1,173
+[00:59] players are made up of 631 hitters and
+[01:02] 542 pitchers. Basically, everyone who
+[01:05] played in the majors last year. These
+[01:07] types of players, of course, have
+[01:08] completely different data, so let's
+[01:10] focus on the hitters first. Here are the
+[01:13] 631 possible hitters we could choose.
+[01:15] There are some players here that have no
+[01:17] chance of breaking out, and it's not
+[01:19] because they're bad, it's because
+[01:20] they're already too good. Aaron Judge is
+[01:22] not going to break out in 2026. By the
+[01:25] definition of a breakout, I think that
+[01:26] is pretty much impossible. So, let's
+[01:28] remove everyone who's coming off of a
+[01:30] season of at least six war. We want
+[01:32] someone who has some room to grow. This
+[01:34] gets us down to 621 position players.
+[01:37] Now, we get to the real hard part. Who
+[01:39] is going to break out? Well, in order to
+[01:41] predict the future, we need to learn
+[01:43] from the past. So, I looked at breakout
+[01:45] players from the past two years to try
+[01:47] to get an idea of what breakout players
+[01:49] do in the year before they break out.
+[01:52] This list includes players like Bobby
+[01:54] Wit Jr. going from 5.9 war in 2023 to
+[01:57] 10.5 war in 2024. It has Ellie de la
+[02:01] Cruz going from 1.9 to 6.6. It has
+[02:04] Hunter Goodman who went from one of the
+[02:05] worst players in the league in 2024 to
+[02:08] one of the most productive catchers in
+[02:09] 2025. All in all, I identified 42
+[02:12] breakout seasons using data from the
+[02:14] past 3 years to help me narrow down our
+[02:17] breakout pick. The first clear thing
+[02:18] that stood out was age. It's no surprise
+[02:20] that the average breakout player was
+[02:22] significantly younger than the average
+[02:24] MLB player. The average age throughout
+[02:26] the league was 28 years old, but the
+[02:28] average for a breakout player was 24.2
+[02:31] years old. So, the first real step of
+[02:33] narrowing it down here is to get rid of
+[02:35] all players who are 27 years old or
+[02:38] more. Our ideal candidate is going to be
+[02:40] younger than 27. This does a noticeable
+[02:43] hit to our list, getting it down to 252
+[02:45] players. This is a good base, but from
+[02:48] here there are a couple different routes
+[02:50] we can travel. Thanks to the past
+[02:51] breakout data that we have along with
+[02:53] some fancy data science stuff and
+[02:55] unsupervised clustering algorithms, I
+[02:57] know there are roughly two different
+[02:58] archetypes of breakout players. The
+[03:00] first is the hitter. The hitter is
+[03:02] someone who is a negative defender but
+[03:04] has a high barrel rate, meaning they hit
+[03:06] the ball hard and in the air frequently.
+[03:08] They also have a relatively high zone
+[03:10] contact rate for someone with that high
+[03:12] barrel frequency. And the final defining
+[03:14] factor is that they pull the ball a lot.
+[03:16] Some examples would include 2024 Brent
+[03:19] Rooker, 2025 Junior Camro, and 2025
+[03:22] James Wood. The next type is the
+[03:24] all-around type. This player has a high
+[03:26] bat speed, good plate discipline, is an
+[03:28] above average base runner, a plus
+[03:30] defender, but has some sort of hole in
+[03:32] their game offensively. Their launch
+[03:34] angle sweet spot percentage is low,
+[03:35] meaning a lot of highf fly balls or
+[03:37] grounders. One small tweak in these guys
+[03:39] are stars. This idea is also true for
+[03:42] the other archetype. There's usually
+[03:44] some sort of hole in the player's game.
+[03:45] Think of 2024 Gunner Henderson, 2025
+[03:48] Jeremy Pñena, or 2025 Mike El Garcia.
+[03:52] Let's start by narrowing down a hitter.
+[03:54] So, let's go back to our 252 players and
+[03:56] first get the guys with a barrel rate
+[03:58] above 11%, the average of this breakout
+[04:01] archetype. This gets us down to 67
+[04:04] players. We now need the players who
+[04:06] also make contact frequently. You got to
+[04:08] put the ball in play in order to take
+[04:10] advantage of the barreling. So, let's
+[04:11] get rid of the players who have a lower
+[04:13] zone contact rate than 84%. The final
+[04:16] factor of the hitter archetype was
+[04:18] pulling the ball in the air to take full
+[04:20] advantage of their hitting abilities.
+[04:22] There are a couple ways to do this, but
+[04:23] I'm going to use attack direction, which
+[04:25] is a bat tracking stat based on where
+[04:27] the player makes contact with the ball.
+[04:29] In this case, we're going to make the
+[04:30] threshold -4° as that was the average
+[04:33] for this archetype. This means that the
+[04:35] player is getting out in front of the
+[04:37] ball and will allow for more poolside
+[04:39] power. This filter leaves us with 10
+[04:41] players. Out of these 10, we need
+[04:44] players with room to grow. Ben Rice,
+[04:46] Zack Neto, Spencer Tolson, and obviously
+[04:48] Vladimir Guerrero Jr. have already had
+[04:51] very productive seasons with the bat
+[04:52] with a wrc plus of at least 115 last
+[04:55] year, meaning they were 15% better than
+[04:58] the league average hitter. While they
+[05:00] still could take another jump, it's less
+[05:02] likely for us to see a huge jump in
+[05:04] their numbers. So now six hitters
+[05:06] remain. Our final tool in the tool bag
+[05:08] is to find a player with a hole in their
+[05:10] game. In this case, we're going to look
+[05:11] at the launch angle. Let's remove all
+[05:14] players who had an above average launch
+[05:15] angle sweet spot percentage compared to
+[05:17] the breakouts which was 32% last year
+[05:20] leaving us with two Jack Kaggleó and
+[05:22] Colby Thomas. Both of these players have
+[05:25] spent very little time in the majors and
+[05:27] it's largely been unsuccessful. Kaggleó
+[05:29] was one of the worst players in the
+[05:31] league last year with a 532 ops and a
+[05:34] negative 1.6 war. Thomas had a 684 ops
+[05:37] and a zero war. We've exhausted all of
+[05:40] our filtering tools in the major league.
+[05:42] So, the last decision will come down to
+[05:44] minor league performance. In this case,
+[05:46] Jack takes the cake by a pretty large
+[05:48] margin, meaning he is crowned as the
+[05:50] hitter archetype candidate, moving him
+[05:52] into the final round. We are far from
+[05:54] over. It's now time to run a similar
+[05:56] process, this time for a player that
+[05:58] fits the all-around archetype that I
+[06:00] explained earlier. Let's load back up
+[06:02] those 252 players from where we split
+[06:04] off and start again. First up on the
+[06:06] checklist is a hitter that has an above
+[06:08] average bat speed. So, let's eliminate
+[06:09] all players who have less than an
+[06:11] average swing speed of 72 mph. This gets
+[06:14] us to 125 hitters. Next, the all-around
+[06:17] archetype is typically a plus athlete
+[06:19] who is an above average base runner and
+[06:21] defender. So, let's filter out players
+[06:23] who were negative base runners or
+[06:25] defenders last year, indicated by less
+[06:27] than zero base running runs or fielding
+[06:29] run value. This cuts down a lot of
+[06:31] players and gets us down to 26. And now,
+[06:34] the final steps. I'm going to get rid of
+[06:35] players with at least 115 WRC plus
+[06:38] again, leaving us with 20 players. Also,
+[06:41] just like last time, we'll get rid of
+[06:42] anyone who had a launch angle sweet spot
+[06:44] percentage of over 32%. That has our set
+[06:47] down to 10. The final thing left on the
+[06:49] checklist is plate discipline, which for
+[06:51] here we'll use out of zone swing rate,
+[06:53] or the rate at which a player swings at
+[06:55] pitches outside the strike zone. The
+[06:56] threshold we'll use here is 29% as that
+[06:59] was the average number from the prior
+[07:01] breakouts. This halves are set again to
+[07:03] five. Three of these players are coming
+[07:05] with sample sizes less than a 100 plate
+[07:07] appearances, which makes me a lot less
+[07:09] confident in the numbers that we've
+[07:10] used. So, we get rid of Nick York,
+[07:12] Garrett Mitchell, and Jacob Melton. That
+[07:15] leaves Denel Clark and O'Neal Cruz. Both
+[07:17] of these players are very similar,
+[07:19] unsurprisingly. They are toolsy
+[07:21] all-around players. I will have to side
+[07:23] with O'Neal Cruz, though, as his quality
+[07:25] of contact was significantly better than
+[07:27] Clark's last year, which is an extra
+[07:29] added data point, increasing the
+[07:31] confidence in Cruz's future. He will
+[07:33] join Jack in the final round, but once
+[07:35] again, we are nowhere close to done as
+[07:37] we have a whole other set of players to
+[07:39] sort through. Now, the pitchers, we just
+[07:41] went through 631 hitters, but now we
+[07:44] have to do a similar process for 542
+[07:46] pitchers. This time using a similar
+[07:48] approach. The data revealed three main
+[07:50] archetypes of pitchers that broke out.
+[07:52] The first one is what I'm going to call
+[07:54] the next step pitcher. These are
+[07:56] pitchers that are already productive.
+[07:58] They had an average RA and FIP in the
+[07:59] mid-3s, a war of 2 to three. One thing
+[08:02] that these guys had though is very
+[08:04] promising and very balanced underlying
+[08:06] numbers. They had a high stuff plus, a
+[08:08] high location plus, and a high pitching
+[08:10] plus. Stuff plus is a model that
+[08:12] measures pitchers raw stuff in terms of
+[08:14] velocity, shape, and makeup of their
+[08:16] pitch mix. Location plus does the same
+[08:18] thing except measuring how valuable the
+[08:20] pitcher locations were based on
+[08:22] situation and count. This allowed them
+[08:24] to take the next step in their game to
+[08:26] become Sai Young level pitchers. Think
+[08:28] Christopher Sanchez from last season,
+[08:30] Sandy Alcantara from 2022, or Terrick
+[08:33] Scooble in 2024. The next archetype is
+[08:36] the pure stuff guy. This pitcher, unlike
+[08:38] the first type, may not be a super
+[08:40] established pitcher. They may have not
+[08:42] thrown many innings or have yet to put
+[08:43] together a super productive season, but
+[08:45] what they are good at is missing bats.
+[08:47] These guys have a low zone contact rate,
+[08:49] an even higher stuff plus than the
+[08:51] previous archetype, and typically this
+[08:53] comes with a lack of command or high
+[08:55] walk rate, and low location plus. This
+[08:58] is Cole Reagan's from 2024, Show Otani
+[09:01] in 2022, or Justin Steel in 2023. They
+[09:05] either got their control down, which
+[09:06] turned them into a star, or their stuff
+[09:08] started to shine more. The last type is
+[09:10] the regression type. The regression
+[09:12] pitchers are pitchers who just got
+[09:14] unlucky in the past and should be better
+[09:16] in the future. This archetype is largely
+[09:18] filled with pitchers who had super high
+[09:20] home runtofly ball rates, something that
+[09:22] typically evens out over a large sample.
+[09:25] Some examples of this type include
+[09:26] McKenzie Gore in 2024, Edward Cabrera in
+[09:29] 2025, and Kyle Bradish in 2023. Okay,
+[09:33] now with that out of the way, let's not
+[09:35] forget about these 542 pitchers. Now,
+[09:38] the first thing we have to do is the
+[09:39] age. Just like the hitters, I want to
+[09:41] prioritize younger pitchers as they have
+[09:43] a much better chance of breaking out.
+[09:45] This time, we'll eliminate players older
+[09:47] than 27. This is one year older as
+[09:50] pitchers do tend to have more breakouts
+[09:52] later in their career compared to
+[09:53] hitters based on the past data. This
+[09:55] brings us to 230 pitchers. First, we'll
+[09:58] focus on the next step archetype. In
+[10:00] order to be in this category, we want a
+[10:02] pitcher with at least 105 stuff plus and
+[10:04] 105 location plus. 100 is league
+[10:07] average, but 105 was the average of the
+[10:09] breakouts. This is a super rare
+[10:11] combination. As you can see, there are
+[10:13] only six guys left. Two of them are
+[10:15] dominant relievers and one of them is
+[10:17] Paul Skins. I want a starter here so
+[10:20] Kate Smith and Jeremiah Estrada are not
+[10:22] going to be considered and of course
+[10:24] Paul Ske will not be considered. It
+[10:26] would be something to pick the reigning
+[10:28] Sai Young winner as a breakout
+[10:29] candidate. This leaves me with three
+[10:31] guys that I am in love with. Chase
+[10:33] Burns, Reed Deetmers, and Spencer
+[10:35] Schwelenbach. Now unfortunately the day
+[10:37] I'm writing this script, we got very
+[10:39] very bad news with Spencer Schwelenbach
+[10:41] and he's going to miss at least 60 games
+[10:43] at the start of the season. So, for
+[10:44] obvious reasons, I'm not going to take
+[10:46] him. That leaves us with two. And you
+[10:48] know what? I'm just going to put both of
+[10:50] these guys into the final round because
+[10:52] I love them both that much. Now, it's
+[10:54] time to look at the pure stuff
+[10:55] candidates. The first filter is to get
+[10:57] pitchers who miss bats often. In this
+[10:59] case, it'll be pitchers who have a zone
+[11:01] contact rate of less than 83%. These
+[11:03] guys can throw their pitches in the
+[11:04] zone, and hitters still won't make
+[11:06] contact with them often. This narrows it
+[11:08] down to 51 names. Now we filter out
+[11:10] pitchers who have great raw stuff,
+[11:12] proving that this probably isn't a fluke
+[11:14] with a stuff plus over 106, the average
+[11:17] of this archetype. This time there are a
+[11:19] lot of relievers in this group and a guy
+[11:21] who won't be pitching in 2026. So we got
+[11:24] to get rid of those guys. This leaves us
+[11:26] with Erie Perez, Jacob Miserowski, Bubba
+[11:28] Chandler, Cole Reagan's, Hunter Green,
+[11:30] and Paul Skins and Reed Demmer's again.
+[11:33] Obviously, let's get rid of the last
+[11:34] four. They are either already really
+[11:36] good or have already been picked. Out of
+[11:38] these three, which one does the data
+[11:40] favor? Yori Perez. He has the best stuff
+[11:43] according to both his own contact rate
+[11:45] and stuff. Plus, he also has the worst
+[11:47] command, which might seem
+[11:49] counterintuitive. Why pick the guy with
+[11:51] the worst command? Well, because that
+[11:53] means he has the most room to grow. Yuri
+[11:55] Perez is on to the finals. Now, we're
+[11:58] out of room. Well, the real reason I
+[12:00] decided to take two players from the
+[12:01] first category is because, well, they
+[12:04] are a lot more exciting than the last
+[12:05] category. If you're curious who the data
+[12:07] likes for the regression breakouts, it's
+[12:09] Shane Bos, Ben Brown, and Kumar Rocker.
+[12:12] I would not be surprised if all those
+[12:13] guys had improved seasons, but it
+[12:15] probably won't be as big as the others
+[12:17] we've talked about. With that out of the
+[12:19] way, it's time to go to the final round.
+[12:21] Jack Kagleion, O'Neal Cruz, Chase Burns,
+[12:24] Reed Dadmmer's Perez. Let's go through
+[12:27] each of these players cases. is real
+[12:28] quick. First up is Jack Kaggleon.
+[12:31] Kaggleon was drafted sixth overall in
+[12:33] the 2024 draft by the Royals and
+[12:35] immediately lived up to the hype in the
+[12:37] minors. Unfortunately, the majors did
+[12:39] not go well. Negative 1.6 war is all you
+[12:42] need to know. But there were a ton of
+[12:44] positives, which is why he's in this
+[12:45] video. Here's a chart showing all
+[12:47] hitters who had at least 200 plate
+[12:49] appearances in 2025 with their zone
+[12:51] contact rate and bat speed. Typically,
+[12:53] you can see as players swing harder,
+[12:55] they make less contact. Not that
+[12:57] surprising except if your name is Jack
+[13:00] Kaggleó. He had a bat speed of 77.4
+[13:03] miles per hour, one of the fastest in
+[13:05] the league and slightly ahead of Aaron
+[13:07] Judge. He also made a ton of contact
+[13:09] with a zone contact rate of 89.3%.
+[13:12] That puts him in the company of guys
+[13:14] like Vladimir Guerrero Jr., Corbin
+[13:16] Carroll, Peter Lonzo, Gunner Henderson,
+[13:18] and many more offensive stars. This is
+[13:20] very reminiscent of Junior Camroero in
+[13:22] 2024, which I talked about in the video
+[13:25] I made before last season. Much like
+[13:27] Camro, Kaggleon mainly ran into a launch
+[13:30] angle problem in the majors last year,
+[13:32] hitting far too many ground balls and
+[13:34] not enough balls in the air to take
+[13:35] advantage of his elite bat speed. The
+[13:37] ceiling is so high for him as a hitter,
+[13:39] and he really is just one adjustment
+[13:40] away from reaching it. Next is O'Neal
+[13:43] Cruz. When it comes to filling out the
+[13:44] all-around archetype, there's not many
+[13:46] that do it better than him. He has the
+[13:48] power, obviously, the second fastest
+[13:50] average bat speed last year behind only
+[13:53] Jean Carlos Stanton. He has the speed,
+[13:55] 93rd percentile sprint speed. He's now a
+[13:57] plus defender in the outfield. His walk
+[13:59] rate dramatically increased last year to
+[14:01] nearly 12% and he was also one of the
+[14:04] best base runners in the league last
+[14:05] year. Only two problems. He doesn't make
+[14:08] enough contact and he doesn't hit the
+[14:09] ball in the air. The good part is I
+[14:12] think he only needs to fix one of these
+[14:13] problems to become a four to five win
+[14:15] player. If he starts hitting the ball in
+[14:17] the air, there is nothing stopping him
+[14:19] from hitting 40 home runs next year. If
+[14:21] he makes more contact, then he'll become
+[14:23] a much more consistent hitter and make
+[14:24] him a complete player. Kind of reminds
+[14:26] me of Mike El Garcia, who had great
+[14:28] all-around underlying numbers in 2023,
+[14:31] but was very bad in 2024. He finally
+[14:34] made the adjustment in 2025, making a
+[14:36] lot more contact and turned into one of
+[14:38] the best players in the league.
+[14:39] Certainly an interesting case, but is it
+[14:42] as interesting as Chase Burns? Some
+[14:44] people may have forgotten just how good
+[14:45] Chase Burns has been after being the
+[14:47] number two overall pick because of some
+[14:49] rough run prevention numbers in the
+[14:51] majors. A 4.57 erra is going to be cause
+[14:54] for concern in some circles. In the data
+[14:56] circle though, that is not the case.
+[14:59] Burns was already pretty good last year
+[15:00] with a 2.65 fip and a 1.4 F4. That's why
+[15:04] he's in the next step archetype. There
+[15:06] were only six pitchers to record a
+[15:08] higher strikeout rate than Burns last
+[15:10] year. He's had this success because of
+[15:12] his elite stuff, but he's also been
+[15:14] great at commanding it. He had a 115
+[15:16] stuff plus great, but also a 106
+[15:19] location plus, meaning not only is he
+[15:21] not walking hitters, he's also putting
+[15:23] pitches in valuable locations, which
+[15:25] builds on top of that already elite
+[15:27] stuff. He had a pitching plus last year
+[15:29] of 121, which is the model that measures
+[15:31] stuff and location combined. And that
+[15:33] was the third highest of all starters
+[15:35] last year. It's very highly correlated
+[15:37] with future success. TK Scubals was 114
+[15:40] the year before he won his first Sai
+[15:42] Young. Sandies was 117 before he won the
+[15:44] Sai Young unanimously in 2022. And these
+[15:47] numbers were both near the top of the
+[15:49] league, just like Burns is now. Next is
+[15:51] Reed Deetmer. A lot of the same things I
+[15:53] just said about Chase Burns apply here.
+[15:56] Deet is coming off a very different road
+[15:58] though. This will be his sixth year in
+[16:00] the majors. Last year he went to the
+[16:01] bullpen for the first time in his
+[16:03] career. He struggled as a starter before
+[16:05] with a 4.9 ERA and a 4.27 27 FIP. His
+[16:09] biggest weakness was that he gave up so
+[16:10] many home runs. This was a product of a
+[16:13] very low ground ball rate of 36.6%.
+[16:16] As a reliever, though, that problem was
+[16:18] fixed. The ground ball rate was higher
+[16:20] and there were much less home runs being
+[16:22] given up. That was a product of his
+[16:23] reshaped slider. He threw it over 2 mph
+[16:26] faster with a higher release point and
+[16:28] more downward movement. This increased
+[16:30] its vertical movement versus comparable
+[16:32] sliders by 4 in. Along with the higher
+[16:35] release point and steeper approach
+[16:36] angle, this pitch generated a ton of
+[16:38] ground balls. Batted balls against this
+[16:40] pitch had an average launch angle of one
+[16:42] degree. In 2024, the average launch
+[16:45] angle on the slider was 18. He has
+[16:47] always had great stuff, but last year
+[16:49] his command was the best it's ever been
+[16:51] with a 112 location plus and a 9.4% walk
+[16:54] rate. He has all the makings of making a
+[16:56] big jump as a starting pitcher for 2026.
+[17:00] And lastly, we have Yori Perez. Believe
+[17:02] it or not, despite debuting three years
+[17:04] ago now, he is a year younger than Paul
+[17:06] Ske. If you want to talk about stuff,
+[17:09] Yori Perez has the stuff. Perez is 6'8,
+[17:12] but releases his fast ball only 6 ft off
+[17:14] the ground. This weird relationship
+[17:17] makes Perez's fastball have a unique
+[17:19] shape, which is great for a pitcher.
+[17:21] That's not it, though. Despite this
+[17:22] lower release point and arm angle, he's
+[17:24] still able to get above average IVB
+[17:27] induced vertical break on his fast ball,
+[17:29] which makes his shape even crazier. It's
+[17:31] about as close as you can get to a
+[17:33] rising fast ball that you will ever see.
+[17:35] His command could use some improvement,
+[17:37] though. His walk rate was low last year
+[17:39] at 8.3%, but he missed a lot of pitches
+[17:42] in the zone, which led to a pretty high
+[17:44] hard hit rate and lower ground ball
+[17:46] rate. He has a bunch of room for
+[17:47] improvement. He's not even 23 years old
+[17:49] yet, and he has the raw stuff that you
+[17:52] can't teach. A pretty perfect breakout
+[17:54] candidate. We started with 1,173
+[17:58] players, got it down to five, and now we
+[18:00] need to take the final step to narrow it
+[18:02] to one. At this point, I'm throwing the
+[18:04] data out the window. I'm not going to
+[18:06] live in a world where my decisions are
+[18:08] solely based on the outcomes of machine
+[18:10] learning. So, I'm going to make the
+[18:11] final decision based on my own gut, and
+[18:13] I encourage you to make yours. This
+[18:15] guy's got the IT factor. There's no IT
+[18:17] factor stat, but this guy's got it. He's
+[18:19] got the confidence, the aggressiveness,
+[18:21] and most importantly, the skills to be a
+[18:23] Sai Young type pitcher in the near
+[18:25] future. The only thing holding him back
+[18:27] is how many innings his team will let
+[18:29] him throw. And that's why the 2026
+[18:32] official Witics breakout candidate is
+[18:35] Chase Burns. Who do you think will break
+[18:37] out in 2026?
+[18:40] Thank you for watching. Subscribe if you
+[18:42] enjoyed and I will see you next time.
+[18:45] Goodbye.

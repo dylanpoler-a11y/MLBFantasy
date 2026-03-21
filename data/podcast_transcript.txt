@@ -1,0 +1,1747 @@
+[00:01] Welcome to the Rotoire Fantasy Baseball
+[00:03] podcast. I'm your host, James Anderson,
+[00:05] and I'm joined tonight by the great Mark
+[00:08] Woker. And of course, we're brought to
+[00:11] you by Fantrax, uh, as we will be every
+[00:14] week leading up to opening day. Uh, but
+[00:17] Mark, as always, is going to come and
+[00:20] give us a a brief hour-long master class
+[00:24] or so on uh fantasy baseball auction
+[00:27] strategy. And Mark has been generous
+[00:30] enough to discuss a couple auctions he's
+[00:32] already completed. And uh that is great
+[00:35] for us because there aren't many better
+[00:37] out there than than Mark Woker when it
+[00:39] comes to fantasy baseball auctions. So
+[00:41] we're going to get into those exact
+[00:42] teams and the different builds and all
+[00:45] that. But first, Mark, how you doing,
+[00:46] man? Thanks for joining me.
+[00:48] >> Yeah, thanks for having me again. This
+[00:49] was really good luck last year. Those
+[00:52] early two OLAXs we reviewed, I went on
+[00:54] to win both. So, I'm hoping the same
+[00:57] thing happens this year.
+[00:59] >> Yeah, I know, man. Uh really appreciate
+[01:01] it. And uh you won those both, but then
+[01:03] you said uh your third one was was the
+[01:05] the bigger one, the even even better
+[01:07] one, right?
+[01:08] >> Yeah, the third one, uh ended up third
+[01:11] overall. The first one ended up, I
+[01:13] think, top 10 as well, so it wasn't too
+[01:15] bad. That one was leading for a while.
+[01:17] Yeah, it's fun to have like three I had
+[01:19] three teams that were kind of uh
+[01:21] bubbling to the pop to to the top of the
+[01:24] uh of the table. It was interesting. I
+[01:27] think Steo Schwervy had a pretty cool
+[01:29] visualization the other day uh where I
+[01:31] was showing, you know, from week one to
+[01:34] week 27 uh the OLAC uh leaderboard. And
+[01:38] it was fun to see my name pop up and pop
+[01:40] down and up and down, but uh got third
+[01:43] this year. I'm gunning for first.
+[01:45] >> Absolutely, man. I I fully expect you to
+[01:48] take it down one of these years. Um and
+[01:52] obviously your partner Mike Mer has
+[01:54] taken it down or not the the he's taken
+[01:56] down the auction championship, but um
+[02:00] now I gave you uh some breakdowns for
+[02:04] the uh auction the 13 like big auction
+[02:07] championship leagues um from 2025
+[02:10] courtesy of my partner Todd Whitest.
+[02:13] Appreciate Todd doing the leg work on
+[02:14] this. Um, but of the 13 winners, I I
+[02:18] sent you some kind of breakdowns of just
+[02:20] sort of how the the spending shook out.
+[02:23] Um, the average among the the 13 winners
+[02:27] of those NFC auction championship
+[02:30] leagues uh was $165
+[02:33] uh dollars on hitting, uh, $95 on
+[02:35] pitching. Um, none of the 13 winners had
+[02:39] Otani on their teams. Um, very few, uh,
+[02:44] I think
+[02:45] you know, two teams out of the 13 even
+[02:47] took one player over $40 uh that won
+[02:50] those auction championships. And there
+[02:52] were even few uh players over $30 across
+[02:55] all 13 winners. Also, very few $1
+[02:58] players. Uh one of the biggest
+[03:00] differences of those winning teams was
+[03:03] that they spent um $22 on average at
+[03:06] catcher. Uh the 195 team average was
+[03:10] $15. So those winning teams were
+[03:12] spending on average $7 more on catcher.
+[03:15] Uh and then um yeah, I mean the
+[03:18] relievers $24 and a half dollars on
+[03:20] average on relievers among these winning
+[03:22] teams. So definitely not uh going super
+[03:24] cheap on relievers. Uh this all kind of
+[03:27] looked to me like kind of a a winoker
+[03:29] maker type of build. Um just these these
+[03:33] average prices and stuff like that. And
+[03:34] I was just kind of curious what you
+[03:35] thought of of the sort of breakdown here
+[03:38] and and if that's sort of just a normal
+[03:40] year type of dollar allocation you'd
+[03:42] expect from the the top teams.
+[03:45] >> Yeah, the Bronx win uh Cabal is a little
+[03:48] over represented here with three of
+[03:51] those 13 teams. So, not a huge surprise.
+[03:53] It it mirrors us a little bit, but I
+[03:56] this did surprise me a little bit,
+[03:57] especially that only one team with a
+[04:00] play over 40, no Otani. I probably
+[04:03] wouldn't have guessed that. So, this is
+[04:04] really interesting. Thanks, Todd, for
+[04:07] putting this together. Uh, I would
+[04:10] expect this now most years. I think
+[04:12] spread the wealth or a balanced approach
+[04:14] is now is now the favored way to play
+[04:18] auctions primarily because of how much
+[04:22] better auction players have got and all
+[04:26] the great content and information that's
+[04:28] out there. You used to be able to get a
+[04:31] bunch of one and $2 everyday players.
+[04:34] Some of them would be sleepers and you
+[04:36] could really fill the back end of your
+[04:38] roster after spending heavy on, you
+[04:42] know, three or four big players. That's
+[04:44] no longer the case. It's really hard to
+[04:48] get full-time hitters for a dollar. You
+[04:50] could find pitchers who have a full-time
+[04:53] rotation role for a buck, but they're
+[04:55] going to be back end of the rotation
+[04:57] guys with major warts. You know, the the
+[05:00] $1 guys are now, you know, um they are
+[05:03] now truly scrubs in a stars and scrubs
+[05:05] build. You'll have platoon bats, guys
+[05:08] coming in injured into the season,
+[05:10] closer specs, and some prospects.
+[05:12] Prospects might not be scrubs, but you
+[05:14] have to pay in auction now for a lot of
+[05:16] prospects. You used to be able to get
+[05:18] those in the reserve round. So, you
+[05:21] know, I've done a few only a few OLAXs.
+[05:23] Most people are going spread the wealth.
+[05:26] There are a couple who are still um
+[05:29] going stars and scrubs, but it's not
+[05:31] it's not as many. And it's it's frankly
+[05:34] making it more challenging. These first
+[05:36] two OLAs, I think probably the two
+[05:38] toughest ones I'd maybe ever have done.
+[05:41] um because the money management has
+[05:43] gotten better and there's a lot of
+[05:45] people all throughout the auction now
+[05:47] with purchasing power and it's getting
+[05:49] harder to be able to just swoop in and
+[05:53] and grab guys you like. So, um it's good
+[05:57] that people are getting better, but it's
+[05:59] also a lot harder now.
+[06:02] Yeah, I was kind of thinking about um
+[06:05] just sort of the the degree of
+[06:07] difficulty just within the auction to
+[06:10] make sure you spend your $260.
+[06:13] Um it seems to me like kind of the the
+[06:17] easiest way to make sure you spend all
+[06:19] your money is to go stars and scrubs and
+[06:22] really have some big ticket buys. and um
+[06:27] doing like like say you were to try to
+[06:28] do a spread the wealth build where you
+[06:31] didn't buy any players over $30 or maybe
+[06:34] just like one that was like $32 or
+[06:36] something. Um do you think that that
+[06:38] type of spread the wealth build takes
+[06:40] more sort of auction finesse, auction
+[06:43] technique to kind of pull it off than
+[06:45] just sort of a basic I'm going to go get
+[06:47] a couple like first round guys and then
+[06:48] fill in around them.
+[06:51] >> Yeah, I think that's fair.
+[06:53] I like to get a my big buy or buys in
+[06:57] early if I can. That kind of settles me
+[07:00] in and then I'm not worrying about I
+[07:03] have to, you know, spend money and not
+[07:06] leave any on the table. I've seen less
+[07:07] people this year leave money on the
+[07:09] table, which is is also a change. You
+[07:12] know, occasionally you'll see a Stars
+[07:14] and Scrubs player who waits too long to
+[07:17] come back in and they c they can still
+[07:20] leave some money on the table. So, it
+[07:22] still takes, I'd say, to spend all your
+[07:24] money out, maybe a little more finesse,
+[07:26] spread the wealth, but as far as getting
+[07:28] a balanced team, you have to be really
+[07:31] good at stars and scrubs. You have to
+[07:33] have a very solid list that you can rely
+[07:37] on uh to fill that out. Um, the other
+[07:41] thing I wanted to mention just from the
+[07:42] stats you put out there, uh, you know, a
+[07:46] 165 95 split, that's what we're pretty
+[07:49] much seeing again this year. I think if
+[07:51] you're playing auctions, you could count
+[07:52] on that. I I like to go a little higher
+[07:57] on pitching. I want a little
+[07:58] differentiation within that spread the
+[08:02] wealth approach. So, if everyone's going
+[08:03] spread the wealth,
+[08:05] you know, it it limits its effectiveness
+[08:07] to a certain degree. I like to maybe if
+[08:10] I go a little more on the pitching side,
+[08:12] then I'm I'm making my build a little
+[08:14] more unique. So, I'll go anywhere from
+[08:16] 100 to 105. I know one of the ones we'll
+[08:19] talk about, I actually went a little bit
+[08:20] over, which is
+[08:22] not great. Uh I think 105 is probably my
+[08:25] max there. Um and then just, you know, a
+[08:29] couple other things from what the from
+[08:30] the the numbers you read. Um you know,
+[08:33] last year 22 on catchers. you could do
+[08:36] that this year, but if you want two top
+[08:38] 10, you're talking more like 25 to 30.
+[08:41] So, I think you have to know that going
+[08:42] in. And
+[08:45] the one thing I would last thing I would
+[08:47] say is something has to give. You know,
+[08:50] like we talk every year there's going to
+[08:52] be starter inflation in Vegas. Well,
+[08:54] right now there's closer inflation,
+[08:57] there's catcher inflation, and if
+[08:59] there's going to be SP2 inflation, all
+[09:02] of those things can't exist. something
+[09:04] has to go. Um, I don't know what you
+[09:07] think. I tend to think catcher inflation
+[09:11] maybe like that second tier might be
+[09:14] where there's a little bit of pullback,
+[09:16] but I don't know if you've thought about
+[09:17] that. I think that's something if you
+[09:19] want to try to project your own
+[09:21] strategy, you need to maybe have a
+[09:23] pretty good sense of which of those
+[09:25] areas is going to be uh the one to to
+[09:28] come back to earth a little bit,
+[09:30] >> right? Yeah. I mean, I I think um yeah,
+[09:33] as you were kind of laying that out, my
+[09:34] initial reaction before you even said it
+[09:36] was that I I thought maybe Catcher would
+[09:39] be a little cheaper um in Vegas just
+[09:44] because I mean it like obviously there's
+[09:47] still those those tier drop offs within
+[09:49] Catcher, but I think there's more guys
+[09:53] that you just feel perfectly fine having
+[09:55] in one of your catcher spots than there
+[09:57] are than there were like even three
+[09:59] years ago. um like you know one of your
+[10:02] teams uh you got um like Ryan Jeffers
+[10:07] for $3. Um like that's that's pretty
+[10:10] darn good, you know, like um and if you
+[10:13] that that allows you to get like that
+[10:15] one, you know, surefire top 10 catcher
+[10:17] to go along with them. Um, so I think if
+[10:20] you were trying to unless there's like a
+[10:23] just I don't know like unless you just
+[10:25] have a really good read on like the um
+[10:27] like third tier closers or something
+[10:29] like that. Um you have a guy like I know
+[10:31] you you and Mike were all over like
+[10:34] Aldis last year at like 12 13 bucks
+[10:37] which is fantastic buy. like if if you
+[10:40] you hone in on someone like that, you
+[10:42] could you could go cheap at at reliever.
+[10:44] But um I think just generally like if
+[10:47] you want to make sure you get everything
+[10:48] you want, um going a little bit cheaper
+[10:52] on like that second catcher might be the
+[10:54] way it goes in Vegas.
+[10:56] >> Yeah, you're going to have to make some
+[10:58] sacrifice somewhere. Uh,
+[11:01] you know, every time I, you know, this
+[11:03] is, you know, my first two here in the
+[11:06] last few weeks. Every time I start
+[11:07] setting up my sheet, that 260 gets
+[11:10] harder and harder to make work. You
+[11:12] know, you want 270 or 280 to really get
+[11:15] all the guys you like at all the
+[11:17] positions. So, that's that's just an
+[11:19] important note. you know, have you have
+[11:21] to have targets and you got to try to
+[11:22] get as many as you can, but you're going
+[11:24] to have to take some of your second
+[11:27] choices or even third choices in spots
+[11:32] because everyone basically has the same
+[11:35] targets. There's some variation. So,
+[11:38] those are the more soughtafter players.
+[11:39] Their prices are higher and you only get
+[11:42] 260. So, it's it's becoming more and
+[11:44] more challenging to kind of make it all
+[11:46] fit. And you might have to just be okay
+[11:48] with leaving light in either in either a
+[11:51] position or a category. And just be
+[11:54] thinking through what can I do in fab
+[11:57] and is that the position or category
+[12:00] that I'm okay leaving a little bit light
+[12:02] in because I could make it up during the
+[12:04] season.
+[12:06] >> Yeah. And um I mean auction like
+[12:09] everything you just said there like it
+[12:11] just re reiterates I think um that
+[12:14] auctions it's such a skill game like
+[12:17] there's there's luck involved obviously
+[12:19] with the the injuries um etc. But uh
+[12:23] like you're a very successful auction
+[12:25] player like you're talking about like
+[12:27] you have to have your targets. I know um
+[12:30] at Mike Maker's uh talk at at First
+[12:33] Pitch Arizona, he was talking about like
+[12:34] how uh you know, one of the most
+[12:36] important things to him, if not the most
+[12:38] important thing is just nailing those
+[12:39] like two, three, four dollar buys in the
+[12:42] auction. Um so like it it's such a
+[12:45] skilled game because you see the same
+[12:47] same people up there um you know year
+[12:50] after year more or less. So um that's
+[12:53] what makes it so fun and and makes it so
+[12:55] challenging. So, I'm really excited that
+[12:57] uh you know, more people seem to be
+[12:59] getting into auctions, but like you
+[13:01] said, people are are kind of wising up
+[13:03] and stuff uh as well.
+[13:05] >> I mean, there's a lot more content. Uh
+[13:07] I've been one of those people, you know,
+[13:10] trying to get some content out there on
+[13:12] podcast and and it's good. I I I'm okay
+[13:16] to sacrifice a little bit of the edge
+[13:18] for more people to get into auctions
+[13:21] because it is a still a pretty small
+[13:23] circle of people who play auctions,
+[13:25] especially the live auctions. It's a lot
+[13:27] of the usual suspects, which is great
+[13:29] because it has that home league feel,
+[13:32] but they're all really good players and
+[13:34] it's just so hard to get an edge and you
+[13:38] have to really run pure uh to have
+[13:40] success. So having success last year is
+[13:43] definitely no guarantee of success this
+[13:45] year. I mean to me I'm starting from
+[13:47] ground zero and have to prove myself
+[13:49] again. And yeah, I come in with a little
+[13:52] more confidence than I've had in
+[13:53] previous years, but by no means do I
+[13:55] think it's going to be easy this year.
+[13:57] In fact, I think it'll be, you know,
+[13:59] much harder actually.
+[14:01] >> Oh yeah, absolutely. Um
+[14:04] so uh I don't want to I'm not going to
+[14:07] like read through your entire teams or
+[14:08] anything like that. Um, but I did
+[14:10] >> feel free to say whatever you want. I it
+[14:12] I'm an open book here. I don't really
+[14:14] mind, but yeah, I mean, obviously
+[14:15] there's a lot of players to read
+[14:16] through. So,
+[14:17] >> Right. Yeah. I mean, we'll we'll hit on
+[14:18] I'll hit on definitely some like
+[14:20] specific uh positions and and dollars
+[14:22] and stuff here uh after the break, but I
+[14:24] did just want to get um you know, I know
+[14:27] you are are leaning on projections a
+[14:30] lot, especially just trying to find um
+[14:32] you know, values, potential values in
+[14:34] the market. And uh I definitely like I
+[14:37] as I expected to saw a lot of players on
+[14:39] your team where it's just like oh yeah
+[14:40] that guy pops in the projections. He's
+[14:43] uh projected to be you know several
+[14:45] dollars more valuable than his snake
+[14:48] draft ADP had been before these auctions
+[14:50] got underway. And of course there's
+[14:52] hundreds of snake drafts that happened
+[14:54] on the NFPC u before the first auction.
+[14:57] Um, so it's I wasn't surprised by uh
+[15:02] some of the names I saw, but I was just
+[15:03] curious if you were surprised by any of
+[15:07] the players that you ended up with on
+[15:09] either team.
+[15:10] >> Yeah, I just want to say one thing. I
+[15:13] lean on projections to to derive my
+[15:16] valuations, right? So to me, this is a
+[15:19] math problem and my the way I think is I
+[15:24] want dollar values on players from an
+[15:28] aggregated projection set that I've kind
+[15:30] of put together. Mine is probably
+[15:32] different than everyone else's even
+[15:34] though it's the same projections and
+[15:36] it's really variations on a theme. I'm
+[15:38] yeah I'm trying to get you know a
+[15:40] valuation or a dollar amount and then
+[15:42] yeah I am looking at AAV and I want to
+[15:45] average auction value and I want to see
+[15:46] where there are big discrepancies either
+[15:49] way and you know one thing I would say
+[15:51] is I have gotten more open to
+[15:55] overspending on a few big players that I
+[15:58] really think are going to hit or give
+[16:00] you a great foundation and I feel like I
+[16:04] can make up that overpay later in the
+[16:07] auction. So, I've gotten a little more
+[16:09] liberal with my um with the the players
+[16:13] I'm targeting, which is good because it
+[16:15] gets pretty boring just to stick to
+[16:18] everyone who is a little bit
+[16:19] underpriced. So, I I'll just kind of
+[16:21] give that as like the macro view. Um are
+[16:24] there So, yeah, there's a there were a
+[16:27] couple surprises. the the not as good
+[16:30] surprise and maybe you could talk me off
+[16:32] the ledge a little bit was uh Aaron Nola
+[16:35] for six in the first OLAC. You know, I
+[16:37] will say I'm very fortunate to partner
+[16:39] with with Mike and uh he does share his
+[16:43] deep dives with me. Um I don't even know
+[16:45] what these would be worth if he would
+[16:47] like monetize it. But um so I I do give
+[16:51] that a lot of weight. Uh I do give his
+[16:53] and you know it it it aligns with me. I
+[16:55] mean, there's stat cast in there,
+[16:56] there's past performance in there. He
+[16:58] kind of gives his bulleted list of his
+[17:01] thoughts on it, and then I give it a
+[17:02] really good read this year more than
+[17:04] ever, and then I kind of make a few
+[17:06] notes of what I think. So, Nola got
+[17:08] like, I don't think so for me. But, you
+[17:10] know, I found myself in a bit of a bind
+[17:12] during the auction, and you know, that
+[17:15] $6 price was decent, but um sounds like
+[17:18] you're maybe in on him or at least okay
+[17:20] with him this year. I don't know if you
+[17:21] have any specific thoughts. I know it's
+[17:23] the every other year and this should be
+[17:25] the good one, but he was someone I was
+[17:27] kind of moving away from. So, that was a
+[17:29] little surprised that I actually had him
+[17:30] on one team.
+[17:33] >> Yeah. You know, I just think uh or at
+[17:35] least, you know, based on like the DC
+[17:37] prices, I I thought he was um like him
+[17:40] and like him and Jack Flity are just
+[17:43] like a couple guys that I think are a
+[17:46] pretty cheap like 170 plus innings. Um,
+[17:52] you know, I do Nola does have a a little
+[17:55] bit of like that sort of fear factor of
+[17:58] like we we've just seen him get lit up
+[18:00] in more starts than like your average
+[18:04] top 225 like veteran starter, but um I
+[18:09] mean just like every single year his
+[18:10] like fielding independent numbers are
+[18:14] roughly the same. Um, like I'm not like
+[18:19] the fast ball was down a little bit last
+[18:21] year. I think that would probably be my
+[18:22] one
+[18:25] uh concern, but I just kind of have
+[18:28] faith in him. Age 33 season coming off
+[18:31] of like the worst year of his career.
+[18:33] Like I think he's at least going to be a
+[18:34] guy you start most weeks.
+[18:37] >> I like that. Um, a good surprise was uh
+[18:40] Jackson Shurio for 31 in the second
+[18:43] auction, especially after I paid 39 for
+[18:46] JRM. Uh, I typically won't like do a two
+[18:49] for 70 kind of deal, especially two
+[18:51] hitters. Uh, you know, usually you'll
+[18:53] see me maybe more at the top of the of
+[18:55] the pitching market and we could talk
+[18:56] about that. Uh, but, you know,
+[19:00] it's not a good deal by, you know, my
+[19:03] file, but you know, it's one of those
+[19:05] things. It was in the moment. I you know
+[19:07] it was a couple dollars under his AAV.
+[19:10] He is a player I do like quite a bit and
+[19:13] I didn't get him at all last year. I
+[19:15] thought he was a little bit overpriced,
+[19:16] but he had a really good really good
+[19:18] campaign and the one thing I learned
+[19:21] from the first auction was uh my the
+[19:24] four top hitters and you maybe we'll get
+[19:26] into that. I love them all. They're all
+[19:28] good prices, no bags. And then I had a
+[19:31] scramble. So, by starting out with like
+[19:34] a 5050 or a 6060 combo in Shurio and
+[19:37] JRAM, that made the rest of my uh
+[19:40] hitting build a lot easier and I didn't
+[19:42] have to worry about just chasing one
+[19:45] category. So, that was a little bit of a
+[19:47] surprise, but I was kind of happy about
+[19:48] it. You know, I need to force myself to
+[19:51] make some of those plays, I think, this
+[19:53] year. And he's a guy I'm willing to bet
+[19:55] on for sure.
+[19:57] >> Yeah, absolutely. I mean, definitely
+[20:00] feels like I mean, I I kind of think
+[20:02] he's sort of a just a high floor and a
+[20:04] high ceiling player um at that price.
+[20:07] Like, he's just always going to hit high
+[20:09] in the lineup, going to put a ton of
+[20:12] balls in play, and definitely going to
+[20:13] run. And uh like it could be like one of
+[20:16] these years he could just have have like
+[20:18] the monster year. Um
+[20:22] all right, let's uh let's head to a
+[20:25] quick break. Uh, but when we come back,
+[20:27] uh, I want to ask Mark if there's any
+[20:31] prices he's noticed on players in his
+[20:34] auctions that sort of surprised him in
+[20:36] kind of a negative way where the hype is
+[20:38] maybe just a little too high at this
+[20:39] stage of the offseason. But first, a
+[20:42] message from Fantrax. Fantrax is the
+[20:44] most customizable fantasy platform in
+[20:46] the industry, offering the greatest
+[20:47] fantasy experience for your keeper,
+[20:49] dynasty, and redraft and best leagues.
+[20:51] Coming from another service, Fantrex
+[20:53] makes it easy. Fantrex can import any of
+[20:55] your current leagues and customize if
+[20:56] needed. Fantrex offers the most in-depth
+[20:59] player pool in the industry, including
+[21:00] minor league players. Do you need a
+[21:03] customizable commissioner service for
+[21:04] your fantasy leagues? Fantrax offers
+[21:06] more customization than any other
+[21:08] platform. Waivers, categories, scoring
+[21:11] system, schedule. Fantrax offers custom
+[21:13] solutions for all that and more. And
+[21:15] it's all free. Sign up for free today.
+[21:17] Simply go to fantrax.com/rowire
+[21:20] and sign up today. That's
+[21:21] fantax.comrowire.
+[21:24] Fantrax, the home of fantasy sports. All
+[21:27] right, Mark. So, uh, this was the one
+[21:29] question I asked you about the other
+[21:31] teams in your leagues. Um, but, uh, what
+[21:35] what do you think? Anyone anyone's price
+[21:37] just really jump out to you in these
+[21:39] early ones or when you were doing your
+[21:40] your AV prep of just kind of like, wow,
+[21:43] what what's that all about?
+[21:45] >> Yeah, I think the poster boy uh, for
+[21:47] hype is Ben Rice right now. uh going
+[21:50] [laughter] for 23 and 22, but really
+[21:53] it's doesn't look like a bad deal.
+[21:56] Really, it it it it's it's maybe a
+[21:59] couple of dollars over. It's really not
+[22:01] too bad relative to the catcher pool.
+[22:04] There are a lot of catchers that look
+[22:05] like good deals, so you have to consider
+[22:07] that. Uh you know, I just don't know. Uh
+[22:09] you know, he looks like he's a, you
+[22:11] know, really good player, should
+[22:14] um but you know, it's a lot. It's a it's
+[22:16] a catcher. So, u you know, they get they
+[22:19] do get dinged up and it's you know, it's
+[22:21] he's going for more than like, you know,
+[22:23] William Contraras, for example. And
+[22:27] uh I just think it's
+[22:30] it's it's a great upside play. It's just
+[22:32] he's like the he's the he's the poster
+[22:34] boy for for for hype. Um the other one,
+[22:37] this is probably not a popular answer,
+[22:39] but Cade Smith at $24
+[22:42] does surprise me a little bit. I mean,
+[22:44] he's obviously incredibly skilled. He
+[22:46] could be the closed or one this year for
+[22:48] sure. No question about it. Uh, looks
+[22:50] like the job is his. He did have it for
+[22:53] a little while last year, but now he's
+[22:55] the man coming in. You know, it's just
+[22:58] him. Uh, you know, we always think the
+[23:00] Guardians are going to be kind of mid,
+[23:01] but they always seem to win enough games
+[23:03] and their closer a lot of times, you
+[23:06] know, leads a leave uh, you know, uh, in
+[23:08] saves. But, you know, you're paying
+[23:10] Mariano Rivera prices for someone who
+[23:12] has only been a closer for, you know,
+[23:14] half a season or a couple months. So, um
+[23:17] I'm stay I'm staying away right now, but
+[23:20] closer is really tricky. You know, if he
+[23:23] you know, somehow he was 21 or
+[23:25] something, uh you know, that would
+[23:26] peique my interest. But, uh so I I would
+[23:29] say Rice and Smith, but really curious
+[23:31] if you saw any other prices that are
+[23:33] surprising you.
+[23:36] I was just I was laughing at the Ben
+[23:38] Rice call out just because I feel like
+[23:41] every every other day I'm liking a Jason
+[23:43] Dupont tweet about Ben Rice. Um so I
+[23:48] Yeah, I mean the uh the hype is is
+[23:51] growing. Um
+[23:53] I think I s I think I saw Did I think he
+[23:56] did he go ahead of Cal Rally in like a
+[23:58] snake draft?
+[23:58] >> Yeah, he went ahead I think he went the
+[24:00] end of the first round. He went for $27
+[24:03] in an earlier OAC as well. uh you know
+[24:05] these prices are more as AAV he he's
+[24:07] even gone higher uh in the previous OAC.
+[24:12] >> Yeah. Um again I mean we I it seems like
+[24:16] you know obviously he had a monster year
+[24:18] last year and he was uh even a little
+[24:20] unlucky you could argue um in terms of
+[24:23] his offensive production but um
+[24:26] not someone I've ended up with yet. Uh I
+[24:29] I definitely would have gotten some Ben
+[24:32] Rice if he had stayed like at the
+[24:35] beginning of draft season he was going
+[24:36] like right behind Contreras and
+[24:38] Langaliers and uh I definitely thought
+[24:41] he belonged like you know fourth fifth
+[24:44] maybe at catcher but uh I I don't think
+[24:48] I can take him second catcher off the
+[24:50] board personally. Um,
+[24:53] Kade Smith is a is another one where
+[24:54] just uh the auction verse snake draft
+[24:57] dynamics like I just can't picture
+[24:59] myself ending up with Kate Smith in an
+[25:00] auction, but I I have ended up with him
+[25:02] in a snake draft just when like the
+[25:04] closer run happens. Um, you know, get
+[25:08] whichever guy you think is the fifth,
+[25:10] sixth, seventh closer, whatever. I mean,
+[25:12] um, but yeah, 24 and like that's it's so
+[25:15] I love that you kind of make that
+[25:17] distinction of like 24 is too much. 21.
+[25:21] Not too much. Like that's how fine and
+[25:24] how um kind of disciplined you have to
+[25:27] be with where you're spending your
+[25:29] money. Like you have to be able to draw
+[25:31] the line and and save those $3 for
+[25:33] something else.
+[25:35] >> Exactly.
+[25:36] >> Um
+[25:38] yeah, I I should have had a I should
+[25:40] have I I should have had a couple names
+[25:42] ready to go in terms of guys that I
+[25:43] thought were getting way overdrafted.
+[25:45] Um,
+[25:45] >> I could throw one I could throw one more
+[25:47] out there real quick and it's the top
+[25:49] starting pitchers um, famously earlier
+[25:53] in the draft season on another podcast
+[25:57] uh, claimed that looks like 36 37 again
+[26:01] for the big three. That's you know I I
+[26:03] doubt they'll hit 40 and this there's no
+[26:06] correlation here but since then they're
+[26:09] going for 40 41 in every auction. So
+[26:13] that is a little different. Last year uh
+[26:16] school bone schemes were not going that
+[26:17] high. Now now we add crocheted to the
+[26:19] group which I thought would keep by
+[26:22] having three instead of two. I thought
+[26:24] that might moderate a little bit. And
+[26:26] who knows what we'll see in Vegas but
+[26:28] that has made it more challenging. As
+[26:31] you just said that extra $3 really
+[26:34] matters. And now you have to really if
+[26:38] you want them, you better know where the
+[26:41] rest of your staff is coming from and
+[26:42] how you're going to put it together. So,
+[26:44] I am a little surprised that and I think
+[26:47] they're worth it, too. I don't think
+[26:48] it's I don't think it's a bad a bad uh
+[26:52] price for them. It's just a little
+[26:54] surprising because you rarely see
+[26:56] pitchers go north of 40. Uh I think a
+[26:59] strider a couple years ago was the only
+[27:01] one I could really remember doing that.
+[27:03] Uh people like to get their get their
+[27:05] bats uh especially in the big auction.
+[27:07] So we'll see. Maybe maybe there'll be a
+[27:09] three in front of those guys uh come
+[27:11] Vegas time.
+[27:14] >> Yeah. I mean, you just never know what
+[27:16] what just a couple weeks of spring
+[27:18] training will do to their prices or just
+[27:22] uh like I think it's sort of like the
+[27:24] lack of confidence in that next tier of
+[27:28] it's almost sort of if you go in
+[27:30] thinking you're going to get one of
+[27:31] those top three guys, you can kind of
+[27:33] map out, okay, like this might be my
+[27:34] SP2, my SP3. Um, but if you kind of go
+[27:37] in and you're like, "Well, maybe I'll
+[27:39] get like one of these guys that go, you
+[27:42] know, in that that next group, but um,
+[27:45] they're just not as good as those top
+[27:47] three." And, uh, you don't know what the
+[27:48] prices are going to be on that next tier
+[27:49] down. So, um,
+[27:52] >> it's a big gap, James. I I don't
+[27:54] remember
+[27:56] a gap this large from like a big three
+[28:02] going down to uh, the next. I think it
+[28:06] looks like Yamamoto
+[28:08] has the next highest price around 30,
+[28:13] but you know, then you're into like the
+[28:15] $26 tier, the 22 $23 tier. There's not a
+[28:19] lot of in between this year. It's it's
+[28:21] really interesting. So, uh, you know, in
+[28:25] the past you'd see some 35s, some 30s,
+[28:28] some 28, some 26, you know, a little a
+[28:31] little more like that. This year it's
+[28:33] just very different. you have a pretty
+[28:35] huge drop off. Um, and I think that, you
+[28:40] know, that makes it pretty interesting.
+[28:42] Actually, I don't even Yeah, Yamamoto is
+[28:45] more like 27. So, really, it's it's
+[28:48] almost like a 12 $13 drop from those top
+[28:50] three. That is that's that's different.
+[28:53] So, that that makes it interesting.
+[28:56] >> Yeah. No, I mean it I I can't remember a
+[28:58] time when there were like there's
+[29:01] definitely been years where it's like
+[29:02] these are the clear guys that go in the
+[29:04] first round, but like it's the gap I I
+[29:08] don't recall a time where um just the
+[29:11] valuation gap between SP3 and SP4 has
+[29:13] been so big. Um
+[29:16] so uh you mentioned you you got uh JRAM
+[29:20] uh $39 in one of your one of your teams.
+[29:23] Uh you also got $30 junior camo on the
+[29:27] other team. Um was there was it just
+[29:30] kind of a coincidence that it was two
+[29:32] third baseman that you went 30 plus on
+[29:34] there or did you sort of identify that
+[29:36] as as a position where you'd like to
+[29:38] allocate a bit more resources?
+[29:41] >> Yeah. No, it was intentional. I think
+[29:43] this is a position where I'm really
+[29:45] uncomfortable
+[29:46] um after the top range there and I feel
+[29:51] like um you know Ramirez is obviously an
+[29:53] elite five category contributor and
+[29:56] Camara four category. So I think they
+[29:58] give a really good foundation. You can
+[30:00] you can go in a lot of directions from
+[30:02] there or just have a lot of um
+[30:04] statistical balance to start and I just
+[30:08] don't love the rest of the pool. So that
+[30:09] that's that's intentional and and it's
+[30:13] coincidental in the sense that they were
+[30:15] both a few dollars under AAV. I'm still
+[30:17] going to be price sensitive to a degree.
+[30:20] Uh, and it's not going to be just a
+[30:22] guarantee that uh I I'll spend up at the
+[30:25] position, but if I can get two guys that
+[30:27] I really like at a position I find
+[30:29] pretty challenging and they're under
+[30:31] AAV, uh, even though, you know, these
+[30:33] guys are both over my valuation by a a
+[30:36] considerable amount, I I was happy I was
+[30:38] happy to go in that direction for for
+[30:40] both of these.
+[30:43] Now, uh, I saw you got Raphael Devers at
+[30:47] 17 on, um, see, this was the team you
+[30:52] start, you go Will Smith, Ryan Jeffers a
+[30:54] catcher, and then you had Devers, uh, at
+[30:58] 17, and then Catel Marte 22, Junior
+[31:02] Camaro 30, Willadamus 12 is your
+[31:06] starting infield there. Um, the devil's
+[31:09] the $17 price uh just stood out to me
+[31:12] just because it like I think he's been
+[31:15] or at least I I've only done four drafts
+[31:17] and one of them was recent. Most were a
+[31:19] couple months ago, but at least when I
+[31:21] was doing my my early drafts, I thought
+[31:23] DeS was one of the more overdrafted
+[31:26] snake draft players, but the $17 price I
+[31:29] think is great. Um, so I just I I
+[31:32] thought that that didn't that was not
+[31:34] surprising at all for me to see that you
+[31:36] jumped in at 17 on him. Um,
+[31:40] he went for 19 in the other league. Uh,
+[31:43] was that just one where you you just saw
+[31:45] him going for for less than he should
+[31:46] and you just jumped in?
+[31:49] >> He he jumped out at me in my prep. Uh,
+[31:52] you know, I was surprised how solid he
+[31:55] was last year. I didn't, you know, when
+[31:57] you don't have a player in a year, you
+[31:59] really lose track of how they did. And
+[32:02] that was the one fun part for me going
+[32:04] through the deep dives. I was like
+[32:05] surprised by a few players that I didn't
+[32:07] have last year. And I was like, "Wow, he
+[32:08] had a pretty solid season. Everything
+[32:10] looks, you know, pretty stable there. It
+[32:14] looked like a good price uh in the first
+[32:16] base market. There's actually quite a
+[32:18] few the first base market. There's a lot
+[32:20] of good prices, I think, all the way
+[32:22] throughout. Um, so
+[32:24] >> it's not like I have to have Deborres at
+[32:26] everyone, but I was happy to get him
+[32:28] there. You know, the the one advantage
+[32:30] there's a advantage and disadvantage to
+[32:32] not doing any earlier drafts. You know,
+[32:35] I don't draft till end of January and I
+[32:37] don't do any DCS. So, the the
+[32:40] disadvantage obviously is player pool
+[32:42] and that's that's showing up in my
+[32:44] reserve round picks, which I haven't
+[32:45] really liked yet. U, that's where my uh
+[32:48] lack of player pool uh mastery is
+[32:52] showing up. What's an advantage is I'm
+[32:54] not locked into any of the early prices.
+[32:57] I don't look at ADP really at all. So, I
+[33:00] don't know where these guys were going
+[33:01] early. So, I'm not like, "Oo, he was
+[33:03] going earlier, you know." Now, that'll
+[33:05] happen within the auction world, right?
+[33:07] Like my OAC auction prices will impinge
+[33:11] upon my feelings in Vegas if if they
+[33:14] change. You know, I can get locked into,
+[33:16] oh, wow, he was 15 in January, now it's
+[33:19] 22. You know, what do I do? But at least
+[33:22] for ADP, I don't look at that. So that
+[33:24] at least frees me up a little bit to not
+[33:26] worry about what's already happened. I
+[33:28] can just focus on kind of what the
+[33:29] market is now and and looking forward.
+[33:33] >> Now, second base, um, [clears throat]
+[33:36] on one team you got, uh, arguably the
+[33:39] best second baseman in Catel Marte, and
+[33:42] then on the other team you got eight
+[33:44] dollar Luis Garcia as your starting
+[33:46] second baseman. Um, and I was just
+[33:49] wondering like
+[33:52] >> why the hell did I get
+[33:53] >> like No. Well, look, like second base is
+[33:55] just so weird. Like what did you when
+[33:58] you did your prep, like how did you
+[34:00] think you wanted to attack the position?
+[34:02] And obviously like you you went two
+[34:04] different ways in the two two auctions.
+[34:06] So just curious kind of how that how
+[34:08] that all shook out.
+[34:09] >> Yeah. Certainly wasn't going into an
+[34:12] auction thinking I'm getting Luis
+[34:14] Garcia. I mean, I don't hate him. I
+[34:16] don't hate him. I think he's Yeah, I
+[34:18] think he's fine. I think he's fine. It's
+[34:20] definitely I could feel like I could do
+[34:22] better and need to do better. Uh you
+[34:24] know, obviously when you grab a Marte
+[34:26] early, you're you're you're golden. You
+[34:27] don't have to worry about that. And
+[34:28] they're um I think I even got Glabber
+[34:32] Torres in that one as my middle, which I
+[34:34] really like. But, you know,
+[34:37] >> a lot of times, you know, this is the
+[34:38] one thing I would say, you know, if you
+[34:40] if you're like auction board scouting
+[34:42] and you're just like, "Huh, he paid
+[34:44] eight for Luis Garcia. He could have
+[34:46] had, you know, um, for nine, he could
+[34:49] have had Aussie Alb's or he could have
+[34:50] had, you know, Glabber for seven. It's
+[34:53] all about when these players come out
+[34:55] and how you manage it. I did not manage
+[34:57] this well because I was interested in a
+[35:00] Palanco or um or a Semian. They both
+[35:03] went for eight, which was well over
+[35:05] where they were going. So, I got shut
+[35:07] out on those. Um, you know, Glabber, I
+[35:11] already had one share and I got them
+[35:12] cheaper, so I really wasn't looking for
+[35:14] a second. Uh, you know, I was in on a
+[35:16] lot of the earlier guys. I was in on
+[35:19] her. I was in on Terra. I was in on um
+[35:23] Keshaw. Even I just didn't play it
+[35:25] right. And then the problem was
+[35:28] it got there were there were, as I
+[35:32] mentioned earlier, everyone had about
+[35:33] even money and a several good players
+[35:36] needed a second baseman. So, uh I had
+[35:39] one very good player tell you know uh
+[35:42] text me. He's like, I've been waiting
+[35:44] two hours for Luis Garcia. So, um, you
+[35:49] know,
+[35:50] if I didn't get him, I would have been
+[35:52] even more unhappy, right? So, I just
+[35:54] sucked it up. It's still a little under
+[35:56] his valuation. It's like a dollar or two
+[35:58] under, you know, where I have him. So,
+[36:00] it's not like I, you know, it's not
+[36:01] horrible, but certainly not what I
+[36:03] wanted. So, that just tells you don't
+[36:06] pass up an early good price just because
+[36:08] you're waiting on a on a bigger target.
+[36:10] That's just that's I think people get
+[36:12] into that mistake and all of a sudden
+[36:14] you're priced out of that of that bigger
+[36:16] target. So if it's a guy that's in your
+[36:19] green zone, you know, a guy you want and
+[36:22] the price is reasonable and it comes out
+[36:23] sooner, just grab them and you know, you
+[36:26] can kind of go on from there and you'll
+[36:28] get other targets at other positions.
+[36:32] So, in a in a ideal situation,
+[36:36] you're you're you're spending more than
+[36:39] the eight. Um, or you are you getting
+[36:42] someone better than Luis Garcia, like
+[36:45] you're spending more than the eight in
+[36:46] an ideal situation?
+[36:47] >> Yeah, I I think so. I mean, there's a
+[36:50] nice there's there's a nice tier. There
+[36:51] are a couple singledigit guys that that
+[36:54] are also pretty solid. I mean, you know,
+[36:56] there's there's a there's a decent
+[36:57] array. It's It's not a sexy position,
+[37:00] but I like it better than third base.
+[37:02] You know, uh there are definitely more
+[37:04] options that I'd be happy with at at
+[37:05] second base than I would be at third
+[37:07] base. There's not like the elite tier
+[37:09] that you have at third or even that like
+[37:11] secondary elite tier, you know, like the
+[37:13] Machadoo and uh my Kell Garcia, but um I
+[37:16] don't think it's terrible. There's, you
+[37:18] know, there's a lot of speed there and
+[37:20] then there, you know, there's some guys
+[37:21] that got some pop and are, you know,
+[37:22] like four category guys. So, yeah, I
+[37:24] think it's an interesting position for
+[37:25] this year.
+[37:27] Well, only like three or four people in
+[37:29] your league can have the kind of really
+[37:33] safe second baseman. Like there's just
+[37:36] there's like a hand there's like three
+[37:37] or four that like are great and then
+[37:40] there's just a bunch that you know take
+[37:43] your pick and you probably have a
+[37:45] favorite or two within there. But um so
+[37:48] now uh
+[37:51] you doubled up on a couple giants. Um,
+[37:54] you had uh Willy Damis at $12 on both
+[37:58] teams. You had Jung Hu Lee uh for $2 and
+[38:02] $3,
+[38:03] uh, on each team. And, uh, they
+[38:07] obviously their their roto statistical
+[38:10] projections pair very nicely with just
+[38:12] Adamus and and Lee's strengths and
+[38:15] weaknesses. Um, so what uh I I assume
+[38:20] you liked both players obviously since
+[38:22] you ended up with both of them. Um, did
+[38:23] you think they were undervalued? Did you
+[38:25] just think that their their stats were
+[38:27] going to fit nicely on your roster? Like
+[38:28] what was the thought process with those
+[38:30] two giants?
+[38:31] >> Yeah, all the above. You you you totally
+[38:33] hit it. Yeah, I mean I think I didn't
+[38:35] really think through that they did pair,
+[38:37] you know, as a pair. They really do fit
+[38:39] and uh once you mentioned it, I'm like,
+[38:41] yeah, you know, that's right. They they
+[38:42] are really a nice combo for 15 bucks.
+[38:48] You know, they're correlated. They're on
+[38:49] the same team. And
+[38:51] you know, yeah, if it's if you have a
+[38:53] highpowered offense, yeah, get as many
+[38:55] guys in the team as you can. Of course,
+[38:56] those are the more expensive players.
+[38:58] So, you don't usually think, oh, I'm
+[38:59] going to stack Giants, you know, but if
+[39:02] I can find a couple guys that I think
+[39:03] are going to have good years and that
+[39:06] are underpriced. I think both of them
+[39:08] are underpriced for sure. Adamus, I
+[39:10] think, is
+[39:12] criminally underpriced, but he's he's
+[39:13] underpriced again. You know, he you
+[39:16] know, last year was I think his first
+[39:17] year with the Giants, right? So, you
+[39:18] know, bigger contract, you know, new
+[39:20] thing. I, you know, it wasn't it was
+[39:22] solid year. I mean, his average is
+[39:24] definitely a problem, but, you know, he
+[39:26] settled in. You know, it's a it's a
+[39:28] decent team. I I think he's an
+[39:30] interesting kind of, you know, cheaper
+[39:32] option at shortstop. There's a lot of
+[39:34] really top shorts stops, right? Um, so I
+[39:37] don't mind spending a little bit down on
+[39:38] someone that going to give you a pretty
+[39:40] I call it total, right? Runs, ribbies,
+[39:42] steals, and homers. And he's he's over
+[39:44] 200, which is kind of the benchmark I
+[39:45] look at for a bunch of guys. And to find
+[39:48] a 200 total guy for 12 bucks, there
+[39:50] there aren't many of them. He he he
+[39:52] stands out to me there. And I don't
+[39:53] know, Lee is Lee is decent. I mean, the
+[39:56] way I'm going to play my outfield, I'm
+[39:58] probably going to have a two or three
+[39:59] dollar guy, so he he seems like he he's
+[40:01] fine there.
+[40:03] >> No, I I uh I definitely agree. like
+[40:06] Adamus. Um
+[40:08] I I think the just the new situation and
+[40:12] the big contract was like weighing on
+[40:14] him maybe a little early in the year,
+[40:17] but uh I mean he was exactly what the
+[40:19] Giants thought they were getting over
+[40:21] the final like three or four months. Um
+[40:24] and it's just like 30 hitting 30 homers
+[40:28] in San Francisco as a shortstop. Like
+[40:30] that's that's no joke. um like that's
+[40:34] that's big boy power and uh yeah uh he's
+[40:38] gotten
+[40:40] 33 steals over the past two years too.
+[40:42] So um yeah and then exactly like you
+[40:48] talked about the like the $1
+[40:50] outfielders. They're pretty much always
+[40:51] going to be platoon guys or prospects
+[40:54] that might not even play. Um, so
+[40:57] spending that extra two, three bucks on
+[40:58] a guy that you know is going to play
+[41:00] every day and probably hit high in the
+[41:02] lineup. Um, definitely makes sense in
+[41:05] Lee there.
+[41:07] Um, so on one team $47 on six
+[41:11] outfielders and on the other team $67 on
+[41:14] five outfielders. And so I'll read off
+[41:16] the outfielders for for each situation.
+[41:18] And I want to see which which of those
+[41:20] situations feels better to you. So on
+[41:23] one team $16 Michael Harris, $15 George
+[41:27] Springer, $12 Brent Doyle, $2 Jung Hu
+[41:31] Lee, $1 Victor Scott, $1 Cedric Mullins,
+[41:34] and then on the other team, $31 Jackson
+[41:36] Cheerio, $15 Randy Rosarena, $14 George
+[41:40] Springer, $4 Willie Castro, and $3 Jung
+[41:44] Hulu Lee. So uh $20 more on outfielders
+[41:48] in one of the leagues. Uh, but which end
+[41:51] product did you end up liking more?
+[41:54] >> Well, this won't surprise anyone, but
+[41:56] the $67 outfield I like. I like quite a
+[41:59] bit better for sure. Um, I really like
+[42:01] that outfield. Uh, I think it's uh it's
+[42:04] got a lot got a lot of um got a lot of
+[42:07] statistics laying in there. So, uh I
+[42:10] like that one quite a bit better. You
+[42:12] know, ultimately last year I spent
+[42:16] around 50 on my outfield and that really
+[42:18] paid off. I just identified a bunch of
+[42:20] good bargains. Springer uh was one of
+[42:23] them. You know, he's going for $6 now.
+[42:25] It's a much different scenario now. So,
+[42:27] getting a $50 outfielder outfield is is
+[42:30] is harder this year. I think last year
+[42:32] there was a bunch of underpriced guys
+[42:35] and I just said, you know what, I'm
+[42:36] gonna you know, because some people love
+[42:38] to go $100 outfields. I just thought,
+[42:40] let me go 50 and I could fill in around
+[42:42] that much much easier. This year I think
+[42:46] I be could be closer to 60 to kind of
+[42:48] get where I want. So, you know, I might
+[42:50] fall somewhere in the middle of these
+[42:52] two outfield 57, I don't know. Uh, you
+[42:55] know, somewhere in there where I might
+[42:58] not be able to go as aggressive here
+[43:00] where I had three like a $30 outfield
+[43:02] and and two mid- teen outfielders. That
+[43:05] might be a little bit tough. Um, but you
+[43:09] know, I I spent less on pitching in that
+[43:11] one, so I kind of borrowed that $5 I
+[43:13] usually spent on pitching and putting
+[43:14] the outfields up. But, you know, I I
+[43:16] think you can get a a pretty good
+[43:18] outfield for, you know, between 50 and
+[43:20] 60. You know, a lot of the super
+[43:23] superstars are in the outfield, so a lot
+[43:24] of people do spend up there. And you
+[43:27] know, that's also part of
+[43:28] differentiating yourself in your build
+[43:31] is to um find
+[43:35] where you're comfortable spending the
+[43:37] money. And you know, I'm comfortable
+[43:39] spending some at the outfield, but not
+[43:41] as not as much as typically uh the rest
+[43:43] of uh rest of the league does.
+[43:47] >> Yeah. And to go back to those dollar
+[43:49] figures from those 13 auction
+[43:52] championship winners last year, the
+[43:54] average outfield spend was 61 and 50
+[43:59] cents in the outfield there. So
+[44:02] >> maybe it's not as you know maybe it's
+[44:04] maybe I'm not as differentiated as I
+[44:06] mean if I'm 50 and it's 60 that's a
+[44:08] pretty big difference but if I'm 57 and
+[44:10] it's 60 uh then it's then then it's a
+[44:13] lot closer. So yeah I'll have to keep an
+[44:15] eye on that. Yeah,
+[44:16] >> I think it's I I mean safe to like
+[44:19] spending 100 on your outfield. Like I'm
+[44:21] not surprised that one of those teams
+[44:24] didn't show up in the the auction
+[44:27] championship uh winners per se. I mean,
+[44:29] I'm sure that some of these teams
+[44:30] probably spent 70 80. Um
+[44:35] I I spent way too much on on outfield
+[44:38] last year in my my auction. So that's um
+[44:41] definitely going to be a a pivot of mine
+[44:44] this year. Um,
+[44:48] so pitching Mark, uh,
+[44:52] that's, uh, you know, we, you and I have
+[44:54] talked about this, uh, for, for probably
+[44:56] over a year now, just like how much to
+[44:58] allocate on the pitching side of things.
+[45:01] Um, I've typically allocated way less
+[45:05] than you have, but I'm I'm going to come
+[45:07] up and meet you, I think, this year, or
+[45:09] at least, uh, meet you halfway this
+[45:11] year. Um, you had two very different
+[45:14] approaches though to your your two
+[45:15] pitching sess with these. Uh, first team
+[45:18] you had $108 staff, you had an ace in
+[45:22] Tariq, you had a ace reliever in Devin
+[45:26] Williams. And then on the second team
+[45:28] you spent $100 and you had Logan Webb as
+[45:32] your ace and two double digit dollar
+[45:35] relievers and then some, you know, high
+[45:38] risk, highreward uh, SPS. That that's my
+[45:42] interpretation. You know, maybe maybe
+[45:43] you would disagree on some of the risk
+[45:45] with some of those guys, but um you
+[45:48] know, two pretty different builds. Uh
+[45:49] the guys that I I think are a little
+[45:51] risky, but like I I roster some of these
+[45:54] guys, but like uh like Chase Burns at
+[45:56] 15, Brandon Woodruff at 13,
+[45:59] um you know, Shawn Maniah at five, not
+[46:03] that risky at five, but um what did you
+[46:06] think about those two different staffs?
+[46:07] I mean, I I'm a big EMTT Sheen guy. I
+[46:09] love love love the uh $15 sheen. Uh you
+[46:12] got Yaldi on both of these. I love that.
+[46:15] Um but what what did you think about the
+[46:16] two staffs?
+[46:18] >> Well, I'm glad you read like the notes
+[46:20] because I I snuck a little edit in there
+[46:22] because you uh in the show notes you had
+[46:24] higher risk SPS and then I put slashed
+[46:27] uh highreward. I just I just figured I
+[46:29] would throw that in there and see if you
+[46:31] read it and you did. So, thank you. Uh
+[46:32] no, I I totally agree. So, I'll talk
+[46:36] about both of these. I think it's
+[46:37] interesting. You know, the first one was
+[46:40] fairly premeditated. Uh, I really wanted
+[46:42] to get a a see how I could build a staff
+[46:45] with one of the big three. So, uh, in
+[46:47] that one, Scubble was 40, Skins was 40,
+[46:49] and Crochet was 41. I actually was, you
+[46:52] know, you know, from a relative price
+[46:54] happy with that. So, uh, so I wanted to,
+[46:58] you know, I wanted to lock one of the
+[47:00] big three in and then see how it would
+[47:03] go. And
+[47:06] I'm, you know, so that the that first
+[47:08] one, yeah, as you mentioned, the one
+[47:10] thing I'll note is if you go 40 on a
+[47:14] starter this year, I it's going to be
+[47:17] really hard to get two closers if you
+[47:20] want to have anything in the rest of
+[47:21] your staff. So, I only have a $21 Devin
+[47:24] Williams. And then, um, yeah, you
+[47:27] mentioned Shih, Henny, Yoaldi, Bobby,
+[47:29] Nola, Matthew Boyd, Cody Pon, Logan
+[47:32] Henderson. I mean, I don't know. You
+[47:34] could squint and see a pretty good staff
+[47:36] there, but also, you know, those last
+[47:38] three or four, Nola Boyd, Pon,
+[47:40] Henderson, not usually where I go. So,
+[47:44] you know, and it was the first one, so I
+[47:46] was a little a little rusty coming out
+[47:48] of the gate. Uh, so I I like that staff,
+[47:51] but to be honest, for 108, I think I can
+[47:55] do better. You can, you know, other
+[47:57] people can do better. I think if you're
+[47:58] going to go 108, you better be pretty
+[48:00] rock solid. And I don't think that's
+[48:02] that rock solid. I think there's got
+[48:04] potential there. A little upside with
+[48:06] Ponson Henderson. You got the innings
+[48:08] eaters by Nola Boyd. You know, hopefully
+[48:10] they, you know, they can turn it around
+[48:12] a little bit too. Sheni Shien big
+[48:14] upside, but you know, who knows, you
+[48:16] know, how many innings and then
+[48:18] obviously, uh, you know, other guys are
+[48:19] solid. So, so that one, you know,
+[48:22] anytime you have Scooble though, if you
+[48:24] if you put all the projected stats
+[48:26] together, it's amazing what he can cover
+[48:29] up. like you're you're going to end up
+[48:31] with good ratios unless you really botch
+[48:33] it. Uh so he gives you so much
+[48:35] foundation and it is a safety blanket
+[48:38] for sure. Um the second one,
+[48:43] yeah, that's this was intentional. I
+[48:45] wanted to then do a spread the wealth
+[48:47] build. So um I you know I was not going
+[48:50] to go backto back top three unless you
+[48:52] know it was 37 or something which it
+[48:54] wasn't. Um, so yeah, I I would be
+[48:58] careful calling Logan Webb an ace. He's
+[49:00] just my SP1, you know, and he is an SP1
+[49:03] this year. I think he's a top 15
+[49:04] pitcher, but he's not an ace in my mind.
+[49:07] That's
+[49:08] >> my plan was to get 220 plus
+[49:11] starters and it really I did not do it.
+[49:14] And this was a weird one. Someone went
+[49:17] scubble skins right out of the gate and
+[49:19] then someone jumped Yamamoto to 32. That
+[49:22] just kind of created a little bit of
+[49:24] chaos. in the auction and that that tier
+[49:28] that had been reliably around, you know,
+[49:30] like 22, 23 were 25, 26. It it just got
+[49:34] a little bit out of hand there. So that
+[49:36] that kind of threw me off. So So and
+[49:42] then, you know, I did try to get I
+[49:43] wanted to see can you get two closers
+[49:45] for like 25 or so, and I got a Glaciius
+[49:48] for 15, Santana for 11. I'm okay with
+[49:51] that. You know, it's again, it's really
+[49:52] hard to get two for 25 this year. And,
+[49:55] you know, looked into looked into both.
+[49:57] I loved how Glacius finished the year.
+[50:00] Santana looks like he has the role for
+[50:01] now and, you know, is decently skilled.
+[50:04] So, you know, then
+[50:07] I went after a bunch of guys. I want I
+[50:09] wanted a Chase Burns. I wanted a
+[50:10] Woodruff, you know. So, once I got them,
+[50:14] I'm like, "Oh, okay. I just I have to
+[50:15] lean into the to the risk here." You
+[50:17] know, this is this is maybe an upside
+[50:19] team or an overall type of team. You
+[50:21] know, this team could completely crash
+[50:22] and burn on innings. I mean, I was
+[50:25] looking at the projected innings. I need
+[50:26] about 200 to to kind of get there, but
+[50:29] it could be 400, you know, uh if if
+[50:31] these guys really get injured or just,
+[50:34] you know, aren't as good as I think. So,
+[50:36] uh you know, so Musgrove, Maniah, I just
+[50:38] added as even Demer for a dollar. I'm
+[50:40] like, you know what, I'm just going all
+[50:42] upside on this one. and you know I have
+[50:44] one anchor in web as far as innings and
+[50:47] you know solid and then the rest are
+[50:48] just you know uh trying to hit on
+[50:51] something. If it all works out this
+[50:53] could be a really really good team but
+[50:55] it could also be you know uh not
+[50:58] >> it does it it definitely I can see how
+[51:01] you would sort of map this out because
+[51:03] like if you if you want Burns and
+[51:06] Woodruff like web actually pairs really
+[51:09] nice with Burns and Woodruff. um like
+[51:11] Burns and Woodruff aren't going for SP1
+[51:14] prices because of the, you know,
+[51:16] perceived injury risk, but uh they have
+[51:20] SP1 borderline SP1 level like
+[51:23] projections if they're just healthy all
+[51:25] season. Um so it the the combination of
+[51:29] of pitchers makes sense to me. Um
+[51:33] the
+[51:35] Yeah, man. I don't know. I I I'm
+[51:39] So what what do you think of the like
+[51:42] eight the the the one starter versus the
+[51:44] or one closer versus the two closers?
+[51:47] Like
+[51:49] I don't know. It's I I I don't know. I I
+[51:51] I kind of like the
+[51:54] eight awesome starters and one awesome
+[51:57] reliever.
+[51:58] Maybe a bit more. But I also definitely
+[52:00] understand like what you're saying with
+[52:02] like the you know if you're going to
+[52:04] spend 108
+[52:06] like almost you you you maybe want more
+[52:09] than just the one uh reliever. So I
+[52:11] don't know what did you think about
+[52:11] that?
+[52:12] >> Yeah, I kind of did it backwards, right?
+[52:13] I got the two relievers where I spent
+[52:15] less and I got the one reliever when I
+[52:17] spent more. And I wouldn't call it eight
+[52:18] awesome starters either. So yeah, you
+[52:21] know what I'm saying? Um I don't think I
+[52:23] totally executed. you know, uh, one
+[52:25] thing I one one thing I'll say is, um,
+[52:29] you know, typically
+[52:32] typically
+[52:33] and this and you know, hopefully we'll
+[52:35] talk a little bit. It was on on the on
+[52:36] the agenda, but you know, I'm curious
+[52:38] just, you know, we have we have I'm
+[52:40] joining not not you in the same league,
+[52:41] but I'm doing a 500 DC this year for the
+[52:43] first time in a couple years. And you
+[52:45] know, I've been mulling over this exact
+[52:47] question in a in a in a auction draft
+[52:51] champions where you get 27 more rounds.
+[52:55] What do you do? Do you go 8-1 or do you
+[52:58] go 72? 8-1, you're like, well, I can
+[53:00] speck on six guys in the reserve rounds.
+[53:03] Or you could say, you know what, there's
+[53:04] no fab. I want to lock down two closers
+[53:07] and I'll get a couple specs. I could
+[53:09] spend the rest of my, you know, uh,
+[53:12] reserve rounds on starting pitcher, you
+[53:13] know, darts, etc. So, I I'm not I'm
+[53:16] honestly not sure which way I'd want to
+[53:18] go. You know, in a perfect world, I like
+[53:21] going 72, but that's when the closer
+[53:23] prices were better. The closer prices
+[53:25] are pretty gross right now, and it's
+[53:28] making it, you know, you have to spend
+[53:30] 30, even 40 to get two really good
+[53:33] closers. I've seen people spend 38, 39
+[53:35] on two closers. Um, so it it's it's just
+[53:39] gotten a little more challenging. I
+[53:41] think 81 is viable and
+[53:45] like at the end I could have gotten
+[53:46] maybe a $2 Taylor Rodgers. Instead I
+[53:49] went $2 Logan Henderson. Like I'd rather
+[53:51] take a shot on Henderson uh with his
+[53:53] upside than a prayer spec. I mean Rogers
+[53:57] could be the guy. Who knows? But it's
+[53:59] not the greatest team. He's old. So, you
+[54:01] know, that was the decision I made late
+[54:03] when I went 8-1 was what's what's worth
+[54:06] more to me, you know, a $2 Pon or
+[54:08] Henderson or a $2 spec that, you know,
+[54:11] might not have anything in in a month.
+[54:15] >> Yeah. I mean, personally, I for I think
+[54:18] it's way different with the uh 500 DC
+[54:23] auction versus the Fab League auctions.
+[54:26] I'd feel much better about getting two
+[54:30] relievers in the auction in the DC. Um,
+[54:33] and and I would feel much uh less sort
+[54:36] of naked if I only get one in in a fab
+[54:39] league because then I can figure it out
+[54:42] in season. But like trying to find your
+[54:45] second closer in the reserve rounds of a
+[54:49] DC where like all the people in these
+[54:52] 500 DCs are really good players. Like
+[54:54] you know you're not whoever you think is
+[54:56] like your your closer dart that you're
+[54:59] going to get in like round three of the
+[55:00] reserves like you're you're probably not
+[55:01] going to get them. So um but yeah the is
+[55:06] your your auction you said you're doing
+[55:07] a 500 DC uh
+[55:09] >> Yeah. Yeah. Yeah. Mike and I are doing
+[55:11] one. you know, we we typically don't do
+[55:14] like a prep auction. We just show up in
+[55:15] Vegas and, you know, just go for it.
+[55:17] And, you know, it's worked out pretty
+[55:18] well, but I think I think think getting
+[55:20] one under our belt might help because he
+[55:23] he doesn't do OLAX. Um, you know, he he
+[55:25] doesn't want to add the fab. So, we kind
+[55:28] of rely on my OLAX just as strategy
+[55:32] sessions to kind of think through ours.
+[55:33] But, I think, you know, having him get
+[55:35] in on one, I think we'll be good. and
+[55:37] you know how good of a DC player is and
+[55:39] that's definitely a weakness of mine so
+[55:40] it made sense. Uh but you know what I've
+[55:43] heard is that just like you said you
+[55:48] want two closers but the closer prices
+[55:50] get elevated because I'm assuming a lot
+[55:52] of people want two closers. So you know
+[55:54] that's that's a challenge too because
+[55:56] it's already elevated. If it gets even
+[55:58] more elevated I don't know if I could
+[55:59] pull I don't know if I I don't know if I
+[56:01] can do it. I don't know if I can go two
+[56:02] for 30 or two for 35. I really don't.
+[56:06] Yeah, I I suppose you probably want to
+[56:08] go in with um a plan A and a plan B and
+[56:12] uh some pretty specific targets if you
+[56:16] have to go to plan B. Um
+[56:18] >> yeah, you know, that's I mean it's
+[56:20] cliche. We say this every time. Every
+[56:22] auction's different. Have a plan, you
+[56:24] know, but you know, behind the cliche is
+[56:26] some truth. And it's just about being
+[56:29] agile, being nimble in the moment,
+[56:32] thinking it through, having other
+[56:34] options, not getting stubborn, being
+[56:36] patient. It's it's a lot. There's it's
+[56:39] it doesn't fit everyone's personality,
+[56:41] which is why I think they're so
+[56:42] interesting auctions. You know, it
+[56:43] doesn't fit every personality. Not
+[56:45] everyone has that mindset, and you know,
+[56:48] that's where you could run into some
+[56:49] trouble. Um, but you know, snake drafts,
+[56:52] too. Like not everyone has that mindset,
+[56:54] you know, getting sniped and, you know,
+[56:56] not really knowing what you could do
+[56:58] because you don't know what's going to
+[56:59] be there. You know, that's a whole
+[57:00] another philosophy or, you know,
+[57:02] psychology of the game.
+[57:04] >> I feel like it's just like reps, though.
+[57:06] Like I I I feel like everyone
+[57:09] probably starts off a mediocre snake
+[57:11] draft player and then they just get
+[57:12] really good at it if they just do enough
+[57:14] of them. And then like like I would say
+[57:16] I'm a pretty mediocre auction player
+[57:18] right now, but like if I did five
+[57:20] auctions every year, I' I'd feel like
+[57:22] I'd get pretty good at it pretty fast.
+[57:23] So, um
+[57:25] >> and that's why I switched to pretty much
+[57:27] all auctions, you know? I I
+[57:30] I just picked a lane. Like if I do if I
+[57:32] split my time, I just don't think I'm
+[57:34] going to get really good at either one.
+[57:36] Um and now, you know, I'm trying to get
+[57:38] really good at auctions. And you know, I
+[57:41] am doing one snake. I'm doing the
+[57:42] Midnight Madness this year. I'm doing
+[57:43] the 12th team.
+[57:44] >> Good for you. That's back in back in
+[57:47] your old stomping grounds. [laughter]
+[57:49] >> I'm back for one for the one for the
+[57:51] thumb. Uh I'm going I'm going for the
+[57:53] fifth title there. I just figured two
+[57:55] years was enough to be away. I have a
+[57:57] fairly light schedule in Vegas for me.
+[58:00] Uh just one auction each day and then
+[58:02] just going to do this that night. Uh so
+[58:04] I will get one and I'm actually excited
+[58:06] about it. And this is where I could have
+[58:08] a little more fun as a 12 teamer and I
+[58:10] can get some guys that I know I'm not
+[58:11] going to get in auctions because of
+[58:12] their price. So that'll at least give me
+[58:14] some more exposure to some other
+[58:16] players.
+[58:18] >> Okay. Um so we got some I got some
+[58:22] potentially quick hitter uh nomination
+[58:25] strategy questions for you here, Mark,
+[58:26] before we go. Um
+[58:30] so uh we'll start off with this. How
+[58:32] often do you throw out a player you want
+[58:35] for a few dollars before the endgame and
+[58:38] what types of players what types of
+[58:40] positions?
+[58:42] I
+[58:42] >> mean, obviously depends on the money
+[58:44] left on the board and what the what
+[58:46] positions are needed by the other
+[58:48] players. I think you can get away with
+[58:50] it. sometimes a C2 like a $3 Jeffers or
+[58:54] an OF5 like a $3 Lee. You know, those
+[58:57] are some guys that you could sneak
+[58:59] through. Guys that aren't super popular,
+[59:01] people aren't going to be like, "Oh, you
+[59:03] know, I I didn't get my Ryan Jeffers
+[59:04] share." So, if you can kind of figure
+[59:07] out who those players that you like and
+[59:10] look like good bargain, potential
+[59:11] bargains, and that other people don't
+[59:13] like, those are the guys you could sneak
+[59:15] through. you know, any kind of like
+[59:19] uh you know, um industry darling or or
+[59:23] consensus
+[59:24] prospect,
+[59:26] you're not going to get them through uh
+[59:29] um you're you're going to have to go
+[59:30] three or even more. Like you can't just
+[59:32] go a dollar on those guys. So, you have
+[59:34] to just kind of know who people are
+[59:36] going to bid on, you know, how much they
+[59:38] have left and what positions. But, I I
+[59:40] think you can get away with it.
+[59:43] What's the method for nominating players
+[59:47] in like your first like 10 nominations
+[59:49] or so? Like what are what are you
+[59:52] generally trying to accomplish with
+[59:53] those first like 10 or so nominations?
+[59:56] >> So, I want to get as much information as
+[59:58] I can on two different things. One is my
+[60:00] plan A, like we just talked about. So,
+[60:02] typically a plan A will have like a
+[60:04] hinge player, a player that you either
+[60:06] get and it's plan A or you don't and
+[60:08] it's plan B. So, um, I might throw plan
+[60:11] A player out early and see if I'm
+[60:15] getting him and then that kind of
+[60:17] informs the rest of the auction. The
+[60:19] second one are prices on key positions
+[60:21] or categories. Uh, so, for example,
+[60:26] closer, catcher, you know, those are
+[60:28] those are two we talked about being a
+[60:30] little tricky with the pricing right
+[60:32] now. So, I want to get a heat check on
+[60:34] the room. Throw out doesn't have to be
+[60:36] like the top one. It could just it could
+[60:37] be, you know, the catcher four or, you
+[60:40] know, it could be the closer seven, you
+[60:42] know, it it just depends on, you know,
+[60:44] what I think will give me the most
+[60:45] information. Throw them out and that
+[60:47] will at least tell me, okay, it's going
+[60:50] to be hot on those or it's going to be
+[60:51] cool. And then I could that just gives
+[60:54] me more information for, you know, who
+[60:56] who I want to bid on, you know, in those
+[60:58] first 10. If I get one of the top three
+[61:01] pitchers, I will probably throw some
+[61:04] other starters out after that. Uh
+[61:06] especially if one of the top three are
+[61:08] still there, right? Like if I go 40 on
+[61:10] school, I want skins and and crochet to
+[61:13] go 40. I don't want them sitting there
+[61:14] too long where they can go for 38. I
+[61:17] want to make sure people pay full
+[61:18] freight. So, I'll throw one of them and,
+[61:21] you know, potentially at a position
+[61:23] where if I do get a big bat and there's
+[61:26] another couple in that tier, but then it
+[61:28] kind of dries up, I might throw one of
+[61:30] them out. So, um, that's that's that's
+[61:32] my general approach in the in the top 10
+[61:34] rounds.
+[61:36] >> How about for like the middle of the
+[61:37] auction? Uh, what types of players you
+[61:40] trying to nominate in the middle?
+[61:42] >> Yeah, again, it depends on like where
+[61:44] I'm at moneywise. If I'm in like the top
+[61:46] three of of money uh remaining and I've
+[61:49] waited for my targets and they and I've
+[61:52] been fortunate they haven't come out
+[61:54] yet, I'll start to nominate those and
+[61:56] just go bang bang bang and get as many
+[61:58] as I can. Uh typically that'll happen
+[62:01] maybe after the first break. Um and I
+[62:03] like to kind of storm in and you know
+[62:06] I've been patient. I've probably gotten
+[62:07] a couple guys, but then I'm just gonna
+[62:09] uh So, I'm happy to nominate some of
+[62:11] those guys right there because I'll have
+[62:14] a little bit uh of a of a purchasing
+[62:16] power advantage and I want to use it
+[62:18] right there. I don't want to wait too
+[62:19] long on those guys. Uh, and then if I if
+[62:23] I on, you know, on the other side, if I
+[62:25] spent up early and I'm bottom three in
+[62:27] money or bottom five, then I'm going to
+[62:29] throw out other guys that I can't afford
+[62:32] and I want to make, you know, people pay
+[62:34] up or at least pay AAV so they can kind
+[62:36] of come back to me and uh, you know, my
+[62:39] money will kind of balance out.
+[62:43] >> And then what about uh the endgame? Like
+[62:45] is this um almost always players you
+[62:49] want to end up with? Like is there any
+[62:51] reason to throw out someone you don't
+[62:52] want to end up with uh in those like
+[62:54] final those final noms? I
+[62:57] >> It's pretty much guys you want to end up
+[62:59] with because if you nominate them for a
+[63:01] dollar and you get them, it's your guy.
+[63:03] So, but it depends
+[63:07] um
+[63:09] you know if it depends when you get to
+[63:11] dollar days, right? You can get to
+[63:13] dollar days earlier or later. If you get
+[63:16] there earlier, you're not likely to get
+[63:18] many of your targets for a dollar. So,
+[63:21] I'll look at my sheet and see guys who
+[63:23] are going for AAV three, four, five
+[63:26] dollars. So, I, you know, I'll just
+[63:29] throw them out instead, let people spend
+[63:31] that three or four or five dollars, you
+[63:33] know, fight over those last few, you
+[63:34] know, decent players and then that way,
+[63:37] um, they'll come back to me and I can go
+[63:39] for a dollar. If I get into dollar days
+[63:41] late then and then there's, you know,
+[63:44] people have a max of one or two then
+[63:47] then I'll throw out guys that I want and
+[63:49] but I'll be really careful. Uh this
+[63:51] worked in the last one. You can really
+[63:53] look at and it's I think it's a little
+[63:55] easier online but you could see what
+[63:57] people's max bid is. You know, is it a
+[63:59] dollar? Is it two or three? And you can
+[64:01] see their positions left. So, when it
+[64:03] comes to you, you might be able to go a
+[64:06] dollar on a guy that you think is pretty
+[64:07] good, but all the $2 max guys already
+[64:10] have their corners filled or their UT
+[64:12] filled or, you know, they have all nine
+[64:14] pitchers, whatever it might be. And then
+[64:15] the rest of the guys are all max one,
+[64:17] they can't go there. So, that's when I
+[64:19] really will investigate other teams and
+[64:22] make sure if I throw my guy out there,
+[64:25] uh, I'll get him.
+[64:27] And then piggybacking off of that one,
+[64:29] um, do you ever throw out a player for
+[64:32] two or three dollars instead of $1 in
+[64:35] that like last like portion of the
+[64:38] auction?
+[64:40] >> Well, uh, it used to be the old one two
+[64:42] move in the in the OAX with the max bid.
+[64:46] That is no longer a strategy. And I I
+[64:48] will note, you know, you can only the $8
+[64:50] is the minimum max bid now. That has
+[64:53] really changed the OLAX. It has made it
+[64:55] much tougher. The endgame is now much
+[64:59] harder because you could you used to be
+[65:00] able to like set a bunch of max bids and
+[65:02] then if you had to go to the bathroom or
+[65:05] you were like looking at your reserve
+[65:06] round picks to get ready, you could do
+[65:08] that. You can't now. You have to be
+[65:10] there for every single nomination
+[65:12] because if you want to if you have a guy
+[65:14] that you want to go two or you know get
+[65:15] for two or three, you have to be sitting
+[65:18] there right at the moment and clicking
+[65:19] that button as fast as you can. It's
+[65:21] it's a different game. So, it's made it
+[65:23] a little more mentally challenging and
+[65:25] it's it's listen, it's it's a more level
+[65:27] playing field. It's fair and it's more
+[65:29] um comparable to live auction. So, this
+[65:32] is not a complaint. It's just an
+[65:33] observation from from doing a few. Um
+[65:36] so, now you you know, now you're forced
+[65:38] into it. I'd say the same answer I just
+[65:40] gave. Um if two is the number that will
+[65:43] get me there, if the everyone's max bit
+[65:45] is two or the three and four dollar guys
+[65:47] can't use that position, yes, I I won't
+[65:49] I won't screw around. I'll just go for
+[65:51] the two. Um, if I'm ambivalent and I
+[65:55] have several guys at a dollar that I'd
+[65:57] be okay with, I'll try to shoot for the
+[65:59] dollar and save that $2 bid for a guy
+[66:01] that uh that I want more.
+[66:04] >> All right, Mark. So, we've covered a ton
+[66:07] of auction stuff uh in the past. I I
+[66:12] just search on YouTube Rotoire, Mark
+[66:15] Wooker, and uh you'll you'll see some of
+[66:19] these uh videos with with a lot of more
+[66:22] auction strategy stuff, but uh is there
+[66:24] anything like you want to discuss
+[66:27] heading into 2026 uh live auctions that
+[66:30] that uh maybe for people who are new to
+[66:32] high stakes auctions or anything that
+[66:34] just we haven't covered so far? Well,
+[66:36] one thing I would say is there are
+[66:38] plenty of spots available in Las Vegas
+[66:41] for some of the live auctions and uh if
+[66:44] you're if you're considering it, you
+[66:46] know, take your time, whatever. But um
+[66:48] it's it's it's the most fun. Everyone
+[66:51] says it. It's true. There's no kind of
+[66:54] rush if you're into the fantasy into
+[66:56] fantasy baseball than a live auction. It
+[66:57] it gives you the biggest uh adrenaline
+[67:00] kick and it's just a whirlwind and it's
+[67:03] just so much fun. And you know, that's
+[67:04] how I've met most of my my fantasy
+[67:07] friends are in these live auctions. It's
+[67:09] so much fun. There's some crazy
+[67:10] personalities and you just get a good
+[67:12] feel. So, one thing would be jump in and
+[67:15] um we'll be nice to you. And then, you
+[67:18] know, just a couple things just to
+[67:19] reiterate, have a plan and a backup plan
+[67:22] and a backup to the backup plan and a
+[67:23] backup to the backup to the backup plan.
+[67:25] So, do that. Have some targets. Don't be
+[67:28] tied to them. have multiple, you know,
+[67:30] make your target um group as big as you
+[67:34] can stomach and then that that will make
+[67:36] sure you're not just going to the wall
+[67:39] on a couple targets and then all of a
+[67:40] sudden you realize that's it. You're
+[67:42] you're not getting any more targets
+[67:43] after that. Um you know this year know
+[67:45] how you're going to handle saves. I
+[67:47] think that's a big thing you have to
+[67:48] really figure out going in. It's tricky.
+[67:51] So feel, you know, and just a coralary
+[67:54] is if you're strong and fab in certain
+[67:57] areas,
+[67:59] that should inform your auction
+[68:01] strategy. You don't need to um you don't
+[68:03] need to pay up or come out of an auction
+[68:06] super strong in areas where you think
+[68:08] you're good in FAB. Conversely, if
+[68:10] you're not good in certain parts of FAB,
+[68:12] make sure you're coming out of the
+[68:13] auction strong. And then the last thing
+[68:15] would just have some sort of valuations.
+[68:18] You don't have to make them from
+[68:19] projections. You can get them from
+[68:21] Rotoire site. You can get them from
+[68:23] auction calculators, wherever. Just have
+[68:25] some numbers on the players that you
+[68:28] think fairly represents what their
+[68:30] production is going to be. That way you
+[68:32] at least know what you're bidding on and
+[68:36] you're not going to just because if you
+[68:38] overspend on five, six, seven, eight,
+[68:40] nine players, you're just going to have
+[68:42] a hard time at, you know, uh, in the end
+[68:44] game. So, just have some numbers. You
+[68:46] don't have to stick to them. You know,
+[68:48] I'm I told you I'm going five, six,
+[68:50] seven over, and I never used to do that,
+[68:52] but I'm trying to I don't want to come
+[68:54] out without a one a first round player.
+[68:56] Like, I want to get a first round
+[68:57] player. I want to overpay the least
+[68:59] amount possible. So, I know those are
+[69:01] just some of my kind of core principles
+[69:03] and um you know um and just you know do
+[69:08] jump into an OAC or you know uh an
+[69:11] auction on fan tracks you know do do a
+[69:14] couple prep auctions just to kind of get
+[69:15] the hang of it and a feel and then um
+[69:17] you know you'll you'll be hooked after
+[69:18] you do it.
+[69:21] This has been another great conversation
+[69:24] with uh Mark Woker talking NFBC auctions
+[69:28] and uh man just can't thank you enough
+[69:31] for the time and can't wait to see you
+[69:34] uh on Thursday in Vegas in about six
+[69:37] weeks here. So uh got that to look
+[69:40] forward to. Thanks Mark again for coming
+[69:41] on the show uh brought to you by Fantas.
+[69:45] I'll have another episode uh next week.
+[69:49] That's

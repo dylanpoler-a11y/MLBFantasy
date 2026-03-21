@@ -9,6 +9,12 @@
 <body>
     <header>
         <h1><span>MLB</span> Fantasy Auction Dashboard</h1>
+        <nav class="tab-nav">
+            <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+            <button class="tab" data-tab="players" onclick="switchTab('players')">Player Values</button>
+            <button class="tab" data-tab="draft" onclick="switchTab('draft')">Draft Tracker</button>
+            <button class="tab" data-tab="plans" onclick="switchTab('plans')">Draft Plans</button>
+        </nav>
         <div class="connection-status">
             <div class="status-dot checking" id="statusDot"></div>
             <span id="statusText">Checking connection...</span>
@@ -21,7 +27,7 @@
         <p>Your league <code>{{ league_id }}</code> is private. Paste your browser cookie to authenticate.</p>
         <ol>
             <li>Log in to <strong>fantrax.com</strong> in Chrome</li>
-            <li>Open DevTools (<code>F12</code>) → <strong>Network</strong> tab</li>
+            <li>Open DevTools (<code>F12</code>) &rarr; <strong>Network</strong> tab</li>
             <li>Refresh the page, click any request to fantrax.com</li>
             <li>In the <strong>Headers</strong> tab, find <code>Cookie:</code> under Request Headers</li>
             <li>Copy the entire cookie value and paste it below</li>
@@ -31,79 +37,212 @@
         <div class="error-msg" id="errorMsg"></div>
     </div>
 
-    <!-- Dashboard (shown when connected) -->
-    <div class="dashboard" id="dashboard">
-        <!-- League Info Card -->
-        <div class="card">
-            <div class="card-header">
-                League Info
-                <span class="badge" id="leagueTypeBadge"></span>
+    <!-- ═══════ TAB: OVERVIEW ═══════ -->
+    <div class="tab-content active" id="tab-overview">
+        <div class="dashboard" id="dashboard">
+            <div class="card">
+                <div class="card-header">League Info <span class="badge" id="leagueTypeBadge"></span></div>
+                <div class="card-body">
+                    <div class="info-grid" id="leagueInfoGrid">
+                        <div class="loading"><div class="spinner"></div>Loading...</div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="info-grid" id="leagueInfoGrid">
+            <div class="card">
+                <div class="card-header">Draft Details <span class="badge" id="draftTypeBadge"></span></div>
+                <div class="card-body" id="draftInfo">
                     <div class="loading"><div class="spinner"></div>Loading...</div>
                 </div>
             </div>
-        </div>
-
-        <!-- Draft Info Card -->
-        <div class="card">
-            <div class="card-header">
-                Draft Details
-                <span class="badge" id="draftTypeBadge"></span>
+            <div class="card">
+                <div class="card-header">Teams <span class="badge" id="teamCountBadge"></span></div>
+                <div class="card-body">
+                    <ul class="team-list" id="teamList">
+                        <div class="loading"><div class="spinner"></div>Loading...</div>
+                    </ul>
+                </div>
             </div>
-            <div class="card-body" id="draftInfo">
-                <div class="loading"><div class="spinner"></div>Loading...</div>
+            <div class="card">
+                <div class="card-header">Roster Configuration</div>
+                <div class="card-body">
+                    <div class="roster-grid" id="rosterGrid">
+                        <div class="loading"><div class="spinner"></div>Loading...</div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- Teams Card -->
-        <div class="card">
-            <div class="card-header">
-                Teams
-                <span class="badge" id="teamCountBadge"></span>
-            </div>
-            <div class="card-body">
-                <ul class="team-list" id="teamList">
-                    <div class="loading"><div class="spinner"></div>Loading...</div>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Roster Rules Card -->
-        <div class="card">
-            <div class="card-header">Roster Configuration</div>
-            <div class="card-body">
-                <div class="roster-grid" id="rosterGrid">
-                    <div class="loading"><div class="spinner"></div>Loading...</div>
+            <div class="card card-full">
+                <div class="card-header">Scoring System <span class="badge" id="scoringTypeBadge"></span></div>
+                <div class="card-body">
+                    <table class="scoring-table" id="scoringTable">
+                        <thead><tr><th>Category</th><th>Points</th></tr></thead>
+                        <tbody id="scoringBody">
+                            <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Scoring System Card -->
-        <div class="card card-full">
-            <div class="card-header">
-                Scoring System
-                <span class="badge" id="scoringTypeBadge"></span>
+    <!-- ═══════ TAB: PLAYER VALUES ═══════ -->
+    <div class="tab-content" id="tab-players">
+        <div class="players-section">
+            <div class="players-controls">
+                <input type="text" class="search-input" id="playerSearch" placeholder="Search players..." oninput="debounceSearch()">
+                <div class="pos-filters" id="posFilters">
+                    <button class="pos-filter active" data-pos="ALL" onclick="filterPos('ALL')">All</button>
+                    <button class="pos-filter" data-pos="C" onclick="filterPos('C')">C</button>
+                    <button class="pos-filter" data-pos="1B" onclick="filterPos('1B')">1B</button>
+                    <button class="pos-filter" data-pos="2B" onclick="filterPos('2B')">2B</button>
+                    <button class="pos-filter" data-pos="3B" onclick="filterPos('3B')">3B</button>
+                    <button class="pos-filter" data-pos="SS" onclick="filterPos('SS')">SS</button>
+                    <button class="pos-filter" data-pos="OF" onclick="filterPos('OF')">OF</button>
+                    <button class="pos-filter" data-pos="DH" onclick="filterPos('DH')">DH</button>
+                    <button class="pos-filter" data-pos="SP" onclick="filterPos('SP')">SP</button>
+                    <button class="pos-filter" data-pos="RP" onclick="filterPos('RP')">RP</button>
+                </div>
+                <div class="player-stats">
+                    <span id="playerCount">—</span> players
+                </div>
             </div>
-            <div class="card-body">
-                <table class="scoring-table" id="scoringTable">
+            <div class="players-table-wrap">
+                <table class="players-table">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Points</th>
+                            <th class="rank-col">#</th>
+                            <th class="player-col sortable" data-sort="Value" onclick="sortPlayers('Value')">Value</th>
+                            <th class="player-col">Player</th>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>Age</th>
+                            <th class="stat-col sortable" data-sort="HR" onclick="sortPlayers('HR')">HR</th>
+                            <th class="stat-col sortable" data-sort="RBI" onclick="sortPlayers('RBI')">RBI</th>
+                            <th class="stat-col sortable" data-sort="R" onclick="sortPlayers('R')">R</th>
+                            <th class="stat-col sortable" data-sort="SB" onclick="sortPlayers('SB')">SB</th>
+                            <th class="stat-col sortable" data-sort="AVG" onclick="sortPlayers('AVG')">AVG</th>
+                            <th class="stat-col sortable" data-sort="W" onclick="sortPlayers('W')">W</th>
+                            <th class="stat-col sortable" data-sort="K" onclick="sortPlayers('K')">K</th>
+                            <th class="stat-col sortable" data-sort="SV" onclick="sortPlayers('SV')">SV</th>
+                            <th class="stat-col sortable" data-sort="ERA" onclick="sortPlayers('ERA')">ERA</th>
+                            <th class="stat-col sortable" data-sort="WHIP" onclick="sortPlayers('WHIP')">WHIP</th>
+                            <th class="action-col">Draft</th>
                         </tr>
                     </thead>
-                    <tbody id="scoringBody">
-                        <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
+                    <tbody id="playersBody">
+                        <tr><td colspan="17" class="loading"><div class="spinner"></div>Loading players...</td></tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="load-more-wrap">
+                <button class="btn btn-primary btn-sm" id="loadMoreBtn" onclick="loadMorePlayers()" style="display:none">Load More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ TAB: DRAFT TRACKER ═══════ -->
+    <div class="tab-content" id="tab-draft">
+        <div class="draft-section">
+            <div class="draft-input-panel card">
+                <div class="card-header">Record Pick</div>
+                <div class="card-body">
+                    <div class="draft-form">
+                        <div class="form-row">
+                            <input type="text" id="draftPlayer" class="search-input" placeholder="Player name..." list="playerSuggestions" autocomplete="off">
+                            <datalist id="playerSuggestions"></datalist>
+                        </div>
+                        <div class="form-row">
+                            <select id="draftTeam" class="search-input">
+                                <option value="">Select team...</option>
+                            </select>
+                            <input type="number" id="draftPrice" class="search-input price-input" placeholder="$" min="1">
+                        </div>
+                        <div class="form-row">
+                            <button class="btn btn-primary" onclick="recordPick()">Record Pick</button>
+                            <button class="btn btn-danger" onclick="undoPick()">Undo Last</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="draft-budgets card">
+                <div class="card-header">Team Budgets <span class="badge" id="budgetBadge"></span></div>
+                <div class="card-body">
+                    <div class="budget-grid" id="budgetGrid">
+                        <p style="color:var(--text-muted)">No picks recorded yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="draft-log card card-full">
+                <div class="card-header">Draft Log <span class="badge" id="pickCountBadge">0 picks</span></div>
+                <div class="card-body">
+                    <table class="players-table draft-log-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="draftLogBody">
+                            <tr><td colspan="4" style="color:var(--text-muted);text-align:center;padding:20px">Draft picks will appear here</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ TAB: DRAFT PLANS ═══════ -->
+    <div class="tab-content" id="tab-plans">
+        <!-- Plan Selector -->
+        <div class="plan-selector" id="planSelector">
+            <div class="plan-pills">
+                <button class="plan-pill active" onclick="selectPlan('A')">Plan A</button>
+                <button class="plan-pill" onclick="selectPlan('B')">Plan B</button>
+                <button class="plan-pill" onclick="selectPlan('C')">Plan C</button>
+                <button class="plan-pill" onclick="selectPlan('D')">Plan D</button>
+                <button class="plan-pill plan-pill-md" onclick="toggleStaticPlans()">Full Plans (MD)</button>
+            </div>
+            <div class="plan-summary" id="planSummary"></div>
+        </div>
+        <!-- Interactive Plan Tracker -->
+        <div class="plan-tracker" id="planTracker">
+            <div class="roster-board" id="rosterBoard"></div>
+            <div class="budget-panel" id="budgetPanel"></div>
+        </div>
+        <!-- Static Plans (hidden by default) -->
+        <div class="plans-section" id="staticPlans" style="display:none">
+            <div class="plans-content" id="plansContent">
+                <div class="loading"><div class="spinner"></div>Loading draft plans...</div>
             </div>
         </div>
     </div>
 
     <script>
         const LEAGUE_ID = "{{ league_id }}";
+        let allPlayers = [];
+        let currentPos = "ALL";
+        let currentSearch = "";
+        let currentSort = "Value";
+        let playerOffset = 0;
+        let teamNames = {};
+        let draftedPlayers = new Set();
+        let searchTimeout = null;
+
+        // ── Tabs ──────────────────────────────────────────────
+
+        function switchTab(tab) {
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+            document.querySelector(`.tab[data-tab="${tab}"]`).classList.add("active");
+            document.getElementById("tab-" + tab).classList.add("active");
+
+            if (tab === "players" && allPlayers.length === 0) loadPlayers();
+            if (tab === "draft") loadDraftState();
+            if (tab === "plans") loadPlanTracker();
+        }
 
         // ── Connection ──────────────────────────────────────
 
@@ -118,61 +257,45 @@
                 const data = await resp.json();
                 if (data.success) {
                     dot.className = "status-dot connected";
-                    text.textContent = "Connected to Fantrax";
+                    text.textContent = "Connected (live)";
                     showDashboard(data.data);
                     return true;
-                } else {
-                    dot.className = "status-dot";
-                    text.textContent = "Not connected";
-                    showSetup();
-                    return false;
                 }
-            } catch {
-                dot.className = "status-dot";
-                text.textContent = "Connection error";
-                showSetup();
-                return false;
-            }
+            } catch {}
+
+            try {
+                const cacheResp = await fetch("/api/cached-league");
+                if (cacheResp.ok) {
+                    const cacheData = await cacheResp.json();
+                    dot.className = "status-dot connected";
+                    text.textContent = "Cached data";
+                    showDashboard({ ...cacheData, _cached: true });
+                    return true;
+                }
+            } catch {}
+
+            dot.className = "status-dot";
+            text.textContent = "Not connected";
+            showSetup();
+            return false;
         }
 
         async function connectWithCookie() {
             const cookie = document.getElementById("cookieInput").value.trim();
             const errorEl = document.getElementById("errorMsg");
             const btn = document.getElementById("connectBtn");
-
-            if (!cookie) {
-                errorEl.textContent = "Please paste your cookie string.";
-                errorEl.style.display = "block";
-                return;
-            }
-
-            btn.textContent = "Connecting...";
-            btn.disabled = true;
-            errorEl.style.display = "none";
-
+            if (!cookie) { errorEl.textContent = "Please paste your cookie string."; errorEl.style.display = "block"; return; }
+            btn.textContent = "Connecting..."; btn.disabled = true; errorEl.style.display = "none";
             try {
-                const resp = await fetch("/api/update-cookie", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cookie }),
-                });
+                const resp = await fetch("/api/update-cookie", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cookie }) });
                 const data = await resp.json();
-
                 if (data.success) {
                     document.getElementById("statusDot").className = "status-dot connected";
-                    document.getElementById("statusText").textContent = "Connected to Fantrax";
+                    document.getElementById("statusText").textContent = "Connected (live)";
                     showDashboard(data.data);
-                } else {
-                    errorEl.textContent = data.error || "Failed to connect. Check your cookie.";
-                    errorEl.style.display = "block";
-                }
-            } catch (e) {
-                errorEl.textContent = "Connection failed: " + e.message;
-                errorEl.style.display = "block";
-            }
-
-            btn.textContent = "Connect";
-            btn.disabled = false;
+                } else { errorEl.textContent = data.error || "Failed to connect."; errorEl.style.display = "block"; }
+            } catch (e) { errorEl.textContent = "Connection failed: " + e.message; errorEl.style.display = "block"; }
+            btn.textContent = "Connect"; btn.disabled = false;
         }
 
         // ── Display ─────────────────────────────────────────
@@ -190,130 +313,631 @@
         }
 
         function renderLeagueInfo(data) {
-            // League Info
             const leagueName = data.leagueName || "Unknown League";
-            const draftType = data.draftType || "—";
             const teams = data.teamInfo || {};
             const teamEntries = Object.entries(teams);
             const rosterInfo = data.rosterInfo || {};
             const scoring = data.scoringSystem || {};
 
+            // Store team names for draft tracker
+            teamEntries.forEach(([id, t]) => { teamNames[id] = t.name; });
+            populateTeamSelect();
+
             document.getElementById("leagueTypeBadge").textContent = leagueName;
-            document.getElementById("draftTypeBadge").textContent = draftType;
+            document.getElementById("draftTypeBadge").textContent = "Offline Auction";
             document.getElementById("teamCountBadge").textContent = teamEntries.length + " teams";
             document.getElementById("scoringTypeBadge").textContent = scoring.type || "—";
 
-            // Info grid
             const infoGrid = document.getElementById("leagueInfoGrid");
             const maxActive = rosterInfo.maxTotalActivePlayers || "—";
-            const maxReserve = rosterInfo.maxTotalReservePlayers || "—";
             const maxTotal = rosterInfo.maxTotalPlayers || "—";
-
             infoGrid.innerHTML = `
-                <div class="info-item">
-                    <div class="label">League</div>
-                    <div class="value">${leagueName}</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Draft Type</div>
-                    <div class="value">${draftType}</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Teams</div>
-                    <div class="value">${teamEntries.length}</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Active Roster</div>
-                    <div class="value">${maxActive}</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Reserve Spots</div>
-                    <div class="value">${maxReserve}</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Max Players</div>
-                    <div class="value">${maxTotal}</div>
-                </div>
+                <div class="info-item"><div class="label">League</div><div class="value">${leagueName}</div></div>
+                <div class="info-item"><div class="label">Season</div><div class="value">${data.seasonYear || "2026"}</div></div>
+                <div class="info-item"><div class="label">Teams</div><div class="value">${teamEntries.length}</div></div>
+                <div class="info-item"><div class="label">Active Roster</div><div class="value">${maxActive}</div></div>
+                <div class="info-item"><div class="label">Max Players</div><div class="value">${maxTotal}</div></div>
+                <div class="info-item"><div class="label">Scoring</div><div class="value">${scoring.type || "Points"}</div></div>
             `;
 
-            // Teams
             const teamList = document.getElementById("teamList");
             teamList.innerHTML = teamEntries.map(([id, t]) => `
-                <li class="team-item">
-                    <span class="team-name">${t.name}</span>
-                    <span class="team-division">${t.division || ""}</span>
-                </li>
+                <li class="team-item"><span class="team-name">${t.name}</span></li>
             `).join("");
 
-            // Roster positions
             const posConstraints = rosterInfo.positionConstraints || {};
             const rosterGrid = document.getElementById("rosterGrid");
             rosterGrid.innerHTML = Object.entries(posConstraints).map(([pos, info]) => {
-                const count = typeof info === "object" ? (info.max || info.count || "—") : info;
-                return `
-                    <div class="pos-badge">
-                        <div class="pos">${pos}</div>
-                        <div class="count">${count} slots</div>
-                    </div>
-                `;
-            }).join("") || "<p style='color:var(--text-muted)'>No position data available</p>";
+                const count = typeof info === "object" ? (info.maxActive || info.max || info.count || "—") : info;
+                return `<div class="pos-badge"><div class="pos">${pos}</div><div class="count">${count}</div></div>`;
+            }).join("") || "<p style='color:var(--text-muted)'>No position data</p>";
 
-            // Scoring
             const scoringBody = document.getElementById("scoringBody");
-            const categories = scoring.scoringCategorySettings || scoring.scoringCategories || [];
-            if (Array.isArray(categories) && categories.length > 0) {
-                scoringBody.innerHTML = categories.map(cat => {
-                    const name = cat.name || cat.shortName || cat.category || "—";
-                    const pts = cat.points !== undefined ? cat.points : (cat.value || "—");
-                    return `<tr><td>${name}</td><td>${pts}</td></tr>`;
-                }).join("");
-            } else if (typeof categories === "object" && !Array.isArray(categories)) {
-                scoringBody.innerHTML = Object.entries(categories).map(([name, val]) =>
-                    `<tr><td>${name}</td><td>${typeof val === "object" ? JSON.stringify(val) : val}</td></tr>`
-                ).join("");
+            const catSettings = scoring.scoringCategorySettings || [];
+            if (Array.isArray(catSettings) && catSettings.length > 0) {
+                let rows = "";
+                catSettings.forEach(group => {
+                    const groupName = group.group ? group.group.name : "Other";
+                    rows += `<tr class="scoring-group-header"><td colspan="2">${groupName}</td></tr>`;
+                    (group.configs || []).sort((a, b) => (b.points || 0) - (a.points || 0)).forEach(c => {
+                        const cat = c.scoringCategory || {};
+                        const name = cat.name || "—";
+                        const abbr = cat.shortName || "";
+                        const pts = c.points !== undefined ? c.points : "—";
+                        const cls = pts > 0 ? "pts-pos" : pts < 0 ? "pts-neg" : "";
+                        rows += `<tr><td><span class="cat-abbr">${abbr}</span> ${name}</td><td class="${cls}">${pts > 0 ? "+" + pts : pts}</td></tr>`;
+                    });
+                });
+                scoringBody.innerHTML = rows;
             } else {
-                scoringBody.innerHTML = `<tr><td colspan="2" style="color:var(--text-muted)">Scoring data will appear here once loaded</td></tr>`;
+                scoringBody.innerHTML = `<tr><td colspan="2" style="color:var(--text-muted)">No scoring data</td></tr>`;
             }
         }
 
         async function loadDraftInfo() {
-            const draftEl = document.getElementById("draftInfo");
-            try {
-                const resp = await fetch("/api/draft");
-                const data = await resp.json();
+            const el = document.getElementById("draftInfo");
+            el.innerHTML = `
+                <div class="info-grid">
+                    <div class="info-item"><div class="label">Type</div><div class="value">Offline Auction</div></div>
+                    <div class="info-item"><div class="label">Date</div><div class="value">Sunday, Mar 23</div></div>
+                    <div class="info-item"><div class="label">Status</div><div class="value"><span class="draft-status pre">PRE-DRAFT</span></div></div>
+                    <div class="info-item"><div class="label">Players</div><div class="value">750 ranked</div></div>
+                </div>
+            `;
+        }
 
-                const state = data.draftState || "UNKNOWN";
-                const type = data.draftType || "—";
-                const startDate = data.startDate || "—";
-                const picks = data.draftPicks || [];
+        // ── Players ─────────────────────────────────────────
 
-                let stateClass = "pre";
-                if (state === "IN_PROGRESS") stateClass = "in-progress";
-                else if (state === "COMPLETED" || state === "COMPLETE") stateClass = "complete";
+        async function loadPlayers() {
+            const params = new URLSearchParams({ limit: "200", offset: playerOffset, sort: currentSort });
+            if (currentPos !== "ALL") params.set("pos", currentPos);
+            if (currentSearch) params.set("q", currentSearch);
 
-                draftEl.innerHTML = `
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="label">Status</div>
-                            <div class="value"><span class="draft-status ${stateClass}">${state}</span></div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">Type</div>
-                            <div class="value">${type}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">Start Date</div>
-                            <div class="value">${startDate}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">Picks Made</div>
-                            <div class="value">${picks.length}</div>
-                        </div>
-                    </div>
-                `;
-            } catch {
-                draftEl.innerHTML = `<p style="color:var(--text-muted)">Could not load draft data</p>`;
+            const resp = await fetch("/api/auction-values?" + params);
+            const data = await resp.json();
+
+            if (playerOffset === 0) allPlayers = data.players;
+            else allPlayers = allPlayers.concat(data.players);
+
+            document.getElementById("playerCount").textContent = data.total;
+            renderPlayers();
+
+            const btn = document.getElementById("loadMoreBtn");
+            btn.style.display = allPlayers.length < data.total ? "inline-block" : "none";
+
+            // Build datalist for draft
+            if (!document.getElementById("playerSuggestions").childNodes.length) {
+                const dl = document.getElementById("playerSuggestions");
+                data.players.slice(0, 300).forEach(p => {
+                    const opt = document.createElement("option");
+                    opt.value = p.Player;
+                    dl.appendChild(opt);
+                });
             }
+        }
+
+        function renderPlayers() {
+            const body = document.getElementById("playersBody");
+            if (allPlayers.length === 0) {
+                body.innerHTML = `<tr><td colspan="17" style="color:var(--text-muted);text-align:center;padding:40px">No players found</td></tr>`;
+                return;
+            }
+            body.innerHTML = allPlayers.map((p, i) => {
+                const val = parseFloat(p.Value || 0);
+                const isDrafted = draftedPlayers.has(p.Player);
+                const rowClass = isDrafted ? "drafted-row" : "";
+                const isPitcher = ["SP", "RP"].some(x => (p.Pos || "").includes(x));
+                return `<tr class="${rowClass}">
+                    <td class="rank-col">${i + 1}</td>
+                    <td class="value-col"><span class="auction-value">$${val.toFixed(0)}</span></td>
+                    <td class="player-name-col">${p.Player}</td>
+                    <td><span class="pos-tag">${p.Pos || "—"}</span></td>
+                    <td>${p.Team || "—"}</td>
+                    <td>${p.Age || "—"}</td>
+                    <td class="stat-col ${isPitcher ? 'dim' : ''}">${p.HR || "—"}</td>
+                    <td class="stat-col ${isPitcher ? 'dim' : ''}">${p.RBI || "—"}</td>
+                    <td class="stat-col ${isPitcher ? 'dim' : ''}">${p.R || "—"}</td>
+                    <td class="stat-col ${isPitcher ? 'dim' : ''}">${p.SB || "—"}</td>
+                    <td class="stat-col ${isPitcher ? 'dim' : ''}">${p.AVG || "—"}</td>
+                    <td class="stat-col ${!isPitcher ? 'dim' : ''}">${p.W || "—"}</td>
+                    <td class="stat-col ${!isPitcher ? 'dim' : ''}">${p.K || "—"}</td>
+                    <td class="stat-col ${!isPitcher ? 'dim' : ''}">${p.SV || "—"}</td>
+                    <td class="stat-col ${!isPitcher ? 'dim' : ''}">${p.ERA || "—"}</td>
+                    <td class="stat-col ${!isPitcher ? 'dim' : ''}">${p.WHIP || "—"}</td>
+                    <td><button class="btn btn-sm btn-draft ${isDrafted ? 'btn-drafted' : ''}" onclick="quickDraft('${p.Player.replace(/'/g, "\\'")}')" ${isDrafted ? 'disabled' : ''}>${isDrafted ? 'Gone' : 'Draft'}</button></td>
+                </tr>`;
+            }).join("");
+        }
+
+        function filterPos(pos) {
+            currentPos = pos;
+            playerOffset = 0;
+            document.querySelectorAll(".pos-filter").forEach(b => b.classList.remove("active"));
+            document.querySelector(`.pos-filter[data-pos="${pos}"]`).classList.add("active");
+            loadPlayers();
+        }
+
+        function sortPlayers(col) {
+            currentSort = col;
+            playerOffset = 0;
+            loadPlayers();
+        }
+
+        function debounceSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentSearch = document.getElementById("playerSearch").value.trim();
+                playerOffset = 0;
+                loadPlayers();
+            }, 300);
+        }
+
+        function loadMorePlayers() {
+            playerOffset += 200;
+            loadPlayers();
+        }
+
+        // ── Draft Tracker ───────────────────────────────────
+
+        function populateTeamSelect() {
+            const sel = document.getElementById("draftTeam");
+            const names = Object.values(teamNames).sort();
+            sel.innerHTML = '<option value="">Select team...</option>' +
+                names.map(n => `<option value="${n}">${n}</option>`).join("");
+        }
+
+        async function recordPick() {
+            const player = document.getElementById("draftPlayer").value.trim();
+            const team = document.getElementById("draftTeam").value;
+            const price = parseInt(document.getElementById("draftPrice").value) || 0;
+            if (!player || !team || price < 1) { alert("Fill in player, team, and price"); return; }
+
+            const resp = await fetch("/api/draft-pick", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ player, team, price }),
+            });
+            const data = await resp.json();
+            if (data.success) {
+                draftedPlayers.add(player);
+                document.getElementById("draftPlayer").value = "";
+                document.getElementById("draftPrice").value = "";
+                renderDraftState(data.state);
+                renderPlayers(); // update drafted status in player list
+            }
+        }
+
+        async function undoPick() {
+            const resp = await fetch("/api/draft-undo", { method: "POST" });
+            const data = await resp.json();
+            if (data.success) {
+                draftedPlayers.delete(data.removed.player);
+                renderDraftState(data.state);
+                renderPlayers();
+            }
+        }
+
+        function quickDraft(playerName) {
+            document.getElementById("draftPlayer").value = playerName;
+            switchTab("draft");
+            document.getElementById("draftTeam").focus();
+        }
+
+        async function loadDraftState() {
+            const resp = await fetch("/api/draft-state");
+            const state = await resp.json();
+            draftedPlayers = new Set(state.picks.map(p => p.player));
+            renderDraftState(state);
+        }
+
+        function renderDraftState(state) {
+            const picks = state.picks || [];
+            const budgets = state.budgets || {};
+
+            document.getElementById("pickCountBadge").textContent = picks.length + " picks";
+            document.getElementById("budgetBadge").textContent = "$" + Object.values(budgets).reduce((s, b) => s + (b.spent || 0), 0) + " spent";
+
+            // Budget grid
+            const grid = document.getElementById("budgetGrid");
+            const budgetEntries = Object.entries(budgets).sort((a, b) => b[1].spent - a[1].spent);
+            if (budgetEntries.length > 0) {
+                grid.innerHTML = budgetEntries.map(([team, b]) => `
+                    <div class="budget-item">
+                        <div class="budget-team">${team}</div>
+                        <div class="budget-bar-wrap">
+                            <div class="budget-bar" style="width: ${Math.min(100, (b.spent / 260) * 100)}%"></div>
+                        </div>
+                        <div class="budget-stats">$${b.spent} spent &middot; ${b.players} players</div>
+                    </div>
+                `).join("");
+            } else {
+                grid.innerHTML = '<p style="color:var(--text-muted)">No picks recorded yet</p>';
+            }
+
+            // Draft log (most recent first)
+            const logBody = document.getElementById("draftLogBody");
+            if (picks.length > 0) {
+                logBody.innerHTML = picks.slice().reverse().map(p => `
+                    <tr>
+                        <td>${p.pick_num}</td>
+                        <td class="player-name-col">${p.player}</td>
+                        <td>${p.team}</td>
+                        <td><span class="auction-value">$${p.price}</span></td>
+                    </tr>
+                `).join("");
+            } else {
+                logBody.innerHTML = '<tr><td colspan="4" style="color:var(--text-muted);text-align:center;padding:20px">Draft picks will appear here</td></tr>';
+            }
+        }
+
+        // ── Interactive Draft Plan Tracker ─────────────────
+
+        let planData = null;
+        let planState = { active_plan: 'A', slots: {} };
+        let planTrackerLoaded = false;
+        let staticPlansLoaded = false;
+        let savePlanTimeout = null;
+
+        async function loadPlanTracker() {
+            if (!planTrackerLoaded) {
+                try {
+                    const [dataResp, stateResp] = await Promise.all([
+                        fetch('/api/draft-plans-data'),
+                        fetch('/api/draft-plan-state')
+                    ]);
+                    planData = await dataResp.json();
+                    const savedState = await stateResp.json();
+                    if (savedState.active_plan) planState = savedState;
+                    planTrackerLoaded = true;
+                } catch {
+                    document.getElementById('rosterBoard').innerHTML = '<p style="color:var(--text-muted);padding:40px">Could not load plan data.</p>';
+                    return;
+                }
+            }
+            // Set active pill
+            document.querySelectorAll('.plan-pill').forEach(p => p.classList.remove('active'));
+            const pills = document.querySelectorAll('.plan-pill');
+            const idx = 'ABCD'.indexOf(planState.active_plan);
+            if (idx >= 0 && pills[idx]) pills[idx].classList.add('active');
+            renderPlanSummary();
+            renderRosterBoard();
+            renderBudgetPanel();
+        }
+
+        function selectPlan(planId) {
+            planState.active_plan = planId;
+            document.querySelectorAll('.plan-pill').forEach(p => p.classList.remove('active'));
+            const idx = 'ABCD'.indexOf(planId);
+            const pills = document.querySelectorAll('.plan-pill');
+            if (pills[idx]) pills[idx].classList.add('active');
+            renderPlanSummary();
+            renderRosterBoard();
+            renderBudgetPanel();
+            debounceSavePlanState();
+        }
+
+        function toggleStaticPlans() {
+            const el = document.getElementById('staticPlans');
+            const tracker = document.getElementById('planTracker');
+            const selector = document.getElementById('planSelector');
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+                tracker.style.display = 'none';
+                if (!staticPlansLoaded) loadStaticPlans();
+            } else {
+                el.style.display = 'none';
+                tracker.style.display = '';
+            }
+        }
+
+        async function loadStaticPlans() {
+            const el = document.getElementById('plansContent');
+            try {
+                const resp = await fetch('/api/draft-plans');
+                const data = await resp.json();
+                if (data.content) {
+                    el.innerHTML = '<div class="plans-markdown">' + renderMarkdown(data.content) + '</div>';
+                    staticPlansLoaded = true;
+                }
+            } catch { el.innerHTML = '<p style="color:var(--text-muted)">Could not load.</p>'; }
+        }
+
+        function renderMarkdown(md) {
+            md = md.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+            md = md.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            md = md.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            md = md.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            md = md.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            md = md.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            md = md.replace(/`(.+?)`/g, '<code>$1</code>');
+            md = md.replace(/^- (.+)$/gm, '<li>$1</li>');
+            md = md.replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>');
+            md = md.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+            md = md.replace(/(\|.+\|\n)+/g, function(block) {
+                const rows = block.trim().split('\n');
+                let html = '<table class="plans-table">';
+                let headerDone = false;
+                for (let i = 0; i < rows.length; i++) {
+                    const cells = rows[i].split('|').filter(c => c.trim() !== '');
+                    if (!cells.length) continue;
+                    if (cells.every(c => /^[\s\-:]+$/.test(c))) { headerDone = true; continue; }
+                    const tag = !headerDone ? 'th' : 'td';
+                    html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+                }
+                return html + '</table>';
+            });
+            md = md.replace(/^---$/gm, '<hr>');
+            md = md.replace(/\n\n/g, '</p><p>');
+            md = md.replace(/\n/g, '<br>');
+            return md;
+        }
+
+        function renderPlanSummary() {
+            const plan = planData[planState.active_plan];
+            if (!plan) return;
+            document.getElementById('planSummary').innerHTML =
+                `<strong>${plan.name}</strong> &mdash; ${plan.strategy}<br>` +
+                `<span class="plan-budget-label">Budget: $${plan.budget_split.hitting} hitting / $${plan.budget_split.pitching} pitching</span>`;
+        }
+
+        function getSlotState(planId, slotIdx) {
+            const key = planId + '_' + slotIdx;
+            return planState.slots[key] || { status: 'pending', actual_price: null, chosen_alt: null };
+        }
+
+        function setSlotState(planId, slotIdx, state) {
+            const key = planId + '_' + slotIdx;
+            planState.slots[key] = state;
+            renderRosterBoard();
+            renderBudgetPanel();
+            debounceSavePlanState();
+        }
+
+        function renderRosterBoard() {
+            const plan = planData[planState.active_plan];
+            if (!plan) return;
+            const board = document.getElementById('rosterBoard');
+            let html = '';
+
+            plan.slots.forEach((slot, idx) => {
+                const st = getSlotState(planState.active_plan, idx);
+                const statusClass = st.status;
+                const activePlayer = st.status === 'taken' && st.chosen_alt !== null
+                    ? slot.alternatives[st.chosen_alt] : slot.primary;
+                const displayPrice = st.status === 'acquired' && st.actual_price !== null
+                    ? st.actual_price : activePlayer.est_price;
+                const priceDelta = st.status === 'acquired' && st.actual_price !== null
+                    ? activePlayer.est_price - st.actual_price : 0;
+
+                html += `<div class="plan-slot ${statusClass}">`;
+                html += `<div class="slot-header">`;
+                html += `<span class="pos-tag ${slot.category}">${slot.slot}</span>`;
+                html += `<div class="slot-status-btns">`;
+                html += `<button class="status-btn ${st.status === 'pending' ? 'active' : ''}" onclick="setStatus(${idx},'pending')">PENDING</button>`;
+                html += `<button class="status-btn btn-acquired ${st.status === 'acquired' ? 'active' : ''}" onclick="setStatus(${idx},'acquired')">GOT</button>`;
+                html += `<button class="status-btn btn-taken ${st.status === 'taken' ? 'active' : ''}" onclick="setStatus(${idx},'taken')">TAKEN</button>`;
+                html += `</div></div>`;
+
+                // Primary player row
+                if (st.status !== 'taken') {
+                    html += `<div class="slot-player-row">`;
+                    html += `<span class="slot-player-name">${activePlayer.player}</span>`;
+                    html += `<span class="slot-fpts">${activePlayer.fpts} fpts</span>`;
+                    html += `</div>`;
+                    if (st.status === 'acquired') {
+                        html += `<div class="slot-price-row acquired-price">`;
+                        html += `<label>Paid: $</label><input type="number" class="price-input" value="${st.actual_price || activePlayer.est_price}" min="1" max="260" onchange="updatePrice(${idx}, this.value)">`;
+                        if (priceDelta > 0) html += `<span class="savings">SAVED $${priceDelta}</span>`;
+                        if (priceDelta < 0) html += `<span class="overpay">OVER $${Math.abs(priceDelta)}</span>`;
+                        html += `</div>`;
+                    } else {
+                        html += `<div class="slot-price-row"><span class="est-price">Est. $${activePlayer.est_price}</span></div>`;
+                    }
+                } else {
+                    // Taken — show struck-through primary + alternatives
+                    html += `<div class="slot-player-row taken-primary">`;
+                    html += `<span class="slot-player-name strikethrough">${slot.primary.player}</span>`;
+                    html += `<span class="slot-fpts">${slot.primary.fpts} fpts</span>`;
+                    html += `</div>`;
+                    html += `<div class="alternatives-label">Alternatives:</div>`;
+                    html += `<div class="slot-alternatives">`;
+                    slot.alternatives.forEach((alt, ai) => {
+                        const isChosen = st.chosen_alt === ai;
+                        html += `<div class="alt-row ${isChosen ? 'chosen' : ''}" onclick="chooseAlt(${idx}, ${ai})">`;
+                        html += `<span class="alt-name">${alt.player}</span>`;
+                        html += `<span class="alt-price">$${alt.est_price}</span>`;
+                        html += `<span class="alt-fpts">${alt.fpts} fpts</span>`;
+                        const delta = alt.est_price - slot.primary.est_price;
+                        if (delta < 0) html += `<span class="savings">SAVE $${Math.abs(delta)}</span>`;
+                        if (delta > 0) html += `<span class="overpay">+$${delta}</span>`;
+                        html += `</div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                html += `</div>`; // end plan-slot
+            });
+
+            board.innerHTML = html;
+        }
+
+        function setStatus(idx, status) {
+            const plan = planData[planState.active_plan];
+            const slot = plan.slots[idx];
+            const st = getSlotState(planState.active_plan, idx);
+            st.status = status;
+            if (status === 'acquired' && st.actual_price === null) {
+                const activePlayer = st.chosen_alt !== null ? slot.alternatives[st.chosen_alt] : slot.primary;
+                st.actual_price = activePlayer.est_price;
+            }
+            if (status === 'pending') { st.actual_price = null; st.chosen_alt = null; }
+            setSlotState(planState.active_plan, idx, st);
+        }
+
+        function updatePrice(idx, val) {
+            const st = getSlotState(planState.active_plan, idx);
+            st.actual_price = parseInt(val) || 0;
+            setSlotState(planState.active_plan, idx, st);
+        }
+
+        function chooseAlt(slotIdx, altIdx) {
+            const st = getSlotState(planState.active_plan, slotIdx);
+            st.chosen_alt = altIdx;
+            setSlotState(planState.active_plan, slotIdx, st);
+        }
+
+        function renderBudgetPanel() {
+            const plan = planData[planState.active_plan];
+            if (!plan) return;
+            const panel = document.getElementById('budgetPanel');
+
+            // Calculate current costs vs original plan costs
+            let originalTotal = 0, currentTotal = 0;
+            let totalSpent = 0, filledSlots = 0, totalSlots = plan.slots.length;
+            let totalFpts = 0, originalFpts = 0;
+            let priceSaved = 0, priceOver = 0;
+
+            plan.slots.forEach((slot, idx) => {
+                const st = getSlotState(planState.active_plan, idx);
+                originalTotal += slot.primary.est_price;
+                originalFpts += slot.primary.fpts;
+
+                if (st.status === 'acquired') {
+                    const price = st.actual_price || slot.primary.est_price;
+                    totalSpent += price;
+                    currentTotal += price;
+                    filledSlots++;
+                    totalFpts += slot.primary.fpts; // keep original fpts for acquired primary
+                    const diff = slot.primary.est_price - price;
+                    if (diff > 0) priceSaved += diff;
+                    if (diff < 0) priceOver += Math.abs(diff);
+                } else if (st.status === 'taken' && st.chosen_alt !== null) {
+                    const alt = slot.alternatives[st.chosen_alt];
+                    currentTotal += alt.est_price;
+                    totalFpts += alt.fpts;
+                    const diff = slot.primary.est_price - alt.est_price;
+                    if (diff > 0) priceSaved += diff;
+                    if (diff < 0) priceOver += Math.abs(diff);
+                } else {
+                    currentTotal += slot.primary.est_price;
+                    totalFpts += slot.primary.fpts;
+                }
+            });
+
+            const netSavings = priceSaved - priceOver;
+            const remaining = 260 - totalSpent;
+            const budgetForRemaining = 260 - totalSpent;
+            const committedForRemaining = currentTotal - totalSpent;
+
+            let html = '<h3>Budget Overview</h3>';
+            html += `<div class="budget-stat"><span>Total Budget</span><strong>$260</strong></div>`;
+            html += `<div class="budget-stat"><span>Locked In</span><strong class="spent">$${totalSpent}</strong></div>`;
+            html += `<div class="budget-stat"><span>Remaining</span><strong class="remaining">$${remaining}</strong></div>`;
+            html += `<div class="budget-stat"><span>Slots Filled</span><strong>${filledSlots}/${totalSlots}</strong></div>`;
+            html += `<div class="budget-stat"><span>Proj. Spend</span><strong>$${currentTotal}</strong></div>`;
+
+            // Budget bar
+            const pct = Math.min(100, (totalSpent / 260) * 100);
+            const projPct = Math.min(100, (currentTotal / 260) * 100);
+            html += `<div class="budget-bar-wrap"><div class="budget-bar-bg">`;
+            html += `<div class="budget-bar-proj" style="width:${projPct}%;opacity:0.3"></div>`;
+            html += `<div class="budget-bar-fill" style="width:${pct}%"></div>`;
+            html += `</div></div>`;
+
+            // Net savings/overage from plan changes
+            if (priceSaved > 0 || priceOver > 0) {
+                html += `<div class="budget-delta">`;
+                if (priceSaved > 0) html += `<span class="savings">Saved: $${priceSaved}</span> `;
+                if (priceOver > 0) html += `<span class="overpay">Over: $${priceOver}</span> `;
+                html += `<strong>Net: <span class="${netSavings >= 0 ? 'savings' : 'overpay'}">${netSavings >= 0 ? '+' : ''}$${netSavings}</span></strong>`;
+                html += `</div>`;
+            }
+
+            // ── SMART REALLOCATION ALGORITHM ──
+            // When there are net savings, find the optimal upgrades ranked by fpts/$
+            if (netSavings > 0) {
+                html += `<h3>Reallocate $${netSavings}</h3>`;
+                html += `<p class="text-muted" style="margin-bottom:8px">Best ways to spend your savings:</p>`;
+
+                // Collect all possible upgrades from pending slots
+                let allUpgrades = [];
+                plan.slots.forEach((slot, idx) => {
+                    const st = getSlotState(planState.active_plan, idx);
+                    if (st.status !== 'pending') return;
+                    for (const alt of slot.alternatives) {
+                        const cost = alt.est_price - slot.primary.est_price;
+                        const fptsGain = alt.fpts - slot.primary.fpts;
+                        if (cost > 0 && fptsGain > 0 && cost <= netSavings) {
+                            allUpgrades.push({
+                                slotIdx: idx,
+                                slot: slot.slot,
+                                from: slot.primary.player,
+                                fromPrice: slot.primary.est_price,
+                                to: alt.player,
+                                toPrice: alt.est_price,
+                                cost: cost,
+                                fptsGain: fptsGain,
+                                efficiency: fptsGain / cost // fpts per dollar
+                            });
+                        }
+                    }
+                });
+
+                // Sort by efficiency (fpts per dollar), then by total fpts gain
+                allUpgrades.sort((a, b) => b.efficiency - a.efficiency || b.fptsGain - a.fptsGain);
+
+                // Greedy knapsack: pick non-overlapping upgrades that fit in the savings budget
+                let budgetLeft = netSavings;
+                let usedSlots = new Set();
+                let picked = [];
+                for (const u of allUpgrades) {
+                    if (usedSlots.has(u.slotIdx) || u.cost > budgetLeft) continue;
+                    picked.push(u);
+                    usedSlots.add(u.slotIdx);
+                    budgetLeft -= u.cost;
+                    if (budgetLeft <= 0) break;
+                }
+
+                if (picked.length > 0) {
+                    let totalGain = 0, totalCost = 0;
+                    html += `<div class="upgrade-list">`;
+                    for (const u of picked) {
+                        totalGain += u.fptsGain;
+                        totalCost += u.cost;
+                        html += `<div class="upgrade-card">`;
+                        html += `<div class="upgrade-arrow"><strong>${u.slot}</strong>: ${u.from} <span style="color:var(--text-muted)">$${u.fromPrice}</span> &rarr; <strong>${u.to}</strong> <span style="color:var(--green)">$${u.toPrice}</span></div>`;
+                        html += `<div class="upgrade-detail">+${u.fptsGain} fpts &middot; ${u.efficiency.toFixed(1)} fpts/$ &middot; costs $${u.cost}</div>`;
+                        html += `</div>`;
+                    }
+                    html += `</div>`;
+                    html += `<div class="upgrade-summary">`;
+                    html += `<strong>Optimal reallocation: +${totalGain} fpts for $${totalCost}</strong>`;
+                    if (budgetLeft > 0) html += `<br><span class="text-muted">$${budgetLeft} still unallocated</span>`;
+                    html += `</div>`;
+                } else {
+                    html += `<p class="text-muted">No upgrades available within $${netSavings}.</p>`;
+                }
+            }
+
+            // Projected total fpts
+            html += `<div class="budget-stat total-fpts"><span>Proj. Total FPts</span><strong>${totalFpts.toFixed(0)}</strong></div>`;
+            const fptsDelta = totalFpts - originalFpts;
+            if (fptsDelta !== 0) {
+                html += `<div class="budget-stat"><span>vs. Original Plan</span><strong class="${fptsDelta >= 0 ? 'savings' : 'overpay'}">${fptsDelta >= 0 ? '+' : ''}${fptsDelta.toFixed(0)} fpts</strong></div>`;
+            }
+
+            panel.innerHTML = html;
+        }
+
+        function debounceSavePlanState() {
+            clearTimeout(savePlanTimeout);
+            savePlanTimeout = setTimeout(() => {
+                fetch('/api/draft-plan-state', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(planState)
+                });
+            }, 500);
         }
 
         // ── Init ────────────────────────────────────────────

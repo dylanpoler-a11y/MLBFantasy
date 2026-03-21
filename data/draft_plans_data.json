@@ -1,0 +1,1722 @@
+{
+  "A": {
+    "name": "Ace Pitching + Elite 3B",
+    "strategy": "Lock down a top-3 SP + Jose Ramirez, fill hitting with value",
+    "budget_split": {
+      "hitting": 155,
+      "pitching": 105
+    },
+    "slots": [
+      {
+        "slot": "SP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Tarik Skubal",
+          "est_price": 40,
+          "fpts": 703
+        },
+        "alternatives": [
+          {
+            "player": "Paul Skenes",
+            "est_price": 38,
+            "fpts": 680
+          },
+          {
+            "player": "Garrett Crochet",
+            "est_price": 38,
+            "fpts": 604
+          },
+          {
+            "player": "Hunter Brown",
+            "est_price": 22,
+            "fpts": 588
+          }
+        ]
+      },
+      {
+        "slot": "3B",
+        "category": "hitting",
+        "primary": {
+          "player": "Jose Ramirez",
+          "est_price": 37,
+          "fpts": 657
+        },
+        "alternatives": [
+          {
+            "player": "Junior Caminero",
+            "est_price": 24,
+            "fpts": 585
+          },
+          {
+            "player": "Manny Machado",
+            "est_price": 22,
+            "fpts": 576
+          },
+          {
+            "player": "Eugenio Suarez",
+            "est_price": 18,
+            "fpts": 558
+          }
+        ]
+      },
+      {
+        "slot": "SS",
+        "category": "hitting",
+        "primary": {
+          "player": "Willy Adames",
+          "est_price": 14,
+          "fpts": 555
+        },
+        "alternatives": [
+          {
+            "player": "Dansby Swanson",
+            "est_price": 15,
+            "fpts": 523
+          },
+          {
+            "player": "Geraldo Perdomo",
+            "est_price": 16,
+            "fpts": 541
+          },
+          {
+            "player": "Carlos Correa",
+            "est_price": 5,
+            "fpts": 432
+          }
+        ]
+      },
+      {
+        "slot": "C",
+        "category": "hitting",
+        "primary": {
+          "player": "William Contreras",
+          "est_price": 14,
+          "fpts": 522
+        },
+        "alternatives": [
+          {
+            "player": "Cal Raleigh",
+            "est_price": 24,
+            "fpts": 586
+          },
+          {
+            "player": "Adley Rutschman",
+            "est_price": 3,
+            "fpts": 429
+          },
+          {
+            "player": "Ryan Jeffers",
+            "est_price": 3,
+            "fpts": 390
+          },
+          {
+            "player": "Ivan Herrera",
+            "est_price": 4,
+            "fpts": 406
+          }
+        ]
+      },
+      {
+        "slot": "OF1",
+        "category": "hitting",
+        "primary": {
+          "player": "Jackson Chourio",
+          "est_price": 24,
+          "fpts": 578
+        },
+        "alternatives": [
+          {
+            "player": "Riley Greene",
+            "est_price": 16,
+            "fpts": 539
+          },
+          {
+            "player": "Jackson Merrill",
+            "est_price": 16,
+            "fpts": 533
+          },
+          {
+            "player": "James Wood",
+            "est_price": 18,
+            "fpts": 533
+          }
+        ]
+      },
+      {
+        "slot": "1B",
+        "category": "hitting",
+        "primary": {
+          "player": "Rafael Devers",
+          "est_price": 17,
+          "fpts": 549
+        },
+        "alternatives": [
+          {
+            "player": "Matt Olson",
+            "est_price": 20,
+            "fpts": 596
+          },
+          {
+            "player": "Pete Alonso",
+            "est_price": 23,
+            "fpts": 607
+          },
+          {
+            "player": "Nick Kurtz",
+            "est_price": 25,
+            "fpts": 597
+          },
+          {
+            "player": "Jonathan Aranda",
+            "est_price": 4,
+            "fpts": 424
+          }
+        ]
+      },
+      {
+        "slot": "OF2",
+        "category": "hitting",
+        "primary": {
+          "player": "Randy Arozarena",
+          "est_price": 17,
+          "fpts": 530
+        },
+        "alternatives": [
+          {
+            "player": "Brandon Nimmo",
+            "est_price": 14,
+            "fpts": 518
+          },
+          {
+            "player": "Taylor Ward",
+            "est_price": 13,
+            "fpts": 519
+          },
+          {
+            "player": "George Springer",
+            "est_price": 10,
+            "fpts": 480
+          }
+        ]
+      },
+      {
+        "slot": "2B",
+        "category": "hitting",
+        "primary": {
+          "player": "Brendan Donovan",
+          "est_price": 4,
+          "fpts": 434
+        },
+        "alternatives": [
+          {
+            "player": "Gleyber Torres",
+            "est_price": 7,
+            "fpts": 480
+          },
+          {
+            "player": "Jake Cronenworth",
+            "est_price": 2,
+            "fpts": 423
+          },
+          {
+            "player": "Ernie Clement",
+            "est_price": 3,
+            "fpts": 411
+          }
+        ]
+      },
+      {
+        "slot": "OF3",
+        "category": "hitting",
+        "primary": {
+          "player": "Heliot Ramos",
+          "est_price": 2,
+          "fpts": 428
+        },
+        "alternatives": [
+          {
+            "player": "Sal Frelick",
+            "est_price": 5,
+            "fpts": 418
+          },
+          {
+            "player": "Andrew Vaughn",
+            "est_price": 2,
+            "fpts": 407
+          },
+          {
+            "player": "Jung Hoo Lee",
+            "est_price": 3,
+            "fpts": 400
+          }
+        ]
+      },
+      {
+        "slot": "UT",
+        "category": "hitting",
+        "primary": {
+          "player": "Adley Rutschman",
+          "est_price": 3,
+          "fpts": 429
+        },
+        "alternatives": [
+          {
+            "player": "Nolan Arenado",
+            "est_price": 4,
+            "fpts": 434
+          },
+          {
+            "player": "Isaac Paredes",
+            "est_price": 2,
+            "fpts": 375
+          },
+          {
+            "player": "J.P. Crawford",
+            "est_price": 2,
+            "fpts": 423
+          }
+        ]
+      },
+      {
+        "slot": "SP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Logan Webb",
+          "est_price": 20,
+          "fpts": 552
+        },
+        "alternatives": [
+          {
+            "player": "Framber Valdez",
+            "est_price": 14,
+            "fpts": 534
+          },
+          {
+            "player": "Max Fried",
+            "est_price": 15,
+            "fpts": 537
+          },
+          {
+            "player": "Bryan Woo",
+            "est_price": 14,
+            "fpts": 535
+          }
+        ]
+      },
+      {
+        "slot": "SP3",
+        "category": "pitching",
+        "primary": {
+          "player": "Chase Burns",
+          "est_price": 8,
+          "fpts": 500
+        },
+        "alternatives": [
+          {
+            "player": "Dylan Cease",
+            "est_price": 10,
+            "fpts": 497
+          },
+          {
+            "player": "Nick Pivetta",
+            "est_price": 10,
+            "fpts": 515
+          },
+          {
+            "player": "Sonny Gray",
+            "est_price": 10,
+            "fpts": 515
+          }
+        ]
+      },
+      {
+        "slot": "RP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Mason Miller",
+          "est_price": 18,
+          "fpts": 376
+        },
+        "alternatives": [
+          {
+            "player": "Andres Munoz",
+            "est_price": 16,
+            "fpts": 366
+          },
+          {
+            "player": "Jhoan Duran",
+            "est_price": 14,
+            "fpts": 363
+          },
+          {
+            "player": "Emmanuel Clase",
+            "est_price": 15,
+            "fpts": 340
+          },
+          {
+            "player": "Devin Williams",
+            "est_price": 14,
+            "fpts": 339
+          }
+        ]
+      },
+      {
+        "slot": "SP4",
+        "category": "pitching",
+        "primary": {
+          "player": "Aaron Nola",
+          "est_price": 6,
+          "fpts": 480
+        },
+        "alternatives": [
+          {
+            "player": "Jack Flaherty",
+            "est_price": 6,
+            "fpts": 470
+          },
+          {
+            "player": "Sean Manaea",
+            "est_price": 5,
+            "fpts": 440
+          },
+          {
+            "player": "Joe Ryan",
+            "est_price": 8,
+            "fpts": 501
+          }
+        ]
+      },
+      {
+        "slot": "SP5",
+        "category": "pitching",
+        "primary": {
+          "player": "Reid Detmers",
+          "est_price": 1,
+          "fpts": 350
+        },
+        "alternatives": [
+          {
+            "player": "Kumar Rocker",
+            "est_price": 1,
+            "fpts": 300
+          },
+          {
+            "player": "Shane Baz",
+            "est_price": 3,
+            "fpts": 330
+          },
+          {
+            "player": "Eury Perez",
+            "est_price": 11,
+            "fpts": 450
+          }
+        ]
+      }
+    ]
+  },
+  "B": {
+    "name": "Spread the Wealth",
+    "strategy": "No $35+ players. Stack mid-tier value everywhere",
+    "budget_split": {
+      "hitting": 155,
+      "pitching": 105
+    },
+    "slots": [
+      {
+        "slot": "3B",
+        "category": "hitting",
+        "primary": {
+          "player": "Junior Caminero",
+          "est_price": 24,
+          "fpts": 585
+        },
+        "alternatives": [
+          {
+            "player": "Manny Machado",
+            "est_price": 22,
+            "fpts": 576
+          },
+          {
+            "player": "Eugenio Suarez",
+            "est_price": 18,
+            "fpts": 558
+          },
+          {
+            "player": "Alex Bregman",
+            "est_price": 13,
+            "fpts": 532
+          }
+        ]
+      },
+      {
+        "slot": "SS",
+        "category": "hitting",
+        "primary": {
+          "player": "Gunnar Henderson",
+          "est_price": 26,
+          "fpts": 592
+        },
+        "alternatives": [
+          {
+            "player": "Trea Turner",
+            "est_price": 25,
+            "fpts": 578
+          },
+          {
+            "player": "Willy Adames",
+            "est_price": 14,
+            "fpts": 555
+          },
+          {
+            "player": "Zach Neto",
+            "est_price": 19,
+            "fpts": 535
+          }
+        ]
+      },
+      {
+        "slot": "OF1",
+        "category": "hitting",
+        "primary": {
+          "player": "Jackson Chourio",
+          "est_price": 24,
+          "fpts": 578
+        },
+        "alternatives": [
+          {
+            "player": "Riley Greene",
+            "est_price": 16,
+            "fpts": 539
+          },
+          {
+            "player": "James Wood",
+            "est_price": 18,
+            "fpts": 533
+          },
+          {
+            "player": "Randy Arozarena",
+            "est_price": 17,
+            "fpts": 530
+          }
+        ]
+      },
+      {
+        "slot": "C",
+        "category": "hitting",
+        "primary": {
+          "player": "Cal Raleigh",
+          "est_price": 24,
+          "fpts": 586
+        },
+        "alternatives": [
+          {
+            "player": "William Contreras",
+            "est_price": 14,
+            "fpts": 522
+          },
+          {
+            "player": "Adley Rutschman",
+            "est_price": 3,
+            "fpts": 429
+          },
+          {
+            "player": "Ryan Jeffers",
+            "est_price": 3,
+            "fpts": 390
+          }
+        ]
+      },
+      {
+        "slot": "1B",
+        "category": "hitting",
+        "primary": {
+          "player": "Matt Olson",
+          "est_price": 20,
+          "fpts": 596
+        },
+        "alternatives": [
+          {
+            "player": "Rafael Devers",
+            "est_price": 17,
+            "fpts": 549
+          },
+          {
+            "player": "Pete Alonso",
+            "est_price": 23,
+            "fpts": 607
+          },
+          {
+            "player": "Jonathan Aranda",
+            "est_price": 4,
+            "fpts": 424
+          }
+        ]
+      },
+      {
+        "slot": "OF2",
+        "category": "hitting",
+        "primary": {
+          "player": "Riley Greene",
+          "est_price": 16,
+          "fpts": 539
+        },
+        "alternatives": [
+          {
+            "player": "Jackson Merrill",
+            "est_price": 16,
+            "fpts": 533
+          },
+          {
+            "player": "Taylor Ward",
+            "est_price": 13,
+            "fpts": 519
+          },
+          {
+            "player": "Brandon Nimmo",
+            "est_price": 14,
+            "fpts": 518
+          }
+        ]
+      },
+      {
+        "slot": "2B",
+        "category": "hitting",
+        "primary": {
+          "player": "Gleyber Torres",
+          "est_price": 7,
+          "fpts": 480
+        },
+        "alternatives": [
+          {
+            "player": "Brendan Donovan",
+            "est_price": 4,
+            "fpts": 434
+          },
+          {
+            "player": "Jake Cronenworth",
+            "est_price": 2,
+            "fpts": 423
+          },
+          {
+            "player": "Ketel Marte",
+            "est_price": 24,
+            "fpts": 596
+          }
+        ]
+      },
+      {
+        "slot": "OF3",
+        "category": "hitting",
+        "primary": {
+          "player": "Randy Arozarena",
+          "est_price": 17,
+          "fpts": 530
+        },
+        "alternatives": [
+          {
+            "player": "George Springer",
+            "est_price": 10,
+            "fpts": 480
+          },
+          {
+            "player": "Cody Bellinger",
+            "est_price": 17,
+            "fpts": 525
+          },
+          {
+            "player": "Heliot Ramos",
+            "est_price": 2,
+            "fpts": 428
+          }
+        ]
+      },
+      {
+        "slot": "UT",
+        "category": "hitting",
+        "primary": {
+          "player": "Alex Bregman",
+          "est_price": 13,
+          "fpts": 532
+        },
+        "alternatives": [
+          {
+            "player": "Austin Riley",
+            "est_price": 13,
+            "fpts": 526
+          },
+          {
+            "player": "Nolan Arenado",
+            "est_price": 4,
+            "fpts": 434
+          },
+          {
+            "player": "Isaac Paredes",
+            "est_price": 2,
+            "fpts": 375
+          }
+        ]
+      },
+      {
+        "slot": "OF4",
+        "category": "hitting",
+        "primary": {
+          "player": "Heliot Ramos",
+          "est_price": 2,
+          "fpts": 428
+        },
+        "alternatives": [
+          {
+            "player": "Sal Frelick",
+            "est_price": 5,
+            "fpts": 418
+          },
+          {
+            "player": "Andrew Vaughn",
+            "est_price": 2,
+            "fpts": 407
+          },
+          {
+            "player": "Jung Hoo Lee",
+            "est_price": 3,
+            "fpts": 400
+          }
+        ]
+      },
+      {
+        "slot": "SP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Logan Webb",
+          "est_price": 20,
+          "fpts": 552
+        },
+        "alternatives": [
+          {
+            "player": "Framber Valdez",
+            "est_price": 14,
+            "fpts": 534
+          },
+          {
+            "player": "Cristopher Sanchez",
+            "est_price": 12,
+            "fpts": 560
+          },
+          {
+            "player": "Hunter Brown",
+            "est_price": 22,
+            "fpts": 588
+          }
+        ]
+      },
+      {
+        "slot": "SP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Cole Ragans",
+          "est_price": 15,
+          "fpts": 559
+        },
+        "alternatives": [
+          {
+            "player": "Freddy Peralta",
+            "est_price": 14,
+            "fpts": 536
+          },
+          {
+            "player": "Sonny Gray",
+            "est_price": 10,
+            "fpts": 515
+          },
+          {
+            "player": "Nick Pivetta",
+            "est_price": 10,
+            "fpts": 515
+          }
+        ]
+      },
+      {
+        "slot": "SP3",
+        "category": "pitching",
+        "primary": {
+          "player": "Brandon Woodruff",
+          "est_price": 13,
+          "fpts": 520
+        },
+        "alternatives": [
+          {
+            "player": "Chase Burns",
+            "est_price": 8,
+            "fpts": 500
+          },
+          {
+            "player": "Dylan Cease",
+            "est_price": 10,
+            "fpts": 497
+          },
+          {
+            "player": "Joe Ryan",
+            "est_price": 8,
+            "fpts": 501
+          }
+        ]
+      },
+      {
+        "slot": "RP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Emmanuel Clase",
+          "est_price": 15,
+          "fpts": 340
+        },
+        "alternatives": [
+          {
+            "player": "Jhoan Duran",
+            "est_price": 14,
+            "fpts": 363
+          },
+          {
+            "player": "Devin Williams",
+            "est_price": 14,
+            "fpts": 339
+          },
+          {
+            "player": "Raisel Iglesias",
+            "est_price": 10,
+            "fpts": 321
+          }
+        ]
+      },
+      {
+        "slot": "RP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Dennis Santana",
+          "est_price": 11,
+          "fpts": 300
+        },
+        "alternatives": [
+          {
+            "player": "Jeff Hoffman",
+            "est_price": 8,
+            "fpts": 309
+          },
+          {
+            "player": "Daniel Palencia",
+            "est_price": 2,
+            "fpts": 270
+          },
+          {
+            "player": "Carlos Estevez",
+            "est_price": 8,
+            "fpts": 297
+          }
+        ]
+      },
+      {
+        "slot": "SP4",
+        "category": "pitching",
+        "primary": {
+          "player": "Aaron Nola",
+          "est_price": 6,
+          "fpts": 480
+        },
+        "alternatives": [
+          {
+            "player": "Jack Flaherty",
+            "est_price": 6,
+            "fpts": 470
+          },
+          {
+            "player": "Reid Detmers",
+            "est_price": 1,
+            "fpts": 350
+          },
+          {
+            "player": "Sean Manaea",
+            "est_price": 5,
+            "fpts": 440
+          }
+        ]
+      }
+    ]
+  },
+  "C": {
+    "name": "Elite Bats + Value Arms",
+    "strategy": "Pay up for 2 top-10 hitters, fill pitching with upside arms + closers",
+    "budget_split": {
+      "hitting": 170,
+      "pitching": 90
+    },
+    "slots": [
+      {
+        "slot": "SS",
+        "category": "hitting",
+        "primary": {
+          "player": "Bobby Witt Jr.",
+          "est_price": 39,
+          "fpts": 679
+        },
+        "alternatives": [
+          {
+            "player": "Francisco Lindor",
+            "est_price": 28,
+            "fpts": 620
+          },
+          {
+            "player": "Gunnar Henderson",
+            "est_price": 26,
+            "fpts": 592
+          },
+          {
+            "player": "Elly De La Cruz",
+            "est_price": 29,
+            "fpts": 579
+          }
+        ]
+      },
+      {
+        "slot": "OF1",
+        "category": "hitting",
+        "primary": {
+          "player": "Juan Soto",
+          "est_price": 37,
+          "fpts": 675
+        },
+        "alternatives": [
+          {
+            "player": "Ronald Acuna",
+            "est_price": 31,
+            "fpts": 616
+          },
+          {
+            "player": "Kyle Tucker",
+            "est_price": 28,
+            "fpts": 586
+          },
+          {
+            "player": "Corbin Carroll",
+            "est_price": 30,
+            "fpts": 598
+          }
+        ]
+      },
+      {
+        "slot": "3B",
+        "category": "hitting",
+        "primary": {
+          "player": "Manny Machado",
+          "est_price": 22,
+          "fpts": 576
+        },
+        "alternatives": [
+          {
+            "player": "Alex Bregman",
+            "est_price": 13,
+            "fpts": 532
+          },
+          {
+            "player": "Austin Riley",
+            "est_price": 13,
+            "fpts": 526
+          },
+          {
+            "player": "Eugenio Suarez",
+            "est_price": 18,
+            "fpts": 558
+          }
+        ]
+      },
+      {
+        "slot": "C",
+        "category": "hitting",
+        "primary": {
+          "player": "William Contreras",
+          "est_price": 14,
+          "fpts": 522
+        },
+        "alternatives": [
+          {
+            "player": "Adley Rutschman",
+            "est_price": 3,
+            "fpts": 429
+          },
+          {
+            "player": "Ryan Jeffers",
+            "est_price": 3,
+            "fpts": 390
+          },
+          {
+            "player": "Ivan Herrera",
+            "est_price": 4,
+            "fpts": 406
+          }
+        ]
+      },
+      {
+        "slot": "1B",
+        "category": "hitting",
+        "primary": {
+          "player": "Rafael Devers",
+          "est_price": 17,
+          "fpts": 549
+        },
+        "alternatives": [
+          {
+            "player": "Matt Olson",
+            "est_price": 20,
+            "fpts": 596
+          },
+          {
+            "player": "Jonathan Aranda",
+            "est_price": 4,
+            "fpts": 424
+          },
+          {
+            "player": "Ryan O'Hearn",
+            "est_price": 5,
+            "fpts": 414
+          }
+        ]
+      },
+      {
+        "slot": "2B",
+        "category": "hitting",
+        "primary": {
+          "player": "Brendan Donovan",
+          "est_price": 4,
+          "fpts": 434
+        },
+        "alternatives": [
+          {
+            "player": "Jake Cronenworth",
+            "est_price": 2,
+            "fpts": 423
+          },
+          {
+            "player": "Gleyber Torres",
+            "est_price": 7,
+            "fpts": 480
+          },
+          {
+            "player": "Ernie Clement",
+            "est_price": 3,
+            "fpts": 411
+          }
+        ]
+      },
+      {
+        "slot": "OF2",
+        "category": "hitting",
+        "primary": {
+          "player": "Jackson Merrill",
+          "est_price": 16,
+          "fpts": 533
+        },
+        "alternatives": [
+          {
+            "player": "Riley Greene",
+            "est_price": 16,
+            "fpts": 539
+          },
+          {
+            "player": "Taylor Ward",
+            "est_price": 13,
+            "fpts": 519
+          },
+          {
+            "player": "Heliot Ramos",
+            "est_price": 2,
+            "fpts": 428
+          }
+        ]
+      },
+      {
+        "slot": "OF3",
+        "category": "hitting",
+        "primary": {
+          "player": "Brandon Nimmo",
+          "est_price": 14,
+          "fpts": 518
+        },
+        "alternatives": [
+          {
+            "player": "George Springer",
+            "est_price": 10,
+            "fpts": 480
+          },
+          {
+            "player": "Cody Bellinger",
+            "est_price": 17,
+            "fpts": 525
+          },
+          {
+            "player": "Sal Frelick",
+            "est_price": 5,
+            "fpts": 418
+          }
+        ]
+      },
+      {
+        "slot": "UT",
+        "category": "hitting",
+        "primary": {
+          "player": "Dansby Swanson",
+          "est_price": 15,
+          "fpts": 523
+        },
+        "alternatives": [
+          {
+            "player": "Nolan Arenado",
+            "est_price": 4,
+            "fpts": 434
+          },
+          {
+            "player": "J.P. Crawford",
+            "est_price": 2,
+            "fpts": 423
+          },
+          {
+            "player": "Isaac Paredes",
+            "est_price": 2,
+            "fpts": 375
+          }
+        ]
+      },
+      {
+        "slot": "OF4",
+        "category": "hitting",
+        "primary": {
+          "player": "Heliot Ramos",
+          "est_price": 2,
+          "fpts": 428
+        },
+        "alternatives": [
+          {
+            "player": "Andrew Vaughn",
+            "est_price": 2,
+            "fpts": 407
+          },
+          {
+            "player": "Jung Hoo Lee",
+            "est_price": 3,
+            "fpts": 400
+          }
+        ]
+      },
+      {
+        "slot": "SP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Cristopher Sanchez",
+          "est_price": 12,
+          "fpts": 560
+        },
+        "alternatives": [
+          {
+            "player": "Logan Webb",
+            "est_price": 20,
+            "fpts": 552
+          },
+          {
+            "player": "Framber Valdez",
+            "est_price": 14,
+            "fpts": 534
+          },
+          {
+            "player": "Hunter Brown",
+            "est_price": 22,
+            "fpts": 588
+          }
+        ]
+      },
+      {
+        "slot": "SP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Chase Burns",
+          "est_price": 6,
+          "fpts": 500
+        },
+        "alternatives": [
+          {
+            "player": "Dylan Cease",
+            "est_price": 10,
+            "fpts": 497
+          },
+          {
+            "player": "Sonny Gray",
+            "est_price": 10,
+            "fpts": 515
+          },
+          {
+            "player": "Nick Pivetta",
+            "est_price": 10,
+            "fpts": 515
+          }
+        ]
+      },
+      {
+        "slot": "SP3",
+        "category": "pitching",
+        "primary": {
+          "player": "Eury Perez",
+          "est_price": 8,
+          "fpts": 450
+        },
+        "alternatives": [
+          {
+            "player": "Joe Ryan",
+            "est_price": 8,
+            "fpts": 501
+          },
+          {
+            "player": "Aaron Nola",
+            "est_price": 6,
+            "fpts": 480
+          },
+          {
+            "player": "Jack Flaherty",
+            "est_price": 6,
+            "fpts": 470
+          }
+        ]
+      },
+      {
+        "slot": "RP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Andres Munoz",
+          "est_price": 16,
+          "fpts": 366
+        },
+        "alternatives": [
+          {
+            "player": "Mason Miller",
+            "est_price": 18,
+            "fpts": 376
+          },
+          {
+            "player": "Emmanuel Clase",
+            "est_price": 15,
+            "fpts": 340
+          },
+          {
+            "player": "Jhoan Duran",
+            "est_price": 14,
+            "fpts": 363
+          }
+        ]
+      },
+      {
+        "slot": "RP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Jhoan Duran",
+          "est_price": 14,
+          "fpts": 363
+        },
+        "alternatives": [
+          {
+            "player": "Devin Williams",
+            "est_price": 14,
+            "fpts": 339
+          },
+          {
+            "player": "Dennis Santana",
+            "est_price": 11,
+            "fpts": 300
+          },
+          {
+            "player": "Daniel Palencia",
+            "est_price": 2,
+            "fpts": 270
+          }
+        ]
+      },
+      {
+        "slot": "SP4",
+        "category": "pitching",
+        "primary": {
+          "player": "Reid Detmers",
+          "est_price": 1,
+          "fpts": 350
+        },
+        "alternatives": [
+          {
+            "player": "Kumar Rocker",
+            "est_price": 1,
+            "fpts": 300
+          },
+          {
+            "player": "Sean Manaea",
+            "est_price": 5,
+            "fpts": 440
+          },
+          {
+            "player": "Shane Baz",
+            "est_price": 3,
+            "fpts": 330
+          }
+        ]
+      },
+      {
+        "slot": "SP5",
+        "category": "pitching",
+        "primary": {
+          "player": "Sean Manaea",
+          "est_price": 5,
+          "fpts": 440
+        },
+        "alternatives": [
+          {
+            "player": "Jack Flaherty",
+            "est_price": 6,
+            "fpts": 470
+          },
+          {
+            "player": "Kevin Gausman",
+            "est_price": 10,
+            "fpts": 505
+          }
+        ]
+      }
+    ]
+  },
+  "D": {
+    "name": "Closer Corner + Depth",
+    "strategy": "Corner the closer market (3 closers) + deep balanced roster. Exploit SV +5",
+    "budget_split": {
+      "hitting": 160,
+      "pitching": 100
+    },
+    "slots": [
+      {
+        "slot": "3B",
+        "category": "hitting",
+        "primary": {
+          "player": "Jose Ramirez",
+          "est_price": 37,
+          "fpts": 657
+        },
+        "alternatives": [
+          {
+            "player": "Junior Caminero",
+            "est_price": 24,
+            "fpts": 585
+          },
+          {
+            "player": "Manny Machado",
+            "est_price": 22,
+            "fpts": 576
+          },
+          {
+            "player": "Eugenio Suarez",
+            "est_price": 18,
+            "fpts": 558
+          }
+        ]
+      },
+      {
+        "slot": "OF1",
+        "category": "hitting",
+        "primary": {
+          "player": "Corbin Carroll",
+          "est_price": 30,
+          "fpts": 598
+        },
+        "alternatives": [
+          {
+            "player": "Jackson Chourio",
+            "est_price": 24,
+            "fpts": 578
+          },
+          {
+            "player": "Julio Rodriguez",
+            "est_price": 29,
+            "fpts": 609
+          },
+          {
+            "player": "Riley Greene",
+            "est_price": 16,
+            "fpts": 539
+          }
+        ]
+      },
+      {
+        "slot": "SS",
+        "category": "hitting",
+        "primary": {
+          "player": "Willy Adames",
+          "est_price": 14,
+          "fpts": 555
+        },
+        "alternatives": [
+          {
+            "player": "Dansby Swanson",
+            "est_price": 15,
+            "fpts": 523
+          },
+          {
+            "player": "Carlos Correa",
+            "est_price": 5,
+            "fpts": 432
+          },
+          {
+            "player": "J.P. Crawford",
+            "est_price": 2,
+            "fpts": 423
+          }
+        ]
+      },
+      {
+        "slot": "C",
+        "category": "hitting",
+        "primary": {
+          "player": "Cal Raleigh",
+          "est_price": 24,
+          "fpts": 586
+        },
+        "alternatives": [
+          {
+            "player": "William Contreras",
+            "est_price": 14,
+            "fpts": 522
+          },
+          {
+            "player": "Adley Rutschman",
+            "est_price": 3,
+            "fpts": 429
+          },
+          {
+            "player": "Ryan Jeffers",
+            "est_price": 3,
+            "fpts": 390
+          }
+        ]
+      },
+      {
+        "slot": "1B",
+        "category": "hitting",
+        "primary": {
+          "player": "Matt Olson",
+          "est_price": 20,
+          "fpts": 596
+        },
+        "alternatives": [
+          {
+            "player": "Rafael Devers",
+            "est_price": 17,
+            "fpts": 549
+          },
+          {
+            "player": "Nick Kurtz",
+            "est_price": 25,
+            "fpts": 597
+          },
+          {
+            "player": "Jonathan Aranda",
+            "est_price": 4,
+            "fpts": 424
+          }
+        ]
+      },
+      {
+        "slot": "2B",
+        "category": "hitting",
+        "primary": {
+          "player": "Jake Cronenworth",
+          "est_price": 2,
+          "fpts": 423
+        },
+        "alternatives": [
+          {
+            "player": "Brendan Donovan",
+            "est_price": 4,
+            "fpts": 434
+          },
+          {
+            "player": "Gleyber Torres",
+            "est_price": 7,
+            "fpts": 480
+          },
+          {
+            "player": "Ernie Clement",
+            "est_price": 3,
+            "fpts": 411
+          }
+        ]
+      },
+      {
+        "slot": "OF2",
+        "category": "hitting",
+        "primary": {
+          "player": "James Wood",
+          "est_price": 18,
+          "fpts": 533
+        },
+        "alternatives": [
+          {
+            "player": "Randy Arozarena",
+            "est_price": 17,
+            "fpts": 530
+          },
+          {
+            "player": "Brandon Nimmo",
+            "est_price": 14,
+            "fpts": 518
+          },
+          {
+            "player": "Taylor Ward",
+            "est_price": 13,
+            "fpts": 519
+          }
+        ]
+      },
+      {
+        "slot": "OF3",
+        "category": "hitting",
+        "primary": {
+          "player": "Taylor Ward",
+          "est_price": 13,
+          "fpts": 519
+        },
+        "alternatives": [
+          {
+            "player": "George Springer",
+            "est_price": 10,
+            "fpts": 480
+          },
+          {
+            "player": "Heliot Ramos",
+            "est_price": 2,
+            "fpts": 428
+          },
+          {
+            "player": "Sal Frelick",
+            "est_price": 5,
+            "fpts": 418
+          }
+        ]
+      },
+      {
+        "slot": "UT",
+        "category": "hitting",
+        "primary": {
+          "player": "Nolan Arenado",
+          "est_price": 4,
+          "fpts": 434
+        },
+        "alternatives": [
+          {
+            "player": "Isaac Paredes",
+            "est_price": 2,
+            "fpts": 375
+          },
+          {
+            "player": "Andrew Vaughn",
+            "est_price": 2,
+            "fpts": 407
+          },
+          {
+            "player": "Ryan O'Hearn",
+            "est_price": 5,
+            "fpts": 414
+          }
+        ]
+      },
+      {
+        "slot": "OF4",
+        "category": "hitting",
+        "primary": {
+          "player": "J.P. Crawford",
+          "est_price": 2,
+          "fpts": 423
+        },
+        "alternatives": [
+          {
+            "player": "Jung Hoo Lee",
+            "est_price": 3,
+            "fpts": 400
+          },
+          {
+            "player": "Heliot Ramos",
+            "est_price": 2,
+            "fpts": 428
+          }
+        ]
+      },
+      {
+        "slot": "RP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Mason Miller",
+          "est_price": 18,
+          "fpts": 376
+        },
+        "alternatives": [
+          {
+            "player": "Andres Munoz",
+            "est_price": 16,
+            "fpts": 366
+          },
+          {
+            "player": "Edwin Diaz",
+            "est_price": 14,
+            "fpts": 359
+          }
+        ]
+      },
+      {
+        "slot": "RP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Andres Munoz",
+          "est_price": 16,
+          "fpts": 366
+        },
+        "alternatives": [
+          {
+            "player": "Jhoan Duran",
+            "est_price": 14,
+            "fpts": 363
+          },
+          {
+            "player": "Emmanuel Clase",
+            "est_price": 15,
+            "fpts": 340
+          },
+          {
+            "player": "Cade Smith",
+            "est_price": 12,
+            "fpts": 352
+          }
+        ]
+      },
+      {
+        "slot": "RP3",
+        "category": "pitching",
+        "primary": {
+          "player": "Devin Williams",
+          "est_price": 14,
+          "fpts": 339
+        },
+        "alternatives": [
+          {
+            "player": "Raisel Iglesias",
+            "est_price": 10,
+            "fpts": 321
+          },
+          {
+            "player": "Dennis Santana",
+            "est_price": 11,
+            "fpts": 300
+          },
+          {
+            "player": "Daniel Palencia",
+            "est_price": 2,
+            "fpts": 270
+          }
+        ]
+      },
+      {
+        "slot": "SP1",
+        "category": "pitching",
+        "primary": {
+          "player": "Freddy Peralta",
+          "est_price": 14,
+          "fpts": 536
+        },
+        "alternatives": [
+          {
+            "player": "Cole Ragans",
+            "est_price": 15,
+            "fpts": 559
+          },
+          {
+            "player": "Cristopher Sanchez",
+            "est_price": 12,
+            "fpts": 560
+          },
+          {
+            "player": "Hunter Brown",
+            "est_price": 22,
+            "fpts": 588
+          }
+        ]
+      },
+      {
+        "slot": "SP2",
+        "category": "pitching",
+        "primary": {
+          "player": "Chase Burns",
+          "est_price": 6,
+          "fpts": 500
+        },
+        "alternatives": [
+          {
+            "player": "Dylan Cease",
+            "est_price": 10,
+            "fpts": 497
+          },
+          {
+            "player": "Sonny Gray",
+            "est_price": 10,
+            "fpts": 515
+          },
+          {
+            "player": "Nick Pivetta",
+            "est_price": 10,
+            "fpts": 515
+          }
+        ]
+      },
+      {
+        "slot": "SP3",
+        "category": "pitching",
+        "primary": {
+          "player": "Aaron Nola",
+          "est_price": 6,
+          "fpts": 480
+        },
+        "alternatives": [
+          {
+            "player": "Jack Flaherty",
+            "est_price": 6,
+            "fpts": 470
+          },
+          {
+            "player": "Sean Manaea",
+            "est_price": 5,
+            "fpts": 440
+          },
+          {
+            "player": "Reid Detmers",
+            "est_price": 1,
+            "fpts": 350
+          }
+        ]
+      },
+      {
+        "slot": "SP4",
+        "category": "pitching",
+        "primary": {
+          "player": "Reid Detmers",
+          "est_price": 1,
+          "fpts": 350
+        },
+        "alternatives": [
+          {
+            "player": "Kumar Rocker",
+            "est_price": 1,
+            "fpts": 300
+          },
+          {
+            "player": "Shane Baz",
+            "est_price": 3,
+            "fpts": 330
+          }
+        ]
+      }
+    ]
+  }
+}
