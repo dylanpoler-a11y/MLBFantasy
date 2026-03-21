@@ -999,6 +999,34 @@
             return Math.max(1, maxSpend);
         }
 
+        // Check if a slot can afford a better player than its current primary/best alt
+        function getSlotUpgrade(plan, slotIdx, maxSpend) {
+            const slot = plan.slots[slotIdx];
+            const st = getSlotState(planState.active_plan, slotIdx);
+            if (st.status === 'acquired') return null;
+
+            // Current best player for this slot
+            let currentBest = slot.primary;
+            if (st.status === 'taken') {
+                const alts = getVisibleAlts(slot, st);
+                if (alts.length > 0) currentBest = alts[0];
+                else return null;
+            }
+
+            // Look through alternatives for someone more expensive but affordable
+            const allCandidates = [slot.primary, ...(slot.alternatives || [])];
+            let bestUpgrade = null;
+            for (const candidate of allCandidates) {
+                if (candidate.player === currentBest.player) continue;
+                if (candidate.est_price > currentBest.est_price && candidate.est_price <= maxSpend && candidate.fpts > currentBest.fpts) {
+                    if (!bestUpgrade || candidate.fpts > bestUpgrade.fpts) {
+                        bestUpgrade = candidate;
+                    }
+                }
+            }
+            return bestUpgrade;
+        }
+
         function renderRosterBoard(boardId) {
             const plan = planData[planState.active_plan];
             if (!plan) return;
@@ -1105,8 +1133,13 @@
                     const available = allPlayers.filter(p => !p.isTaken).slice(0, 4);
                     const taken = allPlayers.filter(p => p.isTaken);
 
-                    // Max spend header
-                    html += `<div class="slot-max-spend">Max: $${maxSpend}</div>`;
+                    // Max spend header + upgrade suggestion
+                    const upgradeInfo = getSlotUpgrade(plan, idx, maxSpend);
+                    html += `<div class="slot-max-spend">Max: $${maxSpend}`;
+                    if (upgradeInfo) {
+                        html += ` <span class="upgrade-hint">⬆ Can afford ${upgradeInfo.player} ($${upgradeInfo.est_price})</span>`;
+                    }
+                    html += `</div>`;
 
                     // Show available players (up to 4)
                     html += `<div class="slot-player-list">`;

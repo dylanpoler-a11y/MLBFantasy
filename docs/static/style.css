@@ -1256,6 +1256,23 @@ header h1 span { color: var(--accent); }
 .rec-max-spend strong { color: var(--green); }
 .rec-max-spend .text-muted { font-size: 0.72rem; }
 
+/* ── Upgrade Hints ── */
+.upgrade-hint {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 600;
+    animation: upgrade-glow 2s ease-in-out infinite;
+}
+@keyframes upgrade-glow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 4px rgba(52, 211, 153, 0.5); }
+}
+
 /* ── Auction Highlight on Strategy Board ── */
 .slot-auction-active {
     border: 2px solid #f59e0b !important;
