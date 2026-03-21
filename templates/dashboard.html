@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Fantasy Auction Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1><span>MLB</span> Fantasy Auction Dashboard</h1>
+        <div class="connection-status">
+            <div class="status-dot checking" id="statusDot"></div>
+            <span id="statusText">Checking connection...</span>
+        </div>
+    </header>
+
+    <!-- Setup Panel (shown when not connected) -->
+    <div class="setup-panel" id="setupPanel">
+        <h2>Connect to Fantrax</h2>
+        <p>Your league <code>{{ league_id }}</code> is private. Paste your browser cookie to authenticate.</p>
+        <ol>
+            <li>Log in to <strong>fantrax.com</strong> in Chrome</li>
+            <li>Open DevTools (<code>F12</code>) → <strong>Network</strong> tab</li>
+            <li>Refresh the page, click any request to fantrax.com</li>
+            <li>In the <strong>Headers</strong> tab, find <code>Cookie:</code> under Request Headers</li>
+            <li>Copy the entire cookie value and paste it below</li>
+        </ol>
+        <textarea class="cookie-input" id="cookieInput" placeholder="Paste your full cookie string here..."></textarea>
+        <button class="btn btn-primary" id="connectBtn" onclick="connectWithCookie()">Connect</button>
+        <div class="error-msg" id="errorMsg"></div>
+    </div>
+
+    <!-- Dashboard (shown when connected) -->
+    <div class="dashboard" id="dashboard">
+        <!-- League Info Card -->
+        <div class="card">
+            <div class="card-header">
+                League Info
+                <span class="badge" id="leagueTypeBadge"></span>
+            </div>
+            <div class="card-body">
+                <div class="info-grid" id="leagueInfoGrid">
+                    <div class="loading"><div class="spinner"></div>Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Draft Info Card -->
+        <div class="card">
+            <div class="card-header">
+                Draft Details
+                <span class="badge" id="draftTypeBadge"></span>
+            </div>
+            <div class="card-body" id="draftInfo">
+                <div class="loading"><div class="spinner"></div>Loading...</div>
+            </div>
+        </div>
+
+        <!-- Teams Card -->
+        <div class="card">
+            <div class="card-header">
+                Teams
+                <span class="badge" id="teamCountBadge"></span>
+            </div>
+            <div class="card-body">
+                <ul class="team-list" id="teamList">
+                    <div class="loading"><div class="spinner"></div>Loading...</div>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Roster Rules Card -->
+        <div class="card">
+            <div class="card-header">Roster Configuration</div>
+            <div class="card-body">
+                <div class="roster-grid" id="rosterGrid">
+                    <div class="loading"><div class="spinner"></div>Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scoring System Card -->
+        <div class="card card-full">
+            <div class="card-header">
+                Scoring System
+                <span class="badge" id="scoringTypeBadge"></span>
+            </div>
+            <div class="card-body">
+                <table class="scoring-table" id="scoringTable">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoringBody">
+                        <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const LEAGUE_ID = "{{ league_id }}";
+
+        // ── Connection ──────────────────────────────────────
+
+        async function checkConnection() {
+            const dot = document.getElementById("statusDot");
+            const text = document.getElementById("statusText");
+            dot.className = "status-dot checking";
+            text.textContent = "Checking connection...";
+
+            try {
+                const resp = await fetch("/api/connection");
+                const data = await resp.json();
+                if (data.success) {
+                    dot.className = "status-dot connected";
+                    text.textContent = "Connected to Fantrax";
+                    showDashboard(data.data);
+                    return true;
+                } else {
+                    dot.className = "status-dot";
+                    text.textContent = "Not connected";
+                    showSetup();
+                    return false;
+                }
+            } catch {
+                dot.className = "status-dot";
+                text.textContent = "Connection error";
+                showSetup();
+                return false;
+            }
+        }
+
+        async function connectWithCookie() {
+            const cookie = document.getElementById("cookieInput").value.trim();
+            const errorEl = document.getElementById("errorMsg");
+            const btn = document.getElementById("connectBtn");
+
+            if (!cookie) {
+                errorEl.textContent = "Please paste your cookie string.";
+                errorEl.style.display = "block";
+                return;
+            }
+
+            btn.textContent = "Connecting...";
+            btn.disabled = true;
+            errorEl.style.display = "none";
+
+            try {
+                const resp = await fetch("/api/update-cookie", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cookie }),
+                });
+                const data = await resp.json();
+
+                if (data.success) {
+                    document.getElementById("statusDot").className = "status-dot connected";
+                    document.getElementById("statusText").textContent = "Connected to Fantrax";
+                    showDashboard(data.data);
+                } else {
+                    errorEl.textContent = data.error || "Failed to connect. Check your cookie.";
+                    errorEl.style.display = "block";
+                }
+            } catch (e) {
+                errorEl.textContent = "Connection failed: " + e.message;
+                errorEl.style.display = "block";
+            }
+
+            btn.textContent = "Connect";
+            btn.disabled = false;
+        }
+
+        // ── Display ─────────────────────────────────────────
+
+        function showSetup() {
+            document.getElementById("setupPanel").style.display = "block";
+            document.getElementById("dashboard").classList.remove("active");
+        }
+
+        function showDashboard(leagueData) {
+            document.getElementById("setupPanel").style.display = "none";
+            document.getElementById("dashboard").classList.add("active");
+            renderLeagueInfo(leagueData);
+            loadDraftInfo();
+        }
+
+        function renderLeagueInfo(data) {
+            // League Info
+            const leagueName = data.leagueName || "Unknown League";
+            const draftType = data.draftType || "—";
+            const teams = data.teamInfo || {};
+            const teamEntries = Object.entries(teams);
+            const rosterInfo = data.rosterInfo || {};
+            const scoring = data.scoringSystem || {};
+
+            document.getElementById("leagueTypeBadge").textContent = leagueName;
+            document.getElementById("draftTypeBadge").textContent = draftType;
+            document.getElementById("teamCountBadge").textContent = teamEntries.length + " teams";
+            document.getElementById("scoringTypeBadge").textContent = scoring.type || "—";
+
+            // Info grid
+            const infoGrid = document.getElementById("leagueInfoGrid");
+            const maxActive = rosterInfo.maxTotalActivePlayers || "—";
+            const maxReserve = rosterInfo.maxTotalReservePlayers || "—";
+            const maxTotal = rosterInfo.maxTotalPlayers || "—";
+
+            infoGrid.innerHTML = `
+                <div class="info-item">
+                    <div class="label">League</div>
+                    <div class="value">${leagueName}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Draft Type</div>
+                    <div class="value">${draftType}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Teams</div>
+                    <div class="value">${teamEntries.length}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Active Roster</div>
+                    <div class="value">${maxActive}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Reserve Spots</div>
+                    <div class="value">${maxReserve}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Max Players</div>
+                    <div class="value">${maxTotal}</div>
+                </div>
+            `;
+
+            // Teams
+            const teamList = document.getElementById("teamList");
+            teamList.innerHTML = teamEntries.map(([id, t]) => `
+                <li class="team-item">
+                    <span class="team-name">${t.name}</span>
+                    <span class="team-division">${t.division || ""}</span>
+                </li>
+            `).join("");
+
+            // Roster positions
+            const posConstraints = rosterInfo.positionConstraints || {};
+            const rosterGrid = document.getElementById("rosterGrid");
+            rosterGrid.innerHTML = Object.entries(posConstraints).map(([pos, info]) => {
+                const count = typeof info === "object" ? (info.max || info.count || "—") : info;
+                return `
+                    <div class="pos-badge">
+                        <div class="pos">${pos}</div>
+                        <div class="count">${count} slots</div>
+                    </div>
+                `;
+            }).join("") || "<p style='color:var(--text-muted)'>No position data available</p>";
+
+            // Scoring
+            const scoringBody = document.getElementById("scoringBody");
+            const categories = scoring.scoringCategorySettings || scoring.scoringCategories || [];
+            if (Array.isArray(categories) && categories.length > 0) {
+                scoringBody.innerHTML = categories.map(cat => {
+                    const name = cat.name || cat.shortName || cat.category || "—";
+                    const pts = cat.points !== undefined ? cat.points : (cat.value || "—");
+                    return `<tr><td>${name}</td><td>${pts}</td></tr>`;
+                }).join("");
+            } else if (typeof categories === "object" && !Array.isArray(categories)) {
+                scoringBody.innerHTML = Object.entries(categories).map(([name, val]) =>
+                    `<tr><td>${name}</td><td>${typeof val === "object" ? JSON.stringify(val) : val}</td></tr>`
+                ).join("");
+            } else {
+                scoringBody.innerHTML = `<tr><td colspan="2" style="color:var(--text-muted)">Scoring data will appear here once loaded</td></tr>`;
+            }
+        }
+
+        async function loadDraftInfo() {
+            const draftEl = document.getElementById("draftInfo");
+            try {
+                const resp = await fetch("/api/draft");
+                const data = await resp.json();
+
+                const state = data.draftState || "UNKNOWN";
+                const type = data.draftType || "—";
+                const startDate = data.startDate || "—";
+                const picks = data.draftPicks || [];
+
+                let stateClass = "pre";
+                if (state === "IN_PROGRESS") stateClass = "in-progress";
+                else if (state === "COMPLETED" || state === "COMPLETE") stateClass = "complete";
+
+                draftEl.innerHTML = `
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="label">Status</div>
+                            <div class="value"><span class="draft-status ${stateClass}">${state}</span></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Type</div>
+                            <div class="value">${type}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Start Date</div>
+                            <div class="value">${startDate}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Picks Made</div>
+                            <div class="value">${picks.length}</div>
+                        </div>
+                    </div>
+                `;
+            } catch {
+                draftEl.innerHTML = `<p style="color:var(--text-muted)">Could not load draft data</p>`;
+            }
+        }
+
+        // ── Init ────────────────────────────────────────────
+        checkConnection();
+    </script>
+</body>
+</html>
