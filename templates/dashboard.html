@@ -455,6 +455,7 @@
         }
 
         function renderLeagueInfo(data) {
+            if (!data) data = {};
             const leagueName = data.leagueName || "Unknown League";
             const teams = data.teamInfo || {};
             const teamEntries = Object.entries(teams);

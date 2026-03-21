@@ -70,9 +70,14 @@ FETCH_INTERCEPTOR = '''
         const method = (options && options.method || 'GET').toUpperCase();
         const urlStr = typeof url === 'string' ? url : url.toString();
 
-        // GET /api/connection → always connected
+        // GET /api/connection → always connected with static data
         if (urlStr === '/api/connection') {
-            return Promise.resolve(new Response(JSON.stringify({success: true, mode: "static"}), {status: 200, headers: {'Content-Type': 'application/json'}}));
+            return Promise.resolve(new Response(JSON.stringify({success: true, mode: "static", data: {leagueName: "Fantasia Hebraica", numTeams: 12, _static: true}}), {status: 200, headers: {'Content-Type': 'application/json'}}));
+        }
+
+        // GET /api/cached-league → return static league info
+        if (urlStr === '/api/cached-league') {
+            return Promise.resolve(new Response(JSON.stringify({leagueName: "Fantasia Hebraica", numTeams: 12, _static: true}), {status: 200, headers: {'Content-Type': 'application/json'}}));
         }
 
         // GET /api/draft-plans-data → static file
