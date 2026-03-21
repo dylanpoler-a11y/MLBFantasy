@@ -3,6 +3,7 @@
 import csv
 import json
 import os
+import time
 from flask import Flask, jsonify, render_template, request
 from dotenv import load_dotenv
 from fantrax_api import FantraxAPI
@@ -325,6 +326,107 @@ def save_plan_state():
     with open(PLAN_STATE_FILE, "w") as f:
         json.dump(body, f)
     return jsonify({"success": True})
+
+
+# ── Mock Draft ────────────────────────────────────────────────────────
+
+MOCK_DRAFTS_DIR = os.path.join(DATA_DIR, "mock_drafts")
+
+
+@app.route("/api/mock-draft/players")
+def mock_draft_players():
+    """Return the player pool for mock drafts."""
+    rankings_path = os.path.join(DATA_DIR, "custom_rankings.json")
+    if not os.path.exists(rankings_path):
+        return jsonify({"error": "Run calc_points.py first"}), 404
+    with open(rankings_path) as f:
+        players = json.load(f)
+    # Ensure all players have a reasonable auction value
+    for p in players:
+        val = float(p.get("auction_value", 0))
+        if val <= 0:
+            fpts = float(p.get("fpts", 0))
+            if fpts >= 680:
+                val = 40
+            elif fpts >= 600:
+                val = 30
+            elif fpts >= 550:
+                val = 20
+            elif fpts >= 500:
+                val = 14
+            elif fpts >= 450:
+                val = 8
+            elif fpts >= 400:
+                val = 4
+            elif fpts >= 350:
+                val = 2
+            else:
+                val = 1
+            p["auction_value"] = str(val)
+    return jsonify({"players": players})
+
+
+@app.route("/api/mock-draft/sessions")
+def list_mock_sessions():
+    """List all saved mock draft sessions."""
+    os.makedirs(MOCK_DRAFTS_DIR, exist_ok=True)
+    sessions = []
+    for fname in sorted(os.listdir(MOCK_DRAFTS_DIR), reverse=True):
+        if not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(MOCK_DRAFTS_DIR, fname)
+        try:
+            with open(fpath) as f:
+                data = json.load(f)
+            sessions.append({
+                "id": fname.replace(".json", ""),
+                "name": data.get("name", "Untitled"),
+                "plan": data.get("activePlan", "?"),
+                "picks": data.get("pickNum", 0),
+                "status": data.get("status", "in_progress"),
+                "savedAt": data.get("savedAt", ""),
+                "userFpts": data.get("userFpts", 0),
+                "userSpent": data.get("userSpent", 0),
+            })
+        except Exception:
+            continue
+    return jsonify({"sessions": sessions})
+
+
+@app.route("/api/mock-draft/sessions/<session_id>", methods=["GET"])
+def get_mock_session(session_id):
+    """Load a specific saved mock draft session."""
+    fpath = os.path.join(MOCK_DRAFTS_DIR, session_id + ".json")
+    if not os.path.exists(fpath):
+        return jsonify({"error": "Session not found"}), 404
+    with open(fpath) as f:
+        return jsonify(json.load(f))
+
+
+@app.route("/api/mock-draft/sessions", methods=["POST"])
+def save_mock_session():
+    """Save a mock draft session (new or update)."""
+    body = request.get_json()
+    if not body:
+        return jsonify({"error": "No data"}), 400
+    os.makedirs(MOCK_DRAFTS_DIR, exist_ok=True)
+    session_id = body.get("id") or f"mock_{int(time.time())}"
+    body["id"] = session_id
+    body["savedAt"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    fpath = os.path.join(MOCK_DRAFTS_DIR, session_id + ".json")
+    with open(fpath, "w") as f:
+        json.dump(body, f)
+    return jsonify({"success": True, "id": session_id})
+
+
+@app.route("/api/mock-draft/sessions/<session_id>", methods=["DELETE"])
+def delete_mock_session(session_id):
+    """Delete a saved mock draft session."""
+    fpath = os.path.join(MOCK_DRAFTS_DIR, session_id + ".json")
+    if os.path.exists(fpath):
+        os.remove(fpath)
+        return jsonify({"success": True})
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
