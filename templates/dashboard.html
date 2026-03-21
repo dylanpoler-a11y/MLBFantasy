@@ -937,7 +937,7 @@
                     html += `<button class="status-btn" onclick="setStatus(${idx},'pending')">RESET</button>`;
                     html += `</div></div>`;
                     html += `<div class="slot-player-row">`;
-                    html += `<span class="slot-player-name">${activePlayer.player}</span>`;
+                    html += `<span class="slot-player-name">${activePlayer.player} ${getPlayerBadges(activePlayer.player)}</span>`;
                     html += `<span class="slot-fpts">${activePlayer.fpts} fpts</span>`;
                     html += `</div>`;
                     html += `<div class="slot-price-row acquired-price">`;
@@ -1013,7 +1013,7 @@
                         const isOnBlock = mockCurrentAuction && mockCurrentAuction.player && mockCurrentAuction.player.player === p.player;
                         const onBlockClass = isOnBlock ? ' player-on-block' : '';
                         html += `<div class="slot-player-item ${rowClass}${overClass}${onBlockClass}">`;
-                        html += `<span class="spi-name">${p.player}</span>`;
+                        html += `<span class="spi-name">${p.player} ${getPlayerBadges(p.player)}</span>`;
                         html += `<span class="spi-price">$${p.est_price}</span>`;
                         html += `<span class="spi-fpts">${p.fpts}</span>`;
                         html += `<span class="steal-tag">S≤$${stealAt}</span>`;
@@ -1424,6 +1424,19 @@
         const MOCK_BUDGET = 260;
         const MOCK_NUM_TEAMS = 12;
         const MOCK_ROSTER_SIZE = 22;
+
+        // Badge helper: look up badges for a player name from the player pool
+        function getPlayerBadges(playerName) {
+            if (!playerName) return '';
+            const pool = (mockPlayerPool && mockPlayerPool.length > 0) ? mockPlayerPool : allPlayers;
+            const p = pool.find(x => x.player === playerName);
+            if (!p || !p.badges || p.badges.length === 0) return '';
+            return p.badges.map(b => {
+                if (b.includes('Breakout')) return '<span class="badge-breakout">' + b + '</span>';
+                if (b.includes('Expert')) return '<span class="badge-expert">' + b + '</span>';
+                return '<span class="badge-breakout">' + b + '</span>';
+            }).join(' ');
+        }
 
         async function loadMockPlayerPool() {
             try {
@@ -1886,7 +1899,7 @@
                 const isAffordable = maxForPos !== null && val <= maxForPos;
                 const rowCls = isCurrentPlayer ? 'pos-board-current' : (isAffordable ? '' : 'pos-board-expensive');
                 html += `<tr class="${rowCls}">`;
-                html += `<td>${p.player}</td>`;
+                html += `<td>${p.player} ${getPlayerBadges(p.player)}</td>`;
                 html += `<td>${p.fpts.toFixed(0)}</td>`;
                 html += `<td>$${val.toFixed(0)}</td>`;
                 html += `<td class="pos-board-steal">≤$${stealAt}</td>`;
@@ -2116,7 +2129,7 @@
             // Show specific roster slot from plan instead of generic position
             const mwsInfo = calcMaxWillingToSpend(player);
             const displayPos = mwsInfo.matchedSlot || player.pos;
-            document.getElementById('mockPlayerDetail').innerHTML = `${displayPos} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span>`;
+            document.getElementById('mockPlayerDetail').innerHTML = `${displayPos} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${getPlayerBadges(player.player)}`;
             document.getElementById('mockCurrentBid').textContent = '$' + startBid;
             document.getElementById('mockBidder').textContent = mockTeams[nominatorIdx].name;
             document.getElementById('mockBidInput').value = startBid + 1;

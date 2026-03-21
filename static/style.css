@@ -1324,3 +1324,26 @@ header h1 span { color: var(--accent); }
     .pos-board-tables { grid-template-columns: 1fr; }
     .mock-draft-controls { flex-wrap: wrap; }
 }
+
+/* Player Badges */
+.badge-breakout, .badge-expert {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 8px;
+    vertical-align: middle;
+    line-height: 1.4;
+    white-space: nowrap;
+    margin-left: 3px;
+}
+.badge-breakout {
+    background: rgba(255, 107, 53, 0.2);
+    color: #ff6b35;
+    border: 1px solid rgba(255, 107, 53, 0.4);
+}
+.badge-expert {
+    background: rgba(99, 102, 241, 0.2);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
