@@ -82,6 +82,13 @@
             "player": "Carlos Correa",
             "est_price": 5,
             "fpts": 432
+          },
+          {
+            "player": "Corey Seager",
+            "est_price": 13,
+            "fpts": 474,
+            "pos": "SS",
+            "team": "TEX"
           }
         ]
       },
@@ -105,14 +112,16 @@
             "fpts": 429
           },
           {
+            "player": "Drake Baldwin",
+            "est_price": 9,
+            "fpts": 454,
+            "pos": "C",
+            "team": "ATL"
+          },
+          {
             "player": "Ryan Jeffers",
             "est_price": 3,
             "fpts": 390
-          },
-          {
-            "player": "Ivan Herrera",
-            "est_price": 4,
-            "fpts": 406
           }
         ]
       },
@@ -203,6 +212,13 @@
             "team": "CHC"
           },
           {
+            "player": "Wyatt Langford",
+            "est_price": 14,
+            "fpts": 494,
+            "pos": "OF",
+            "team": "TEX"
+          },
+          {
             "player": "Sal Frelick",
             "est_price": 5,
             "fpts": 418,
@@ -229,6 +245,13 @@
             "player": "Jake Cronenworth",
             "est_price": 2,
             "fpts": 423
+          },
+          {
+            "player": "Bryson Stott",
+            "est_price": 12,
+            "fpts": 456,
+            "pos": "2B",
+            "team": "PHI"
           },
           {
             "player": "Ernie Clement",
@@ -401,6 +424,13 @@
             "player": "Joe Ryan",
             "est_price": 8,
             "fpts": 501
+          },
+          {
+            "player": "Cole Ragans",
+            "est_price": 15,
+            "fpts": 559,
+            "pos": "SP",
+            "team": "KC"
           }
         ]
       },
@@ -427,6 +457,20 @@
             "player": "Eury Perez",
             "est_price": 11,
             "fpts": 450
+          },
+          {
+            "player": "Drew Rasmussen",
+            "est_price": 4,
+            "fpts": 457,
+            "pos": "SP",
+            "team": "TB"
+          },
+          {
+            "player": "Nick Lodolo",
+            "est_price": 4,
+            "fpts": 445,
+            "pos": "SP",
+            "team": "CIN"
           }
         ]
       }
@@ -869,6 +913,13 @@
             "player": "Elly De La Cruz",
             "est_price": 29,
             "fpts": 579
+          },
+          {
+            "player": "Corey Seager",
+            "est_price": 13,
+            "fpts": 474,
+            "pos": "SS",
+            "team": "TEX"
           }
         ]
       },
@@ -942,6 +993,13 @@
             "player": "Ryan Jeffers",
             "est_price": 3,
             "fpts": 390
+          },
+          {
+            "player": "Drake Baldwin",
+            "est_price": 9,
+            "fpts": 454,
+            "pos": "C",
+            "team": "ATL"
           },
           {
             "player": "Ivan Herrera",
@@ -1020,6 +1078,13 @@
             "player": "Taylor Ward",
             "est_price": 13,
             "fpts": 519
+          },
+          {
+            "player": "Wyatt Langford",
+            "est_price": 14,
+            "fpts": 494,
+            "pos": "OF",
+            "team": "TEX"
           },
           {
             "player": "Heliot Ramos",
@@ -1260,6 +1325,20 @@
             "player": "Kevin Gausman",
             "est_price": 10,
             "fpts": 505
+          },
+          {
+            "player": "Drew Rasmussen",
+            "est_price": 4,
+            "fpts": 457,
+            "pos": "SP",
+            "team": "TB"
+          },
+          {
+            "player": "Nick Lodolo",
+            "est_price": 4,
+            "fpts": 445,
+            "pos": "SP",
+            "team": "CIN"
           }
         ]
       }
