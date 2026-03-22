@@ -1467,12 +1467,23 @@
             const unfilledPlanCost = currentTotal - totalSpent;
             const displayProjSpend = displaySpent + unfilledPlanCost;
 
+            // Calculate budget pressure — if proj spend > 260, you need to find savings
+            const budgetPressure = displayProjSpend - 260;
+            const spotsRemaining = displayTotalSlots - displayRoster;
+            const avgPerSlot = spotsRemaining > 0 ? Math.floor(remaining / spotsRemaining) : 0;
+
             let html = '<h3>Budget Overview</h3>';
             html += `<div class="budget-stat"><span>Total Budget</span><strong>$260</strong></div>`;
             html += `<div class="budget-stat"><span>Locked In</span><strong class="spent">$${displaySpent}</strong></div>`;
             html += `<div class="budget-stat"><span>Remaining</span><strong class="remaining">$${remaining}</strong></div>`;
             html += `<div class="budget-stat"><span>Slots Filled</span><strong>${displayRoster}/${displayTotalSlots}</strong></div>`;
-            html += `<div class="budget-stat"><span>Proj. Spend</span><strong>$${displayProjSpend}</strong></div>`;
+            html += `<div class="budget-stat"><span>Avg $/slot left</span><strong>$${avgPerSlot}</strong></div>`;
+            if (budgetPressure > 0) {
+                html += `<div class="budget-stat"><span>Plan Proj.</span><strong class="overpay">$${displayProjSpend} <span style="font-size:0.72rem">(over by $${budgetPressure})</span></strong></div>`;
+                html += `<div class="budget-warning">⚠️ Need to save $${budgetPressure} on remaining picks to stay in budget</div>`;
+            } else {
+                html += `<div class="budget-stat"><span>Plan Proj.</span><strong>$${displayProjSpend} <span class="savings" style="font-size:0.72rem">($${Math.abs(budgetPressure)} cushion)</span></strong></div>`;
+            }
 
             // Budget bar
             const pct = Math.min(100, (displaySpent / 260) * 100);
