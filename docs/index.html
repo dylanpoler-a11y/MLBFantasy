@@ -1781,6 +1781,23 @@
             return null;
         }
 
+        // Get proper market value for a player (handles $0 pitchers)
+        function getMarketValue(player) {
+            let val = parseFloat(player.auction_value) || 0;
+            if (val <= 0) {
+                const fpts = player.fpts || 0;
+                if (fpts >= 680) val = 40;
+                else if (fpts >= 600) val = 30;
+                else if (fpts >= 550) val = 20;
+                else if (fpts >= 500) val = 14;
+                else if (fpts >= 450) val = 8;
+                else if (fpts >= 400) val = 4;
+                else if (fpts >= 350) val = 2;
+                else val = 1;
+            }
+            return val;
+        }
+
         function getMaxBid(team) {
             const spotsLeft = MOCK_ROSTER_SIZE - team.roster.length;
             if (spotsLeft <= 0) return 0;
@@ -1820,7 +1837,7 @@
             const mentions = getPlayerPlanInfo(player.player);
             const plan = window._planData && window._planData[mockActivePlan];
             const recEl = document.getElementById('mockBidRec');
-            const marketVal = parseFloat(player.auction_value) || 1;
+            const marketVal = getMarketValue(player);
             const stealAt = getStealPrice(marketVal, player.fpts);
             const currentBid = mockCurrentAuction ? mockCurrentAuction.currentBid : 1;
 
@@ -1993,7 +2010,7 @@
             const maxBid = budget - (spotsLeft - 1); // absolute ceiling
 
             const plan = window._planData && window._planData[mockActivePlan];
-            if (!plan) return { maxWilling: Math.min(Math.round(parseFloat(player.auction_value) || 1), maxBid), needThisPos: false, maxBid, matchedSlot: null };
+            if (!plan) return { maxWilling: Math.min(Math.round(getMarketValue(player)), maxBid), needThisPos: false, maxBid, matchedSlot: null };
 
             const posGroup = getPositionGroup(player.pos);
 
@@ -2034,7 +2051,7 @@
 
             if (!needThisPos) {
                 // We don't need this position — only worth at steal price
-                const stealAt = getStealPrice(parseFloat(player.auction_value) || 1, player.fpts);
+                const stealAt = getStealPrice(getMarketValue(player), player.fpts);
                 return { maxWilling: stealAt, needThisPos: false, maxBid, matchedSlot: null, planPrice: 0 };
             }
 
@@ -2166,7 +2183,7 @@
             const showCount = Math.min(available.length, isAllTagged ? 30 : 15);
             for (let i = 0; i < showCount; i++) {
                 const p = available[i];
-                const val = parseFloat(p.auction_value) || 1;
+                const val = getMarketValue(p);
                 const stealAt = getStealPrice(val, p.fpts);
                 const isCurrentPlayer = player && p.player === player.player;
                 const pMws = isAllTagged ? calcMaxWillingToSpend(p) : null;
@@ -2353,7 +2370,7 @@
                 .sort((a, b) => b._score - a._score).slice(0, 40);
 
             list.innerHTML = filtered.map(p => {
-                const val = parseFloat(p.auction_value) || 1;
+                const val = getMarketValue(p);
                 const tag = p._inActive ? '<span class="nom-tag nom-target">TARGET</span>' :
                             p._mentions.length ? '<span class="nom-tag nom-plan">IN PLAN</span>' : '';
                 return `<div class="mock-nominee-row" onclick="userNominate('${p.player.replace(/'/g, "\\'")}')">
@@ -2378,7 +2395,7 @@
             for (const p of mockAvailable) {
                 const fpts = p.fpts || 0;
                 const score = fpts + (Math.random() * 80) - 40;
-                const val = parseFloat(p.auction_value) || 1;
+                const val = getMarketValue(p);
                 if (score > bestScore && val <= getMaxBid(team)) {
                     bestScore = score;
                     bestPlayer = p;
@@ -2404,7 +2421,7 @@
                 document.getElementById('mockBidCard').style.display = 'block';
                 document.getElementById('mockNominateBtn').style.display = 'none';
                 document.getElementById('mockNominatePanel').style.display = 'none';
-                const val = parseFloat(player.auction_value) || 1;
+                const val = getMarketValue(player);
                 document.getElementById('mockPlayerName').textContent = player.player;
                 const stealAt = getStealPrice(val, player.fpts);
                 // Show specific roster slot from plan instead of generic position
@@ -2439,7 +2456,7 @@
             if (mockFastForward) { ffResolveAuction(); return; }
             const auction = mockCurrentAuction;
             const player = auction.player;
-            const marketVal = parseFloat(player.auction_value) || 1;
+            const marketVal = getMarketValue(player);
             const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
             const noise = () => (Math.random() - 0.5) * 0.3;
 
@@ -2520,7 +2537,7 @@
                     const auction = mockCurrentAuction;
                     if (!auction) return;
                     let anyBid = false;
-                    const marketVal = parseFloat(auction.player.auction_value) || 1;
+                    const marketVal = getMarketValue(auction.player);
                     const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
                     for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
                         if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
@@ -2580,7 +2597,7 @@
             // Don't award immediately — let AI teams continue bidding among themselves
             // Resolve remaining AI bidding rounds, then award
             const auction = mockCurrentAuction;
-            const marketVal = parseFloat(auction.player.auction_value) || 1;
+            const marketVal = getMarketValue(auction.player);
             const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
 
             let rounds = 0;
@@ -2632,7 +2649,7 @@
                 winner.budget -= auction.currentBid;
                 mockAvailable = mockAvailable.filter(p => p.player !== player.player);
 
-                const val = parseFloat(player.auction_value) || 1;
+                const val = getMarketValue(player);
                 const delta = auction.currentBid - val;
                 mockLog_.unshift({
                     pick: mockPickNum, player: player.player, pos: player.pos,
@@ -3182,7 +3199,7 @@
             let overpayCount = 0;
             userRoster.forEach(p => {
                 const poolP = mockPlayerPool.find(x => x.player === p.player);
-                const realMkt = poolP ? parseFloat(poolP.auction_value) || 1 : (p.price || 1);
+                const realMkt = poolP ? getMarketValue(poolP) : (p.price || 1);
                 const stealPrice = getStealPrice(realMkt, p.fpts || 0);
                 if (p.price <= stealPrice) stealCount++;
                 if (p.price > realMkt + 3) overpayCount++;
@@ -3288,7 +3305,7 @@
                 if (!pick) continue;
                 // Look up real market value from player pool
                 const poolPlayer = mockPlayerPool.find(p => p.player === pick.player);
-                const mkt = poolPlayer ? parseFloat(poolPlayer.auction_value) || 1 : (pick.price || 1);
+                const mkt = poolPlayer ? getMarketValue(poolPlayer) : (pick.price || 1);
                 const stealAt = getStealPrice(mkt, pick.fpts || 0);
                 const savings = mkt - pick.price;
                 const isSteal = pick.price <= stealAt;
@@ -3566,7 +3583,7 @@
 
                 // Check if this player is in the active plan (by name match)
                 const plan = window._planData && window._planData[mockActivePlan];
-                if (!plan) return Math.min(parseFloat(player.auction_value) || 1, maxBid);
+                if (!plan) return Math.min(getMarketValue(player), maxBid);
 
                 let planPrice = 0;
                 let isPlanTarget = false;
@@ -3609,11 +3626,11 @@
                     }
                     if (needPos) {
                         // Need position but not a specific target — bid up to market value
-                        const val = parseFloat(player.auction_value) || 1;
+                        const val = getMarketValue(player);
                         return Math.min(Math.max(val, 1), maxBid);
                     }
                     // Don't need position — steal price only
-                    const val = parseFloat(player.auction_value) || 1;
+                    const val = getMarketValue(player);
                     const stealAt = getStealPrice(val, player.fpts);
                     return Math.min(Math.max(stealAt, 1), maxBid);
                 }
@@ -3637,7 +3654,7 @@
             // Resolve the entire auction instantly — ALL teams bid including user
             const auction = mockCurrentAuction;
             if (!auction) return;
-            const marketVal = parseFloat(auction.player.auction_value) || 1;
+            const marketVal = getMarketValue(auction.player);
             const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
 
             // Calculate user's willingness for this player
