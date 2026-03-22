@@ -3181,10 +3181,11 @@
             let stealCount = 0;
             let overpayCount = 0;
             userRoster.forEach(p => {
-                const stealPrice = getStealPrice(parseFloat(p.auction_value || p.market || p.price) || 1, p.fpts || 0);
+                const poolP = mockPlayerPool.find(x => x.player === p.player);
+                const realMkt = poolP ? parseFloat(poolP.auction_value) || 1 : (p.price || 1);
+                const stealPrice = getStealPrice(realMkt, p.fpts || 0);
                 if (p.price <= stealPrice) stealCount++;
-                const mkt = parseFloat(p.auction_value || p.market) || p.price;
-                if (p.price > mkt + 3) overpayCount++;
+                if (p.price > realMkt + 3) overpayCount++;
             });
             const stealScore = Math.min(100, (stealCount / Math.max(userRoster.length, 1)) * 300);
 
@@ -3285,7 +3286,9 @@
             for (let i = 0; i < rosterSlots.length; i++) {
                 const pick = assigned[i];
                 if (!pick) continue;
-                const mkt = parseFloat(pick.auction_value || pick.market) || pick.price;
+                // Look up real market value from player pool
+                const poolPlayer = mockPlayerPool.find(p => p.player === pick.player);
+                const mkt = poolPlayer ? parseFloat(poolPlayer.auction_value) || 1 : (pick.price || 1);
                 const stealAt = getStealPrice(mkt, pick.fpts || 0);
                 const savings = mkt - pick.price;
                 const isSteal = pick.price <= stealAt;
