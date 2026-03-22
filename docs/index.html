@@ -2000,6 +2000,7 @@
         }
 
         let _posBoardActivePos = null; // track selected position filter
+        let _posBoardBadgeFilter = null; // 'breakout', 'expert', or null
 
         function renderPositionBoard(player, forcedPos) {
             const board = document.getElementById('mockPosBoard');
@@ -2014,13 +2015,17 @@
             header.textContent = `Position Board — Drafted & Available`;
             board.style.display = 'block';
 
-            // Position filter tabs
+            // Position filter tabs + badge filters
             const positions = ['C','1B','2B','3B','SS','OF','SP','RP'];
             let html = '<div class="pos-filter-tabs">';
             positions.forEach(pos => {
                 const isActive = pos === posGroup || (pos === 'OF' && ['LF','CF','RF'].includes(posGroup));
-                html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
+                html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="_posBoardBadgeFilter=null;renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
             });
+            html += `<span style="margin-left:8px;border-left:1px solid var(--border);padding-left:8px"></span>`;
+            html += `<button class="pos-tab badge-tab-breakout${_posBoardBadgeFilter === 'breakout' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='breakout'?null:'breakout';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">🔥 Breakout</button>`;
+            html += `<button class="pos-tab badge-tab-expert${_posBoardBadgeFilter === 'expert' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='expert'?null:'expert';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">🎯 Expert</button>`;
+            html += `<button class="pos-tab${_posBoardBadgeFilter === 'all-tagged' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='all-tagged'?null:'all-tagged';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">ALL Tagged</button>`;
             html += '</div>';
 
             // Find all drafted players at this position
@@ -2029,10 +2034,20 @@
                 return pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
             }).sort((a, b) => b.price - a.price);
 
-            // Find available players at this position
+            // Find available players at this position, with optional badge filter
             const available = mockAvailable.filter(p => {
                 const pg = getPositionGroup(p.pos);
-                return pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
+                const posMatch = pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
+                const badges = (p.badges || []).join(' ').toLowerCase();
+                const hasBadge = badges.length > 0;
+
+                if (_posBoardBadgeFilter === 'all-tagged') {
+                    // Show ALL tagged players regardless of position
+                    return hasBadge;
+                }
+                if (_posBoardBadgeFilter === 'breakout') return posMatch && badges.includes('breakout');
+                if (_posBoardBadgeFilter === 'expert') return posMatch && badges.includes('expert');
+                return posMatch;
             }).sort((a, b) => (b.fpts || 0) - (a.fpts || 0));
 
             html += '<div class="pos-board-tables">';
@@ -2061,18 +2076,26 @@
             const maxLabel = maxForPos !== null ? `Plan: $${planPriceForPos} · Max: $${maxForPos}` : 'Not needed';
             const slotLabel = sampleMws.matchedSlot || posGroup;
 
-            html += `<div style="font-size:0.72rem;color:var(--green);margin-bottom:4px;font-weight:600">${slotLabel} — ${maxLabel}</div>`;
-            html += '<table class="pos-board-table"><thead><tr><th>Player</th><th>Fpts</th><th>Market</th><th>Steal</th></tr></thead><tbody>';
-            const showCount = Math.min(available.length, 15);
+            const isAllTagged = _posBoardBadgeFilter === 'all-tagged';
+            if (!isAllTagged) {
+                html += `<div style="font-size:0.72rem;color:var(--green);margin-bottom:4px;font-weight:600">${slotLabel} — ${maxLabel}</div>`;
+            } else {
+                html += `<div style="font-size:0.72rem;color:var(--green);margin-bottom:4px;font-weight:600">All Breakout + Expert Targets (${available.length} available)</div>`;
+            }
+            const posCol = isAllTagged ? '<th>Pos</th>' : '';
+            html += `<table class="pos-board-table"><thead><tr><th>Player</th>${posCol}<th>Fpts</th><th>Market</th><th>Steal</th></tr></thead><tbody>`;
+            const showCount = Math.min(available.length, isAllTagged ? 30 : 15);
             for (let i = 0; i < showCount; i++) {
                 const p = available[i];
                 const val = parseFloat(p.auction_value) || 1;
                 const stealAt = getStealPrice(val, p.fpts);
-                const isCurrentPlayer = p.player === player.player;
-                const isAffordable = maxForPos !== null && val <= maxForPos;
+                const isCurrentPlayer = player && p.player === player.player;
+                const pMws = isAllTagged ? calcMaxWillingToSpend(p) : null;
+                const isAffordable = isAllTagged ? (pMws && pMws.needThisPos) : (maxForPos !== null && val <= maxForPos);
                 const rowCls = isCurrentPlayer ? 'pos-board-current' : (isAffordable ? '' : 'pos-board-expensive');
                 html += `<tr class="${rowCls}">`;
                 html += `<td>${p.player} ${getPlayerBadges(p.player)}</td>`;
+                if (isAllTagged) html += `<td class="text-muted">${p.pos || '?'}</td>`;
                 html += `<td>${p.fpts.toFixed(0)}</td>`;
                 html += `<td>$${val.toFixed(0)}</td>`;
                 html += `<td class="pos-board-steal">≤$${stealAt}</td>`;
