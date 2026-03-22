@@ -579,7 +579,7 @@ header h1 span { color: var(--accent); }
 
 .roster-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
@@ -1073,7 +1073,7 @@ header h1 span { color: var(--accent); }
     margin-bottom: 12px;
 }
 .mock-plan-tracker .roster-board {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 /* Bidding + Roster/Log (2-column) */
