@@ -980,7 +980,11 @@
                             if (dynAlts[dynIdx]) activePlayer = dynAlts[dynIdx];
                         }
                     }
-                    const priceDelta = st.actual_price !== null ? activePlayer.est_price - st.actual_price : 0;
+                    // Compare against MARKET value, not plan price
+                    const pool = (mockPlayerPool && mockPlayerPool.length > 0) ? mockPlayerPool : allPlayers;
+                    const marketPlayer = pool.find(x => x.player === activePlayer.player);
+                    const marketVal = marketPlayer ? parseFloat(marketPlayer.auction_value) || activePlayer.est_price : activePlayer.est_price;
+                    const priceDelta = st.actual_price !== null ? marketVal - st.actual_price : 0;
 
                     html += `<div class="slot-status-btns">`;
                     html += `<button class="status-btn btn-acquired active">GOT</button>`;
@@ -1303,6 +1307,7 @@
             let totalSpent = 0, filledSlots = 0, totalSlots = plan.slots.length;
             let totalFpts = 0, originalFpts = 0;
             let priceSaved = 0, priceOver = 0;
+            let projSaved = 0; // savings from unfilled slots switching to cheaper alts
 
             plan.slots.forEach((slot, idx) => {
                 const st = getSlotState(planState.active_plan, idx);
@@ -1335,8 +1340,7 @@
                         currentTotal += visAlts[0].est_price;
                         totalFpts += visAlts[0].fpts;
                         const diff = slot.primary.est_price - visAlts[0].est_price;
-                        if (diff > 0) priceSaved += diff;
-                        if (diff < 0) priceOver += Math.abs(diff);
+                        if (diff > 0) projSaved += diff; // projected savings (not actual)
                     } else {
                         currentTotal += slot.primary.est_price;
                         totalFpts += slot.primary.fpts;
@@ -1347,7 +1351,6 @@
                 }
             });
 
-            const netSavings = priceSaved - priceOver;
             // Use actual mock draft values when available
             const displaySpent = actualTotalSpent !== null ? actualTotalSpent : totalSpent;
             const displayRoster = actualRosterSize !== null ? actualRosterSize : filledSlots;
@@ -1372,14 +1375,20 @@
             html += `<div class="budget-bar-fill" style="width:${pct}%"></div>`;
             html += `</div></div>`;
 
-            // Net savings/overage from plan changes
-            if (priceSaved > 0 || priceOver > 0) {
+            // Show actual picks vs plan + projected savings separately
+            const actualNet = priceSaved - priceOver;
+            const totalNet = actualNet + projSaved;
+            if (priceSaved > 0 || priceOver > 0 || projSaved > 0) {
                 html += `<div class="budget-delta">`;
-                if (priceSaved > 0) html += `<span class="savings">Saved: $${priceSaved}</span> `;
-                if (priceOver > 0) html += `<span class="overpay">Over: $${priceOver}</span> `;
-                html += `<strong>Net: <span class="${netSavings >= 0 ? 'savings' : 'overpay'}">${netSavings >= 0 ? '+' : ''}$${netSavings}</span></strong>`;
+                if (priceSaved > 0) html += `<span class="savings">Picks saved: $${priceSaved}</span> `;
+                if (priceOver > 0) html += `<span class="overpay">Picks over: $${priceOver}</span> `;
+                html += `<strong>Pick net: <span class="${actualNet >= 0 ? 'savings' : 'overpay'}">${actualNet >= 0 ? '+' : ''}$${actualNet}</span></strong>`;
+                if (projSaved > 0) {
+                    html += `<br><span class="text-muted" style="font-size:0.72rem">+ $${projSaved} projected savings from plan pivots</span>`;
+                }
                 html += `</div>`;
             }
+            const netSavings = totalNet;
 
             // ── SMART REALLOCATION ALGORITHM ──
             // When there are net savings, find the optimal upgrades ranked by fpts/$
