@@ -2603,54 +2603,64 @@
         function awardPlayer() {
             clearInterval(mockBidTimeout);
             if (!mockCurrentAuction) return;
-            const auction = mockCurrentAuction;
-            const winner = mockTeams[auction.currentBidder];
-            const player = auction.player;
-            const isUser = auction.currentBidder === mockUserTeamIdx;
+            try {
+                const auction = mockCurrentAuction;
+                const winner = mockTeams[auction.currentBidder];
+                const player = auction.player;
+                const isUser = auction.currentBidder === mockUserTeamIdx;
 
-            winner.roster.push({
-                player: player.player, pos: player.pos, team: player.team,
-                fpts: player.fpts, price: auction.currentBid
-            });
-            winner.budget -= auction.currentBid;
-            mockAvailable = mockAvailable.filter(p => p.player !== player.player);
-
-            const val = parseFloat(player.auction_value) || 1;
-            const delta = auction.currentBid - val;
-            mockLog_.unshift({
-                pick: mockPickNum, player: player.player, pos: player.pos,
-                team: winner.name, price: auction.currentBid, market: val,
-                delta: delta, isUser: isUser, fpts: player.fpts
-            });
-
-            // ── Adapt the plan ───────────────────────────
-            adaptPlanAfterPick(player.player, auction.currentBid, isUser);
-
-            // Clear cached dynamic alts so they regenerate without drafted players
-            if (window._planData && window._planData[mockActivePlan]) {
-                window._planData[mockActivePlan].slots.forEach((slot, idx) => {
-                    const key = mockActivePlan + '_' + idx;
-                    const st = planState.slots[key];
-                    if (st && st.dynamicAlts) st.dynamicAlts = null;
+                winner.roster.push({
+                    player: player.player, pos: player.pos, team: player.team,
+                    fpts: player.fpts, price: auction.currentBid
                 });
-            }
+                winner.budget -= auction.currentBid;
+                mockAvailable = mockAvailable.filter(p => p.player !== player.player);
 
-            document.getElementById('mockBidCard').style.display = 'none';
-            document.getElementById('mockBidTimer').style.display = 'none';
-            document.getElementById('mockBidRec').style.display = 'none';
-            // Keep position board visible — refresh with last selected position
-            if (_posBoardActivePos) {
-                renderPositionBoard(null, _posBoardActivePos);
-            }
-            updateMockUI();
-            renderRosterBoard('mockRosterBoard');
-            renderBudgetPanel('mockBudgetPanel');
-            renderMockRoster();
-            renderMockLog();
-            scorePlans();
+                const val = parseFloat(player.auction_value) || 1;
+                const delta = auction.currentBid - val;
+                mockLog_.unshift({
+                    pick: mockPickNum, player: player.player, pos: player.pos,
+                    team: winner.name, price: auction.currentBid, market: val,
+                    delta: delta, isUser: isUser, fpts: player.fpts
+                });
 
-            mockNominatorIdx = (mockNominatorIdx + 1) % MOCK_NUM_TEAMS;
-            setTimeout(() => nextMockNomination(), mockFastForward ? 50 : 600);
+                // ── Adapt the plan ───────────────────────────
+                try { adaptPlanAfterPick(player.player, auction.currentBid, isUser); } catch(e) { console.error('adaptPlanAfterPick error:', e); }
+
+                // Clear cached dynamic alts so they regenerate without drafted players
+                if (window._planData && window._planData[mockActivePlan]) {
+                    window._planData[mockActivePlan].slots.forEach((slot, idx) => {
+                        const key = mockActivePlan + '_' + idx;
+                        const st = planState.slots[key];
+                        if (st && st.dynamicAlts) st.dynamicAlts = null;
+                    });
+                }
+
+                mockCurrentAuction = null; // Clear BEFORE rendering to avoid stale state
+
+                document.getElementById('mockBidCard').style.display = 'none';
+                document.getElementById('mockBidTimer').style.display = 'none';
+                document.getElementById('mockBidRec').style.display = 'none';
+                // Keep position board visible — refresh with last selected position
+                try {
+                    if (_posBoardActivePos) renderPositionBoard(null, _posBoardActivePos);
+                } catch(e) { console.error('renderPositionBoard error:', e); }
+                try { updateMockUI(); } catch(e) { console.error('updateMockUI error:', e); }
+                try { renderRosterBoard('mockRosterBoard'); } catch(e) { console.error('renderRosterBoard error:', e); }
+                try { renderBudgetPanel('mockBudgetPanel'); } catch(e) { console.error('renderBudgetPanel error:', e); }
+                try { renderMockRoster(); } catch(e) { console.error('renderMockRoster error:', e); }
+                try { renderMockLog(); } catch(e) { console.error('renderMockLog error:', e); }
+                try { scorePlans(); } catch(e) { console.error('scorePlans error:', e); }
+
+                mockNominatorIdx = (mockNominatorIdx + 1) % MOCK_NUM_TEAMS;
+                setTimeout(() => nextMockNomination(), mockFastForward ? 50 : 600);
+            } catch(e) {
+                console.error('awardPlayer fatal error:', e);
+                mockCurrentAuction = null;
+                // Force continue the draft even if something broke
+                mockNominatorIdx = (mockNominatorIdx + 1) % MOCK_NUM_TEAMS;
+                setTimeout(() => nextMockNomination(), 1000);
+            }
         }
 
         function adaptPlanAfterPick(playerName, price, isUser) {
