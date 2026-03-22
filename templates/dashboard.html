@@ -1074,6 +1074,7 @@
                         const isOnBlock = mockCurrentAuction && mockCurrentAuction.player && mockCurrentAuction.player.player === p.player;
                         const onBlockClass = isOnBlock ? ' player-on-block' : '';
                         html += `<div class="slot-player-item ${rowClass}${overClass}${onBlockClass}">`;
+                        if (isOnBlock) html += `<span class="on-block-label">🔔 NOW</span>`;
                         html += `<span class="spi-name">${p.player} ${getPlayerBadges(p.player)}</span>`;
                         html += `<span class="spi-price">$${p.est_price}</span>`;
                         html += `<span class="spi-fpts">${p.fpts}</span>`;

@@ -1329,11 +1329,31 @@ header h1 span { color: var(--accent); }
     50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.55); }
 }
 .player-on-block {
-    background: rgba(245, 158, 11, 0.2) !important;
-    border-left: 3px solid #f59e0b !important;
+    background: rgba(245, 158, 11, 0.3) !important;
+    border: 2px solid #f59e0b !important;
+    border-radius: 6px !important;
     font-weight: 700;
+    position: relative;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+    animation: on-block-flash 1.2s ease-in-out infinite;
+}
+@keyframes on-block-flash {
+    0%, 100% { background: rgba(245, 158, 11, 0.3) !important; }
+    50% { background: rgba(245, 158, 11, 0.45) !important; }
 }
 .player-on-block .spi-name { color: #fbbf24 !important; }
+.on-block-label {
+    display: inline-block;
+    background: #f59e0b;
+    color: #000;
+    font-size: 0.55rem;
+    font-weight: 800;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-right: 4px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+}
 
 /* ── Draft Controls (Pause/Save/Restart) ── */
 .mock-draft-controls {
