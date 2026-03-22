@@ -2486,6 +2486,36 @@
         function mockPass() {
             if (!mockCurrentAuction) return;
             clearInterval(mockBidTimeout);
+            // Don't award immediately — let AI teams continue bidding among themselves
+            // Resolve remaining AI bidding rounds, then award
+            const auction = mockCurrentAuction;
+            const marketVal = parseFloat(auction.player.auction_value) || 1;
+            const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
+
+            let rounds = 0;
+            let keepBidding = true;
+            while (keepBidding && rounds < 30) {
+                rounds++;
+                keepBidding = false;
+                for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
+                    if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
+                    const team = mockTeams[i];
+                    if (team.roster.length >= MOCK_ROSTER_SIZE) continue;
+                    const maxBid = getMaxBid(team);
+                    if (maxBid <= auction.currentBid) continue;
+                    const will = marketVal * aggMult * (1 + (Math.random()-0.5)*0.3);
+                    if (auction.currentBid < will && auction.currentBid + 1 <= maxBid) {
+                        const increment = Math.max(1, Math.floor(Math.random() * 2));
+                        auction.currentBid = Math.min(auction.currentBid + increment, maxBid, Math.ceil(will));
+                        auction.currentBidder = i;
+                        keepBidding = true;
+                        break;
+                    }
+                }
+            }
+            // Update UI with final price
+            document.getElementById('mockCurrentBid').textContent = '$' + auction.currentBid;
+            document.getElementById('mockBidder').textContent = mockTeams[auction.currentBidder].name;
             awardPlayer();
         }
 
