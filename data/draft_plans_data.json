@@ -18,11 +18,11 @@
         "slot": "3B", "category": "hitting", "priority": 2,
         "primary": { "player": "Jose Ramirez", "est_price": 37, "fpts": 657, "anchor": true },
         "alternatives": [
-          { "player": "Junior Caminero", "est_price": 24, "fpts": 585 },
-          { "player": "Manny Machado", "est_price": 22, "fpts": 576 },
-          { "player": "Eugenio Suarez", "est_price": 18, "fpts": 558 }
+          { "player": "Junior Caminero", "est_price": 30, "fpts": 585 },
+          { "player": "Manny Machado", "est_price": 28, "fpts": 576 },
+          { "player": "Maikel Garcia", "est_price": 14, "fpts": 502 }
         ],
-        "walk_away": { "comfortable": 42, "stretch": 45, "walk_away": 50 }
+        "walk_away": { "comfortable": 44, "stretch": 48, "walk_away": 53 }
       },
       {
         "slot": "SS", "category": "hitting", "priority": 3,
