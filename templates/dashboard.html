@@ -1273,6 +1273,12 @@
             const panel = document.getElementById(panelId || 'budgetPanel');
             if (!panel) return;
 
+            // Use actual mock draft team data when available for accurate budget tracking
+            const isMockDraft = panelId === 'mockBudgetPanel' && typeof mockTeams !== 'undefined' && typeof mockUserTeamIdx !== 'undefined';
+            const mockUser = isMockDraft ? mockTeams[mockUserTeamIdx] : null;
+            const actualTotalSpent = mockUser ? (260 - mockUser.budget) : null;
+            const actualRosterSize = mockUser ? mockUser.roster.length : null;
+
             // Calculate current costs vs original plan costs
             let originalTotal = 0, currentTotal = 0;
             let totalSpent = 0, filledSlots = 0, totalSlots = plan.slots.length;
@@ -1323,20 +1329,25 @@
             });
 
             const netSavings = priceSaved - priceOver;
-            const remaining = 260 - totalSpent;
-            const budgetForRemaining = 260 - totalSpent;
-            const committedForRemaining = currentTotal - totalSpent;
+            // Use actual mock draft values when available
+            const displaySpent = actualTotalSpent !== null ? actualTotalSpent : totalSpent;
+            const displayRoster = actualRosterSize !== null ? actualRosterSize : filledSlots;
+            const remaining = 260 - displaySpent;
+            const displayTotalSlots = isMockDraft ? MOCK_ROSTER_SIZE : totalSlots;
+            // Projected spend = what we've actually spent + projected cost of unfilled plan slots
+            const unfilledPlanCost = currentTotal - totalSpent;
+            const displayProjSpend = displaySpent + unfilledPlanCost;
 
             let html = '<h3>Budget Overview</h3>';
             html += `<div class="budget-stat"><span>Total Budget</span><strong>$260</strong></div>`;
-            html += `<div class="budget-stat"><span>Locked In</span><strong class="spent">$${totalSpent}</strong></div>`;
+            html += `<div class="budget-stat"><span>Locked In</span><strong class="spent">$${displaySpent}</strong></div>`;
             html += `<div class="budget-stat"><span>Remaining</span><strong class="remaining">$${remaining}</strong></div>`;
-            html += `<div class="budget-stat"><span>Slots Filled</span><strong>${filledSlots}/${totalSlots}</strong></div>`;
-            html += `<div class="budget-stat"><span>Proj. Spend</span><strong>$${currentTotal}</strong></div>`;
+            html += `<div class="budget-stat"><span>Slots Filled</span><strong>${displayRoster}/${displayTotalSlots}</strong></div>`;
+            html += `<div class="budget-stat"><span>Proj. Spend</span><strong>$${displayProjSpend}</strong></div>`;
 
             // Budget bar
-            const pct = Math.min(100, (totalSpent / 260) * 100);
-            const projPct = Math.min(100, (currentTotal / 260) * 100);
+            const pct = Math.min(100, (displaySpent / 260) * 100);
+            const projPct = Math.min(100, (displayProjSpend / 260) * 100);
             html += `<div class="budget-bar-wrap"><div class="budget-bar-bg">`;
             html += `<div class="budget-bar-proj" style="width:${projPct}%;opacity:0.3"></div>`;
             html += `<div class="budget-bar-fill" style="width:${pct}%"></div>`;
