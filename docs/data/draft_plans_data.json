@@ -1,1498 +1,629 @@
 {
   "A": {
-    "name": "Ace SP + Elite 3B (Walk-Away Discipline)",
-    "strategy": "Lock Skubal/Skenes (max $55), then Ramirez (max $45). Fill CF/SS with value. Chase Burns is the sleeper anchor.",
-    "budget_split": {
-      "hitting": 155,
-      "pitching": 105
-    },
+    "name": "Ace SP + Ramirez (Dream Scenario)",
+    "strategy": "Lock Skubal or Skenes as your ace, then Ramirez at 3B. You'll spend ~$80 on two elite anchors and fill the rest with value plays and breakout candidates.",
+    "budget_split": { "hitting": 150, "pitching": 110 },
     "slots": [
       {
-        "slot": "SP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Tarik Skubal",
-          "est_price": 40,
-          "fpts": 703,
-          "anchor": true
-        },
+        "slot": "SP1", "category": "pitching", "priority": 1,
+        "primary": { "player": "Tarik Skubal", "est_price": 40, "fpts": 703, "anchor": true },
         "alternatives": [
-          {
-            "player": "Paul Skenes",
-            "est_price": 38,
-            "fpts": 680
-          },
-          {
-            "player": "Garrett Crochet",
-            "est_price": 38,
-            "fpts": 604
-          },
-          {
-            "player": "Hunter Brown",
-            "est_price": 22,
-            "fpts": 588
-          }
+          { "player": "Paul Skenes", "est_price": 38, "fpts": 680 },
+          { "player": "Garrett Crochet", "est_price": 30, "fpts": 604 },
+          { "player": "Hunter Brown", "est_price": 22, "fpts": 588 }
         ],
-        "walk_away": {
-          "comfortable": 48,
-          "stretch": 53,
-          "walk_away": 56
-        },
-        "priority": 1
+        "walk_away": { "comfortable": 48, "stretch": 53, "walk_away": 56 }
       },
       {
-        "slot": "3B",
-        "category": "hitting",
-        "primary": {
-          "player": "Jose Ramirez",
-          "est_price": 37,
-          "fpts": 657,
-          "anchor": true
-        },
+        "slot": "3B", "category": "hitting", "priority": 2,
+        "primary": { "player": "Jose Ramirez", "est_price": 37, "fpts": 657, "anchor": true },
         "alternatives": [
-          {
-            "player": "Junior Caminero",
-            "est_price": 24,
-            "fpts": 585
-          },
-          {
-            "player": "Manny Machado",
-            "est_price": 22,
-            "fpts": 576
-          },
-          {
-            "player": "Eugenio Suarez",
-            "est_price": 18,
-            "fpts": 558
-          }
+          { "player": "Junior Caminero", "est_price": 24, "fpts": 585 },
+          { "player": "Manny Machado", "est_price": 22, "fpts": 576 },
+          { "player": "Eugenio Suarez", "est_price": 18, "fpts": 558 }
         ],
-        "walk_away": {
-          "comfortable": 42,
-          "stretch": 45,
-          "walk_away": 50
-        },
-        "priority": 2
+        "walk_away": { "comfortable": 42, "stretch": 45, "walk_away": 50 }
       },
       {
-        "slot": "CF",
-        "category": "hitting",
-        "primary": {
-          "player": "Jackson Chourio",
-          "est_price": 24,
-          "fpts": 578
-        },
+        "slot": "SS", "category": "hitting", "priority": 3,
+        "primary": { "player": "Willy Adames", "est_price": 18, "fpts": 555 },
         "alternatives": [
-          {
-            "player": "Riley Greene",
-            "est_price": 16,
-            "fpts": 539,
-            "pos": "LF/CF",
-            "team": "DET"
-          },
-          {
-            "player": "Jackson Merrill",
-            "est_price": 16,
-            "fpts": 533,
-            "pos": "CF/LF",
-            "team": "SD"
-          },
-          {
-            "player": "James Wood",
-            "est_price": 18,
-            "fpts": 533,
-            "pos": "CF/LF",
-            "team": "WSH"
-          }
+          { "player": "Geraldo Perdomo", "est_price": 16, "fpts": 540 },
+          { "player": "Zach Neto", "est_price": 19, "fpts": 535 },
+          { "player": "Carlos Correa", "est_price": 5, "fpts": 432 }
         ],
-        "walk_away": {
-          "comfortable": 29,
-          "stretch": 32,
-          "walk_away": 37
-        },
-        "priority": 3
+        "walk_away": { "comfortable": 22, "stretch": 25, "walk_away": 28 }
       },
       {
-        "slot": "SS",
-        "category": "hitting",
-        "primary": {
-          "player": "Willy Adames",
-          "est_price": 14,
-          "fpts": 555
-        },
+        "slot": "CF", "category": "hitting", "priority": 4,
+        "primary": { "player": "Jackson Chourio", "est_price": 23, "fpts": 578 },
         "alternatives": [
-          {
-            "player": "Jeremy Pena",
-            "est_price": 14,
-            "fpts": 495,
-            "pos": "SS",
-            "team": "HOU"
-          },
-          {
-            "player": "Zach Neto",
-            "est_price": 19,
-            "fpts": 535,
-            "pos": "SS",
-            "team": "LAA"
-          },
-          {
-            "player": "Carlos Correa",
-            "est_price": 5,
-            "fpts": 432
-          },
-          {
-            "player": "Corey Seager",
-            "est_price": 13,
-            "fpts": 474,
-            "pos": "SS",
-            "team": "TEX"
-          }
+          { "player": "Riley Greene", "est_price": 16, "fpts": 539 },
+          { "player": "Jackson Merrill", "est_price": 16, "fpts": 533 },
+          { "player": "James Wood", "est_price": 18, "fpts": 533 }
         ],
-        "walk_away": {
-          "comfortable": 19,
-          "stretch": 22,
-          "walk_away": 27
-        },
-        "priority": 4
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 35 }
       },
       {
-        "slot": "SP3",
-        "category": "pitching",
-        "primary": {
-          "player": "Chase Burns",
-          "est_price": 8,
-          "fpts": 500
-        },
+        "slot": "C", "category": "hitting", "priority": 7,
+        "primary": { "player": "William Contreras", "est_price": 14, "fpts": 522 },
         "alternatives": [
-          {
-            "player": "Dylan Cease",
-            "est_price": 10,
-            "fpts": 497
-          },
-          {
-            "player": "Nick Pivetta",
-            "est_price": 10,
-            "fpts": 515
-          },
-          {
-            "player": "Sonny Gray",
-            "est_price": 10,
-            "fpts": 515
-          }
+          { "player": "Cal Raleigh", "est_price": 24, "fpts": 586 },
+          { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
+          { "player": "Drake Baldwin", "est_price": 9, "fpts": 454 }
         ],
-        "walk_away": {
-          "comfortable": 12,
-          "stretch": 15,
-          "walk_away": 18
-        },
-        "priority": 5
+        "walk_away": { "comfortable": 17, "stretch": 20, "walk_away": 25 }
       },
       {
-        "slot": "SP2",
-        "category": "pitching",
-        "primary": {
-          "player": "Logan Webb",
-          "est_price": 20,
-          "fpts": 552
-        },
+        "slot": "1B", "category": "hitting", "priority": 5,
+        "primary": { "player": "Rafael Devers", "est_price": 17, "fpts": 549 },
         "alternatives": [
-          {
-            "player": "Framber Valdez",
-            "est_price": 14,
-            "fpts": 534
-          },
-          {
-            "player": "Max Fried",
-            "est_price": 15,
-            "fpts": 537
-          },
-          {
-            "player": "Bryan Woo",
-            "est_price": 14,
-            "fpts": 535
-          }
+          { "player": "Brent Rooker", "est_price": 23, "fpts": 582 },
+          { "player": "Vladimir Guerrero", "est_price": 25, "fpts": 621 },
+          { "player": "Nick Kurtz", "est_price": 25, "fpts": 597 }
         ],
-        "walk_away": {
-          "comfortable": 23,
-          "stretch": 27,
-          "walk_away": 32
-        },
-        "priority": 6
+        "walk_away": { "comfortable": 20, "stretch": 24, "walk_away": 28 }
       },
       {
-        "slot": "C",
-        "category": "hitting",
-        "primary": {
-          "player": "William Contreras",
-          "est_price": 14,
-          "fpts": 522
-        },
+        "slot": "LF", "category": "hitting", "priority": 8,
+        "primary": { "player": "Randy Arozarena", "est_price": 17, "fpts": 530 },
         "alternatives": [
-          {
-            "player": "Cal Raleigh",
-            "est_price": 24,
-            "fpts": 586
-          },
-          {
-            "player": "Adley Rutschman",
-            "est_price": 3,
-            "fpts": 429
-          },
-          {
-            "player": "Drake Baldwin",
-            "est_price": 9,
-            "fpts": 454,
-            "pos": "C",
-            "team": "ATL"
-          },
-          {
-            "player": "Ryan Jeffers",
-            "est_price": 3,
-            "fpts": 390
-          }
+          { "player": "Brandon Nimmo", "est_price": 14, "fpts": 518 },
+          { "player": "Cody Bellinger", "est_price": 17, "fpts": 525 },
+          { "player": "Wyatt Langford", "est_price": 14, "fpts": 494 }
         ],
-        "walk_away": {
-          "comfortable": 17,
-          "stretch": 20,
-          "walk_away": 25
-        },
-        "priority": 7
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "1B",
-        "category": "hitting",
-        "primary": {
-          "player": "Rafael Devers",
-          "est_price": 17,
-          "fpts": 549
-        },
+        "slot": "2B", "category": "hitting", "priority": 12,
+        "primary": { "player": "Brendan Donovan", "est_price": 4, "fpts": 434 },
         "alternatives": [
-          {
-            "player": "Brent Rooker",
-            "est_price": 23,
-            "fpts": 582,
-            "pos": "OF/DH",
-            "team": "ATH"
-          },
-          {
-            "player": "Vladimir Guerrero",
-            "est_price": 25,
-            "fpts": 621,
-            "pos": "1B/DH",
-            "team": "TOR"
-          },
-          {
-            "player": "Nick Kurtz",
-            "est_price": 25,
-            "fpts": 597
-          },
-          {
-            "player": "Jonathan Aranda",
-            "est_price": 4,
-            "fpts": 424
-          }
+          { "player": "Gleyber Torres", "est_price": 9, "fpts": 493 },
+          { "player": "Jorge Polanco", "est_price": 3, "fpts": 395 },
+          { "player": "Bryson Stott", "est_price": 12, "fpts": 456 }
         ],
-        "walk_away": {
-          "comfortable": 20,
-          "stretch": 24,
-          "walk_away": 28
-        },
-        "priority": 8
+        "walk_away": { "comfortable": 7, "stretch": 10, "walk_away": 14 }
       },
       {
-        "slot": "LF",
-        "category": "hitting",
-        "primary": {
-          "player": "Randy Arozarena",
-          "est_price": 17,
-          "fpts": 530
-        },
+        "slot": "RF", "category": "hitting", "priority": 9,
+        "primary": { "player": "Heliot Ramos", "est_price": 2, "fpts": 428 },
         "alternatives": [
-          {
-            "player": "Brandon Nimmo",
-            "est_price": 14,
-            "fpts": 518,
-            "pos": "LF",
-            "team": "NYM"
-          },
-          {
-            "player": "Cody Bellinger",
-            "est_price": 17,
-            "fpts": 525,
-            "pos": "LF/1B",
-            "team": "CHC"
-          },
-          {
-            "player": "Wyatt Langford",
-            "est_price": 14,
-            "fpts": 494,
-            "pos": "OF",
-            "team": "TEX"
-          },
-          {
-            "player": "Alec Burleson",
-            "est_price": 7,
-            "fpts": 442,
-            "pos": "1B/OF/DH",
-            "team": "STL"
-          }
+          { "player": "Taylor Ward", "est_price": 13, "fpts": 519 },
+          { "player": "Roman Anthony", "est_price": 22, "fpts": 578 },
+          { "player": "Jac Caglianone", "est_price": 10, "fpts": 475 }
         ],
-        "walk_away": {
-          "comfortable": 20,
-          "stretch": 24,
-          "walk_away": 28
-        },
-        "priority": 9
+        "walk_away": { "comfortable": 5, "stretch": 8, "walk_away": 12 }
       },
       {
-        "slot": "RP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Mason Miller",
-          "est_price": 18,
-          "fpts": 376
-        },
+        "slot": "UT", "category": "hitting", "priority": 13,
+        "primary": { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
         "alternatives": [
-          {
-            "player": "Andres Munoz",
-            "est_price": 16,
-            "fpts": 366
-          },
-          {
-            "player": "Jhoan Duran",
-            "est_price": 14,
-            "fpts": 363
-          },
-          {
-            "player": "Emmanuel Clase",
-            "est_price": 15,
-            "fpts": 340
-          },
-          {
-            "player": "Devin Williams",
-            "est_price": 14,
-            "fpts": 339
-          }
+          { "player": "Nolan Arenado", "est_price": 4, "fpts": 434 },
+          { "player": "Spencer Torkelson", "est_price": 7, "fpts": 469 },
+          { "player": "Isaac Paredes", "est_price": 2, "fpts": 375 }
         ],
-        "walk_away": {
-          "comfortable": 20,
-          "stretch": 24,
-          "walk_away": 28
-        },
-        "priority": 10
+        "walk_away": { "comfortable": 5, "stretch": 8, "walk_away": 12 }
       },
       {
-        "slot": "SP4",
-        "category": "pitching",
-        "primary": {
-          "player": "Aaron Nola",
-          "est_price": 6,
-          "fpts": 480
-        },
+        "slot": "SP2", "category": "pitching", "priority": 6,
+        "primary": { "player": "Logan Webb", "est_price": 20, "fpts": 552 },
         "alternatives": [
-          {
-            "player": "Jack Flaherty",
-            "est_price": 6,
-            "fpts": 470
-          },
-          {
-            "player": "Sean Manaea",
-            "est_price": 5,
-            "fpts": 440
-          },
-          {
-            "player": "Joe Ryan",
-            "est_price": 8,
-            "fpts": 501
-          },
-          {
-            "player": "Cole Ragans",
-            "est_price": 15,
-            "fpts": 559,
-            "pos": "SP",
-            "team": "KC"
-          }
+          { "player": "Framber Valdez", "est_price": 14, "fpts": 534 },
+          { "player": "Max Fried", "est_price": 15, "fpts": 537 },
+          { "player": "Bryan Woo", "est_price": 14, "fpts": 535 }
         ],
-        "walk_away": {
-          "comfortable": 8,
-          "stretch": 11,
-          "walk_away": 14
-        },
-        "priority": 11
+        "walk_away": { "comfortable": 23, "stretch": 27, "walk_away": 30 }
       },
       {
-        "slot": "2B",
-        "category": "hitting",
-        "primary": {
-          "player": "Brendan Donovan",
-          "est_price": 4,
-          "fpts": 434
-        },
+        "slot": "SP3", "category": "pitching", "priority": 10,
+        "primary": { "player": "Chase Burns", "est_price": 8, "fpts": 500 },
         "alternatives": [
-          {
-            "player": "Gleyber Torres",
-            "est_price": 7,
-            "fpts": 480
-          },
-          {
-            "player": "Jorge Polanco",
-            "est_price": 3,
-            "fpts": 395,
-            "pos": "2B/DH",
-            "team": "NYM"
-          },
-          {
-            "player": "Bryson Stott",
-            "est_price": 12,
-            "fpts": 456,
-            "pos": "2B",
-            "team": "PHI"
-          },
-          {
-            "player": "Ernie Clement",
-            "est_price": 3,
-            "fpts": 411
-          }
+          { "player": "Dylan Cease", "est_price": 10, "fpts": 497 },
+          { "player": "Nick Pivetta", "est_price": 10, "fpts": 515 },
+          { "player": "Sonny Gray", "est_price": 10, "fpts": 515 }
         ],
-        "walk_away": {
-          "comfortable": 7,
-          "stretch": 10,
-          "walk_away": 14
-        },
-        "priority": 12
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
       },
       {
-        "slot": "RF",
-        "category": "hitting",
-        "primary": {
-          "player": "Heliot Ramos",
-          "est_price": 2,
-          "fpts": 428
-        },
+        "slot": "RP1", "category": "pitching", "priority": 11,
+        "primary": { "player": "Mason Miller", "est_price": 18, "fpts": 376 },
         "alternatives": [
-          {
-            "player": "Taylor Ward",
-            "est_price": 13,
-            "fpts": 519,
-            "pos": "LF/RF",
-            "team": "LAA"
-          },
-          {
-            "player": "Roman Anthony",
-            "est_price": 22,
-            "fpts": 578,
-            "pos": "RF/LF",
-            "team": "BOS"
-          },
-          {
-            "player": "Jac Caglianone",
-            "est_price": 10,
-            "fpts": 475,
-            "pos": "RF/1B",
-            "team": "KC"
-          }
+          { "player": "Andres Munoz", "est_price": 16, "fpts": 366 },
+          { "player": "Jhoan Duran", "est_price": 14, "fpts": 363 },
+          { "player": "Emmanuel Clase", "est_price": 15, "fpts": 340 }
         ],
-        "walk_away": {
-          "comfortable": 5,
-          "stretch": 8,
-          "walk_away": 12
-        },
-        "priority": 13
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "UT",
-        "category": "hitting",
-        "primary": {
-          "player": "Adley Rutschman",
-          "est_price": 3,
-          "fpts": 429
-        },
+        "slot": "SP4", "category": "pitching", "priority": 14,
+        "primary": { "player": "Aaron Nola", "est_price": 6, "fpts": 480 },
         "alternatives": [
-          {
-            "player": "Spencer Torkelson",
-            "est_price": 7,
-            "fpts": 469,
-            "pos": "1B",
-            "team": "DET"
-          },
-          {
-            "player": "Sal Stewart",
-            "est_price": 5,
-            "fpts": 398,
-            "pos": "1B",
-            "team": "CIN"
-          },
-          {
-            "player": "Josh Bell",
-            "est_price": 0,
-            "fpts": 382,
-            "pos": "1B/DH",
-            "team": "MIN"
-          }
+          { "player": "Jack Flaherty", "est_price": 6, "fpts": 470 },
+          { "player": "Sean Manaea", "est_price": 5, "fpts": 440 },
+          { "player": "Joe Ryan", "est_price": 8, "fpts": 501 }
         ],
-        "walk_away": {
-          "comfortable": 5,
-          "stretch": 8,
-          "walk_away": 12
-        },
-        "priority": 14
+        "walk_away": { "comfortable": 9, "stretch": 12, "walk_away": 15 }
       },
       {
-        "slot": "SP5",
-        "category": "pitching",
-        "primary": {
-          "player": "Reid Detmers",
-          "est_price": 1,
-          "fpts": 350
-        },
+        "slot": "SP5", "category": "pitching", "priority": 15,
+        "primary": { "player": "Reid Detmers", "est_price": 1, "fpts": 350 },
         "alternatives": [
-          {
-            "player": "Kumar Rocker",
-            "est_price": 1,
-            "fpts": 300
-          },
-          {
-            "player": "Cam Schlittler",
-            "est_price": 0,
-            "fpts": 376,
-            "pos": "SP",
-            "team": "NYY"
-          },
-          {
-            "player": "Eury Perez",
-            "est_price": 11,
-            "fpts": 450
-          },
-          {
-            "player": "Drew Rasmussen",
-            "est_price": 4,
-            "fpts": 457,
-            "pos": "SP",
-            "team": "TB"
-          },
-          {
-            "player": "Nick Lodolo",
-            "est_price": 4,
-            "fpts": 445,
-            "pos": "SP",
-            "team": "CIN"
-          }
+          { "player": "Kumar Rocker", "est_price": 1, "fpts": 300 },
+          { "player": "Shane Baz", "est_price": 3, "fpts": 330 },
+          { "player": "Eury Perez", "est_price": 11, "fpts": 450 }
         ],
-        "walk_away": {
-          "comfortable": 3,
-          "stretch": 6,
-          "walk_away": 10
-        },
-        "priority": 15
+        "walk_away": { "comfortable": 3, "stretch": 5, "walk_away": 8 }
       }
     ]
   },
   "B": {
-    "name": "Spread the Wealth",
-    "strategy": "No $35+ players. Stack mid-tier value everywhere",
-    "budget_split": {
-      "hitting": 155,
-      "pitching": 105
-    },
+    "name": "No Elite SP — Ramirez + SP Value Stack",
+    "strategy": "Skubal and Skenes went $56+. Pivot: keep Ramirez as anchor, spread SP money across 3-4 mid-tier SPs (Webb, Sanchez, Fried). Use savings to upgrade SS or 1B.",
+    "budget_split": { "hitting": 175, "pitching": 85 },
     "slots": [
       {
-        "slot": "3B",
-        "category": "hitting",
-        "primary": {
-          "player": "Junior Caminero",
-          "est_price": 24,
-          "fpts": 585,
-          "anchor": true
-        },
+        "slot": "3B", "category": "hitting", "priority": 1,
+        "primary": { "player": "Jose Ramirez", "est_price": 37, "fpts": 657, "anchor": true },
         "alternatives": [
-          {
-            "player": "Manny Machado",
-            "est_price": 22,
-            "fpts": 576
-          },
-          {
-            "player": "Eugenio Suarez",
-            "est_price": 18,
-            "fpts": 558
-          },
-          {
-            "player": "Maikel Garcia",
-            "est_price": 14,
-            "fpts": 502,
-            "pos": "3B",
-            "team": "KC"
-          }
-        ]
+          { "player": "Junior Caminero", "est_price": 24, "fpts": 585 },
+          { "player": "Manny Machado", "est_price": 22, "fpts": 576 },
+          { "player": "Eugenio Suarez", "est_price": 18, "fpts": 558 }
+        ],
+        "walk_away": { "comfortable": 42, "stretch": 47, "walk_away": 52 }
       },
       {
-        "slot": "SS",
-        "category": "hitting",
-        "primary": {
-          "player": "Gunnar Henderson",
-          "est_price": 26,
-          "fpts": 592,
-          "anchor": true
-        },
+        "slot": "SS", "category": "hitting", "priority": 2,
+        "primary": { "player": "Gunnar Henderson", "est_price": 25, "fpts": 592, "anchor": true },
         "alternatives": [
-          {
-            "player": "Trea Turner",
-            "est_price": 25,
-            "fpts": 578
-          },
-          {
-            "player": "Willy Adames",
-            "est_price": 14,
-            "fpts": 555
-          },
-          {
-            "player": "Zach Neto",
-            "est_price": 19,
-            "fpts": 535
-          }
-        ]
+          { "player": "Francisco Lindor", "est_price": 28, "fpts": 620 },
+          { "player": "Trea Turner", "est_price": 25, "fpts": 578 },
+          { "player": "Willy Adames", "est_price": 18, "fpts": 555 }
+        ],
+        "walk_away": { "comfortable": 30, "stretch": 34, "walk_away": 38 }
       },
       {
-        "slot": "CF",
-        "category": "hitting",
-        "primary": {
-          "player": "Jackson Chourio",
-          "est_price": 24,
-          "fpts": 578
-        },
+        "slot": "CF", "category": "hitting", "priority": 3,
+        "primary": { "player": "Jackson Chourio", "est_price": 23, "fpts": 578 },
         "alternatives": [
-          {
-            "player": "Wyatt Langford",
-            "est_price": 14,
-            "fpts": 494,
-            "pos": "OF",
-            "team": "TEX"
-          },
-          {
-            "player": "James Wood",
-            "est_price": 18,
-            "fpts": 533
-          },
-          {
-            "player": "Randy Arozarena",
-            "est_price": 17,
-            "fpts": 530
-          }
-        ]
+          { "player": "Riley Greene", "est_price": 16, "fpts": 539 },
+          { "player": "Jackson Merrill", "est_price": 16, "fpts": 533 },
+          { "player": "James Wood", "est_price": 18, "fpts": 533 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 35 }
       },
       {
-        "slot": "C",
-        "category": "hitting",
-        "primary": {
-          "player": "Cal Raleigh",
-          "est_price": 24,
-          "fpts": 586
-        },
+        "slot": "1B", "category": "hitting", "priority": 4,
+        "primary": { "player": "Vladimir Guerrero", "est_price": 25, "fpts": 621 },
         "alternatives": [
-          {
-            "player": "Ben Rice",
-            "est_price": 13,
-            "fpts": 489,
-            "pos": "C/1B/DH",
-            "team": "NYY"
-          },
-          {
-            "player": "Adley Rutschman",
-            "est_price": 3,
-            "fpts": 429
-          },
-          {
-            "player": "Ryan Jeffers",
-            "est_price": 3,
-            "fpts": 390
-          }
-        ]
+          { "player": "Pete Alonso", "est_price": 23, "fpts": 607 },
+          { "player": "Nick Kurtz", "est_price": 25, "fpts": 597 },
+          { "player": "Matt Olson", "est_price": 20, "fpts": 596 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 36 }
       },
       {
-        "slot": "1B",
-        "category": "hitting",
-        "primary": {
-          "player": "Matt Olson",
-          "est_price": 20,
-          "fpts": 596
-        },
+        "slot": "C", "category": "hitting", "priority": 8,
+        "primary": { "player": "William Contreras", "est_price": 14, "fpts": 522 },
         "alternatives": [
-          {
-            "player": "Rafael Devers",
-            "est_price": 17,
-            "fpts": 549
-          },
-          {
-            "player": "Vladimir Guerrero",
-            "est_price": 25,
-            "fpts": 621,
-            "pos": "1B/DH",
-            "team": "TOR"
-          },
-          {
-            "player": "Jonathan Aranda",
-            "est_price": 4,
-            "fpts": 424
-          }
-        ]
+          { "player": "Cal Raleigh", "est_price": 24, "fpts": 586 },
+          { "player": "Drake Baldwin", "est_price": 9, "fpts": 454 },
+          { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 }
+        ],
+        "walk_away": { "comfortable": 17, "stretch": 20, "walk_away": 25 }
       },
       {
-        "slot": "LF",
-        "category": "hitting",
-        "primary": {
-          "player": "Riley Greene",
-          "est_price": 16,
-          "fpts": 539
-        },
+        "slot": "LF", "category": "hitting", "priority": 6,
+        "primary": { "player": "Randy Arozarena", "est_price": 17, "fpts": 530 },
         "alternatives": [
-          {
-            "player": "Jackson Merrill",
-            "est_price": 16,
-            "fpts": 533
-          },
-          {
-            "player": "Jac Caglianone",
-            "est_price": 10,
-            "fpts": 475,
-            "pos": "OF",
-            "team": "KC"
-          },
-          {
-            "player": "Brandon Nimmo",
-            "est_price": 14,
-            "fpts": 518
-          }
-        ]
+          { "player": "Brandon Nimmo", "est_price": 14, "fpts": 518 },
+          { "player": "Cody Bellinger", "est_price": 17, "fpts": 525 },
+          { "player": "Wyatt Langford", "est_price": 14, "fpts": 494 }
+        ],
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "2B",
-        "category": "hitting",
-        "primary": {
-          "player": "Gleyber Torres",
-          "est_price": 7,
-          "fpts": 480
-        },
+        "slot": "2B", "category": "hitting", "priority": 10,
+        "primary": { "player": "Gleyber Torres", "est_price": 9, "fpts": 493 },
         "alternatives": [
-          {
-            "player": "Jorge Polanco",
-            "est_price": 3,
-            "fpts": 395,
-            "pos": "2B/DH",
-            "team": "NYM"
-          },
-          {
-            "player": "Jake Cronenworth",
-            "est_price": 2,
-            "fpts": 423
-          },
-          {
-            "player": "Ketel Marte",
-            "est_price": 24,
-            "fpts": 596
-          }
-        ]
+          { "player": "Brendan Donovan", "est_price": 4, "fpts": 434 },
+          { "player": "Bryson Stott", "est_price": 12, "fpts": 456 },
+          { "player": "Jorge Polanco", "est_price": 3, "fpts": 395 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
       },
       {
-        "slot": "RF",
-        "category": "hitting",
-        "primary": {
-          "player": "Randy Arozarena",
-          "est_price": 17,
-          "fpts": 530
-        },
+        "slot": "RF", "category": "hitting", "priority": 7,
+        "primary": { "player": "Taylor Ward", "est_price": 13, "fpts": 519 },
         "alternatives": [
-          {
-            "player": "Taylor Ward",
-            "est_price": 13,
-            "fpts": 519,
-            "pos": "LF/RF",
-            "team": "LAA"
-          },
-          {
-            "player": "Colton Cowser",
-            "est_price": 0,
-            "fpts": 381,
-            "pos": "OF",
-            "team": "BAL"
-          },
-          {
-            "player": "Roman Anthony",
-            "est_price": 22,
-            "fpts": 578,
-            "pos": "RF/LF",
-            "team": "BOS"
-          }
-        ]
+          { "player": "Roman Anthony", "est_price": 22, "fpts": 578 },
+          { "player": "Heliot Ramos", "est_price": 2, "fpts": 428 },
+          { "player": "Jac Caglianone", "est_price": 10, "fpts": 475 }
+        ],
+        "walk_away": { "comfortable": 16, "stretch": 19, "walk_away": 22 }
       },
       {
-        "slot": "UT",
-        "category": "hitting",
-        "primary": {
-          "player": "Alex Bregman",
-          "est_price": 13,
-          "fpts": 532
-        },
+        "slot": "UT", "category": "hitting", "priority": 11,
+        "primary": { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
         "alternatives": [
-          {
-            "player": "Jeremy Pena",
-            "est_price": 14,
-            "fpts": 495,
-            "pos": "SS",
-            "team": "HOU"
-          },
-          {
-            "player": "Spencer Torkelson",
-            "est_price": 7,
-            "fpts": 469,
-            "pos": "1B",
-            "team": "DET"
-          },
-          {
-            "player": "Sal Stewart",
-            "est_price": 5,
-            "fpts": 398,
-            "pos": "1B",
-            "team": "CIN"
-          }
-        ]
+          { "player": "Nolan Arenado", "est_price": 4, "fpts": 434 },
+          { "player": "Spencer Torkelson", "est_price": 7, "fpts": 469 },
+          { "player": "Isaac Paredes", "est_price": 2, "fpts": 375 }
+        ],
+        "walk_away": { "comfortable": 5, "stretch": 8, "walk_away": 12 }
       },
       {
-        "slot": "SP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Logan Webb",
-          "est_price": 20,
-          "fpts": 552
-        },
+        "slot": "SP1", "category": "pitching", "priority": 5,
+        "primary": { "player": "Logan Webb", "est_price": 20, "fpts": 552 },
         "alternatives": [
-          {
-            "player": "Framber Valdez",
-            "est_price": 14,
-            "fpts": 534
-          },
-          {
-            "player": "Cristopher Sanchez",
-            "est_price": 12,
-            "fpts": 560
-          },
-          {
-            "player": "Hunter Brown",
-            "est_price": 22,
-            "fpts": 588
-          }
-        ]
+          { "player": "Cristopher Sanchez", "est_price": 12, "fpts": 560 },
+          { "player": "Framber Valdez", "est_price": 14, "fpts": 534 },
+          { "player": "Max Fried", "est_price": 15, "fpts": 537 }
+        ],
+        "walk_away": { "comfortable": 23, "stretch": 27, "walk_away": 30 }
       },
       {
-        "slot": "SP2",
-        "category": "pitching",
-        "primary": {
-          "player": "Cole Ragans",
-          "est_price": 15,
-          "fpts": 559
-        },
+        "slot": "SP2", "category": "pitching", "priority": 9,
+        "primary": { "player": "Chase Burns", "est_price": 8, "fpts": 500 },
         "alternatives": [
-          {
-            "player": "Freddy Peralta",
-            "est_price": 14,
-            "fpts": 536
-          },
-          {
-            "player": "Sonny Gray",
-            "est_price": 10,
-            "fpts": 515
-          },
-          {
-            "player": "Nick Pivetta",
-            "est_price": 10,
-            "fpts": 515
-          }
-        ]
+          { "player": "Dylan Cease", "est_price": 10, "fpts": 497 },
+          { "player": "Nick Pivetta", "est_price": 10, "fpts": 515 },
+          { "player": "Bryan Woo", "est_price": 14, "fpts": 535 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
       },
       {
-        "slot": "SP3",
-        "category": "pitching",
-        "primary": {
-          "player": "Brandon Woodruff",
-          "est_price": 13,
-          "fpts": 520
-        },
+        "slot": "SP3", "category": "pitching", "priority": 12,
+        "primary": { "player": "Aaron Nola", "est_price": 6, "fpts": 480 },
         "alternatives": [
-          {
-            "player": "Chase Burns",
-            "est_price": 8,
-            "fpts": 500
-          },
-          {
-            "player": "Dylan Cease",
-            "est_price": 10,
-            "fpts": 497
-          },
-          {
-            "player": "Joe Ryan",
-            "est_price": 8,
-            "fpts": 501
-          }
-        ]
+          { "player": "Jack Flaherty", "est_price": 6, "fpts": 470 },
+          { "player": "Sean Manaea", "est_price": 5, "fpts": 440 },
+          { "player": "Joe Ryan", "est_price": 8, "fpts": 501 }
+        ],
+        "walk_away": { "comfortable": 9, "stretch": 12, "walk_away": 15 }
       },
       {
-        "slot": "RP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Emmanuel Clase",
-          "est_price": 15,
-          "fpts": 340
-        },
+        "slot": "RP1", "category": "pitching", "priority": 13,
+        "primary": { "player": "Mason Miller", "est_price": 18, "fpts": 376 },
         "alternatives": [
-          {
-            "player": "Jhoan Duran",
-            "est_price": 14,
-            "fpts": 363
-          },
-          {
-            "player": "Devin Williams",
-            "est_price": 14,
-            "fpts": 339
-          },
-          {
-            "player": "Raisel Iglesias",
-            "est_price": 10,
-            "fpts": 321
-          }
-        ]
+          { "player": "Andres Munoz", "est_price": 16, "fpts": 366 },
+          { "player": "Jhoan Duran", "est_price": 14, "fpts": 363 },
+          { "player": "Emmanuel Clase", "est_price": 15, "fpts": 340 }
+        ],
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "RP2",
-        "category": "pitching",
-        "primary": {
-          "player": "Dennis Santana",
-          "est_price": 11,
-          "fpts": 300
-        },
+        "slot": "SP4", "category": "pitching", "priority": 14,
+        "primary": { "player": "Reid Detmers", "est_price": 1, "fpts": 350 },
         "alternatives": [
-          {
-            "player": "Jeff Hoffman",
-            "est_price": 8,
-            "fpts": 309
-          },
-          {
-            "player": "Daniel Palencia",
-            "est_price": 2,
-            "fpts": 270
-          },
-          {
-            "player": "Carlos Estevez",
-            "est_price": 8,
-            "fpts": 297
-          }
-        ]
+          { "player": "Kumar Rocker", "est_price": 1, "fpts": 300 },
+          { "player": "Shane Baz", "est_price": 3, "fpts": 330 },
+          { "player": "Eury Perez", "est_price": 11, "fpts": 450 }
+        ],
+        "walk_away": { "comfortable": 3, "stretch": 5, "walk_away": 8 }
       },
       {
-        "slot": "SP4",
-        "category": "pitching",
-        "primary": {
-          "player": "Aaron Nola",
-          "est_price": 6,
-          "fpts": 480
-        },
+        "slot": "SP5", "category": "pitching", "priority": 15,
+        "primary": { "player": "Sonny Gray", "est_price": 10, "fpts": 515 },
         "alternatives": [
-          {
-            "player": "Jack Flaherty",
-            "est_price": 6,
-            "fpts": 470
-          },
-          {
-            "player": "Reid Detmers",
-            "est_price": 1,
-            "fpts": 350
-          },
-          {
-            "player": "Sean Manaea",
-            "est_price": 5,
-            "fpts": 440
-          }
-        ]
+          { "player": "Cole Ragans", "est_price": 15, "fpts": 559 },
+          { "player": "Drew Rasmussen", "est_price": 4, "fpts": 457 },
+          { "player": "Cam Schlittler", "est_price": 0, "fpts": 376 }
+        ],
+        "walk_away": { "comfortable": 13, "stretch": 16, "walk_away": 20 }
       }
     ]
   },
   "C": {
-    "name": "Elite Bats + Value Arms",
-    "strategy": "Pay up for 2 top-10 hitters, fill pitching with upside arms + closers",
-    "budget_split": {
-      "hitting": 170,
-      "pitching": 90
-    },
+    "name": "No Ramirez — Elite SS + Breakout Stack",
+    "strategy": "Ramirez went $50+. Pivot to Bobby Witt/Gunnar Henderson at SS as your anchor hitter. Stack breakout SPs (Burns, Detmers, Perez). Win with upside.",
+    "budget_split": { "hitting": 160, "pitching": 100 },
     "slots": [
       {
-        "slot": "SS",
-        "category": "hitting",
-        "primary": {
-          "player": "Bobby Witt",
-          "est_price": 39,
-          "fpts": 679,
-          "anchor": true
-        },
+        "slot": "SS", "category": "hitting", "priority": 1,
+        "primary": { "player": "Bobby Witt", "est_price": 39, "fpts": 679, "anchor": true },
         "alternatives": [
-          {
-            "player": "Francisco Lindor",
-            "est_price": 28,
-            "fpts": 620
-          },
-          {
-            "player": "Gunnar Henderson",
-            "est_price": 26,
-            "fpts": 592
-          },
-          {
-            "player": "Elly De La Cruz",
-            "est_price": 29,
-            "fpts": 579
-          },
-          {
-            "player": "Corey Seager",
-            "est_price": 13,
-            "fpts": 474,
-            "pos": "SS",
-            "team": "TEX"
-          }
-        ]
+          { "player": "Gunnar Henderson", "est_price": 25, "fpts": 592 },
+          { "player": "Francisco Lindor", "est_price": 28, "fpts": 620 },
+          { "player": "Elly De La Cruz", "est_price": 29, "fpts": 579 }
+        ],
+        "walk_away": { "comfortable": 44, "stretch": 48, "walk_away": 52 }
       },
       {
-        "slot": "LF",
-        "category": "hitting",
-        "primary": {
-          "player": "Juan Soto",
-          "est_price": 37,
-          "fpts": 675,
-          "anchor": true
-        },
+        "slot": "SP1", "category": "pitching", "priority": 2,
+        "primary": { "player": "Cristopher Sanchez", "est_price": 12, "fpts": 560 },
         "alternatives": [
-          {
-            "player": "Ronald Acuna",
-            "est_price": 31,
-            "fpts": 616
-          },
-          {
-            "player": "Kyle Tucker",
-            "est_price": 28,
-            "fpts": 586
-          },
-          {
-            "player": "Corbin Carroll",
-            "est_price": 30,
-            "fpts": 598
-          }
-        ]
+          { "player": "Hunter Brown", "est_price": 22, "fpts": 588 },
+          { "player": "Logan Webb", "est_price": 20, "fpts": 552 },
+          { "player": "Garrett Crochet", "est_price": 30, "fpts": 604 }
+        ],
+        "walk_away": { "comfortable": 15, "stretch": 18, "walk_away": 22 }
       },
       {
-        "slot": "3B",
-        "category": "hitting",
-        "primary": {
-          "player": "Manny Machado",
-          "est_price": 22,
-          "fpts": 576
-        },
+        "slot": "1B", "category": "hitting", "priority": 3,
+        "primary": { "player": "Vladimir Guerrero", "est_price": 25, "fpts": 621, "anchor": true },
         "alternatives": [
-          {
-            "player": "Maikel Garcia",
-            "est_price": 14,
-            "fpts": 502,
-            "pos": "3B",
-            "team": "KC"
-          },
-          {
-            "player": "Austin Riley",
-            "est_price": 13,
-            "fpts": 526
-          },
-          {
-            "player": "Eugenio Suarez",
-            "est_price": 18,
-            "fpts": 558
-          }
-        ]
+          { "player": "Pete Alonso", "est_price": 23, "fpts": 607 },
+          { "player": "Nick Kurtz", "est_price": 25, "fpts": 597 },
+          { "player": "Rafael Devers", "est_price": 17, "fpts": 549 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 36 }
       },
       {
-        "slot": "C",
-        "category": "hitting",
-        "primary": {
-          "player": "William Contreras",
-          "est_price": 14,
-          "fpts": 522
-        },
+        "slot": "CF", "category": "hitting", "priority": 4,
+        "primary": { "player": "Jackson Chourio", "est_price": 23, "fpts": 578 },
         "alternatives": [
-          {
-            "player": "Adley Rutschman",
-            "est_price": 3,
-            "fpts": 429
-          },
-          {
-            "player": "Ryan Jeffers",
-            "est_price": 3,
-            "fpts": 390
-          },
-          {
-            "player": "Drake Baldwin",
-            "est_price": 9,
-            "fpts": 454,
-            "pos": "C",
-            "team": "ATL"
-          },
-          {
-            "player": "Ivan Herrera",
-            "est_price": 4,
-            "fpts": 406
-          }
-        ]
+          { "player": "Riley Greene", "est_price": 16, "fpts": 539 },
+          { "player": "Jackson Merrill", "est_price": 16, "fpts": 533 },
+          { "player": "James Wood", "est_price": 18, "fpts": 533 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 35 }
       },
       {
-        "slot": "1B",
-        "category": "hitting",
-        "primary": {
-          "player": "Rafael Devers",
-          "est_price": 17,
-          "fpts": 549
-        },
+        "slot": "3B", "category": "hitting", "priority": 5,
+        "primary": { "player": "Junior Caminero", "est_price": 24, "fpts": 585 },
         "alternatives": [
-          {
-            "player": "Matt Olson",
-            "est_price": 20,
-            "fpts": 596
-          },
-          {
-            "player": "Jonathan Aranda",
-            "est_price": 4,
-            "fpts": 424
-          },
-          {
-            "player": "Alec Burleson",
-            "est_price": 7,
-            "fpts": 442,
-            "pos": "1B/OF/DH",
-            "team": "STL"
-          }
-        ]
+          { "player": "Manny Machado", "est_price": 22, "fpts": 576 },
+          { "player": "Eugenio Suarez", "est_price": 18, "fpts": 558 },
+          { "player": "Alex Bregman", "est_price": 13, "fpts": 532 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 36 }
       },
       {
-        "slot": "2B",
-        "category": "hitting",
-        "primary": {
-          "player": "Brendan Donovan",
-          "est_price": 4,
-          "fpts": 434
-        },
+        "slot": "C", "category": "hitting", "priority": 9,
+        "primary": { "player": "William Contreras", "est_price": 14, "fpts": 522 },
         "alternatives": [
-          {
-            "player": "Jorge Polanco",
-            "est_price": 3,
-            "fpts": 395,
-            "pos": "2B/DH",
-            "team": "NYM"
-          },
-          {
-            "player": "Gleyber Torres",
-            "est_price": 7,
-            "fpts": 480
-          },
-          {
-            "player": "Ernie Clement",
-            "est_price": 3,
-            "fpts": 411
-          }
-        ]
+          { "player": "Cal Raleigh", "est_price": 24, "fpts": 586 },
+          { "player": "Drake Baldwin", "est_price": 9, "fpts": 454 },
+          { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 }
+        ],
+        "walk_away": { "comfortable": 17, "stretch": 20, "walk_away": 25 }
       },
       {
-        "slot": "CF",
-        "category": "hitting",
-        "primary": {
-          "player": "Jackson Merrill",
-          "est_price": 16,
-          "fpts": 533
-        },
+        "slot": "LF", "category": "hitting", "priority": 7,
+        "primary": { "player": "Cody Bellinger", "est_price": 17, "fpts": 525 },
         "alternatives": [
-          {
-            "player": "James Wood",
-            "est_price": 18,
-            "fpts": 533,
-            "pos": "OF/DH",
-            "team": "WSH"
-          },
-          {
-            "player": "Jac Caglianone",
-            "est_price": 10,
-            "fpts": 475,
-            "pos": "OF",
-            "team": "KC"
-          },
-          {
-            "player": "Wyatt Langford",
-            "est_price": 14,
-            "fpts": 494,
-            "pos": "OF",
-            "team": "TEX"
-          },
-          {
-            "player": "Colton Cowser",
-            "est_price": 0,
-            "fpts": 381,
-            "pos": "OF",
-            "team": "BAL"
-          }
-        ]
+          { "player": "Brandon Nimmo", "est_price": 14, "fpts": 518 },
+          { "player": "Randy Arozarena", "est_price": 17, "fpts": 530 },
+          { "player": "Wyatt Langford", "est_price": 14, "fpts": 494 }
+        ],
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "RF",
-        "category": "hitting",
-        "primary": {
-          "player": "Roman Anthony",
-          "est_price": 22,
-          "fpts": 578
-        },
+        "slot": "2B", "category": "hitting", "priority": 11,
+        "primary": { "player": "Brendan Donovan", "est_price": 4, "fpts": 434 },
         "alternatives": [
-          {
-            "player": "Taylor Ward",
-            "est_price": 13,
-            "fpts": 519,
-            "pos": "LF/RF",
-            "team": "LAA"
-          },
-          {
-            "player": "Heliot Ramos",
-            "est_price": 2,
-            "fpts": 428,
-            "pos": "CF/RF",
-            "team": "SF"
-          },
-          {
-            "player": "Brent Rooker",
-            "est_price": 23,
-            "fpts": 582,
-            "pos": "RF/DH",
-            "team": "OAK"
-          }
-        ]
+          { "player": "Gleyber Torres", "est_price": 9, "fpts": 493 },
+          { "player": "Jorge Polanco", "est_price": 3, "fpts": 395 },
+          { "player": "Bryson Stott", "est_price": 12, "fpts": 456 }
+        ],
+        "walk_away": { "comfortable": 7, "stretch": 10, "walk_away": 14 }
       },
       {
-        "slot": "UT",
-        "category": "hitting",
-        "primary": {
-          "player": "Dansby Swanson",
-          "est_price": 15,
-          "fpts": 523
-        },
+        "slot": "RF", "category": "hitting", "priority": 8,
+        "primary": { "player": "Roman Anthony", "est_price": 22, "fpts": 578 },
         "alternatives": [
-          {
-            "player": "Spencer Torkelson",
-            "est_price": 7,
-            "fpts": 469,
-            "pos": "1B",
-            "team": "DET"
-          },
-          {
-            "player": "Sal Stewart",
-            "est_price": 5,
-            "fpts": 398,
-            "pos": "1B",
-            "team": "CIN"
-          },
-          {
-            "player": "Josh Bell",
-            "est_price": 0,
-            "fpts": 382,
-            "pos": "1B/DH",
-            "team": "MIN"
-          }
-        ]
+          { "player": "Taylor Ward", "est_price": 13, "fpts": 519 },
+          { "player": "Heliot Ramos", "est_price": 2, "fpts": 428 },
+          { "player": "Jac Caglianone", "est_price": 10, "fpts": 475 }
+        ],
+        "walk_away": { "comfortable": 25, "stretch": 28, "walk_away": 32 }
       },
       {
-        "slot": "SP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Cristopher Sanchez",
-          "est_price": 12,
-          "fpts": 560
-        },
+        "slot": "UT", "category": "hitting", "priority": 13,
+        "primary": { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
         "alternatives": [
-          {
-            "player": "Logan Webb",
-            "est_price": 20,
-            "fpts": 552
-          },
-          {
-            "player": "Framber Valdez",
-            "est_price": 14,
-            "fpts": 534
-          },
-          {
-            "player": "Hunter Brown",
-            "est_price": 22,
-            "fpts": 588
-          }
-        ]
+          { "player": "Nolan Arenado", "est_price": 4, "fpts": 434 },
+          { "player": "Spencer Torkelson", "est_price": 7, "fpts": 469 },
+          { "player": "Isaac Paredes", "est_price": 2, "fpts": 375 }
+        ],
+        "walk_away": { "comfortable": 5, "stretch": 8, "walk_away": 12 }
       },
       {
-        "slot": "SP2",
-        "category": "pitching",
-        "primary": {
-          "player": "Chase Burns",
-          "est_price": 6,
-          "fpts": 500
-        },
+        "slot": "SP2", "category": "pitching", "priority": 6,
+        "primary": { "player": "Chase Burns", "est_price": 8, "fpts": 500 },
         "alternatives": [
-          {
-            "player": "Dylan Cease",
-            "est_price": 10,
-            "fpts": 497
-          },
-          {
-            "player": "Sonny Gray",
-            "est_price": 10,
-            "fpts": 515
-          },
-          {
-            "player": "Nick Pivetta",
-            "est_price": 10,
-            "fpts": 515
-          }
-        ]
+          { "player": "Dylan Cease", "est_price": 10, "fpts": 497 },
+          { "player": "Nick Pivetta", "est_price": 10, "fpts": 515 },
+          { "player": "Sonny Gray", "est_price": 10, "fpts": 515 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
       },
       {
-        "slot": "SP3",
-        "category": "pitching",
-        "primary": {
-          "player": "Eury Perez",
-          "est_price": 8,
-          "fpts": 450
-        },
+        "slot": "SP3", "category": "pitching", "priority": 10,
+        "primary": { "player": "Aaron Nola", "est_price": 6, "fpts": 480 },
         "alternatives": [
-          {
-            "player": "Joe Ryan",
-            "est_price": 8,
-            "fpts": 501
-          },
-          {
-            "player": "Aaron Nola",
-            "est_price": 6,
-            "fpts": 480
-          },
-          {
-            "player": "Jack Flaherty",
-            "est_price": 6,
-            "fpts": 470
-          }
-        ]
+          { "player": "Jack Flaherty", "est_price": 6, "fpts": 470 },
+          { "player": "Sean Manaea", "est_price": 5, "fpts": 440 },
+          { "player": "Joe Ryan", "est_price": 8, "fpts": 501 }
+        ],
+        "walk_away": { "comfortable": 9, "stretch": 12, "walk_away": 15 }
       },
       {
-        "slot": "RP1",
-        "category": "pitching",
-        "primary": {
-          "player": "Andres Munoz",
-          "est_price": 16,
-          "fpts": 366
-        },
+        "slot": "RP1", "category": "pitching", "priority": 12,
+        "primary": { "player": "Mason Miller", "est_price": 18, "fpts": 376 },
         "alternatives": [
-          {
-            "player": "Mason Miller",
-            "est_price": 18,
-            "fpts": 376
-          },
-          {
-            "player": "Emmanuel Clase",
-            "est_price": 15,
-            "fpts": 340
-          },
-          {
-            "player": "Jhoan Duran",
-            "est_price": 14,
-            "fpts": 363
-          }
-        ]
+          { "player": "Andres Munoz", "est_price": 16, "fpts": 366 },
+          { "player": "Jhoan Duran", "est_price": 14, "fpts": 363 },
+          { "player": "Emmanuel Clase", "est_price": 15, "fpts": 340 }
+        ],
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
       },
       {
-        "slot": "RP2",
-        "category": "pitching",
-        "primary": {
-          "player": "Jhoan Duran",
-          "est_price": 14,
-          "fpts": 363
-        },
+        "slot": "SP4", "category": "pitching", "priority": 14,
+        "primary": { "player": "Eury Perez", "est_price": 11, "fpts": 450 },
         "alternatives": [
-          {
-            "player": "Devin Williams",
-            "est_price": 14,
-            "fpts": 339
-          },
-          {
-            "player": "Dennis Santana",
-            "est_price": 11,
-            "fpts": 300
-          },
-          {
-            "player": "Daniel Palencia",
-            "est_price": 2,
-            "fpts": 270
-          }
-        ]
+          { "player": "Reid Detmers", "est_price": 1, "fpts": 350 },
+          { "player": "Kumar Rocker", "est_price": 1, "fpts": 300 },
+          { "player": "Drew Rasmussen", "est_price": 4, "fpts": 457 }
+        ],
+        "walk_away": { "comfortable": 14, "stretch": 17, "walk_away": 20 }
       },
       {
-        "slot": "SP4",
-        "category": "pitching",
-        "primary": {
-          "player": "Reid Detmers",
-          "est_price": 1,
-          "fpts": 350
-        },
+        "slot": "SP5", "category": "pitching", "priority": 15,
+        "primary": { "player": "Reid Detmers", "est_price": 1, "fpts": 350 },
         "alternatives": [
-          {
-            "player": "Kumar Rocker",
-            "est_price": 1,
-            "fpts": 300
-          },
-          {
-            "player": "Sean Manaea",
-            "est_price": 5,
-            "fpts": 440
-          },
-          {
-            "player": "Cam Schlittler",
-            "est_price": 0,
-            "fpts": 376,
-            "pos": "SP",
-            "team": "NYY"
-          }
-        ]
+          { "player": "Shane Baz", "est_price": 3, "fpts": 330 },
+          { "player": "Kumar Rocker", "est_price": 1, "fpts": 300 },
+          { "player": "Cam Schlittler", "est_price": 0, "fpts": 376 }
+        ],
+        "walk_away": { "comfortable": 3, "stretch": 5, "walk_away": 8 }
+      }
+    ]
+  },
+  "D": {
+    "name": "Nuclear — Everyone Overspent",
+    "strategy": "Market inflation 25%+. Stars going $55+. WAIT. Let 6-8 teams blow their budgets on 2-3 stars each. By pick 60+ they'll have $3/slot left. You'll have $15/slot and can cherry-pick the best remaining players at huge discounts. ALL breakout/expert picks.",
+    "budget_split": { "hitting": 140, "pitching": 120 },
+    "slots": [
+      {
+        "slot": "3B", "category": "hitting", "priority": 1,
+        "primary": { "player": "Junior Caminero", "est_price": 24, "fpts": 585, "anchor": true },
+        "alternatives": [
+          { "player": "Eugenio Suarez", "est_price": 18, "fpts": 558 },
+          { "player": "Alex Bregman", "est_price": 13, "fpts": 532 },
+          { "player": "Maikel Garcia", "est_price": 14, "fpts": 502 }
+        ],
+        "walk_away": { "comfortable": 28, "stretch": 32, "walk_away": 36 }
       },
       {
-        "slot": "SP5",
-        "category": "pitching",
-        "primary": {
-          "player": "Sean Manaea",
-          "est_price": 5,
-          "fpts": 440
-        },
+        "slot": "SS", "category": "hitting", "priority": 2,
+        "primary": { "player": "Willy Adames", "est_price": 18, "fpts": 555 },
         "alternatives": [
-          {
-            "player": "Jack Flaherty",
-            "est_price": 6,
-            "fpts": 470
-          },
-          {
-            "player": "Kevin Gausman",
-            "est_price": 10,
-            "fpts": 505
-          },
-          {
-            "player": "Drew Rasmussen",
-            "est_price": 4,
-            "fpts": 457,
-            "pos": "SP",
-            "team": "TB"
-          },
-          {
-            "player": "Nick Lodolo",
-            "est_price": 4,
-            "fpts": 445,
-            "pos": "SP",
-            "team": "CIN"
-          }
-        ]
+          { "player": "Geraldo Perdomo", "est_price": 16, "fpts": 540 },
+          { "player": "Zach Neto", "est_price": 19, "fpts": 535 },
+          { "player": "Carlos Correa", "est_price": 5, "fpts": 432 }
+        ],
+        "walk_away": { "comfortable": 22, "stretch": 25, "walk_away": 28 }
+      },
+      {
+        "slot": "1B", "category": "hitting", "priority": 3,
+        "primary": { "player": "Brent Rooker", "est_price": 23, "fpts": 582 },
+        "alternatives": [
+          { "player": "Nick Kurtz", "est_price": 25, "fpts": 597 },
+          { "player": "Rafael Devers", "est_price": 17, "fpts": 549 },
+          { "player": "Matt Olson", "est_price": 20, "fpts": 596 }
+        ],
+        "walk_away": { "comfortable": 26, "stretch": 30, "walk_away": 34 }
+      },
+      {
+        "slot": "CF", "category": "hitting", "priority": 4,
+        "primary": { "player": "Riley Greene", "est_price": 16, "fpts": 539 },
+        "alternatives": [
+          { "player": "Jackson Merrill", "est_price": 16, "fpts": 533 },
+          { "player": "James Wood", "est_price": 18, "fpts": 533 },
+          { "player": "Jarren Duran", "est_price": 17, "fpts": 510 }
+        ],
+        "walk_away": { "comfortable": 20, "stretch": 23, "walk_away": 26 }
+      },
+      {
+        "slot": "C", "category": "hitting", "priority": 8,
+        "primary": { "player": "Drake Baldwin", "est_price": 9, "fpts": 454 },
+        "alternatives": [
+          { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
+          { "player": "Will Smith", "est_price": 8, "fpts": 441 },
+          { "player": "Shea Langeliers", "est_price": 10, "fpts": 453 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
+      },
+      {
+        "slot": "LF", "category": "hitting", "priority": 5,
+        "primary": { "player": "Wyatt Langford", "est_price": 14, "fpts": 494 },
+        "alternatives": [
+          { "player": "Brandon Nimmo", "est_price": 14, "fpts": 518 },
+          { "player": "Sal Frelick", "est_price": 5, "fpts": 418 },
+          { "player": "Seiya Suzuki", "est_price": 16, "fpts": 509 }
+        ],
+        "walk_away": { "comfortable": 17, "stretch": 20, "walk_away": 23 }
+      },
+      {
+        "slot": "2B", "category": "hitting", "priority": 10,
+        "primary": { "player": "Gleyber Torres", "est_price": 9, "fpts": 493 },
+        "alternatives": [
+          { "player": "Brendan Donovan", "est_price": 4, "fpts": 434 },
+          { "player": "Jorge Polanco", "est_price": 3, "fpts": 395 },
+          { "player": "Jake Cronenworth", "est_price": 2, "fpts": 423 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
+      },
+      {
+        "slot": "RF", "category": "hitting", "priority": 6,
+        "primary": { "player": "Jac Caglianone", "est_price": 10, "fpts": 475 },
+        "alternatives": [
+          { "player": "Heliot Ramos", "est_price": 2, "fpts": 428 },
+          { "player": "Taylor Ward", "est_price": 13, "fpts": 519 },
+          { "player": "Sal Frelick", "est_price": 5, "fpts": 418 }
+        ],
+        "walk_away": { "comfortable": 13, "stretch": 16, "walk_away": 20 }
+      },
+      {
+        "slot": "UT", "category": "hitting", "priority": 11,
+        "primary": { "player": "Spencer Torkelson", "est_price": 7, "fpts": 469 },
+        "alternatives": [
+          { "player": "Nolan Arenado", "est_price": 4, "fpts": 434 },
+          { "player": "Adley Rutschman", "est_price": 3, "fpts": 429 },
+          { "player": "Isaac Paredes", "est_price": 2, "fpts": 375 }
+        ],
+        "walk_away": { "comfortable": 10, "stretch": 13, "walk_away": 16 }
+      },
+      {
+        "slot": "SP1", "category": "pitching", "priority": 7,
+        "primary": { "player": "Chase Burns", "est_price": 8, "fpts": 500, "anchor": true },
+        "alternatives": [
+          { "player": "Cristopher Sanchez", "est_price": 12, "fpts": 560 },
+          { "player": "Dylan Cease", "est_price": 10, "fpts": 497 },
+          { "player": "Nick Pivetta", "est_price": 10, "fpts": 515 }
+        ],
+        "walk_away": { "comfortable": 12, "stretch": 15, "walk_away": 18 }
+      },
+      {
+        "slot": "SP2", "category": "pitching", "priority": 9,
+        "primary": { "player": "Aaron Nola", "est_price": 6, "fpts": 480 },
+        "alternatives": [
+          { "player": "Jack Flaherty", "est_price": 6, "fpts": 470 },
+          { "player": "Sean Manaea", "est_price": 5, "fpts": 440 },
+          { "player": "Joe Ryan", "est_price": 8, "fpts": 501 }
+        ],
+        "walk_away": { "comfortable": 9, "stretch": 12, "walk_away": 15 }
+      },
+      {
+        "slot": "SP3", "category": "pitching", "priority": 12,
+        "primary": { "player": "Eury Perez", "est_price": 11, "fpts": 450 },
+        "alternatives": [
+          { "player": "Drew Rasmussen", "est_price": 4, "fpts": 457 },
+          { "player": "Sonny Gray", "est_price": 10, "fpts": 515 },
+          { "player": "Cole Ragans", "est_price": 15, "fpts": 559 }
+        ],
+        "walk_away": { "comfortable": 14, "stretch": 17, "walk_away": 20 }
+      },
+      {
+        "slot": "RP1", "category": "pitching", "priority": 13,
+        "primary": { "player": "Andres Munoz", "est_price": 16, "fpts": 366 },
+        "alternatives": [
+          { "player": "Jhoan Duran", "est_price": 14, "fpts": 363 },
+          { "player": "Emmanuel Clase", "est_price": 15, "fpts": 340 },
+          { "player": "Mason Miller", "est_price": 18, "fpts": 376 }
+        ],
+        "walk_away": { "comfortable": 18, "stretch": 21, "walk_away": 24 }
+      },
+      {
+        "slot": "SP4", "category": "pitching", "priority": 14,
+        "primary": { "player": "Reid Detmers", "est_price": 1, "fpts": 350 },
+        "alternatives": [
+          { "player": "Kumar Rocker", "est_price": 1, "fpts": 300 },
+          { "player": "Shane Baz", "est_price": 3, "fpts": 330 },
+          { "player": "Cam Schlittler", "est_price": 0, "fpts": 376 }
+        ],
+        "walk_away": { "comfortable": 3, "stretch": 5, "walk_away": 8 }
+      },
+      {
+        "slot": "SP5", "category": "pitching", "priority": 15,
+        "primary": { "player": "Sonny Gray", "est_price": 10, "fpts": 515 },
+        "alternatives": [
+          { "player": "Bryan Woo", "est_price": 14, "fpts": 535 },
+          { "player": "Max Fried", "est_price": 15, "fpts": 537 },
+          { "player": "Framber Valdez", "est_price": 14, "fpts": 534 }
+        ],
+        "walk_away": { "comfortable": 13, "stretch": 16, "walk_away": 20 }
       }
     ]
   }
