@@ -536,6 +536,14 @@
         // ── Players ─────────────────────────────────────────
 
         async function loadPlayers() {
+            // Ensure plan data + player pool loaded for badges/plan tags
+            if (!window._planData) {
+                try {
+                    const [pdResp, ppResp] = await Promise.all([fetch('/api/draft-plans-data'), fetch('/api/mock-draft/players')]);
+                    const pd = await pdResp.json(); delete pd.D; window._planData = pd; planData = pd;
+                    const pp = await ppResp.json(); if (pp.players) mockPlayerPool = pp.players;
+                } catch(e) {}
+            }
             const params = new URLSearchParams({ limit: "200", offset: playerOffset, sort: currentSort });
             if (currentPos !== "ALL") params.set("pos", currentPos);
             if (currentSearch) params.set("q", currentSearch);
@@ -563,6 +571,26 @@
             }
         }
 
+        // Check which plans a player appears in
+        function getPlayerPlanTags(playerName) {
+            if (!window._planData) return '';
+            let tags = '';
+            for (const [planId, plan] of Object.entries(window._planData)) {
+                for (const slot of (plan.slots || [])) {
+                    if (slot.primary.player === playerName) {
+                        tags += `<span class="plan-tag plan-tag-primary">Plan ${planId}: ${slot.slot}</span> `;
+                        break;
+                    }
+                    const altMatch = (slot.alternatives || []).find(a => a.player === playerName);
+                    if (altMatch) {
+                        tags += `<span class="plan-tag plan-tag-alt">${planId}:${slot.slot}</span> `;
+                        break;
+                    }
+                }
+            }
+            return tags;
+        }
+
         function renderPlayers() {
             const body = document.getElementById("playersBody");
             if (allPlayers.length === 0) {
@@ -574,10 +602,12 @@
                 const isDrafted = draftedPlayers.has(p.Player);
                 const rowClass = isDrafted ? "drafted-row" : "";
                 const isPitcher = ["SP", "RP"].some(x => (p.Pos || "").includes(x));
+                const planTags = getPlayerPlanTags(p.Player);
+                const badges = getPlayerBadges(p.Player);
                 return `<tr class="${rowClass}">
                     <td class="rank-col">${i + 1}</td>
                     <td class="value-col"><span class="auction-value">$${val.toFixed(0)}</span></td>
-                    <td class="player-name-col">${p.Player}</td>
+                    <td class="player-name-col">${p.Player} ${badges}${planTags}</td>
                     <td><span class="pos-tag">${p.Pos || "—"}</span></td>
                     <td>${p.Team || "—"}</td>
                     <td>${p.Age || "—"}</td>
