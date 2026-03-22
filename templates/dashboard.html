@@ -1863,6 +1863,7 @@
             if (['LF','CF','RF','OF'].some(x => p.includes(x))) return 'OF';
             if (p.includes('SP')) return 'SP';
             if (p.includes('RP')) return 'RP';
+            if (p === 'P') return 'SP'; // Generic pitcher → SP
             if (p.includes('SS')) return 'SS';
             if (p.includes('1B')) return '1B';
             if (p.includes('2B')) return '2B';
@@ -3449,47 +3450,79 @@
 
         // Calculate how much the FF AI should bid for the user on a player
         function ffUserWillingness(player) {
-            const user = mockTeams[mockUserTeamIdx];
-            if (user.roster.length >= MOCK_ROSTER_SIZE) return 0;
-            const maxBid = getMaxBid(user);
+            try {
+                const user = mockTeams[mockUserTeamIdx];
+                if (user.roster.length >= MOCK_ROSTER_SIZE) return 0;
+                const maxBid = getMaxBid(user);
+                if (maxBid <= 1) return 1;
 
-            // Check if this player is in the active plan
-            const plan = window._planData && window._planData[mockActivePlan];
-            if (!plan) return 0;
+                // Check if this player is in the active plan (by name match)
+                const plan = window._planData && window._planData[mockActivePlan];
+                if (!plan) return Math.min(parseFloat(player.auction_value) || 1, maxBid);
 
-            let planPrice = 0;
-            let isPlanTarget = false;
-            for (const slot of plan.slots) {
-                const idx = plan.slots.indexOf(slot);
-                const st = mockPlanState[idx];
-                if (st && st.status === 'got') continue; // slot filled
+                let planPrice = 0;
+                let isPlanTarget = false;
+                for (let idx = 0; idx < plan.slots.length; idx++) {
+                    const slot = plan.slots[idx];
+                    const st = mockPlanState[idx];
+                    if (st && st.status === 'got') continue; // slot filled
 
-                if (slot.primary.player === player.player) {
-                    planPrice = slot.primary.est_price;
-                    isPlanTarget = true;
-                    break;
-                }
-                for (const alt of (slot.alternatives || [])) {
-                    if (alt.player === player.player) {
-                        planPrice = alt.est_price;
+                    if (slot.primary.player === player.player) {
+                        planPrice = slot.primary.est_price;
                         isPlanTarget = true;
                         break;
                     }
+                    for (const alt of (slot.alternatives || [])) {
+                        if (alt.player === player.player) {
+                            planPrice = alt.est_price;
+                            isPlanTarget = true;
+                            break;
+                        }
+                    }
+                    if (isPlanTarget) break;
                 }
-                if (isPlanTarget) break;
-            }
 
-            if (!isPlanTarget) {
-                // Not a plan target — only bid up to steal price
-                const val = parseFloat(player.auction_value) || 1;
-                const stealAt = getStealPrice(val, player.fpts);
-                return Math.min(stealAt, maxBid);
-            }
+                if (!isPlanTarget) {
+                    // Not a plan target — check if we need this position at all
+                    const posGroup = getPositionGroup(player.pos);
+                    let needPos = false;
+                    for (let idx = 0; idx < plan.slots.length; idx++) {
+                        const slot = plan.slots[idx];
+                        const st = mockPlanState[idx];
+                        if (st && st.status === 'got') continue;
+                        const slotPos = slot.slot.replace(/\d+/g, '').replace(/^(SP|RP)$/, '$1');
+                        const sp = slot.slot.replace(/^(SP|RP|1B|2B|3B|SS|LF|CF|RF|UT|C|DH)\d*$/, '$1') || slot.slot;
+                        if (sp === posGroup || (posGroup === 'OF' && ['LF','CF','RF'].includes(sp)) ||
+                            (['LF','CF','RF'].includes(posGroup) && ['LF','CF','RF'].includes(sp)) ||
+                            (posGroup === 'P' && sp === 'SP') || sp === 'UT') {
+                            needPos = true;
+                            break;
+                        }
+                    }
+                    if (needPos) {
+                        // Need position but not a specific target — bid up to market value
+                        const val = parseFloat(player.auction_value) || 1;
+                        return Math.min(Math.max(val, 1), maxBid);
+                    }
+                    // Don't need position — steal price only
+                    const val = parseFloat(player.auction_value) || 1;
+                    const stealAt = getStealPrice(val, player.fpts);
+                    return Math.min(Math.max(stealAt, 1), maxBid);
+                }
 
-            // Plan target — bid up to plan price + small premium, capped by max bid
-            const mws = calcMaxWillingToSpend(player);
-            const willing = Math.min(mws.maxWilling || planPrice, maxBid);
-            return willing;
+                // Plan target — bid up to max willing to spend
+                try {
+                    const mws = calcMaxWillingToSpend(player);
+                    const willing = Math.min(mws.maxWilling || planPrice + 5, maxBid);
+                    return Math.max(willing, planPrice); // At least plan price
+                } catch(e) {
+                    console.error('calcMaxWillingToSpend failed in FF:', e);
+                    return Math.min(planPrice + 5, maxBid);
+                }
+            } catch(e) {
+                console.error('ffUserWillingness error:', e);
+                return 1;
+            }
         }
 
         function ffResolveAuction() {
