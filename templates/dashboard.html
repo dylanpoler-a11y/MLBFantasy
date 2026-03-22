@@ -1086,10 +1086,8 @@
                         html += `<span class="spi-fpts">${p.fpts}</span>`;
                         html += `<span class="steal-tag">S≤$${stealAt}</span>`;
                         if (p._globalIdx === -1) {
-                            html += `<button class="btn btn-xs btn-acquired" onclick="gotPlayer(${idx})">GOT</button>`;
                             html += `<button class="btn btn-xs btn-taken" onclick="takenPlayer(${idx})">X</button>`;
                         } else {
-                            html += `<button class="btn btn-xs btn-acquired" onclick="gotAlt(${idx},${p._globalIdx})">GOT</button>`;
                             html += `<button class="btn btn-xs btn-taken" onclick="takenAlt(${idx},${p._globalIdx})">X</button>`;
                         }
                         html += `</div>`;
