@@ -2248,8 +2248,10 @@
             const stealAt = getStealPrice(val, player.fpts);
             // Show specific roster slot from plan instead of generic position
             const mwsInfo = calcMaxWillingToSpend(player);
-            const displayPos = mwsInfo.matchedSlot || player.pos;
-            document.getElementById('mockPlayerDetail').innerHTML = `${displayPos} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${getPlayerBadges(player.player)}`;
+            const actualPos = player.pos || '?';
+            const slotFill = mwsInfo.matchedSlot;
+            const posDisplay = slotFill && slotFill !== actualPos ? `${actualPos} (→${slotFill})` : actualPos;
+            document.getElementById('mockPlayerDetail').innerHTML = `${posDisplay} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${getPlayerBadges(player.player)}`;
             document.getElementById('mockCurrentBid').textContent = '$' + startBid;
             document.getElementById('mockBidder').textContent = mockTeams[nominatorIdx].name;
             document.getElementById('mockBidInput').value = startBid + 1;
