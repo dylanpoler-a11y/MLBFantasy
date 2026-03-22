@@ -1825,10 +1825,13 @@
                     slotCost = state.replacement.est_price;
                 }
 
-                const slotPos = slot.slot.replace(/\d+/g, '');
+                // Extract base position from slot name: SP1->SP, RP1->RP, 1B->1B, 2B->2B, etc.
+                const slotPos = slot.slot.replace(/^(SP|RP|1B|2B|3B|SS|LF|CF|RF|UT|C|DH)\d*$/, '$1') || slot.slot;
                 const posMatches = slotPos === posGroup ||
                     (posGroup === 'OF' && ['LF','CF','RF'].includes(slotPos)) ||
                     (['LF','CF','RF'].includes(posGroup) && ['LF','CF','RF','OF'].includes(slotPos)) ||
+                    (posGroup === 'DH' && slotPos === 'UT') ||
+                    (posGroup === '1B' && slotPos === 'UT') ||
                     slotPos === 'UT';
 
                 unfilledSlots.push({ idx, slotPos, slotCost, posMatches, slotLabel: slot.slot });
