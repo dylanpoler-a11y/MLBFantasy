@@ -71,14 +71,18 @@
         },
         "alternatives": [
           {
-            "player": "Dansby Swanson",
-            "est_price": 15,
-            "fpts": 523
+            "player": "Jeremy Pena",
+            "est_price": 14,
+            "fpts": 495,
+            "pos": "SS",
+            "team": "HOU"
           },
           {
-            "player": "Geraldo Perdomo",
-            "est_price": 16,
-            "fpts": 541
+            "player": "Zach Neto",
+            "est_price": 19,
+            "fpts": 535,
+            "pos": "SS",
+            "team": "LAA"
           },
           {
             "player": "Carlos Correa",
@@ -169,14 +173,18 @@
         },
         "alternatives": [
           {
-            "player": "Matt Olson",
-            "est_price": 20,
-            "fpts": 596
+            "player": "Brent Rooker",
+            "est_price": 23,
+            "fpts": 582,
+            "pos": "OF/DH",
+            "team": "ATH"
           },
           {
-            "player": "Pete Alonso",
-            "est_price": 23,
-            "fpts": 607
+            "player": "Vladimir Guerrero",
+            "est_price": 25,
+            "fpts": 621,
+            "pos": "1B/DH",
+            "team": "TOR"
           },
           {
             "player": "Nick Kurtz",
@@ -221,11 +229,11 @@
             "team": "TEX"
           },
           {
-            "player": "Sal Frelick",
-            "est_price": 5,
-            "fpts": 418,
-            "pos": "CF/LF",
-            "team": "MIL"
+            "player": "Alec Burleson",
+            "est_price": 7,
+            "fpts": 442,
+            "pos": "1B/OF/DH",
+            "team": "STL"
           }
         ]
       },
@@ -244,9 +252,11 @@
             "fpts": 480
           },
           {
-            "player": "Jake Cronenworth",
-            "est_price": 2,
-            "fpts": 423
+            "player": "Jorge Polanco",
+            "est_price": 3,
+            "fpts": 395,
+            "pos": "2B/DH",
+            "team": "NYM"
           },
           {
             "player": "Bryson Stott",
@@ -304,19 +314,25 @@
         },
         "alternatives": [
           {
-            "player": "Nolan Arenado",
-            "est_price": 4,
-            "fpts": 434
+            "player": "Spencer Torkelson",
+            "est_price": 7,
+            "fpts": 469,
+            "pos": "1B",
+            "team": "DET"
           },
           {
-            "player": "Isaac Paredes",
-            "est_price": 2,
-            "fpts": 375
+            "player": "Sal Stewart",
+            "est_price": 5,
+            "fpts": 398,
+            "pos": "1B",
+            "team": "CIN"
           },
           {
-            "player": "J.P. Crawford",
-            "est_price": 2,
-            "fpts": 423
+            "player": "Josh Bell",
+            "est_price": 0,
+            "fpts": 382,
+            "pos": "1B/DH",
+            "team": "MIN"
           }
         ]
       },
@@ -451,9 +467,11 @@
             "fpts": 300
           },
           {
-            "player": "Shane Baz",
-            "est_price": 3,
-            "fpts": 330
+            "player": "Cam Schlittler",
+            "est_price": 0,
+            "fpts": 376,
+            "pos": "SP",
+            "team": "NYY"
           },
           {
             "player": "Eury Perez",
@@ -507,9 +525,11 @@
             "fpts": 558
           },
           {
-            "player": "Alex Bregman",
-            "est_price": 13,
-            "fpts": 532
+            "player": "Maikel Garcia",
+            "est_price": 14,
+            "fpts": 502,
+            "pos": "3B",
+            "team": "KC"
           }
         ]
       },
@@ -550,9 +570,11 @@
         },
         "alternatives": [
           {
-            "player": "Riley Greene",
-            "est_price": 16,
-            "fpts": 539
+            "player": "Wyatt Langford",
+            "est_price": 14,
+            "fpts": 494,
+            "pos": "OF",
+            "team": "TEX"
           },
           {
             "player": "James Wood",
@@ -576,9 +598,11 @@
         },
         "alternatives": [
           {
-            "player": "William Contreras",
-            "est_price": 14,
-            "fpts": 522
+            "player": "Ben Rice",
+            "est_price": 13,
+            "fpts": 489,
+            "pos": "C/1B/DH",
+            "team": "NYY"
           },
           {
             "player": "Adley Rutschman",
@@ -607,9 +631,11 @@
             "fpts": 549
           },
           {
-            "player": "Pete Alonso",
-            "est_price": 23,
-            "fpts": 607
+            "player": "Vladimir Guerrero",
+            "est_price": 25,
+            "fpts": 621,
+            "pos": "1B/DH",
+            "team": "TOR"
           },
           {
             "player": "Jonathan Aranda",
@@ -633,9 +659,11 @@
             "fpts": 533
           },
           {
-            "player": "Taylor Ward",
-            "est_price": 13,
-            "fpts": 519
+            "player": "Jac Caglianone",
+            "est_price": 10,
+            "fpts": 475,
+            "pos": "OF",
+            "team": "KC"
           },
           {
             "player": "Brandon Nimmo",
@@ -654,9 +682,11 @@
         },
         "alternatives": [
           {
-            "player": "Brendan Donovan",
-            "est_price": 4,
-            "fpts": 434
+            "player": "Jorge Polanco",
+            "est_price": 3,
+            "fpts": 395,
+            "pos": "2B/DH",
+            "team": "NYM"
           },
           {
             "player": "Jake Cronenworth",
@@ -687,11 +717,11 @@
             "team": "LAA"
           },
           {
-            "player": "Heliot Ramos",
-            "est_price": 2,
-            "fpts": 428,
-            "pos": "CF/RF",
-            "team": "SF"
+            "player": "Colton Cowser",
+            "est_price": 0,
+            "fpts": 381,
+            "pos": "OF",
+            "team": "BAL"
           },
           {
             "player": "Roman Anthony",
@@ -712,19 +742,25 @@
         },
         "alternatives": [
           {
-            "player": "Austin Riley",
-            "est_price": 13,
-            "fpts": 526
+            "player": "Jeremy Pena",
+            "est_price": 14,
+            "fpts": 495,
+            "pos": "SS",
+            "team": "HOU"
           },
           {
-            "player": "Nolan Arenado",
-            "est_price": 4,
-            "fpts": 434
+            "player": "Spencer Torkelson",
+            "est_price": 7,
+            "fpts": 469,
+            "pos": "1B",
+            "team": "DET"
           },
           {
-            "player": "Isaac Paredes",
-            "est_price": 2,
-            "fpts": 375
+            "player": "Sal Stewart",
+            "est_price": 5,
+            "fpts": 398,
+            "pos": "1B",
+            "team": "CIN"
           }
         ]
       },
@@ -965,9 +1001,11 @@
         },
         "alternatives": [
           {
-            "player": "Alex Bregman",
-            "est_price": 13,
-            "fpts": 532
+            "player": "Maikel Garcia",
+            "est_price": 14,
+            "fpts": 502,
+            "pos": "3B",
+            "team": "KC"
           },
           {
             "player": "Austin Riley",
@@ -1034,9 +1072,11 @@
             "fpts": 424
           },
           {
-            "player": "Ryan O'Hearn",
-            "est_price": 5,
-            "fpts": 414
+            "player": "Alec Burleson",
+            "est_price": 7,
+            "fpts": 442,
+            "pos": "1B/OF/DH",
+            "team": "STL"
           }
         ]
       },
@@ -1050,9 +1090,11 @@
         },
         "alternatives": [
           {
-            "player": "Jake Cronenworth",
-            "est_price": 2,
-            "fpts": 423
+            "player": "Jorge Polanco",
+            "est_price": 3,
+            "fpts": 395,
+            "pos": "2B/DH",
+            "team": "NYM"
           },
           {
             "player": "Gleyber Torres",
@@ -1076,14 +1118,18 @@
         },
         "alternatives": [
           {
-            "player": "Riley Greene",
-            "est_price": 16,
-            "fpts": 539
+            "player": "James Wood",
+            "est_price": 18,
+            "fpts": 533,
+            "pos": "OF/DH",
+            "team": "WSH"
           },
           {
-            "player": "Taylor Ward",
-            "est_price": 13,
-            "fpts": 519
+            "player": "Jac Caglianone",
+            "est_price": 10,
+            "fpts": 475,
+            "pos": "OF",
+            "team": "KC"
           },
           {
             "player": "Wyatt Langford",
@@ -1093,9 +1139,11 @@
             "team": "TEX"
           },
           {
-            "player": "Heliot Ramos",
-            "est_price": 2,
-            "fpts": 428
+            "player": "Colton Cowser",
+            "est_price": 0,
+            "fpts": 381,
+            "pos": "OF",
+            "team": "BAL"
           }
         ]
       },
@@ -1141,19 +1189,25 @@
         },
         "alternatives": [
           {
-            "player": "Nolan Arenado",
-            "est_price": 4,
-            "fpts": 434
+            "player": "Spencer Torkelson",
+            "est_price": 7,
+            "fpts": 469,
+            "pos": "1B",
+            "team": "DET"
           },
           {
-            "player": "J.P. Crawford",
-            "est_price": 2,
-            "fpts": 423
+            "player": "Sal Stewart",
+            "est_price": 5,
+            "fpts": 398,
+            "pos": "1B",
+            "team": "CIN"
           },
           {
-            "player": "Isaac Paredes",
-            "est_price": 2,
-            "fpts": 375
+            "player": "Josh Bell",
+            "est_price": 0,
+            "fpts": 382,
+            "pos": "1B/DH",
+            "team": "MIN"
           }
         ]
       },
@@ -1307,9 +1361,11 @@
             "fpts": 440
           },
           {
-            "player": "Shane Baz",
-            "est_price": 3,
-            "fpts": 330
+            "player": "Cam Schlittler",
+            "est_price": 0,
+            "fpts": 376,
+            "pos": "SP",
+            "team": "NYY"
           }
         ]
       },
