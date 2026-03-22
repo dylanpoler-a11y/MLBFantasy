@@ -1969,10 +1969,10 @@
             board.style.display = 'block';
 
             // Position filter tabs + badge filters
-            const positions = ['C','1B','2B','3B','SS','OF','SP','RP'];
+            const positions = ['C','1B','2B','3B','SS','LF','CF','RF','SP','RP'];
             let html = '<div class="pos-filter-tabs">';
             positions.forEach(pos => {
-                const isActive = pos === posGroup || (pos === 'OF' && ['LF','CF','RF'].includes(posGroup));
+                const isActive = pos === posGroup;
                 html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="_posBoardBadgeFilter=null;renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
             });
             html += `<span style="margin-left:8px;border-left:1px solid var(--border);padding-left:8px"></span>`;
@@ -1981,16 +1981,24 @@
             html += `<button class="pos-tab${_posBoardBadgeFilter === 'all-tagged' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='all-tagged'?null:'all-tagged';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">ALL Tagged</button>`;
             html += '</div>';
 
+            // Position matching helper — for LF/CF/RF, check raw position string
+            function posMatchesFilter(rawPos, filter) {
+                const upper = (rawPos || '').toUpperCase();
+                if (['LF','CF','RF'].includes(filter)) {
+                    // Show players who can play this specific OF slot, OR generic OF
+                    return upper.includes(filter) || upper === 'OF' || (filter !== 'CF' && upper === 'OF');
+                }
+                const pg = getPositionGroup(rawPos);
+                return pg === filter;
+            }
+
             // Find all drafted players at this position
-            const drafted = mockLog_.filter(e => {
-                const pg = getPositionGroup(e.pos);
-                return pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
-            }).sort((a, b) => b.price - a.price);
+            const drafted = mockLog_.filter(e => posMatchesFilter(e.pos, posGroup))
+                .sort((a, b) => b.price - a.price);
 
             // Find available players at this position, with optional badge filter
             const available = mockAvailable.filter(p => {
-                const pg = getPositionGroup(p.pos);
-                const posMatch = pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
+                const posMatch = posMatchesFilter(p.pos, posGroup);
                 const badges = (p.badges || []).join(' ').toLowerCase();
                 const hasBadge = badges.length > 0;
 
