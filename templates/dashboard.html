@@ -949,7 +949,10 @@
                 if (st.status === 'acquired') {
                     // ── GOT: show acquired player + price + reset ──
                     let activePlayer = slot.primary;
-                    if (st.chosen_alt !== null && st.chosen_alt >= 0) {
+                    if (st.chosen_alt === -99 && st.offPlanPlayer) {
+                        // Off-plan acquisition
+                        activePlayer = { player: st.offPlanPlayer, est_price: st.actual_price || 0, fpts: st.offPlanFpts || 0 };
+                    } else if (st.chosen_alt !== null && st.chosen_alt >= 0) {
                         if (st.chosen_alt < slot.alternatives.length) {
                             activePlayer = slot.alternatives[st.chosen_alt];
                         } else {
@@ -2440,6 +2443,69 @@
                     }
                 }
             });
+
+            // ── AUTO-ASSIGN: If user won a player not matched to any slot, find an unfilled slot by position ──
+            if (isUser) {
+                const wasAssigned = plan.slots.some((s, i) => {
+                    const st = mockPlanState[i];
+                    return st && st.status === 'got' && st.player === playerName;
+                });
+                if (!wasAssigned) {
+                    // Find the player's position category
+                    const playerObj = (window._mockPlayers || []).find(p => p.player === playerName);
+                    const playerPos = playerObj ? (playerObj.pos || '').toUpperCase() : '';
+                    const isPitcher = playerPos.includes('SP') || playerPos.includes('RP') || playerPos === 'P';
+
+                    // Find unfilled slots that match this position
+                    let bestSlotIdx = -1;
+                    let bestSlotPriority = 999;
+                    plan.slots.forEach((slot, idx) => {
+                        const st = mockPlanState[idx];
+                        if (st && st.status === 'got') return; // already filled
+                        const slotName = slot.slot.toUpperCase();
+                        const slotIsPitcher = slotName.startsWith('SP') || slotName.startsWith('RP');
+
+                        if (isPitcher && slotIsPitcher) {
+                            // Match pitcher to SP/RP slots - prefer SP slots for SP, RP for RP
+                            const slotNum = parseInt(slotName.replace(/\D/g, '')) || 0;
+                            if (bestSlotIdx === -1 || slotNum < bestSlotPriority) {
+                                bestSlotIdx = idx;
+                                bestSlotPriority = slotNum;
+                            }
+                        } else if (!isPitcher && !slotIsPitcher) {
+                            // Match hitter to hitting slots by position compatibility
+                            const posMatches = playerPos.split('/').some(p => {
+                                const pp = p.trim();
+                                if (slotName === 'UT' || slotName === 'DH') return true;
+                                if (pp === 'OF' && (slotName === 'LF' || slotName === 'CF' || slotName === 'RF')) return true;
+                                if ((pp === 'LF' || pp === 'CF' || pp === 'RF') && slotName === pp) return true;
+                                if (pp === slotName) return true;
+                                return false;
+                            });
+                            if (posMatches) {
+                                const slotNum = parseInt(slotName.replace(/\D/g, '')) || 0;
+                                if (bestSlotIdx === -1 || slotNum < bestSlotPriority) {
+                                    bestSlotIdx = idx;
+                                    bestSlotPriority = slotNum;
+                                }
+                            }
+                        }
+                    });
+
+                    if (bestSlotIdx >= 0) {
+                        const slot = plan.slots[bestSlotIdx];
+                        const psKey = mockActivePlan + '_' + bestSlotIdx;
+                        const fpts = playerObj ? playerObj.fpts : 0;
+                        mockPlanState[bestSlotIdx] = {status: 'got', player: playerName, price: price, fpts: fpts};
+                        // Use chosen_alt = -99 to indicate this is an off-plan acquisition
+                        planState.slots[psKey] = {status: 'acquired', actual_price: price, chosen_alt: -99, takenAlts: (planState.slots[psKey] || {}).takenAlts || [], offPlanPlayer: playerName, offPlanFpts: fpts};
+                        showAdvisor(
+                            `Auto-assigned <strong>${playerName}</strong> ($${price}) to <strong>${slot.slot}</strong> (not in original plan but fits the position).`,
+                            'savings'
+                        );
+                    }
+                }
+            }
 
             recalcSavings();
         }
