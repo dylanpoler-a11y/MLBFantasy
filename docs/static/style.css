@@ -1448,6 +1448,27 @@ header h1 span { color: var(--accent); }
     color: #94a3b8;
     border: 1px solid rgba(148, 163, 184, 0.3);
 }
+/* ── Market Inflation Tracker ── */
+.mock-inflation strong { font-size: 0.72rem; }
+.inflation-hot strong { color: #ef4444 !important; }
+.inflation-warm strong { color: #f59e0b !important; }
+.inflation-fair strong { color: #94a3b8 !important; }
+.inflation-cold strong { color: #3b82f6 !important; }
+.rec-inflation {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 4px 0;
+    color: #fca5a5;
+    font-size: 0.8rem;
+}
+.rec-inflation.cold {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #93c5fd;
+}
+
 .slot-walk-away {
     font-size: 0.68rem;
     padding: 2px 8px;

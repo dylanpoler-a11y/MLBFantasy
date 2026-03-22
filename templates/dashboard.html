@@ -275,6 +275,10 @@
                         <span>Active Plan</span>
                         <strong id="mockActivePlan">A</strong>
                     </div>
+                    <div class="mock-stat mock-inflation" id="mockInflation">
+                        <span>Market</span>
+                        <strong id="mockInflationLabel">—</strong>
+                    </div>
                     <div class="mock-plan-scores" id="mockPlanScores"></div>
                     <div class="mock-draft-controls">
                         <button class="btn btn-primary btn-sm" id="mockNominateBtn" onclick="showNominateUI()">Nominate</button>
@@ -1745,6 +1749,59 @@
             document.getElementById('mockBudget').textContent = '$' + user.budget;
             document.getElementById('mockRosterCount').textContent = user.roster.length + '/' + MOCK_ROSTER_SIZE;
             document.getElementById('mockMaxBid').textContent = '$' + getMaxBid(user);
+            updateInflationTracker();
+        }
+
+        function updateInflationTracker() {
+            const label = document.getElementById('mockInflationLabel');
+            const container = document.getElementById('mockInflation');
+            if (!label || mockLog_.length < 3) { label.textContent = '—'; return; }
+
+            // Calculate: how much are OTHER teams overpaying vs market?
+            let totalOverpay = 0, otherPicks = 0, bigOverpays = 0;
+            let otherBudgetBurned = 0;
+            mockLog_.forEach(e => {
+                if (e.isUser) return;
+                const market = e.market || 1;
+                const overpay = e.price - market;
+                totalOverpay += overpay;
+                otherPicks++;
+                if (overpay > 5) bigOverpays++;
+                otherBudgetBurned += e.price;
+            });
+
+            if (otherPicks === 0) { label.textContent = '—'; return; }
+
+            const avgOverpay = totalOverpay / otherPicks;
+            const pctBurned = (otherBudgetBurned / (260 * (MOCK_NUM_TEAMS - 1))) * 100;
+
+            // Calculate avg budget remaining per team (excluding user)
+            let totalOtherBudget = 0, totalOtherSpots = 0;
+            mockTeams.forEach((t, i) => {
+                if (i === mockUserTeamIdx) return;
+                totalOtherBudget += t.budget;
+                totalOtherSpots += (MOCK_ROSTER_SIZE - t.roster.length);
+            });
+            const avgOtherPerSlot = totalOtherSpots > 0 ? (totalOtherBudget / totalOtherSpots).toFixed(1) : '?';
+
+            let status, cls;
+            if (avgOverpay > 5) {
+                status = `🔥 HOT +$${avgOverpay.toFixed(0)}/pick`;
+                cls = 'inflation-hot';
+            } else if (avgOverpay > 2) {
+                status = `📈 Warm +$${avgOverpay.toFixed(0)}/pick`;
+                cls = 'inflation-warm';
+            } else if (avgOverpay > -1) {
+                status = `➡️ Fair`;
+                cls = 'inflation-fair';
+            } else {
+                status = `❄️ Cold $${avgOverpay.toFixed(0)}/pick`;
+                cls = 'inflation-cold';
+            }
+
+            label.innerHTML = status;
+            container.className = 'mock-stat mock-inflation ' + cls;
+            container.title = `Avg overpay: $${avgOverpay.toFixed(1)}/pick | ${bigOverpays} big overpays (>$5) | Other teams avg $${avgOtherPerSlot}/slot left`;
         }
 
         // ── Plan Advisor ──────────────────────────────────────
@@ -1884,6 +1941,18 @@
             if (!urgency && player.fpts >= 300) {
                 html = `<div class="rec-info">Market ~$${marketVal.toFixed(0)} · Steal ≤$${stealAt} · ${player.fpts.toFixed(0)} fpts</div>` + html;
                 urgency = 'info';
+            }
+
+            // Market inflation context
+            if (mockLog_.length >= 5) {
+                let otherOverpay = 0, otherCount = 0;
+                mockLog_.forEach(e => { if (!e.isUser) { otherOverpay += (e.price - (e.market || 1)); otherCount++; } });
+                const avgOp = otherCount > 0 ? otherOverpay / otherCount : 0;
+                if (avgOp > 4) {
+                    html += `<div class="rec-inflation">🔥 <strong>Market is HOT</strong> — teams overpaying avg $${avgOp.toFixed(0)}/pick. Be patient, deals are coming late.</div>`;
+                } else if (avgOp < -1) {
+                    html += `<div class="rec-inflation cold">❄️ <strong>Market is COLD</strong> — players going cheap. Be aggressive on your targets!</div>`;
+                }
             }
 
             // Show Max Breakout ceiling if applicable
