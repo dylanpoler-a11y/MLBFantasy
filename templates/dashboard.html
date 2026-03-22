@@ -1852,14 +1852,29 @@
                 if (activeMention.role === 'primary') {
                     const slotState = mockPlanState[activeMention.slotIdx];
                     if (slotState && slotState.status === 'pending') {
-                        // Use walk-away prices if available
+                        // Use walk-away prices if available, but cap to market for non-anchors
                         const planSlot = window._planData[mockActivePlan].slots[activeMention.slotIdx];
                         const wa = planSlot && planSlot.walk_away;
+                        const isAnchor = planSlot && planSlot.is_anchor;
+                        const playerMarket = getMarketValue(player);
+                        const hasBreakout = player.max_breakout;
                         urgency = 'target';
-                        if (wa) {
+
+                        if (wa && isAnchor) {
+                            // Anchors use plan walk-away prices (already calculated strategically)
                             html = `<div class="rec-target">YOUR TARGET for ${activeMention.slot}! 💰 Bid to <strong>$${wa.comfortable}</strong> · ⚠️ Stretch $${wa.stretch} · 🛑 Walk at $${wa.walk_away}</div>`;
+                        } else if (wa) {
+                            // Non-anchor primaries: cap to market value
+                            const marketCeiling = hasBreakout
+                                ? Math.round(playerMarket * 1.4)
+                                : Math.round(playerMarket * 1.25);
+                            const bidTo = Math.min(wa.comfortable, marketCeiling);
+                            const stretch = Math.min(wa.stretch, marketCeiling + 3);
+                            const walkAt = Math.min(wa.walk_away, marketCeiling + 5);
+                            html = `<div class="rec-target">YOUR TARGET for ${activeMention.slot}! 💰 Bid to <strong>$${bidTo}</strong> · ⚠️ Stretch $${stretch} · 🛑 Walk at $${walkAt}</div>`;
                         } else {
-                            html = `<div class="rec-target">YOUR TARGET for ${activeMention.slot}! Go up to <strong>$${activeMention.price + 5}</strong></div>`;
+                            const bidTo = Math.min(activeMention.price + 3, Math.round(playerMarket * 1.2));
+                            html = `<div class="rec-target">YOUR TARGET for ${activeMention.slot}! Go up to <strong>$${bidTo}</strong></div>`;
                         }
                         html += `<div class="rec-detail">Plan price: $${activeMention.price} · ${activeMention.fpts} fpts</div>`;
                     }
@@ -1868,9 +1883,19 @@
                     if (slotState && (slotState.status === 'taken' || slotState.status === 'pending')) {
                         const planSlot = window._planData[mockActivePlan].slots[activeMention.slotIdx];
                         const wa = planSlot && planSlot.walk_away;
-                        const maxRec = wa ? wa.comfortable : activeMention.price + 2;
+                        // Cap bid advice to player's market value, not slot budget
+                        const playerMarket = getMarketValue(player);
+                        const hasBreakout = player.max_breakout;
+                        const marketCeiling = hasBreakout
+                            ? Math.round(playerMarket * 1.5)  // Breakout: willing to pay 50% over market
+                            : Math.round(playerMarket * 1.2); // Normal: max 20% over market
+                        const marketStretch = hasBreakout
+                            ? Math.round(playerMarket * 1.3)
+                            : Math.round(playerMarket * 1.1);
+                        const bidTo = Math.min(wa ? wa.comfortable : activeMention.price + 2, marketCeiling);
+                        const walkAt = Math.min(wa ? wa.walk_away : activeMention.price + 8, marketCeiling + 2);
                         urgency = 'value';
-                        html = `<div class="rec-value">Good alternative for ${activeMention.slot}. 💰 Bid to <strong>$${maxRec}</strong>${wa ? ` · 🛑 Walk $${wa.walk_away}` : ''}</div>`;
+                        html = `<div class="rec-value">Good alternative for ${activeMention.slot}. 💰 Bid to <strong>$${bidTo}</strong> · 🛑 Walk $${walkAt}</div>`;
                     }
                 }
             }

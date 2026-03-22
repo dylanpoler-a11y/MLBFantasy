@@ -1,0 +1,693 @@
+{
+  "draft_log": [
+    {
+      "pick": 1,
+      "player": "Shohei Ohtani",
+      "pos": "DH",
+      "fpts": 760.2,
+      "base_price": 52,
+      "winner": "Base Invaders",
+      "price": 66,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 2,
+      "player": "Aaron Judge",
+      "pos": "OF/DH",
+      "fpts": 743.8,
+      "base_price": 47,
+      "winner": "Mound Masters",
+      "price": 59,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 3,
+      "player": "Bobby Witt",
+      "pos": "SS",
+      "fpts": 679.3,
+      "base_price": 39,
+      "winner": "Grand Slammers",
+      "price": 53,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 4,
+      "player": "Juan Soto",
+      "pos": "OF",
+      "fpts": 674.6,
+      "base_price": 37,
+      "winner": "Homer's Heroes",
+      "price": 47,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 5,
+      "player": "Tarik Skubal",
+      "pos": "SP",
+      "fpts": 703.0,
+      "base_price": 40,
+      "winner": "Grand Slammers",
+      "price": 52,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 6,
+      "player": "Jose Ramirez",
+      "pos": "3B/DH",
+      "fpts": 656.5,
+      "base_price": 37,
+      "winner": "Grand Slammers",
+      "price": 48,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 7,
+      "player": "Paul Skenes",
+      "pos": "SP",
+      "fpts": 680.0,
+      "base_price": 40,
+      "winner": "Grand Slammers",
+      "price": 54,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 8,
+      "player": "Ronald Acuna",
+      "pos": "OF",
+      "fpts": 615.7,
+      "base_price": 31,
+      "winner": "Strike Force",
+      "price": 40,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 9,
+      "player": "Garrett Crochet",
+      "pos": "SP",
+      "fpts": 603.9,
+      "base_price": 38,
+      "winner": "Homer's Heroes",
+      "price": 50,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 10,
+      "player": "Kyle Schwarber",
+      "pos": "DH",
+      "fpts": 639.8,
+      "base_price": 29,
+      "winner": "Mound Masters",
+      "price": 39,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 11,
+      "player": "Francisco Lindor",
+      "pos": "SS",
+      "fpts": 620.1,
+      "base_price": 28,
+      "winner": "Walk-Off Winners",
+      "price": 37,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 12,
+      "player": "Corbin Carroll",
+      "pos": "OF",
+      "fpts": 598.3,
+      "base_price": 30,
+      "winner": "Bat Flippers",
+      "price": 40,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 13,
+      "player": "Julio Rodriguez",
+      "pos": "OF",
+      "fpts": 608.7,
+      "base_price": 29,
+      "winner": "Diamond Dogs",
+      "price": 38,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 14,
+      "player": "Vladimir Guerrero",
+      "pos": "1B/DH",
+      "fpts": 620.7,
+      "base_price": 25,
+      "winner": "Diamond Dogs",
+      "price": 33,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 15,
+      "player": "Elly De La Cruz",
+      "pos": "SS",
+      "fpts": 578.9,
+      "base_price": 29,
+      "winner": "Cy Young Guns",
+      "price": 38,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 16,
+      "player": "Pete Alonso",
+      "pos": "1B",
+      "fpts": 607.1,
+      "base_price": 23,
+      "winner": "Homer's Heroes",
+      "price": 29,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 17,
+      "player": "Gunnar Henderson",
+      "pos": "SS",
+      "fpts": 592.3,
+      "base_price": 25,
+      "winner": "Diamond Dogs",
+      "price": 33,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 18,
+      "player": "Cal Raleigh",
+      "pos": "C/DH",
+      "fpts": 586.1,
+      "base_price": 24,
+      "winner": "Strike Force",
+      "price": 32,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 19,
+      "player": "Jackson Chourio",
+      "pos": "OF",
+      "fpts": 577.5,
+      "base_price": 23,
+      "winner": "Cy Young Guns",
+      "price": 29,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 20,
+      "player": "Ketel Marte",
+      "pos": "2B/DH",
+      "fpts": 595.6,
+      "base_price": 24,
+      "winner": "Strike Force",
+      "price": 32,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 21,
+      "player": "Kyle Tucker",
+      "pos": "OF",
+      "fpts": 585.7,
+      "base_price": 28,
+      "winner": "Grand Slammers",
+      "price": 33,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 22,
+      "player": "Trea Turner",
+      "pos": "SS",
+      "fpts": 577.7,
+      "base_price": 25,
+      "winner": "Base Invaders",
+      "price": 33,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 23,
+      "player": "Nick Kurtz",
+      "pos": "1B",
+      "fpts": 596.9,
+      "base_price": 25,
+      "winner": "Homer's Heroes",
+      "price": 32,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 24,
+      "player": "Matt Olson",
+      "pos": "1B",
+      "fpts": 595.5,
+      "base_price": 20,
+      "winner": "Stolen Thunder",
+      "price": 25,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 25,
+      "player": "Junior Caminero",
+      "pos": "3B",
+      "fpts": 585.1,
+      "base_price": 23,
+      "winner": "Bat Flippers",
+      "price": 31,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 26,
+      "player": "Brent Rooker",
+      "pos": "OF/DH",
+      "fpts": 582.1,
+      "base_price": 23,
+      "winner": "Stolen Thunder",
+      "price": 31,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 27,
+      "player": "Roman Anthony",
+      "pos": "OF",
+      "fpts": 577.8,
+      "base_price": 22,
+      "winner": "Homer's Heroes",
+      "price": 29,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 28,
+      "player": "Manny Machado",
+      "pos": "3B",
+      "fpts": 575.9,
+      "base_price": 22,
+      "winner": "Homer's Heroes",
+      "price": 26,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 29,
+      "player": "William Contreras",
+      "pos": "C/DH",
+      "fpts": 522.3,
+      "base_price": 14,
+      "winner": "Homer's Heroes",
+      "price": 18,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 30,
+      "player": "Willy Adames",
+      "pos": "SS",
+      "fpts": 554.7,
+      "base_price": 18,
+      "winner": "Diamond Dogs",
+      "price": 24,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 31,
+      "player": "Rafael Devers",
+      "pos": "1B/DH",
+      "fpts": 548.5,
+      "base_price": 17,
+      "winner": "Strike Force",
+      "price": 23,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 32,
+      "player": "Mookie Betts",
+      "pos": "SS",
+      "fpts": 561.4,
+      "base_price": 19,
+      "winner": "Diamond Dogs",
+      "price": 25,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 33,
+      "player": "Logan Webb",
+      "pos": "SP",
+      "fpts": 551.9,
+      "base_price": 20,
+      "winner": "Base Invaders",
+      "price": 26,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 34,
+      "player": "Hunter Brown",
+      "pos": "SP",
+      "fpts": 587.5,
+      "base_price": 24,
+      "winner": "Bat Flippers",
+      "price": 32,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 35,
+      "player": "Mason Miller",
+      "pos": "RP",
+      "fpts": 375.5,
+      "base_price": 3,
+      "winner": "Fantasia Hebraica (YOU)",
+      "price": 5,
+      "is_target": true,
+      "you_won": true
+    },
+    {
+      "pick": 36,
+      "player": "Andres Munoz",
+      "pos": "RP",
+      "fpts": 365.6,
+      "base_price": 3,
+      "winner": "Homer's Heroes",
+      "price": 4,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 37,
+      "player": "Eugenio Suarez",
+      "pos": "3B",
+      "fpts": 557.5,
+      "base_price": 18,
+      "winner": "Bat Flippers",
+      "price": 24,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 38,
+      "player": "Riley Greene",
+      "pos": "OF/DH",
+      "fpts": 538.7,
+      "base_price": 16,
+      "winner": "Diamond Dogs",
+      "price": 21,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 39,
+      "player": "James Wood",
+      "pos": "OF/DH",
+      "fpts": 533.0,
+      "base_price": 18,
+      "winner": "Diamond Dogs",
+      "price": 24,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 40,
+      "player": "Randy Arozarena",
+      "pos": "OF",
+      "fpts": 529.9,
+      "base_price": 17,
+      "winner": "Diamond Dogs",
+      "price": 21,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 41,
+      "player": "Zach Neto",
+      "pos": "SS",
+      "fpts": 534.6,
+      "base_price": 19,
+      "winner": "Base Invaders",
+      "price": 25,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 42,
+      "player": "Jackson Merrill",
+      "pos": "OF",
+      "fpts": 533.2,
+      "base_price": 16,
+      "winner": "Base Invaders",
+      "price": 20,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 43,
+      "player": "Alex Bregman",
+      "pos": "3B",
+      "fpts": 532.2,
+      "base_price": 13,
+      "winner": "Mound Masters",
+      "price": 17,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 44,
+      "player": "Cole Ragans",
+      "pos": "SP",
+      "fpts": 558.7,
+      "base_price": 20,
+      "winner": "Mound Masters",
+      "price": 26,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 45,
+      "player": "Freddy Peralta",
+      "pos": "SP",
+      "fpts": 535.9,
+      "base_price": 16,
+      "winner": "Bat Flippers",
+      "price": 21,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 46,
+      "player": "Jhoan Duran",
+      "pos": "RP",
+      "fpts": 363.4,
+      "base_price": 3,
+      "winner": "Homer's Heroes",
+      "price": 4,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 47,
+      "player": "Chase Burns",
+      "pos": "SP",
+      "fpts": 387.6,
+      "base_price": 3,
+      "winner": "Fantasia Hebraica (YOU)",
+      "price": 5,
+      "is_target": true,
+      "you_won": true
+    },
+    {
+      "pick": 48,
+      "player": "Devin Williams",
+      "pos": "RP",
+      "fpts": 339.4,
+      "base_price": 16,
+      "winner": "Mound Masters",
+      "price": 19,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 49,
+      "player": "Brandon Nimmo",
+      "pos": "OF",
+      "fpts": 518.4,
+      "base_price": 14,
+      "winner": "Strike Force",
+      "price": 19,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 50,
+      "player": "Taylor Ward",
+      "pos": "OF",
+      "fpts": 518.6,
+      "base_price": 13,
+      "winner": "Diamond Dogs",
+      "price": 16,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 51,
+      "player": "Dansby Swanson",
+      "pos": "SS",
+      "fpts": 522.7,
+      "base_price": 15,
+      "winner": "Bat Flippers",
+      "price": 18,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 52,
+      "player": "Austin Riley",
+      "pos": "3B",
+      "fpts": 526.0,
+      "base_price": 13,
+      "winner": "Mound Masters",
+      "price": 17,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 53,
+      "player": "Aaron Nola",
+      "pos": "SP",
+      "fpts": 416.6,
+      "base_price": 5,
+      "winner": "Fantasia Hebraica (YOU)",
+      "price": 7,
+      "is_target": true,
+      "you_won": true
+    },
+    {
+      "pick": 54,
+      "player": "Jack Flaherty",
+      "pos": "SP",
+      "fpts": 423.6,
+      "base_price": 5,
+      "winner": "Stolen Thunder",
+      "price": 7,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 55,
+      "player": "Cristopher Sanchez",
+      "pos": "SP",
+      "fpts": 560.1,
+      "base_price": 20,
+      "winner": "Strike Force",
+      "price": 27,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 56,
+      "player": "Bryan Woo",
+      "pos": "SP",
+      "fpts": 534.5,
+      "base_price": 16,
+      "winner": "Base Invaders",
+      "price": 18,
+      "is_target": false,
+      "you_won": false
+    },
+    {
+      "pick": 57,
+      "player": "Brendan Donovan",
+      "pos": "2B",
+      "fpts": 434.1,
+      "base_price": 4,
+      "winner": "Stolen Thunder",
+      "price": 5,
+      "is_target": true,
+      "you_won": false
+    },
+    {
+      "pick": 58,
+      "player": "Heliot Ramos",
+      "pos": "OF",
+      "fpts": 428.3,
+      "base_price": 2,
+      "winner": "Fantasia Hebraica (YOU)",
+      "price": 3,
+      "is_target": true,
+      "you_won": true
+    },
+    {
+      "pick": 59,
+      "player": "Adley Rutschman",
+      "pos": "C",
+      "fpts": 429.1,
+      "base_price": 3,
+      "winner": "Fantasia Hebraica (YOU)",
+      "price": 5,
+      "is_target": true,
+      "you_won": true
+    },
+    {
+      "pick": 60,
+      "player": "Reid Detmers",
+      "pos": "SP",
+      "fpts": 318.6,
+      "base_price": 3,
+      "winner": "Diamond Dogs",
+      "price": 4,
+      "is_target": true,
+      "you_won": false
+    }
+  ],
+  "your_picks": [
+    {
+      "player": "Mason Miller",
+      "price": 5,
+      "slot": "RP1"
+    },
+    {
+      "player": "Chase Burns",
+      "price": 5,
+      "slot": "SP3"
+    },
+    {
+      "player": "Aaron Nola",
+      "price": 7,
+      "slot": "SP4"
+    },
+    {
+      "player": "Heliot Ramos",
+      "price": 3,
+      "slot": "OF3"
+    },
+    {
+      "player": "Adley Rutschman",
+      "price": 5,
+      "slot": "UT"
+    }
+  ],
+  "your_budget_remaining": 235,
+  "your_slots_remaining": 17
+}
