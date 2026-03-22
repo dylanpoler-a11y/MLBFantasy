@@ -1372,6 +1372,34 @@ header h1 span { color: var(--accent); }
     letter-spacing: 0.5px;
 }
 
+/* ── Live Scout Panel ── */
+.live-scout-panel {
+    margin-bottom: 12px;
+    background: var(--card-bg);
+    border: 2px solid #f59e0b;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+}
+.live-scout-input-wrap {
+    display: flex; gap: 6px; margin-bottom: 6px;
+}
+.live-scout-input {
+    flex: 1; padding: 8px 12px; border-radius: 6px;
+    background: rgba(255,255,255,0.06); border: 2px solid #f59e0b;
+    color: var(--text-primary); font-size: 1rem; font-weight: 600;
+}
+.live-scout-input::placeholder { color: rgba(245,158,11,0.5); }
+.live-scout-autocomplete {
+    position: relative; z-index: 20;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 6px; max-height: 200px; overflow-y: auto;
+}
+.live-entry-sub-header {
+    font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 4px;
+}
+
 /* ── Draft Controls (Pause/Save/Restart) ── */
 .mock-draft-controls {
     display: flex; gap: 6px; align-items: center; margin-left: auto;

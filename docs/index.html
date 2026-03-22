@@ -577,12 +577,27 @@
             </div>
 
             <!-- Quick Entry + Right Panel -->
+            <!-- Scout Panel: Who's on the clock? -->
+            <div class="live-scout-panel" id="liveScoutPanel" style="display:none">
+                <div class="mock-bid-card" id="liveScoutCard"></div>
+            </div>
+
             <div class="live-main">
                 <!-- Quick Entry Panel -->
                 <div class="live-entry-panel">
                     <div class="live-entry-header">Quick Entry</div>
+                    <!-- Scout lookup -->
+                    <div class="live-scout-input-wrap">
+                        <input type="text" id="liveScoutInput" class="live-scout-input" placeholder='Who is being nominated? (type player name)' autocomplete="off" oninput="liveScoutAutocomplete()" onkeydown="if(event.key==='Enter')liveScoutLookup()">
+                        <button class="btn btn-sm" onclick="liveScoutLookup()" style="background:#f59e0b;color:#000;font-weight:700">Scout</button>
+                        <button class="btn btn-sm" onclick="liveScoutClear()" style="background:#555">Clear</button>
+                    </div>
+                    <div class="live-scout-autocomplete" id="liveScoutAutocompleteList" style="display:none"></div>
+
+                    <div style="border-top:1px solid var(--border);margin:8px 0;padding-top:8px"></div>
+                    <div class="live-entry-sub-header">Log Result</div>
                     <div class="live-entry-input-wrap">
-                        <input type="text" id="liveQuickInput" class="live-quick-input" placeholder='Player Name $Price TeamName (e.g. "Skubal 46 Jack")' autocomplete="off" onkeydown="if(event.key==='Enter')liveLogPick()" oninput="liveAutocomplete()">
+                        <input type="text" id="liveQuickInput" class="live-quick-input" placeholder='Player $Price Team (e.g. "Skubal 46 Jack")' autocomplete="off" onkeydown="if(event.key==='Enter')liveLogPick()" oninput="liveAutocomplete()">
                         <button class="btn btn-primary" onclick="liveLogPick()">Log Pick</button>
                         <button class="btn btn-danger btn-sm" onclick="liveUndoPick()">Undo</button>
                     </div>
@@ -4508,6 +4523,140 @@
             const firstWord = teamNames.filter(t => t.toLowerCase().split(/\s+/)[0].startsWith(q));
             if (firstWord.length === 1) return firstWord[0];
             return partial.length > 0 ? partial[0] : teamNames[0];
+        }
+
+        // ── Scout Panel (Who's on the clock?) ────────────────
+        let liveScoutPlayer = null;
+
+        function liveScoutAutocomplete() {
+            const input = document.getElementById('liveScoutInput');
+            const val = input.value.trim().toLowerCase();
+            const list = document.getElementById('liveScoutAutocompleteList');
+            if (val.length < 2) { list.style.display = 'none'; return; }
+
+            const drafted = new Set((liveDraftState?.picks || []).map(p => p.player));
+            const matches = mockPlayerPool.filter(p =>
+                !drafted.has(p.player) && p.player.toLowerCase().includes(val)
+            ).slice(0, 8);
+
+            if (matches.length === 0) { list.style.display = 'none'; return; }
+            let html = '';
+            matches.forEach(p => {
+                const badges = getPlayerBadges(p.player);
+                const market = getMarketValue(p);
+                html += `<div class="live-ac-item" onclick="liveScoutSelect('${p.player.replace(/'/g, "\\'")}')">
+                    <span>${p.player} ${badges}</span>
+                    <span style="color:var(--text-muted)">${p.pos} · $${market.toFixed(0)} · ${p.fpts.toFixed(0)} fpts</span>
+                </div>`;
+            });
+            list.innerHTML = html;
+            list.style.display = 'block';
+        }
+
+        function liveScoutSelect(name) {
+            document.getElementById('liveScoutInput').value = name;
+            document.getElementById('liveScoutAutocompleteList').style.display = 'none';
+            liveScoutLookup();
+        }
+
+        function liveScoutLookup() {
+            const input = document.getElementById('liveScoutInput').value.trim();
+            if (!input) return;
+            document.getElementById('liveScoutAutocompleteList').style.display = 'none';
+
+            // Find the player
+            const match = mockPlayerPool.find(p => p.player.toLowerCase() === input.toLowerCase())
+                || mockPlayerPool.find(p => p.player.toLowerCase().includes(input.toLowerCase()));
+
+            if (!match) {
+                document.getElementById('liveScoutPanel').style.display = 'none';
+                return;
+            }
+
+            liveScoutPlayer = match;
+            const panel = document.getElementById('liveScoutPanel');
+            const card = document.getElementById('liveScoutCard');
+
+            const val = getMarketValue(match);
+            const stealAt = getStealPrice(val, match.fpts);
+            const badges = getPlayerBadges(match.player);
+            const mwsInfo = calcMaxWillingToSpend(match);
+            const displayPos = mwsInfo.matchedSlot || match.pos;
+
+            // Build the same bid card as mock draft
+            let html = '<div class="mock-player-info">';
+            html += `<h2 style="margin:0;font-size:1.6rem">${match.player}</h2>`;
+            html += `<div style="color:var(--text-muted);margin-bottom:8px">${displayPos} · ${match.team} · ${match.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${badges}</div>`;
+            html += '</div>';
+
+            // Generate bid advice (reuse mock draft function but render here)
+            html += '<div id="liveScoutAdvice"></div>';
+
+            // Position board
+            html += `<div id="liveScoutPositionBoard" style="margin-top:12px"></div>`;
+
+            card.innerHTML = html;
+            panel.style.display = 'block';
+
+            // Now generate the advice using existing function
+            // Temporarily set mock elements to render into scout panel
+            const adviceDiv = document.getElementById('liveScoutAdvice');
+            const posDiv = document.getElementById('liveScoutPositionBoard');
+
+            // Build advice HTML directly
+            const planInfo = getPlayerPlanInfo ? getPlayerPlanInfo(match.player) : null;
+            let adviceHtml = '';
+
+            // Score card line
+            const tempAdj = 0; // TODO: use live inflation
+            const baseBid = Math.round(val);
+            const baseStretch = Math.round(val * 1.15);
+            const baseWalk = Math.round(val * 1.3);
+            adviceHtml += `<div class="score-card-line" style="padding:6px 10px;background:rgba(255,255,255,0.04);border-radius:6px;margin-bottom:6px;font-size:0.85rem">`;
+            adviceHtml += `<span>💰 $${baseBid}</span> · <span>⚠️ $${baseStretch}</span> · <span>🛑 $${baseWalk}</span>`;
+            adviceHtml += `<span style="color:var(--text-muted);margin-left:8px">(Market $${val.toFixed(0)})</span>`;
+            adviceHtml += `</div>`;
+
+            // Plan match info
+            if (mwsInfo.matchedSlot) {
+                const slotName = mwsInfo.matchedSlot;
+                const maxSpend = mwsInfo.maxSpend || val;
+                if (mwsInfo.isPrimary) {
+                    adviceHtml += `<div class="rec-target" style="padding:8px 12px;border-radius:6px;margin-bottom:4px">YOUR TARGET for ${slotName}! 💰 Bid to $${Math.min(baseBid + 8, maxSpend)} · ⚠️ Stretch $${Math.min(baseStretch + 5, maxSpend)} · 🛑 Walk at $${baseWalk + 5}</div>`;
+                } else if (mwsInfo.isAlt) {
+                    adviceHtml += `<div class="rec-value" style="padding:8px 12px;border-radius:6px;margin-bottom:4px">Good alternative for ${slotName}. Worth up to $${Math.round(val * 1.1)}</div>`;
+                }
+                adviceHtml += `<div class="rec-info" style="padding:6px 12px;border-radius:6px;margin-bottom:4px">MAX SPEND for ${slotName}: $${maxSpend} <span style="color:var(--text-muted)">Plan ${planState.active_plan} ${mwsInfo.isPrimary ? 'primary' : 'alt'} at $${Math.round(val)}</span></div>`;
+            } else {
+                // Not in plan
+                if (stealAt >= val * 0.5) {
+                    adviceHtml += `<div class="rec-info" style="padding:6px 12px;border-radius:6px;margin-bottom:4px">Not in plan — only worth at steal ≤$${stealAt}</div>`;
+                }
+            }
+
+            // Breakout info
+            const poolPlayer = mockPlayerPool.find(p => p.player === match.player);
+            if (poolPlayer && poolPlayer.max_breakout) {
+                adviceHtml += `<div style="padding:4px 12px;color:#f59e0b;font-size:0.82rem">⭐ Breakout ceiling: ${poolPlayer.max_breakout.max_fpts} fpts (worth $${poolPlayer.max_breakout.max_value}) — ${poolPlayer.max_breakout.archetype}</div>`;
+            }
+
+            adviceDiv.innerHTML = adviceHtml;
+
+            // Render position board for this player's position
+            if (typeof renderPositionBoard === 'function') {
+                renderPositionBoard(match, 'liveScoutPositionBoard');
+            }
+
+            // Pre-fill the quick entry with the player name
+            document.getElementById('liveQuickInput').value = match.player + ' ';
+            document.getElementById('liveQuickInput').focus();
+        }
+
+        function liveScoutClear() {
+            document.getElementById('liveScoutInput').value = '';
+            document.getElementById('liveScoutPanel').style.display = 'none';
+            document.getElementById('liveScoutAutocompleteList').style.display = 'none';
+            liveScoutPlayer = null;
         }
 
         // ── Autocomplete ────────────────────────────────────
