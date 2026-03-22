@@ -2267,7 +2267,7 @@
             board.style.display = 'block';
 
             // Position filter tabs + badge filters
-            const positions = ['C','1B','2B','3B','SS','LF','CF','RF','SP','RP'];
+            const positions = ['C','1B','2B','3B','SS','OF','SP','RP'];
             let html = '<div class="pos-filter-tabs">';
             positions.forEach(pos => {
                 const isActive = pos === posGroup;
@@ -2282,9 +2282,9 @@
             // Position matching helper — for LF/CF/RF, check raw position string
             function posMatchesFilter(rawPos, filter) {
                 const upper = (rawPos || '').toUpperCase();
-                if (['LF','CF','RF'].includes(filter)) {
-                    // Show players who can play this specific OF slot, OR generic OF
-                    return upper.includes(filter) || upper === 'OF' || (filter !== 'CF' && upper === 'OF');
+                if (filter === 'OF') {
+                    // Show all outfielders: OF, LF, CF, RF, OF/DH
+                    return ['LF','CF','RF','OF'].some(x => upper.includes(x));
                 }
                 const pg = getPositionGroup(rawPos);
                 return pg === filter;
@@ -2383,7 +2383,13 @@
                 const rowCls = isCurrentPlayer ? 'pos-board-current' : (isAffordable ? '' : 'pos-board-expensive');
                 html += `<tr class="${rowCls}">`;
                 html += `<td>${p.player} ${getPlayerBadges(p.player)}</td>`;
-                if (isAllTagged) html += `<td class="text-muted">${p.pos || '?'}</td>`;
+                if (isAllTagged) {
+                    html += `<td class="text-muted">${p.pos || '?'}</td>`;
+                } else if (posGroup === 'OF') {
+                    // Show which OF slot this player would fill
+                    const pSlot = calcMaxWillingToSpend(p);
+                    html += `<td class="text-muted" style="font-size:0.7rem">${pSlot.matchedSlot || 'OF'}</td>`;
+                }
                 html += `<td>${p.fpts.toFixed(0)}</td>`;
                 html += `<td>$${val.toFixed(0)}</td>`;
                 html += `<td class="pos-board-steal">≤$${stealAt}</td>`;
