@@ -1988,25 +1988,43 @@
             return { maxWilling, needThisPos, maxBid, matchedSlot: matchedLabel, planPrice };
         }
 
-        function renderPositionBoard(player) {
+        let _posBoardActivePos = null; // track selected position filter
+
+        function renderPositionBoard(player, forcedPos) {
             const board = document.getElementById('mockPosBoard');
             const header = document.getElementById('posBoardHeader');
             const content = document.getElementById('posBoardContent');
-            if (!player) { board.style.display = 'none'; return; }
+            if (!player && !forcedPos) { board.style.display = 'none'; return; }
 
-            const posGroup = getPositionGroup(player.pos);
-            header.textContent = `${posGroup} Board — Drafted & Available`;
+            const playerPos = player ? getPositionGroup(player.pos) : null;
+            const posGroup = forcedPos || playerPos || 'SP';
+            _posBoardActivePos = posGroup;
+
+            header.textContent = `Position Board — Drafted & Available`;
             board.style.display = 'block';
 
+            // Position filter tabs
+            const positions = ['C','1B','2B','3B','SS','OF','SP','RP'];
+            let html = '<div class="pos-filter-tabs">';
+            positions.forEach(pos => {
+                const isActive = pos === posGroup || (pos === 'OF' && ['LF','CF','RF'].includes(posGroup));
+                html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
+            });
+            html += '</div>';
+
             // Find all drafted players at this position
-            const drafted = mockLog_.filter(e => getPositionGroup(e.pos) === posGroup)
-                .sort((a, b) => b.price - a.price);
+            const drafted = mockLog_.filter(e => {
+                const pg = getPositionGroup(e.pos);
+                return pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
+            }).sort((a, b) => b.price - a.price);
 
             // Find available players at this position
-            const available = mockAvailable.filter(p => getPositionGroup(p.pos) === posGroup)
-                .sort((a, b) => (b.fpts || 0) - (a.fpts || 0));
+            const available = mockAvailable.filter(p => {
+                const pg = getPositionGroup(p.pos);
+                return pg === posGroup || (posGroup === 'OF' && ['LF','CF','RF','OF'].includes(pg));
+            }).sort((a, b) => (b.fpts || 0) - (a.fpts || 0));
 
-            let html = '<div class="pos-board-tables">';
+            html += '<div class="pos-board-tables">';
 
             // Drafted table
             html += '<div class="pos-board-half">';
@@ -2462,7 +2480,10 @@
             document.getElementById('mockBidCard').style.display = 'none';
             document.getElementById('mockBidTimer').style.display = 'none';
             document.getElementById('mockBidRec').style.display = 'none';
-            document.getElementById('mockPosBoard').style.display = 'none';
+            // Keep position board visible — refresh with last selected position
+            if (_posBoardActivePos) {
+                renderPositionBoard(null, _posBoardActivePos);
+            }
             updateMockUI();
             renderRosterBoard('mockRosterBoard');
             renderBudgetPanel('mockBudgetPanel');
