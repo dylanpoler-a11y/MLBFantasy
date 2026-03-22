@@ -232,6 +232,12 @@
                         <p>Practice your auction strategy against 11 AI teams. $260 budget, 22 roster spots.<br>
                         Your draft plans (A/B/C) are loaded — the advisor will guide you in real time.</p>
                         <div class="mock-setup-options">
+                            <label>Draft Mode:
+                                <select id="mockDraftMode" class="search-input" style="width:160px">
+                                    <option value="mock" selected>Mock (AI nominates)</option>
+                                    <option value="live">Live (You nominate)</option>
+                                </select>
+                            </label>
                             <label>Your Team Name:
                                 <input type="text" id="mockTeamName" value="Dylan's Team" class="search-input" style="width:200px">
                             </label>
@@ -339,8 +345,8 @@
                         <!-- Nominate search -->
                         <div class="mock-nominate-panel" id="mockNominatePanel" style="display:none">
                             <div class="mock-nominate-header">
-                                <strong>Nominate a Player</strong>
-                                <button class="btn btn-sm" onclick="cancelNominate()">Cancel</button>
+                                <strong id="mockNominateTitle">Nominate a Player</strong>
+                                <button class="btn btn-sm" id="mockNominateCancelBtn" onclick="cancelNominate()">Cancel</button>
                             </div>
                             <input type="text" id="mockNominateSearch" class="search-input" placeholder="Search players..." oninput="mockFilterNominees()">
                             <div class="mock-nominate-list" id="mockNominateList"></div>
@@ -1727,10 +1733,13 @@
             } catch(e) { console.error('Failed to load mock players', e); }
         }
 
+        let mockLiveMode = false; // Live mode: user nominates every player
+
         function startMockDraft() {
             const teamName = document.getElementById('mockTeamName').value.trim() || "Dylan's Team";
             mockAggLevel = document.getElementById('mockAggression').value;
             mockActivePlan = document.getElementById('mockStartPlan').value;
+            mockLiveMode = document.getElementById('mockDraftMode').value === 'live';
 
             const aiNames = ['Alpha Dogs','Bronx Bombers','Clutch Hitters','Diamond Kings','Eagle Eyes','Fastball Fury','Grand Slammers','Heat Seekers','Iron Bats','Killer Bees','Lightning Bolts'];
             mockTeams = [];
@@ -2658,7 +2667,7 @@
             }
             if (attempts >= MOCK_NUM_TEAMS) { endMockDraft(); return; }
 
-            if (mockNominatorIdx === mockUserTeamIdx) {
+            if (mockLiveMode || mockNominatorIdx === mockUserTeamIdx) {
                 showNominateUI();
             } else {
                 aiNominate();
@@ -2666,7 +2675,7 @@
         }
 
         function showNominateUI() {
-            if (mockFastForward) {
+            if (mockFastForward && !mockLiveMode) {
                 ffAutoNominate();
                 return;
             }
@@ -2675,6 +2684,14 @@
             document.getElementById('mockNominatePanel').style.display = 'block';
             document.getElementById('mockNominateBtn').style.display = 'none';
             document.getElementById('mockNominateSearch').value = '';
+            // In live mode, update title and hide cancel
+            if (mockLiveMode) {
+                document.getElementById('mockNominateTitle').textContent = 'Who was nominated? (Pick #' + (mockPickNum + 1) + ')';
+                document.getElementById('mockNominateCancelBtn').style.display = 'none';
+            } else {
+                document.getElementById('mockNominateTitle').textContent = 'Nominate a Player';
+                document.getElementById('mockNominateCancelBtn').style.display = '';
+            }
             mockFilterNominees();
         }
 
@@ -4290,11 +4307,13 @@
                 status: 'in_progress'
             };
 
-            // Init plan state
+            // Init plan state for both planState.slots AND mockPlanState
             if (window._planData && window._planData[liveActivePlan]) {
+                if (!window.mockPlanState) window.mockPlanState = {};
                 window._planData[liveActivePlan].slots.forEach((slot, idx) => {
                     const key = liveActivePlan + '_' + idx;
                     planState.slots[key] = {status: 'pending', actual_price: null, chosen_alt: null, takenAlts: []};
+                    mockPlanState[idx] = {status: 'pending', player: slot.primary.player, price: slot.primary.est_price};
                 });
             }
 
@@ -4435,6 +4454,7 @@
 
             if (!match) {
                 document.getElementById('liveScoutPanel').style.display = 'none';
+                alert('Player not found: ' + input);
                 return;
             }
 
@@ -4445,7 +4465,8 @@
             const val = getMarketValue(match);
             const stealAt = getStealPrice(val, match.fpts);
             const badges = getPlayerBadges(match.player);
-            const mwsInfo = calcMaxWillingToSpend(match);
+            let mwsInfo = {matchedSlot: null, maxSpend: 0, isPrimary: false, isAlt: false};
+            try { mwsInfo = calcMaxWillingToSpend(match); } catch(e) { console.error('calcMaxWillingToSpend error:', e); }
             const displayPos = mwsInfo.matchedSlot || match.pos;
 
             // Build the same bid card as mock draft
