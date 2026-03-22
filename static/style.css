@@ -1409,6 +1409,20 @@ header h1 span { color: var(--accent); }
     color: #818cf8;
     border: 1px solid rgba(99, 102, 241, 0.4);
 }
+.badge-anchor {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    vertical-align: middle;
+    line-height: 1.4;
+    white-space: nowrap;
+    margin-left: 6px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.25));
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.5);
+}
 .badge-finals {
     background: rgba(234, 179, 8, 0.25);
     color: #facc15;

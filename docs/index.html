@@ -1068,7 +1068,9 @@
                 const auctionHighlight = slotHasAuction ? ' slot-auction-active' : '';
                 html += `<div class="plan-slot ${statusClass}${auctionHighlight}">`;
                 html += `<div class="slot-header">`;
+                const isAnchor = slot.primary.anchor;
                 html += `<span class="pos-tag ${slot.category}">${slot.slot}</span>`;
+                if (isAnchor) html += `<span class="badge-anchor">⚓ Anchor</span>`;
 
                 if (st.status === 'acquired') {
                     // ── GOT: show acquired player + price + reset ──
@@ -1887,21 +1889,26 @@
             const bestPlanMatch = allPlanMax.sort((a, b) => b.price - a.price)[0];
             const activePlanMatch = allPlanMax.find(m => m.planId === mockActivePlan);
 
+            // Check if committed to active plan (has anchor picks)
+            const committedToPlan = Object.values(mockPlanState).some(s => s && s.status === 'got');
+
             if (bestPlanMatch) {
                 const isActivePlan = bestPlanMatch.planId === mockActivePlan;
                 if (isActivePlan) {
                     html += `<div class="rec-max-spend need-pos"><strong>MAX SPEND for ${bestPlanMatch.slot}: $${mws.maxWilling}</strong> <span class="text-muted">Plan ${bestPlanMatch.planId} ${bestPlanMatch.role} at $${bestPlanMatch.price}</span></div>`;
-                } else {
-                    // Player is valued higher in another plan
+                } else if (!committedToPlan) {
+                    // Only suggest other plans if NOT committed to active plan
                     html += `<div class="rec-max-spend need-pos"><strong>Plan ${bestPlanMatch.planId} values at $${bestPlanMatch.price}</strong> (${bestPlanMatch.role} for ${bestPlanMatch.slot})`;
                     if (activePlanMatch) {
                         html += ` <span class="text-muted">· Current plan: $${activePlanMatch.price}</span>`;
                     }
                     html += `<button class="btn btn-xs btn-primary" onclick="switchMockPlan('${bestPlanMatch.planId}')" style="margin-left:8px">Switch to ${bestPlanMatch.planId}</button></div>`;
-                    // Also show active plan max if applicable
                     if (mws.needThisPos) {
                         html += `<div class="rec-max-spend"><strong>Current plan max for ${mws.matchedSlot}: $${mws.maxWilling}</strong></div>`;
                     }
+                } else if (mws.needThisPos) {
+                    // Committed to plan — just show active plan max spend
+                    html += `<div class="rec-max-spend need-pos"><strong>MAX SPEND for ${mws.matchedSlot}: $${mws.maxWilling}</strong> <span class="text-muted">Plan: $${mws.planPrice}</span></div>`;
                 }
             } else if (mws.needThisPos) {
                 html += `<div class="rec-max-spend need-pos"><strong>MAX SPEND for ${mws.matchedSlot}: $${mws.maxWilling}</strong> <span class="text-muted">Plan: $${mws.planPrice}</span></div>`;
@@ -1921,8 +1928,10 @@
                 html += `<div class="rec-breakout-ceiling">⭐ <strong>BREAKOUT CEILING:</strong> ${breakoutData.max_fpts} fpts (worth $${breakoutData.max_value}) — <em>${breakoutData.archetype}</em></div>`;
             }
 
-            // Show mentions in other plans
-            if (otherMentions.length > 0) {
+            // Show mentions in other plans — BUT only if user hasn't committed to active plan
+            // (committed = has any GOT picks in the active plan)
+            const hasAnchor = Object.values(mockPlanState).some(s => s && s.status === 'got');
+            if (otherMentions.length > 0 && !hasAnchor) {
                 html += '<div class="rec-other">';
                 otherMentions.forEach(m => {
                     html += `<span class="plan-hint-tag ${m.role === 'primary' ? 'plan-primary' : 'plan-alt'}">Plan ${m.planId}: ${m.slot} ${m.role} at $${m.price}</span> `;

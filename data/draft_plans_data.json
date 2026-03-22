@@ -13,7 +13,8 @@
         "primary": {
           "player": "Tarik Skubal",
           "est_price": 40,
-          "fpts": 703
+          "fpts": 703,
+          "anchor": true
         },
         "alternatives": [
           {
@@ -39,7 +40,8 @@
         "primary": {
           "player": "Jose Ramirez",
           "est_price": 37,
-          "fpts": 657
+          "fpts": 657,
+          "anchor": true
         },
         "alternatives": [
           {
@@ -490,7 +492,8 @@
         "primary": {
           "player": "Junior Caminero",
           "est_price": 24,
-          "fpts": 585
+          "fpts": 585,
+          "anchor": true
         },
         "alternatives": [
           {
@@ -516,7 +519,8 @@
         "primary": {
           "player": "Gunnar Henderson",
           "est_price": 26,
-          "fpts": 592
+          "fpts": 592,
+          "anchor": true
         },
         "alternatives": [
           {
@@ -896,7 +900,8 @@
         "primary": {
           "player": "Bobby Witt",
           "est_price": 39,
-          "fpts": 679
+          "fpts": 679,
+          "anchor": true
         },
         "alternatives": [
           {
@@ -929,7 +934,8 @@
         "primary": {
           "player": "Juan Soto",
           "est_price": 37,
-          "fpts": 675
+          "fpts": 675,
+          "anchor": true
         },
         "alternatives": [
           {
