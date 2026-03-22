@@ -49,6 +49,46 @@
             return Promise.resolve(new Response(JSON.stringify({success: true}), {status: 200, headers: {'Content-Type': 'application/json'}}));
         }
 
+        // GET /api/auction-values → use custom rankings as player values
+        if (urlStr.startsWith('/api/auction-values') && method === 'GET') {
+            return _originalFetch('data/custom_rankings.json').then(r => r.json()).then(players => {
+                // Parse query params for filtering
+                const params = new URLSearchParams(urlStr.split('?')[1] || '');
+                const pos = (params.get('pos') || '').toUpperCase();
+                const search = (params.get('q') || '').toLowerCase();
+                let filtered = players;
+                if (pos && pos !== 'ALL') filtered = filtered.filter(p => (p.pos || '').toUpperCase().includes(pos));
+                if (search) filtered = filtered.filter(p => (p.player || '').toLowerCase().includes(search));
+                // Map to auction values format
+                const mapped = filtered.map(p => ({
+                    Player: p.player, Pos: p.pos, Team: p.team,
+                    Value: p.auction_value || '0', FPTS: p.fpts || 0,
+                    HR: p.hr || '', RBI: p.rbi || '', R: p.r || '',
+                    SB: p.sb || '', AVG: p.avg || '', W: p.w || '',
+                    K: p.k || '', SV: p.sv || '', ERA: p.era || '',
+                    WHIP: p.whip || '', Age: p.age || ''
+                }));
+                mapped.sort((a, b) => parseFloat(b.Value || 0) - parseFloat(a.Value || 0));
+                const limit = parseInt(params.get('limit') || '100');
+                const offset = parseInt(params.get('offset') || '0');
+                return new Response(JSON.stringify({players: mapped.slice(offset, offset + limit), total: mapped.length}), {status: 200, headers: {'Content-Type': 'application/json'}});
+            });
+        }
+
+        // GET /api/custom-rankings → static file
+        if (urlStr.startsWith('/api/custom-rankings') && method === 'GET') {
+            return _originalFetch('data/custom_rankings.json').then(r => r.json()).then(players => {
+                const params = new URLSearchParams(urlStr.split('?')[1] || '');
+                const pos = (params.get('pos') || '').toUpperCase();
+                const search = (params.get('q') || '').toLowerCase();
+                let filtered = players;
+                if (pos && pos !== 'ALL') filtered = filtered.filter(p => (p.pos || '').toUpperCase().includes(pos));
+                if (search) filtered = filtered.filter(p => (p.player || '').toLowerCase().includes(search));
+                const limit = parseInt(params.get('limit') || '100');
+                return new Response(JSON.stringify({players: filtered.slice(0, limit), total: filtered.length}), {status: 200, headers: {'Content-Type': 'application/json'}});
+            });
+        }
+
         // GET /api/mock-draft/players → static file
         if (urlStr === '/api/mock-draft/players' && method === 'GET') {
             return _originalFetch('data/custom_rankings.json').then(r => r.json()).then(players => {
