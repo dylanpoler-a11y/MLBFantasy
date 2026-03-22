@@ -4,13 +4,23 @@ import csv
 import json
 import os
 import time
-from flask import Flask, jsonify, render_template, request
+import requests as http_requests
+from flask import Flask, jsonify, render_template, request, redirect, session
 from dotenv import load_dotenv
 from fantrax_api import FantraxAPI
 
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "mlb-draft-dashboard-2026")
+
+# Yahoo OAuth config
+YAHOO_CLIENT_ID = os.getenv("YAHOO_CLIENT_ID", "")
+YAHOO_CLIENT_SECRET = os.getenv("YAHOO_CLIENT_SECRET", "")
+YAHOO_AUTH_URL = "https://api.login.yahoo.com/oauth2/request_auth"
+YAHOO_TOKEN_URL = "https://api.login.yahoo.com/oauth2/get_token"
+YAHOO_API_BASE = "https://fantasysports.yahooapis.com/fantasy/v2"
+YAHOO_TOKEN_FILE = os.path.join(os.path.dirname(__file__), "yahoo_token.json")
 
 CACHE_FILE = os.path.join(os.path.dirname(__file__), "league_cache.json")
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
@@ -427,6 +437,366 @@ def delete_mock_session(session_id):
         os.remove(fpath)
         return jsonify({"success": True})
     return jsonify({"error": "Not found"}), 404
+
+
+# ── Live Draft Sync ───────────────────────────────────────────────────
+
+LIVE_DRAFT_FILE = os.path.join(DATA_DIR, "live_draft.json")
+
+
+def _load_live_draft():
+    if os.path.exists(LIVE_DRAFT_FILE):
+        with open(LIVE_DRAFT_FILE) as f:
+            return json.load(f)
+    return {"picks": [], "teams": {}, "status": "not_started", "lastSync": ""}
+
+
+def _save_live_draft(state):
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(LIVE_DRAFT_FILE, "w") as f:
+        json.dump(state, f)
+
+
+@app.route("/api/live-draft")
+def get_live_draft():
+    """Get current live draft state."""
+    return jsonify(_load_live_draft())
+
+
+@app.route("/api/live-draft/pick", methods=["POST"])
+def add_live_pick():
+    """Add a pick from Chrome scraping or manual entry.
+    Body: {player, team, price, pos (optional)}
+    """
+    body = request.get_json()
+    if not body or not body.get("player"):
+        return jsonify({"error": "player required"}), 400
+    state = _load_live_draft()
+    state["status"] = "in_progress"
+
+    # Check for duplicate
+    existing = [p for p in state["picks"] if p["player"] == body["player"]]
+    if existing:
+        return jsonify({"error": f"{body['player']} already drafted", "duplicate": True})
+
+    pick = {
+        "player": body["player"],
+        "team": body.get("team", "Unknown"),
+        "price": body.get("price", 1),
+        "pos": body.get("pos", ""),
+        "pick_num": len(state["picks"]) + 1,
+        "timestamp": time.strftime("%H:%M:%S"),
+        "is_user": body.get("is_user", False),
+    }
+    state["picks"].append(pick)
+    state["lastSync"] = time.strftime("%Y-%m-%d %H:%M:%S")
+
+    # Update team budgets
+    team = pick["team"]
+    if team not in state["teams"]:
+        state["teams"][team] = {"spent": 0, "players": 0, "roster": []}
+    state["teams"][team]["spent"] += pick["price"]
+    state["teams"][team]["players"] += 1
+    state["teams"][team]["roster"].append(pick["player"])
+
+    _save_live_draft(state)
+    return jsonify({"success": True, "pick": pick, "total_picks": len(state["picks"])})
+
+
+@app.route("/api/live-draft/bulk", methods=["POST"])
+def bulk_live_picks():
+    """Add multiple picks at once (from Chrome scrape).
+    Body: {picks: [{player, team, price, pos}, ...]}
+    """
+    body = request.get_json()
+    if not body or not body.get("picks"):
+        return jsonify({"error": "picks array required"}), 400
+
+    state = _load_live_draft()
+    state["status"] = "in_progress"
+    existing_names = {p["player"] for p in state["picks"]}
+    added = 0
+
+    for pick_data in body["picks"]:
+        if pick_data["player"] in existing_names:
+            continue
+        pick = {
+            "player": pick_data["player"],
+            "team": pick_data.get("team", "Unknown"),
+            "price": pick_data.get("price", 1),
+            "pos": pick_data.get("pos", ""),
+            "pick_num": len(state["picks"]) + 1,
+            "timestamp": time.strftime("%H:%M:%S"),
+            "is_user": pick_data.get("is_user", False),
+        }
+        state["picks"].append(pick)
+        existing_names.add(pick["player"])
+
+        team = pick["team"]
+        if team not in state["teams"]:
+            state["teams"][team] = {"spent": 0, "players": 0, "roster": []}
+        state["teams"][team]["spent"] += pick["price"]
+        state["teams"][team]["players"] += 1
+        state["teams"][team]["roster"].append(pick["player"])
+        added += 1
+
+    state["lastSync"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    _save_live_draft(state)
+    return jsonify({"success": True, "added": added, "total_picks": len(state["picks"])})
+
+
+@app.route("/api/live-draft/undo", methods=["POST"])
+def undo_live_pick():
+    """Undo the last live draft pick."""
+    state = _load_live_draft()
+    if not state["picks"]:
+        return jsonify({"error": "No picks to undo"}), 400
+    removed = state["picks"].pop()
+    team = removed["team"]
+    if team in state["teams"]:
+        state["teams"][team]["spent"] -= removed["price"]
+        state["teams"][team]["players"] -= 1
+        if removed["player"] in state["teams"][team]["roster"]:
+            state["teams"][team]["roster"].remove(removed["player"])
+    _save_live_draft(state)
+    return jsonify({"success": True, "removed": removed})
+
+
+@app.route("/api/live-draft/reset", methods=["POST"])
+def reset_live_draft():
+    """Reset live draft."""
+    _save_live_draft({"picks": [], "teams": {}, "status": "not_started", "lastSync": ""})
+    return jsonify({"success": True})
+
+
+@app.route("/api/live-draft/quick-entry", methods=["POST"])
+def quick_entry():
+    """Quick manual entry: 'Skubal 46 TeamName' or just 'Skubal 46'.
+    Body: {text: 'player_name price [team]'}
+    """
+    body = request.get_json()
+    text = body.get("text", "").strip()
+    if not text:
+        return jsonify({"error": "No text"}), 400
+
+    # Parse: "Player Name $46 Team Name" or "Player Name 46 Team"
+    import re
+    # Try to match price
+    price_match = re.search(r'\$?(\d+)', text)
+    if not price_match:
+        return jsonify({"error": "Could not find a price. Format: 'Player Name $46 Team'"}), 400
+
+    price = int(price_match.group(1))
+    before_price = text[:price_match.start()].strip()
+    after_price = text[price_match.end():].strip()
+
+    # Player name is before price, team is after (or "Other" if not specified)
+    player_name = before_price or after_price
+    team_name = after_price if before_price else "Unknown"
+
+    if not player_name:
+        return jsonify({"error": "Could not find player name"}), 400
+
+    # Try fuzzy match against player pool
+    rankings_path = os.path.join(DATA_DIR, "custom_rankings.json")
+    matched_player = player_name
+    matched_pos = ""
+    if os.path.exists(rankings_path):
+        with open(rankings_path) as f:
+            players = json.load(f)
+        # Exact match first
+        exact = [p for p in players if p["player"].lower() == player_name.lower()]
+        if exact:
+            matched_player = exact[0]["player"]
+            matched_pos = exact[0].get("pos", "")
+        else:
+            # Partial match
+            partial = [p for p in players if player_name.lower() in p["player"].lower()]
+            if len(partial) == 1:
+                matched_player = partial[0]["player"]
+                matched_pos = partial[0].get("pos", "")
+            elif len(partial) > 1:
+                # Return suggestions
+                suggestions = [p["player"] for p in partial[:5]]
+                return jsonify({"error": "Multiple matches", "suggestions": suggestions}), 400
+
+    # Add the pick
+    state = _load_live_draft()
+    state["status"] = "in_progress"
+
+    # Check duplicate
+    if any(p["player"] == matched_player for p in state["picks"]):
+        return jsonify({"error": f"{matched_player} already drafted"}), 400
+
+    pick = {
+        "player": matched_player,
+        "team": team_name,
+        "price": price,
+        "pos": matched_pos,
+        "pick_num": len(state["picks"]) + 1,
+        "timestamp": time.strftime("%H:%M:%S"),
+        "is_user": False,
+    }
+    state["picks"].append(pick)
+    state["lastSync"] = time.strftime("%Y-%m-%d %H:%M:%S")
+
+    team = pick["team"]
+    if team not in state["teams"]:
+        state["teams"][team] = {"spent": 0, "players": 0, "roster": []}
+    state["teams"][team]["spent"] += pick["price"]
+    state["teams"][team]["players"] += 1
+    state["teams"][team]["roster"].append(pick["player"])
+
+    _save_live_draft(state)
+    return jsonify({"success": True, "pick": pick})
+
+
+# ── Yahoo Fantasy API ─────────────────────────────────────────────────
+
+def _save_yahoo_token(token_data):
+    """Save Yahoo OAuth token to file."""
+    token_data["saved_at"] = time.time()
+    with open(YAHOO_TOKEN_FILE, "w") as f:
+        json.dump(token_data, f)
+
+
+def _load_yahoo_token():
+    """Load Yahoo OAuth token from file."""
+    if not os.path.exists(YAHOO_TOKEN_FILE):
+        return None
+    with open(YAHOO_TOKEN_FILE) as f:
+        return json.load(f)
+
+
+def _refresh_yahoo_token(token_data):
+    """Refresh an expired Yahoo OAuth token."""
+    resp = http_requests.post(YAHOO_TOKEN_URL, data={
+        "grant_type": "refresh_token",
+        "refresh_token": token_data["refresh_token"],
+        "redirect_uri": "https://localhost:5050/yahoo/callback",
+        "client_id": YAHOO_CLIENT_ID,
+        "client_secret": YAHOO_CLIENT_SECRET,
+    })
+    if resp.status_code == 200:
+        new_token = resp.json()
+        new_token["refresh_token"] = token_data.get("refresh_token", new_token.get("refresh_token"))
+        _save_yahoo_token(new_token)
+        return new_token
+    return None
+
+
+def _get_yahoo_token():
+    """Get a valid Yahoo token, refreshing if needed."""
+    token = _load_yahoo_token()
+    if not token:
+        return None
+    # Check if expired (tokens last 3600s)
+    elapsed = time.time() - token.get("saved_at", 0)
+    if elapsed > 3500:
+        token = _refresh_yahoo_token(token)
+    return token
+
+
+def _yahoo_api(endpoint, params=None):
+    """Make a Yahoo Fantasy API call."""
+    token = _get_yahoo_token()
+    if not token:
+        return {"error": "Not authenticated. Visit /yahoo/login first."}
+    headers = {
+        "Authorization": f"Bearer {token['access_token']}",
+        "Accept": "application/json",
+    }
+    url = f"{YAHOO_API_BASE}{endpoint}"
+    resp = http_requests.get(url, headers=headers, params=params or {})
+    if resp.status_code == 401:
+        # Try refresh
+        token = _refresh_yahoo_token(token)
+        if token:
+            headers["Authorization"] = f"Bearer {token['access_token']}"
+            resp = http_requests.get(url, headers=headers, params=params or {})
+    if resp.status_code == 200:
+        return resp.json()
+    return {"error": f"Yahoo API error {resp.status_code}", "body": resp.text[:500]}
+
+
+@app.route("/yahoo/login")
+def yahoo_login():
+    """Redirect to Yahoo OAuth login."""
+    if not YAHOO_CLIENT_ID:
+        return "YAHOO_CLIENT_ID not set in .env", 500
+    auth_url = (
+        f"{YAHOO_AUTH_URL}?client_id={YAHOO_CLIENT_ID}"
+        f"&redirect_uri=https://localhost:5050/yahoo/callback"
+        f"&response_type=code"
+        f"&language=en-us"
+    )
+    return redirect(auth_url)
+
+
+@app.route("/yahoo/callback")
+def yahoo_callback():
+    """Handle Yahoo OAuth callback."""
+    code = request.args.get("code")
+    if not code:
+        return "No auth code received", 400
+    # Exchange code for token
+    resp = http_requests.post(YAHOO_TOKEN_URL, data={
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": "https://localhost:5050/yahoo/callback",
+        "client_id": YAHOO_CLIENT_ID,
+        "client_secret": YAHOO_CLIENT_SECRET,
+    })
+    if resp.status_code != 200:
+        return f"Token exchange failed: {resp.text}", 500
+    token_data = resp.json()
+    _save_yahoo_token(token_data)
+    return redirect("/?yahoo=connected")
+
+
+@app.route("/api/yahoo/status")
+def yahoo_status():
+    """Check if Yahoo is connected."""
+    token = _get_yahoo_token()
+    if token:
+        return jsonify({"connected": True})
+    return jsonify({"connected": False})
+
+
+@app.route("/api/yahoo/leagues")
+def yahoo_leagues():
+    """Get user's Yahoo fantasy baseball leagues."""
+    data = _yahoo_api("/users;use_login=1/games;game_keys=mlb/leagues", {"format": "json"})
+    return jsonify(data)
+
+
+@app.route("/api/yahoo/league/<league_key>/draft")
+def yahoo_draft_results(league_key):
+    """Get draft results for a Yahoo league."""
+    data = _yahoo_api(f"/league/{league_key}/draftresults", {"format": "json"})
+    return jsonify(data)
+
+
+@app.route("/api/yahoo/league/<league_key>/players")
+def yahoo_players(league_key):
+    """Get players in a Yahoo league."""
+    start = request.args.get("start", 0, type=int)
+    data = _yahoo_api(f"/league/{league_key}/players;start={start};count=25", {"format": "json"})
+    return jsonify(data)
+
+
+@app.route("/api/yahoo/league/<league_key>/teams")
+def yahoo_teams(league_key):
+    """Get teams in a Yahoo league."""
+    data = _yahoo_api(f"/league/{league_key}/teams", {"format": "json"})
+    return jsonify(data)
+
+
+@app.route("/api/yahoo/league/<league_key>/transactions")
+def yahoo_transactions(league_key):
+    """Get recent transactions (includes draft picks in auction)."""
+    data = _yahoo_api(f"/league/{league_key}/transactions;types=add", {"format": "json"})
+    return jsonify(data)
 
 
 if __name__ == "__main__":
