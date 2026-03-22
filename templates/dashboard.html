@@ -2360,6 +2360,7 @@
 
         let _posBoardActivePos = null; // track selected position filter
         let _posBoardBadgeFilter = null; // 'breakout', 'expert', or null
+        let _posBoardSearch = ''; // search filter
 
         let _posBoardSort = { col: 'fpts', dir: 'desc', col2: null, dir2: null };
         function togglePosBoardSort(col) {
@@ -2390,23 +2391,28 @@
             board.style.display = 'block';
 
             // Position filter tabs + badge filters
-            const positions = ['C','1B','2B','3B','SS','OF','SP','RP'];
+            const positions = ['C','1B','2B','3B','SS','LF','CF','RF','SP','RP'];
             let html = '<div class="pos-filter-tabs">';
             positions.forEach(pos => {
                 const isActive = pos === posGroup;
-                html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="_posBoardBadgeFilter=null;renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
+                html += `<button class="pos-tab${isActive ? ' active' : ''}" onclick="_posBoardBadgeFilter=null;_posBoardSearch='';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${pos}')">${pos}</button>`;
             });
             html += `<span style="margin-left:8px;border-left:1px solid var(--border);padding-left:8px"></span>`;
             html += `<button class="pos-tab badge-tab-breakout${_posBoardBadgeFilter === 'breakout' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='breakout'?null:'breakout';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">🔥 Breakout</button>`;
             html += `<button class="pos-tab badge-tab-expert${_posBoardBadgeFilter === 'expert' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='expert'?null:'expert';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">🎯 Expert</button>`;
             html += `<button class="pos-tab${_posBoardBadgeFilter === 'all-tagged' ? ' active' : ''}" onclick="_posBoardBadgeFilter=_posBoardBadgeFilter==='all-tagged'?null:'all-tagged';renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')">ALL Tagged</button>`;
             html += '</div>';
+            // Search bar
+            html += `<div style="margin:6px 0"><input type="text" class="search-input" style="width:100%;padding:6px 10px;font-size:0.85rem" placeholder="Search players..." value="${_posBoardSearch || ''}" oninput="_posBoardSearch=this.value;renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, '${posGroup}')"></div>`;
 
-            // Position matching helper — for LF/CF/RF, check raw position string
+            // Position matching helper — handles LF/CF/RF individually
             function posMatchesFilter(rawPos, filter) {
                 const upper = (rawPos || '').toUpperCase();
+                if (filter === 'LF' || filter === 'CF' || filter === 'RF') {
+                    // Specific OF slot: check if player has that position, OR is generic OF
+                    return upper.includes(filter) || (upper.includes('OF') && !upper.includes('LF') && !upper.includes('CF') && !upper.includes('RF'));
+                }
                 if (filter === 'OF') {
-                    // Show all outfielders: OF, LF, CF, RF, OF/DH
                     return ['LF','CF','RF','OF'].some(x => upper.includes(x));
                 }
                 const pg = getPositionGroup(rawPos);
@@ -2417,14 +2423,18 @@
             const drafted = mockLog_.filter(e => posMatchesFilter(e.pos, posGroup))
                 .sort((a, b) => b.price - a.price);
 
-            // Find available players at this position, with optional badge filter
+            // Find available players at this position, with optional badge/search filter
+            const searchTerm = (_posBoardSearch || '').toLowerCase().trim();
             const available = mockAvailable.filter(p => {
+                // Search filter applies across all positions
+                if (searchTerm) {
+                    return p.player.toLowerCase().includes(searchTerm);
+                }
                 const posMatch = posMatchesFilter(p.pos, posGroup);
                 const badges = (p.badges || []).join(' ').toLowerCase();
                 const hasBadge = badges.length > 0;
 
                 if (_posBoardBadgeFilter === 'all-tagged') {
-                    // Show ALL tagged players regardless of position
                     return hasBadge;
                 }
                 if (_posBoardBadgeFilter === 'breakout') return posMatch && badges.includes('breakout');
