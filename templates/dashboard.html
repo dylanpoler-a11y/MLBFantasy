@@ -728,14 +728,20 @@
         async function loadPlanTracker() {
             if (!planTrackerLoaded) {
                 try {
-                    const [dataResp, stateResp] = await Promise.all([
+                    const [dataResp, stateResp, playersResp] = await Promise.all([
                         fetch('/api/draft-plans-data'),
-                        fetch('/api/draft-plan-state')
+                        fetch('/api/draft-plan-state'),
+                        fetch('/api/mock-draft/players')
                     ]);
                     planData = await dataResp.json();
                     window._planData = planData;
                     const savedState = await stateResp.json();
                     if (savedState.active_plan) planState = savedState;
+                    // Load player pool for badges
+                    try {
+                        const pdata = await playersResp.json();
+                        if (pdata.players && pdata.players.length > 0) mockPlayerPool = pdata.players;
+                    } catch(e) {}
                     planTrackerLoaded = true;
                 } catch {
                     document.getElementById('rosterBoard').innerHTML = '<p style="color:var(--text-muted);padding:40px">Could not load plan data.</p>';
