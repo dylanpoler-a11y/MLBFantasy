@@ -2100,8 +2100,10 @@
             const adjStretch = Math.max(adjBid + 1, uStretch + tempAdj);
             const adjWalk = Math.max(adjStretch + 1, uWalk + tempAdj);
 
-            const adjColor = tempAdj < 0 ? 'green' : tempAdj > 0 ? '#ff6b6b' : '#888';
-            const adjSign = tempAdj < 0 ? '' : '+';
+            // Negative tempAdj = you should bid LESS = bad for you = RED
+            // Positive tempAdj = you can bid MORE = good for you = GREEN
+            const adjColor = tempAdj > 0 ? '#4ade80' : tempAdj < 0 ? '#ff6b6b' : '#888';
+            const adjSign = tempAdj > 0 ? '+' : '';
             const adjText = tempAdj !== 0
                 ? ` <span style="color:${adjColor};font-weight:700">${adjSign}$${tempAdj} ${tempLabel}</span>`
                 : '';
