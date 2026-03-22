@@ -2387,42 +2387,51 @@
         }
 
         function startAuction(player, nominatorIdx) {
-            mockPickNum++;
-            const startBid = 1;
-            mockCurrentAuction = {
-                player: player,
-                currentBid: startBid,
-                currentBidder: nominatorIdx,
-                nominatedBy: nominatorIdx,
-                biddingRound: 0
-            };
+            try {
+                mockPickNum++;
+                const startBid = 1;
+                mockCurrentAuction = {
+                    player: player,
+                    currentBid: startBid,
+                    currentBidder: nominatorIdx,
+                    nominatedBy: nominatorIdx,
+                    biddingRound: 0
+                };
 
-            document.getElementById('mockWaiting').style.display = 'none';
-            document.getElementById('mockBidCard').style.display = 'block';
-            document.getElementById('mockNominateBtn').style.display = 'none';
-            const val = parseFloat(player.auction_value) || 1;
-            document.getElementById('mockPlayerName').textContent = player.player;
-            const stealAt = getStealPrice(val, player.fpts);
-            // Show specific roster slot from plan instead of generic position
-            const mwsInfo = calcMaxWillingToSpend(player);
-            const actualPos = player.pos || '?';
-            const slotFill = mwsInfo.matchedSlot;
-            const posDisplay = slotFill && slotFill !== actualPos ? `${actualPos} (→${slotFill})` : actualPos;
-            document.getElementById('mockPlayerDetail').innerHTML = `${posDisplay} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${getPlayerBadges(player.player)}`;
-            document.getElementById('mockCurrentBid').textContent = '$' + startBid;
-            document.getElementById('mockBidder').textContent = mockTeams[nominatorIdx].name;
-            document.getElementById('mockBidInput').value = startBid + 1;
-            document.getElementById('mockBidInput').min = startBid + 1;
+                document.getElementById('mockWaiting').style.display = 'none';
+                document.getElementById('mockBidCard').style.display = 'block';
+                document.getElementById('mockNominateBtn').style.display = 'none';
+                document.getElementById('mockNominatePanel').style.display = 'none';
+                const val = parseFloat(player.auction_value) || 1;
+                document.getElementById('mockPlayerName').textContent = player.player;
+                const stealAt = getStealPrice(val, player.fpts);
+                // Show specific roster slot from plan instead of generic position
+                let posDisplay = player.pos || '?';
+                try {
+                    const mwsInfo = calcMaxWillingToSpend(player);
+                    const actualPos = player.pos || '?';
+                    const slotFill = mwsInfo.matchedSlot;
+                    posDisplay = slotFill && slotFill !== actualPos ? `${actualPos} (→${slotFill})` : actualPos;
+                } catch(e) { console.error('calcMaxWillingToSpend error in startAuction:', e); }
+                document.getElementById('mockPlayerDetail').innerHTML = `${posDisplay} · ${player.team} · ${player.fpts.toFixed(0)} fpts · Market ~$${val.toFixed(0)} · <span class="steal-tag">STEAL ≤$${stealAt}</span> ${getPlayerBadges(player.player)}`;
+                document.getElementById('mockCurrentBid').textContent = '$' + startBid;
+                document.getElementById('mockBidder').textContent = mockTeams[nominatorIdx].name;
+                document.getElementById('mockBidInput').value = startBid + 1;
+                document.getElementById('mockBidInput').min = startBid + 1;
 
-            // Plan-aware advice + position board + highlight on strategy board
-            generateBidAdvice(player);
-            renderPositionBoard(player);
-            renderRosterBoard('mockRosterBoard');
-            updateMockUI();
-            runAIBidding();
+                // Plan-aware advice + position board + highlight on strategy board
+                try { generateBidAdvice(player); } catch(e) { console.error('generateBidAdvice error:', e); }
+                try { renderPositionBoard(player); } catch(e) { console.error('renderPositionBoard error:', e); }
+                try { renderRosterBoard('mockRosterBoard'); } catch(e) { console.error('renderRosterBoard error:', e); }
+                try { updateMockUI(); } catch(e) { console.error('updateMockUI error:', e); }
+                runAIBidding();
+            } catch(e) {
+                console.error('startAuction fatal error:', e);
+            }
         }
 
         function runAIBidding() {
+            try {
             if (!mockCurrentAuction || !mockRunning) return;
             // In fast-forward, resolve instantly
             if (mockFastForward) { ffResolveAuction(); return; }
@@ -2457,7 +2466,7 @@
             document.getElementById('mockBidInput').min = auction.currentBid + 1;
 
             // Update advice as price changes
-            generateBidAdvice(auction.player);
+            try { generateBidAdvice(auction.player); } catch(e) { console.error('generateBidAdvice error:', e); }
 
             auction.biddingRound++;
             if (auction.currentBidder === mockUserTeamIdx && !someoneBid && auction.biddingRound > 1) {
@@ -2466,6 +2475,11 @@
                 showBidTimer();
             } else {
                 showBidTimer();
+            }
+            } catch(e) {
+                console.error('runAIBidding error:', e);
+                // Force award to prevent freeze
+                setTimeout(() => awardPlayer(), 500);
             }
         }
 
