@@ -15,6 +15,7 @@
             <button class="tab" data-tab="draft" onclick="switchTab('draft')">Draft Tracker</button>
             <button class="tab" data-tab="plans" onclick="switchTab('plans')">Draft Plans</button>
             <button class="tab" data-tab="mock" onclick="switchTab('mock')">Mock Draft</button>
+            <button class="tab" data-tab="live" onclick="switchTab('live')">Live Draft</button>
         </nav>
         <div class="connection-status">
             <div class="status-dot checking" id="statusDot"></div>
@@ -369,6 +370,112 @@
         <div id="mockResults" class="draft-results" style="display:none"></div>
     </div>
 
+    <!-- ═══════ TAB: LIVE DRAFT ═══════ -->
+    <div class="tab-content" id="tab-live">
+        <!-- Team Setup (shown first time) -->
+        <div id="liveSetup" class="live-setup">
+            <div class="card" style="max-width:700px;margin:24px auto">
+                <div class="card-header">Live Draft Setup</div>
+                <div class="card-body">
+                    <p style="color:var(--text-muted);margin-bottom:12px">Enter team names for your Yahoo league (12 teams, $260 budget, 23 roster spots).</p>
+                    <label style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;display:block">Your Team Name:</label>
+                    <input type="text" id="liveMyTeam" value="Dylan's Team" class="search-input" style="width:100%;margin-bottom:12px">
+                    <label style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;display:block">Other Teams (one per line, or comma-separated):</label>
+                    <textarea id="liveTeamNames" class="cookie-input" style="min-height:120px" placeholder="Team 2&#10;Team 3&#10;...or leave blank for defaults"></textarea>
+                    <div style="display:flex;gap:8px;margin-top:12px">
+                        <label style="font-size:0.85rem;color:var(--text-muted)">Starting Plan:
+                            <select id="liveStartPlan" class="search-input" style="width:100px">
+                                <option value="A" selected>Plan A</option>
+                                <option value="B">Plan B</option>
+                                <option value="C">Plan C</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" onclick="startLiveDraft()" style="margin-top:16px;width:100%">Start Live Draft</button>
+                    <button class="btn btn-sm" onclick="resumeLiveDraft()" style="margin-top:8px;width:100%">Resume Previous Draft</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Live Draft UI -->
+        <div id="liveActive" class="live-active" style="display:none">
+            <!-- Top Bar -->
+            <div class="live-top-bar">
+                <div class="mock-stat"><span>Pick</span><strong id="livePickNum">0</strong></div>
+                <div class="mock-stat"><span>Your Budget</span><strong id="liveBudget">$260</strong></div>
+                <div class="mock-stat"><span>Roster</span><strong id="liveRosterCount">0/23</strong></div>
+                <div class="mock-stat mock-plan-indicator">
+                    <span>Active Plan</span>
+                    <strong id="liveActivePlanLabel">A</strong>
+                </div>
+                <div class="live-plan-scores" id="livePlanScores"></div>
+                <div class="mock-stat mock-inflation" id="liveInflation">
+                    <span>Market</span>
+                    <strong id="liveInflationLabel">---</strong>
+                </div>
+                <div style="margin-left:auto;display:flex;gap:6px">
+                    <button class="btn btn-sm" onclick="resetLiveDraft()">Reset Draft</button>
+                </div>
+            </div>
+
+            <!-- Advisor alert -->
+            <div class="mock-advisor" id="liveAdvisor" style="display:none">
+                <div class="mock-advisor-icon">!</div>
+                <div class="mock-advisor-text" id="liveAdvisorText"></div>
+                <button class="btn btn-sm mock-advisor-close" onclick="document.getElementById('liveAdvisor').style.display='none'">&times;</button>
+            </div>
+
+            <!-- Strategy Board (plan cards) -->
+            <div class="mock-plan-tracker plan-tracker">
+                <div class="roster-board" id="liveRosterBoard"></div>
+                <div class="budget-panel" id="liveBudgetPanel"></div>
+            </div>
+
+            <!-- Quick Entry + Right Panel -->
+            <div class="live-main">
+                <!-- Quick Entry Panel -->
+                <div class="live-entry-panel">
+                    <div class="live-entry-header">Quick Entry</div>
+                    <div class="live-entry-input-wrap">
+                        <input type="text" id="liveQuickInput" class="live-quick-input" placeholder='Player Name $Price TeamName (e.g. "Skubal 46 Jack")' autocomplete="off" onkeydown="if(event.key==='Enter')liveLogPick()" oninput="liveAutocomplete()">
+                        <button class="btn btn-primary" onclick="liveLogPick()">Log Pick</button>
+                        <button class="btn btn-danger btn-sm" onclick="liveUndoPick()">Undo</button>
+                    </div>
+                    <div class="live-entry-options">
+                        <label class="live-my-pick-label"><input type="checkbox" id="liveMyPick"> My Pick</label>
+                    </div>
+                    <!-- Autocomplete dropdown -->
+                    <div class="live-autocomplete" id="liveAutocompleteList" style="display:none"></div>
+                    <!-- Disambiguation dropdown -->
+                    <div class="live-disambig" id="liveDisambig" style="display:none"></div>
+                    <!-- Last 3 picks -->
+                    <div class="live-last-picks" id="liveLastPicks"></div>
+                    <!-- Bid advice on click -->
+                    <div class="live-bid-advice" id="liveBidAdvice" style="display:none"></div>
+                </div>
+
+                <!-- Right Panel -->
+                <div class="live-right-panel">
+                    <!-- Your Roster -->
+                    <div class="live-roster-section">
+                        <div class="mock-roster-header">Your Roster</div>
+                        <div class="mock-roster-grid" id="liveRosterGrid"></div>
+                    </div>
+                    <!-- Team Tracker -->
+                    <div class="live-team-tracker">
+                        <div class="mock-roster-header">Teams</div>
+                        <div id="liveTeamTracker"></div>
+                    </div>
+                    <!-- Draft Log -->
+                    <div class="live-log-section">
+                        <div class="mock-log-header"><strong>Draft Log</strong></div>
+                        <div class="mock-log" id="liveDraftLog"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const LEAGUE_ID = "{{ league_id }}";
         let allPlayers = [];
@@ -392,6 +499,7 @@
             if (tab === "draft") loadDraftState();
             if (tab === "plans") { loadPlanTracker(); if (!mockPlayerPool.length) loadMockPlayerPool(); }
             if (tab === "mock") { if (!mockPlayerPool.length) loadMockPlayerPool(); loadSavedDraftsList(); }
+            if (tab === "live") { initLiveDraftTab(); }
         }
 
         // ── Connection ──────────────────────────────────────
@@ -4056,6 +4164,830 @@
             } catch(e) {
                 alert('Failed to delete: ' + e.message);
             }
+        }
+
+        // ══════════════════════════════════════════════════════
+        // ── LIVE DRAFT ──────────────────────────────────────
+        // ══════════════════════════════════════════════════════
+
+        const LIVE_BUDGET = 260;
+        const LIVE_ROSTER_SIZE = 23;
+        const LIVE_NUM_TEAMS = 12;
+
+        let liveDraftState = null;  // {picks:[], teams:{}, myTeam:'', activePlan:'A'}
+        let liveInited = false;
+        let liveActivePlan = 'A';
+
+        // Check if API is available or use localStorage fallback
+        let liveUseLocalStorage = false;
+
+        async function liveApiAvailable() {
+            try {
+                const r = await fetch('/api/live-draft', {method:'GET'});
+                return r.ok;
+            } catch { return false; }
+        }
+
+        function liveLoadState() {
+            const saved = localStorage.getItem('liveDraftState');
+            if (saved) {
+                try { return JSON.parse(saved); } catch {}
+            }
+            return null;
+        }
+
+        function liveSaveState() {
+            if (!liveDraftState) return;
+            localStorage.setItem('liveDraftState', JSON.stringify(liveDraftState));
+            // Also save to API if available
+            if (!liveUseLocalStorage) {
+                // Sync to server in background
+                fetch('/api/live-draft/pick', {method:'HEAD'}).catch(() => {});
+            }
+        }
+
+        async function initLiveDraftTab() {
+            if (!mockPlayerPool.length) await loadMockPlayerPool();
+            if (!planData) {
+                try {
+                    const resp = await fetch('/api/draft-plans-data');
+                    planData = await resp.json();
+                    delete planData.D;
+                    window._planData = planData;
+                } catch {}
+            }
+            liveUseLocalStorage = !(await liveApiAvailable());
+
+            // Check for existing live draft
+            const saved = liveLoadState();
+            if (saved && saved.picks && saved.picks.length > 0) {
+                // Show active draft
+                liveDraftState = saved;
+                liveActivePlan = saved.activePlan || 'A';
+                planState.active_plan = liveActivePlan;
+                document.getElementById('liveSetup').style.display = 'none';
+                document.getElementById('liveActive').style.display = 'block';
+                liveRebuildPlanState();
+                liveRenderAll();
+            } else if (!liveInited) {
+                document.getElementById('liveSetup').style.display = 'block';
+                document.getElementById('liveActive').style.display = 'none';
+            }
+            liveInited = true;
+        }
+
+        function startLiveDraft() {
+            const myTeam = document.getElementById('liveMyTeam').value.trim() || "Dylan's Team";
+            const rawNames = document.getElementById('liveTeamNames').value.trim();
+            liveActivePlan = document.getElementById('liveStartPlan').value;
+            planState.active_plan = liveActivePlan;
+
+            let otherTeams = [];
+            if (rawNames) {
+                otherTeams = rawNames.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+            }
+            // Pad to 11 other teams
+            while (otherTeams.length < LIVE_NUM_TEAMS - 1) {
+                otherTeams.push('Team ' + (otherTeams.length + 2));
+            }
+
+            const teams = {};
+            teams[myTeam] = {budget: LIVE_BUDGET, players: 0, roster: [], isUser: true};
+            otherTeams.forEach(t => {
+                teams[t] = {budget: LIVE_BUDGET, players: 0, roster: [], isUser: false};
+            });
+
+            liveDraftState = {
+                picks: [],
+                teams: teams,
+                myTeam: myTeam,
+                activePlan: liveActivePlan,
+                status: 'in_progress'
+            };
+
+            // Init plan state
+            if (window._planData && window._planData[liveActivePlan]) {
+                window._planData[liveActivePlan].slots.forEach((slot, idx) => {
+                    const key = liveActivePlan + '_' + idx;
+                    planState.slots[key] = {status: 'pending', actual_price: null, chosen_alt: null, takenAlts: []};
+                });
+            }
+
+            liveSaveState();
+            document.getElementById('liveSetup').style.display = 'none';
+            document.getElementById('liveActive').style.display = 'block';
+            liveRenderAll();
+        }
+
+        function resumeLiveDraft() {
+            const saved = liveLoadState();
+            if (saved && saved.picks && saved.picks.length > 0) {
+                liveDraftState = saved;
+                liveActivePlan = saved.activePlan || 'A';
+                planState.active_plan = liveActivePlan;
+                document.getElementById('liveSetup').style.display = 'none';
+                document.getElementById('liveActive').style.display = 'block';
+                liveRebuildPlanState();
+                liveRenderAll();
+            } else {
+                alert('No saved draft found. Start a new one.');
+            }
+        }
+
+        function resetLiveDraft() {
+            if (!confirm('Reset entire live draft? This cannot be undone.')) return;
+            liveDraftState = null;
+            localStorage.removeItem('liveDraftState');
+            // Reset plan state
+            for (const key of Object.keys(planState.slots)) {
+                if (key.startsWith('A_') || key.startsWith('B_') || key.startsWith('C_')) {
+                    planState.slots[key] = {status: 'pending', actual_price: null, chosen_alt: null, takenAlts: []};
+                }
+            }
+            document.getElementById('liveSetup').style.display = 'block';
+            document.getElementById('liveActive').style.display = 'none';
+        }
+
+        // ── Quick Entry Parser ──────────────────────────────
+
+        function liveParseQuickEntry(text) {
+            // Formats: "Skubal 46 Jack" or "Tarik Skubal 46 Jack's Team" or "Skubal 46"
+            text = text.trim();
+            if (!text) return null;
+
+            // Try to find a price (number preceded by $ or standalone)
+            const priceMatch = text.match(/\$?(\d+)/);
+            if (!priceMatch) return {error: 'No price found. Use format: Player $Price Team'};
+
+            const price = parseInt(priceMatch[1]);
+            const priceIdx = text.indexOf(priceMatch[0]);
+
+            // Everything before price = player name (fuzzy match)
+            const playerPart = text.substring(0, priceIdx).trim();
+            // Everything after price = team name
+            const afterPrice = text.substring(priceIdx + priceMatch[0].length).trim();
+
+            return {playerQuery: playerPart, price: price, teamQuery: afterPrice};
+        }
+
+        function liveFuzzyMatchPlayer(query) {
+            if (!query || !mockPlayerPool.length) return [];
+            const q = query.toLowerCase().trim();
+            // Exact match first
+            const exact = mockPlayerPool.filter(p => p.player.toLowerCase() === q);
+            if (exact.length === 1) return exact;
+            // Last name match
+            const lastNameMatches = mockPlayerPool.filter(p => {
+                const parts = p.player.split(' ');
+                const lastName = parts[parts.length - 1].toLowerCase();
+                return lastName === q || lastName.startsWith(q);
+            });
+            if (lastNameMatches.length === 1) return lastNameMatches;
+            if (lastNameMatches.length > 1 && lastNameMatches.length <= 5) return lastNameMatches;
+            // Partial match
+            const partial = mockPlayerPool.filter(p => p.player.toLowerCase().includes(q));
+            return partial.slice(0, 10);
+        }
+
+        function liveFuzzyMatchTeam(query) {
+            if (!query || !liveDraftState) return null;
+            const q = query.toLowerCase().trim();
+            const teamNames = Object.keys(liveDraftState.teams);
+            // Exact
+            const exact = teamNames.find(t => t.toLowerCase() === q);
+            if (exact) return exact;
+            // Partial
+            const partial = teamNames.filter(t => t.toLowerCase().includes(q));
+            if (partial.length === 1) return partial[0];
+            // First word match
+            const firstWord = teamNames.filter(t => t.toLowerCase().split(/\s+/)[0].startsWith(q));
+            if (firstWord.length === 1) return firstWord[0];
+            return partial.length > 0 ? partial[0] : teamNames[0];
+        }
+
+        // ── Autocomplete ────────────────────────────────────
+
+        function liveAutocomplete() {
+            const input = document.getElementById('liveQuickInput').value;
+            const list = document.getElementById('liveAutocompleteList');
+
+            // Only autocomplete the player part (before a number)
+            const parsed = liveParseQuickEntry(input);
+            const query = parsed && parsed.playerQuery ? parsed.playerQuery : input.trim();
+            if (!query || query.length < 2 || (parsed && parsed.price)) {
+                list.style.display = 'none';
+                return;
+            }
+
+            const matches = liveFuzzyMatchPlayer(query).slice(0, 8);
+            if (matches.length === 0) {
+                list.style.display = 'none';
+                return;
+            }
+
+            list.innerHTML = matches.map(p => {
+                const val = parseFloat(p.auction_value) || 0;
+                const badges = getPlayerBadges(p.player);
+                return `<div class="live-ac-item" onclick="liveSelectAutocomplete('${p.player.replace(/'/g, "\\'")}')">
+                    <span class="live-ac-name">${p.player} ${badges}</span>
+                    <span class="live-ac-meta">${p.pos} · $${val.toFixed(0)} · ${(p.fpts||0).toFixed(0)} fpts</span>
+                </div>`;
+            }).join('');
+            list.style.display = 'block';
+        }
+
+        function liveSelectAutocomplete(name) {
+            const input = document.getElementById('liveQuickInput');
+            input.value = name + ' ';
+            document.getElementById('liveAutocompleteList').style.display = 'none';
+            input.focus();
+        }
+
+        // ── Log Pick ────────────────────────────────────────
+
+        function liveLogPick() {
+            const input = document.getElementById('liveQuickInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            document.getElementById('liveAutocompleteList').style.display = 'none';
+            document.getElementById('liveDisambig').style.display = 'none';
+
+            const parsed = liveParseQuickEntry(text);
+            if (!parsed || parsed.error) {
+                liveShowAdvisor(parsed ? parsed.error : 'Could not parse entry.', 'warning');
+                return;
+            }
+
+            const matches = liveFuzzyMatchPlayer(parsed.playerQuery);
+            if (matches.length === 0) {
+                liveShowAdvisor('No player found matching "' + parsed.playerQuery + '"', 'warning');
+                return;
+            }
+
+            if (matches.length > 1) {
+                // Show disambiguation
+                const disambig = document.getElementById('liveDisambig');
+                disambig.innerHTML = '<div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:6px">Multiple matches - click one:</div>' +
+                    matches.slice(0, 8).map(p => {
+                        const val = parseFloat(p.auction_value) || 0;
+                        return `<div class="live-ac-item" onclick="liveConfirmPick('${p.player.replace(/'/g, "\\'")}', ${parsed.price}, '${(parsed.teamQuery || '').replace(/'/g, "\\'")}')">
+                            <span class="live-ac-name">${p.player}</span>
+                            <span class="live-ac-meta">${p.pos} · $${val.toFixed(0)}</span>
+                        </div>`;
+                    }).join('');
+                disambig.style.display = 'block';
+                return;
+            }
+
+            // Single match — log it
+            const player = matches[0];
+            const team = parsed.teamQuery ? liveFuzzyMatchTeam(parsed.teamQuery) : null;
+            liveConfirmPick(player.player, parsed.price, team || '');
+        }
+
+        function liveConfirmPick(playerName, price, teamQuery) {
+            document.getElementById('liveDisambig').style.display = 'none';
+            const isMyPick = document.getElementById('liveMyPick').checked;
+            const team = teamQuery ? liveFuzzyMatchTeam(teamQuery) : (isMyPick ? liveDraftState.myTeam : 'Unknown');
+
+            // Find the player object
+            const playerObj = mockPlayerPool.find(p => p.player === playerName);
+            const pos = playerObj ? playerObj.pos : '?';
+            const fpts = playerObj ? playerObj.fpts : 0;
+            const marketVal = playerObj ? getMarketValue(playerObj) : price;
+
+            // Check duplicate
+            if (liveDraftState.picks.find(p => p.player === playerName)) {
+                liveShowAdvisor(playerName + ' already drafted!', 'warning');
+                return;
+            }
+
+            const pickNum = liveDraftState.picks.length + 1;
+            const pick = {
+                pick_num: pickNum,
+                player: playerName,
+                price: price,
+                team: team,
+                pos: pos,
+                fpts: fpts,
+                market: marketVal,
+                delta: price - marketVal,
+                isUser: isMyPick || team === liveDraftState.myTeam
+            };
+
+            liveDraftState.picks.push(pick);
+
+            // Update team budget
+            if (!liveDraftState.teams[team]) {
+                liveDraftState.teams[team] = {budget: LIVE_BUDGET, players: 0, roster: [], isUser: false};
+            }
+            liveDraftState.teams[team].budget -= price;
+            liveDraftState.teams[team].players += 1;
+            liveDraftState.teams[team].roster.push(playerName);
+
+            // Temporarily set mockAvailable for findBestAvailableAlt
+            const savedMockAvail = mockAvailable;
+            const draftedNames = new Set(liveDraftState.picks.map(p => p.player));
+            mockAvailable = mockPlayerPool.filter(p => !draftedNames.has(p.player));
+
+            // Adapt plan state
+            liveAdaptPlan(playerName, price, pick.isUser, fpts, pos);
+
+            mockAvailable = savedMockAvail;
+            liveSaveState();
+
+            // Clear input
+            document.getElementById('liveQuickInput').value = '';
+            document.getElementById('liveMyPick').checked = false;
+            document.getElementById('liveQuickInput').focus();
+
+            liveRenderAll();
+        }
+
+        // ── Plan Integration ────────────────────────────────
+
+        function liveAdaptPlan(playerName, price, isUser, fpts, pos) {
+            if (!window._planData || !window._planData[liveActivePlan]) return;
+            const plan = window._planData[liveActivePlan];
+
+            plan.slots.forEach((slot, idx) => {
+                const psKey = liveActivePlan + '_' + idx;
+                const ps = planState.slots[psKey] || {status: 'pending', actual_price: null, chosen_alt: null, takenAlts: []};
+
+                if (ps.status === 'acquired') return; // already filled
+
+                if (slot.primary.player === playerName) {
+                    if (isUser) {
+                        ps.status = 'acquired';
+                        ps.actual_price = price;
+                        ps.chosen_alt = null;
+                        liveShowAdvisor('GOT <strong>' + playerName + '</strong> for $' + price + ' (' + slot.slot + '). Plan price was $' + slot.primary.est_price, 'savings');
+                    } else {
+                        ps.status = 'taken';
+                        if (!ps.takenAlts) ps.takenAlts = [];
+                        const bestAlt = findBestAvailableAlt(slot);
+                        if (bestAlt) {
+                            liveShowAdvisor('<strong>' + playerName + '</strong> taken ($' + price + '). Pivot to <strong>' + bestAlt.player + '</strong> for ' + slot.slot + ' (~$' + bestAlt.est_price + ')', 'pivot');
+                        } else {
+                            liveShowAdvisor('<strong>' + playerName + '</strong> taken for ' + slot.slot + '. No planned alternatives left!', 'warning');
+                        }
+                    }
+                    planState.slots[psKey] = ps;
+                    return;
+                }
+
+                // Check alternatives
+                (slot.alternatives || []).forEach((alt, ai) => {
+                    if (alt.player === playerName) {
+                        if (isUser) {
+                            ps.status = 'acquired';
+                            ps.actual_price = price;
+                            ps.chosen_alt = ai;
+                            planState.slots[psKey] = ps;
+                        } else {
+                            if (!ps.takenAlts) ps.takenAlts = [];
+                            if (!ps.takenAlts.includes(ai)) ps.takenAlts.push(ai);
+                            planState.slots[psKey] = ps;
+                        }
+                    }
+                });
+            });
+
+            // Auto-assign off-plan user picks to unfilled slots
+            if (isUser) {
+                const wasAssigned = plan.slots.some((s, i) => {
+                    const ps = planState.slots[liveActivePlan + '_' + i];
+                    return ps && ps.status === 'acquired' && (
+                        (ps.chosen_alt === null && s.primary.player === playerName) ||
+                        (ps.chosen_alt !== null && ps.chosen_alt >= 0 && ps.chosen_alt < s.alternatives.length && s.alternatives[ps.chosen_alt].player === playerName) ||
+                        (ps.offPlanPlayer === playerName)
+                    );
+                });
+                if (!wasAssigned) {
+                    const isPitcher = (pos || '').toUpperCase().includes('SP') || (pos || '').toUpperCase().includes('RP');
+                    let bestSlotIdx = -1;
+                    plan.slots.forEach((slot, idx) => {
+                        const ps = planState.slots[liveActivePlan + '_' + idx];
+                        if (ps && ps.status === 'acquired') return;
+                        const slotName = slot.slot.toUpperCase();
+                        const slotIsPitcher = slotName.startsWith('SP') || slotName.startsWith('RP');
+                        if (isPitcher === slotIsPitcher) {
+                            if (bestSlotIdx === -1) bestSlotIdx = idx;
+                        }
+                    });
+                    if (bestSlotIdx >= 0) {
+                        const psKey = liveActivePlan + '_' + bestSlotIdx;
+                        planState.slots[psKey] = {status: 'acquired', actual_price: price, chosen_alt: -99, takenAlts: [], offPlanPlayer: playerName, offPlanFpts: fpts};
+                    }
+                }
+            }
+        }
+
+        function liveRebuildPlanState() {
+            if (!window._planData || !liveDraftState) return;
+            const plan = window._planData[liveActivePlan];
+            if (!plan) return;
+
+            const allDrafted = new Set(liveDraftState.picks.map(p => p.player));
+            const myPicks = liveDraftState.picks.filter(p => p.isUser);
+            const myPickMap = {};
+            myPicks.forEach(p => { myPickMap[p.player] = p; });
+
+            plan.slots.forEach((slot, idx) => {
+                const psKey = liveActivePlan + '_' + idx;
+                const primary = slot.primary.player;
+
+                if (myPickMap[primary]) {
+                    planState.slots[psKey] = {status: 'acquired', actual_price: myPickMap[primary].price, chosen_alt: null, takenAlts: []};
+                    return;
+                }
+
+                // Check if any alt was got by user
+                let gotAltIdx = null;
+                (slot.alternatives || []).forEach((alt, ai) => {
+                    if (myPickMap[alt.player]) gotAltIdx = ai;
+                });
+                if (gotAltIdx !== null) {
+                    const altPlayer = slot.alternatives[gotAltIdx].player;
+                    planState.slots[psKey] = {status: 'acquired', actual_price: myPickMap[altPlayer].price, chosen_alt: gotAltIdx, takenAlts: []};
+                    return;
+                }
+
+                // Mark taken
+                const takenAlts = [];
+                (slot.alternatives || []).forEach((alt, ai) => {
+                    if (allDrafted.has(alt.player)) takenAlts.push(ai);
+                });
+
+                if (allDrafted.has(primary)) {
+                    planState.slots[psKey] = {status: 'taken', actual_price: null, chosen_alt: null, takenAlts: takenAlts};
+                } else {
+                    planState.slots[psKey] = {status: 'pending', actual_price: null, chosen_alt: null, takenAlts: takenAlts};
+                }
+            });
+
+            // Auto-assign off-plan user picks
+            myPicks.forEach(pick => {
+                const wasAssigned = plan.slots.some((s, i) => {
+                    const ps = planState.slots[liveActivePlan + '_' + i];
+                    if (!ps || ps.status !== 'acquired') return false;
+                    if (ps.chosen_alt === null && s.primary.player === pick.player) return true;
+                    if (ps.chosen_alt !== null && ps.chosen_alt >= 0 && ps.chosen_alt < s.alternatives.length && s.alternatives[ps.chosen_alt].player === pick.player) return true;
+                    if (ps.offPlanPlayer === pick.player) return true;
+                    return false;
+                });
+                if (!wasAssigned) {
+                    const isPitcher = (pick.pos || '').toUpperCase().includes('SP') || (pick.pos || '').toUpperCase().includes('RP');
+                    plan.slots.forEach((slot, idx) => {
+                        const psKey = liveActivePlan + '_' + idx;
+                        const ps = planState.slots[psKey];
+                        if (ps && ps.status === 'acquired') return;
+                        const slotName = slot.slot.toUpperCase();
+                        const slotIsPitcher = slotName.startsWith('SP') || slotName.startsWith('RP');
+                        if (isPitcher === slotIsPitcher) {
+                            planState.slots[psKey] = {status: 'acquired', actual_price: pick.price, chosen_alt: -99, takenAlts: [], offPlanPlayer: pick.player, offPlanFpts: pick.fpts || 0};
+                        }
+                    });
+                }
+            });
+        }
+
+        // ── Undo ────────────────────────────────────────────
+
+        function liveUndoPick() {
+            if (!liveDraftState || !liveDraftState.picks.length) return;
+            const removed = liveDraftState.picks.pop();
+            const team = removed.team;
+            if (liveDraftState.teams[team]) {
+                liveDraftState.teams[team].budget += removed.price;
+                liveDraftState.teams[team].players -= 1;
+                const idx = liveDraftState.teams[team].roster.indexOf(removed.player);
+                if (idx >= 0) liveDraftState.teams[team].roster.splice(idx, 1);
+            }
+            // Rebuild plan state from scratch
+            liveRebuildPlanState();
+            liveSaveState();
+            liveRenderAll();
+            liveShowAdvisor('Undid pick: ' + removed.player + ' $' + removed.price + ' (' + removed.team + ')', 'pivot');
+        }
+
+        // ── Live Plan Scoring ───────────────────────────────
+
+        function liveSwitchPlan(planId) {
+            if (!window._planData || !window._planData[planId]) return;
+            liveActivePlan = planId;
+            planState.active_plan = planId;
+            if (liveDraftState) liveDraftState.activePlan = planId;
+            liveRebuildPlanState();
+            liveSaveState();
+            liveRenderAll();
+        }
+
+        function liveScorePlans() {
+            if (!window._planData || !liveDraftState) return;
+            const allDrafted = new Set(liveDraftState.picks.map(p => p.player));
+            const myPicks = liveDraftState.picks.filter(p => p.isUser);
+            const gotPlayers = new Set(myPicks.map(p => p.player));
+            const myTeamData = liveDraftState.teams[liveDraftState.myTeam] || {budget: LIVE_BUDGET};
+            const budget = myTeamData.budget;
+
+            const scores = {};
+            for (const [planId, plan] of Object.entries(window._planData)) {
+                let targetsAvailable = 0;
+                let totalTargets = plan.slots.length;
+                let projFpts = 0;
+                let projCost = 0;
+
+                plan.slots.forEach((slot) => {
+                    const primary = slot.primary;
+                    const alts = slot.alternatives || [];
+
+                    if (gotPlayers.has(primary.player)) {
+                        const pick = myPicks.find(p => p.player === primary.player);
+                        projFpts += pick ? pick.fpts : primary.fpts;
+                        projCost += pick ? pick.price : primary.est_price;
+                        targetsAvailable++;
+                        return;
+                    }
+                    const gotAlt = alts.find(a => gotPlayers.has(a.player));
+                    if (gotAlt) {
+                        const pick = myPicks.find(p => p.player === gotAlt.player);
+                        projFpts += pick ? pick.fpts : gotAlt.fpts;
+                        projCost += pick ? pick.price : gotAlt.est_price;
+                        targetsAvailable++;
+                        return;
+                    }
+                    if (!allDrafted.has(primary.player)) {
+                        targetsAvailable++;
+                        projCost += primary.est_price;
+                        projFpts += primary.fpts;
+                    } else {
+                        const bestAlt = alts.find(a => !allDrafted.has(a.player));
+                        if (bestAlt) {
+                            targetsAvailable += 0.5;
+                            projCost += bestAlt.est_price;
+                            projFpts += bestAlt.fpts;
+                        } else {
+                            projFpts += 300;
+                            projCost += 1;
+                        }
+                    }
+                });
+
+                const availPct = targetsAvailable / totalTargets;
+                const availScore = availPct * 40;
+                const remainingCost = projCost - myPicks.reduce((s, p) => s + p.price, 0);
+                const budgetFit = budget > 0 ? Math.min(1, budget / Math.max(1, remainingCost)) : 0;
+                const budgetScore = budgetFit * 30;
+                const fptsScore = Math.min(30, (projFpts / 10000) * 30);
+                scores[planId] = {
+                    total: Math.round(availScore + budgetScore + fptsScore),
+                    avail: Math.round(availPct * 100),
+                    fpts: Math.round(projFpts),
+                    projCost: Math.round(projCost)
+                };
+            }
+
+            // Render plan score pills
+            const container = document.getElementById('livePlanScores');
+            if (!container) return;
+            const bestPlan = Object.entries(scores).sort((a, b) => b[1].total - a[1].total)[0];
+            container.innerHTML = Object.entries(scores).map(([id, s]) => {
+                const isActive = id === liveActivePlan;
+                const isBest = bestPlan && bestPlan[0] === id && !isActive;
+                let cls = 'plan-score-card';
+                if (isActive) cls += ' plan-score-active';
+                if (isBest) cls += ' plan-score-best';
+                return `<div class="${cls}" onclick="liveSwitchPlan('${id}')">
+                    <div class="psc-header">${isBest ? '<span class="plan-rec-tag">REC</span>' : ''}Plan ${id} <span class="psc-score">${s.total}</span></div>
+                    <div class="psc-details"><span>${s.avail}% avail</span><span>${s.fpts} fpts</span></div>
+                </div>`;
+            }).join('');
+        }
+
+        // ── Market Temperature ──────────────────────────────
+
+        function liveUpdateInflation() {
+            const label = document.getElementById('liveInflationLabel');
+            const container = document.getElementById('liveInflation');
+            if (!liveDraftState || liveDraftState.picks.length < 3) { label.textContent = '---'; return; }
+
+            let totalOverpay = 0, otherPicks = 0;
+            liveDraftState.picks.forEach(p => {
+                if (p.isUser) return;
+                totalOverpay += (p.price - (p.market || 1));
+                otherPicks++;
+            });
+            if (otherPicks === 0) { label.textContent = '---'; return; }
+            const avg = totalOverpay / otherPicks;
+            let status, cls;
+            if (avg > 5) { status = '🔥 HOT +$' + avg.toFixed(0); cls = 'inflation-hot'; }
+            else if (avg > 2) { status = '📈 Warm +$' + avg.toFixed(0); cls = 'inflation-warm'; }
+            else if (avg > -1) { status = '➡️ Fair'; cls = 'inflation-fair'; }
+            else { status = '❄️ Cold $' + avg.toFixed(0); cls = 'inflation-cold'; }
+            label.innerHTML = status;
+            container.className = 'mock-stat mock-inflation ' + cls;
+        }
+
+        // ── Bid Advice (click a player) ─────────────────────
+
+        function liveShowBidAdvice(playerName) {
+            const el = document.getElementById('liveBidAdvice');
+            const playerObj = mockPlayerPool.find(p => p.player === playerName);
+            if (!playerObj) { el.style.display = 'none'; return; }
+
+            const marketVal = getMarketValue(playerObj);
+            const stealAt = getStealPrice(marketVal, playerObj.fpts);
+            const mentions = getPlayerPlanInfo(playerName);
+            const badges = getPlayerBadges(playerName);
+
+            let html = `<div class="live-advice-header">${playerName} ${badges}</div>`;
+            html += `<div class="live-advice-row">${playerObj.pos} · Market ~$${marketVal.toFixed(0)} · ${(playerObj.fpts||0).toFixed(0)} fpts</div>`;
+            html += `<div class="live-advice-row">💰 Bid to <strong>$${Math.round(marketVal)}</strong> · ⚠️ Stretch <strong>$${Math.round(marketVal * 1.2)}</strong> · 🛑 Walk <strong>$${Math.round(marketVal * 1.4)}</strong></div>`;
+            html += `<div class="live-advice-row">Steal at ≤$${stealAt}</div>`;
+
+            if (mentions.length > 0) {
+                html += '<div class="live-advice-plans">';
+                mentions.forEach(m => {
+                    const plan = window._planData[m.planId];
+                    const slot = plan.slots[m.slotIdx];
+                    const wa = slot.walk_away;
+                    if (wa) {
+                        html += `<div>Plan ${m.planId} ${m.slot} (${m.role}): 💰$${wa.comfortable} ⚠️$${wa.stretch} 🛑$${wa.walk_away}</div>`;
+                    } else {
+                        html += `<div>Plan ${m.planId} ${m.slot} (${m.role}): $${m.price}</div>`;
+                    }
+                });
+                html += '</div>';
+            }
+            el.innerHTML = html;
+            el.style.display = 'block';
+        }
+
+        // ── Advisor ─────────────────────────────────────────
+
+        function liveShowAdvisor(msg, type) {
+            const el = document.getElementById('liveAdvisor');
+            el.className = 'mock-advisor advisor-' + (type || 'savings');
+            document.getElementById('liveAdvisorText').innerHTML = msg;
+            el.style.display = 'flex';
+        }
+
+        // ── Render All ──────────────────────────────────────
+
+        function liveRenderAll() {
+            if (!liveDraftState) return;
+            liveRenderTopBar();
+            liveScorePlans();
+            liveUpdateInflation();
+
+            // Reuse mock draft's renderRosterBoard for plan cards
+            // Temporarily set mockDraftActive=false and render to live board
+            const savedMockActive = mockDraftActive;
+            mockDraftActive = false;
+            // Set mockAvailable to filter out drafted players
+            const savedMockAvail = mockAvailable;
+            const draftedNames = new Set(liveDraftState.picks.map(p => p.player));
+            mockAvailable = mockPlayerPool.filter(p => !draftedNames.has(p.player));
+            // Also set mockLog_ for dynamic alt exclusion
+            const savedMockLog = mockLog_;
+            mockLog_ = liveDraftState.picks.map(p => ({player: p.player, price: p.price, isUser: p.isUser}));
+            renderRosterBoard('liveRosterBoard');
+            renderBudgetPanel('liveBudgetPanel');
+            mockAvailable = savedMockAvail;
+            mockLog_ = savedMockLog;
+            mockDraftActive = savedMockActive;
+
+            liveRenderRoster();
+            liveRenderTeamTracker();
+            liveRenderDraftLog();
+            liveRenderLastPicks();
+        }
+
+        function liveRenderTopBar() {
+            const myTeamData = liveDraftState.teams[liveDraftState.myTeam] || {budget: LIVE_BUDGET, players: 0};
+            document.getElementById('livePickNum').textContent = liveDraftState.picks.length;
+            document.getElementById('liveBudget').textContent = '$' + myTeamData.budget;
+            document.getElementById('liveRosterCount').textContent = myTeamData.players + '/' + LIVE_ROSTER_SIZE;
+            document.getElementById('liveActivePlanLabel').textContent = liveActivePlan;
+        }
+
+        function liveRenderRoster() {
+            const grid = document.getElementById('liveRosterGrid');
+            if (!liveDraftState) return;
+            const myPicks = liveDraftState.picks.filter(p => p.isUser);
+
+            const rosterSlots = [
+                {label:'C',accepts:['C']},{label:'1B',accepts:['1B']},{label:'2B',accepts:['2B']},
+                {label:'3B',accepts:['3B']},{label:'SS',accepts:['SS']},
+                {label:'LF',accepts:['LF','OF']},{label:'CF',accepts:['CF','OF']},{label:'RF',accepts:['RF','OF']},
+                {label:'UT',accepts:['C','1B','2B','3B','SS','LF','CF','RF','OF','DH']},
+                {label:'SP',accepts:['SP']},{label:'SP',accepts:['SP']},{label:'SP',accepts:['SP']},
+                {label:'SP',accepts:['SP']},{label:'SP',accepts:['SP']},{label:'SP',accepts:['SP']},
+                {label:'SP',accepts:['SP']},{label:'RP',accepts:['RP']},{label:'RP',accepts:['RP']},
+                {label:'RES',accepts:null},{label:'RES',accepts:null},
+                {label:'RES',accepts:null},{label:'RES',accepts:null},{label:'RES',accepts:null}
+            ];
+
+            function posMatches(pPos, slotAccepts) {
+                if (!slotAccepts) return true;
+                return slotAccepts.some(a => (pPos||'').toUpperCase().includes(a));
+            }
+
+            const assigned = new Array(rosterSlots.length).fill(null);
+            const unassigned = [...myPicks];
+
+            for (let pass = 0; pass < 2; pass++) {
+                for (let s = 0; s < rosterSlots.length; s++) {
+                    if (assigned[s]) continue;
+                    const slot = rosterSlots[s];
+                    if (pass === 0 && (slot.label === 'UT' || slot.label === 'RES')) continue;
+                    if (pass === 1 && slot.label !== 'UT' && slot.label !== 'RES') continue;
+                    for (let p = 0; p < unassigned.length; p++) {
+                        if (!unassigned[p]) continue;
+                        if (posMatches(unassigned[p].pos, slot.accepts)) {
+                            assigned[s] = unassigned[p];
+                            unassigned[p] = null;
+                            break;
+                        }
+                    }
+                }
+            }
+            const remaining = unassigned.filter(Boolean);
+            for (const pick of remaining) {
+                const emptyIdx = assigned.findIndex(a => a === null);
+                if (emptyIdx >= 0) assigned[emptyIdx] = pick;
+            }
+
+            let html = '';
+            for (let i = 0; i < rosterSlots.length; i++) {
+                const pick = assigned[i];
+                if (pick) {
+                    html += `<div class="mock-roster-slot filled">
+                        <span class="mock-slot-label">${rosterSlots[i].label}</span>
+                        <span class="mock-slot-player" onclick="liveShowBidAdvice('${pick.player.replace(/'/g, "\\'")}')" style="cursor:pointer">${pick.player}</span>
+                        <span class="mock-slot-price">$${pick.price}</span>
+                    </div>`;
+                } else {
+                    html += `<div class="mock-roster-slot empty">
+                        <span class="mock-slot-label">${rosterSlots[i].label}</span>
+                        <span class="mock-slot-player">---</span>
+                        <span class="mock-slot-price"></span>
+                    </div>`;
+                }
+            }
+            grid.innerHTML = html;
+        }
+
+        function liveRenderTeamTracker() {
+            const container = document.getElementById('liveTeamTracker');
+            if (!liveDraftState) return;
+            const teams = Object.entries(liveDraftState.teams).sort((a, b) => a[1].budget - b[1].budget);
+            container.innerHTML = teams.map(([name, t]) => {
+                const isMe = name === liveDraftState.myTeam;
+                const pct = ((LIVE_BUDGET - t.budget) / LIVE_BUDGET * 100).toFixed(0);
+                return `<div class="live-team-row ${isMe ? 'live-team-me' : ''}">
+                    <span class="live-team-name">${isMe ? '★ ' : ''}${name}</span>
+                    <span class="live-team-budget">$${t.budget}</span>
+                    <span class="live-team-picks">${t.players}p</span>
+                    <div class="live-team-bar"><div class="live-team-bar-fill" style="width:${pct}%"></div></div>
+                </div>`;
+            }).join('');
+        }
+
+        function liveRenderDraftLog() {
+            const log = document.getElementById('liveDraftLog');
+            if (!liveDraftState) return;
+            log.innerHTML = liveDraftState.picks.slice().reverse().slice(0, 80).map(p => {
+                const cls = p.isUser ? 'mock-log-user' : '';
+                const delta = p.delta || 0;
+                const deltaClass = delta > 2 ? 'overpay' : delta < -2 ? 'savings' : '';
+                const deltaStr = delta >= 0 ? '+$' + delta.toFixed(0) : '-$' + Math.abs(delta).toFixed(0);
+                return `<div class="mock-log-entry ${cls}" onclick="liveShowBidAdvice('${p.player.replace(/'/g, "\\'")}')" style="cursor:pointer">
+                    <span class="mock-log-pick">#${p.pick_num}</span>
+                    <span class="mock-log-player">${p.player} <span class="text-muted">(${p.pos})</span></span>
+                    <span class="mock-log-team">${p.team}</span>
+                    <span class="mock-log-price">$${p.price} <span class="${deltaClass}">${deltaStr}</span></span>
+                </div>`;
+            }).join('');
+        }
+
+        function liveRenderLastPicks() {
+            const el = document.getElementById('liveLastPicks');
+            if (!liveDraftState || !liveDraftState.picks.length) {
+                el.innerHTML = '<span style="color:var(--text-muted);font-size:0.8rem">No picks yet</span>';
+                return;
+            }
+            const last3 = liveDraftState.picks.slice(-3).reverse();
+            el.innerHTML = last3.map(p => {
+                const delta = p.delta || 0;
+                const dCls = delta > 2 ? 'overpay' : delta < -2 ? 'savings' : '';
+                return `<div class="live-last-pick ${p.isUser ? 'live-last-mine' : ''}">
+                    <strong>#${p.pick_num}</strong> ${p.player} <span class="text-muted">$${p.price}</span> → ${p.team}
+                    <span class="${dCls}">${delta >= 0 ? '+' : ''}$${delta.toFixed(0)}</span>
+                </div>`;
+            }).join('');
         }
 
         // ── Init ────────────────────────────────────────────
