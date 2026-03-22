@@ -2349,6 +2349,8 @@
 
         function runAIBidding() {
             if (!mockCurrentAuction || !mockRunning) return;
+            // In fast-forward, resolve instantly
+            if (mockFastForward) { ffResolveAuction(); return; }
             const auction = mockCurrentAuction;
             const player = auction.player;
             const marketVal = parseFloat(player.auction_value) || 1;
@@ -2397,36 +2399,11 @@
         function showBidTimer(resumeCount) {
             const timer = document.getElementById('mockBidTimer');
 
-            // Fast-forward: skip timer entirely, resolve immediately
+            // Fast-forward: resolve entire auction instantly (no timers, no recursion)
             if (mockFastForward) {
                 timer.style.display = 'none';
                 clearInterval(mockBidTimeout);
-                // Run one round of AI bidding then award
-                const auction = mockCurrentAuction;
-                if (!auction) return;
-                const marketVal = parseFloat(auction.player.auction_value) || 1;
-                const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
-                let anyBid = false;
-                for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
-                    if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
-                    const team = mockTeams[i];
-                    if (team.roster.length >= MOCK_ROSTER_SIZE) continue;
-                    const maxBid = getMaxBid(team);
-                    const will = marketVal * aggMult * (1 + (Math.random()-0.5)*0.2);
-                    if (auction.currentBid < will && auction.currentBid + 1 <= maxBid && Math.random() > 0.4) {
-                        auction.currentBid++;
-                        auction.currentBidder = i;
-                        anyBid = true;
-                        break;
-                    }
-                }
-                if (anyBid) {
-                    document.getElementById('mockCurrentBid').textContent = '$' + auction.currentBid;
-                    document.getElementById('mockBidder').textContent = mockTeams[auction.currentBidder].name;
-                    setTimeout(() => showBidTimer(), 5);
-                } else {
-                    awardPlayer();
-                }
+                ffResolveAuction();
                 return;
             }
 
@@ -2568,7 +2545,7 @@
             scorePlans();
 
             mockNominatorIdx = (mockNominatorIdx + 1) % MOCK_NUM_TEAMS;
-            setTimeout(() => nextMockNomination(), mockFastForward ? 10 : 600);
+            setTimeout(() => nextMockNomination(), mockFastForward ? 50 : 600);
         }
 
         function adaptPlanAfterPick(playerName, price, isUser) {
@@ -3422,6 +3399,40 @@
             if (!mockFastForward || !mockCurrentAuction) return;
             // In fast-forward, auto-pass — let AI teams battle it out
             clearInterval(mockBidTimeout);
+            awardPlayer();
+        }
+
+        function ffResolveAuction() {
+            // Resolve the entire auction instantly — simulate all bidding rounds in a loop
+            const auction = mockCurrentAuction;
+            if (!auction) return;
+            const marketVal = parseFloat(auction.player.auction_value) || 1;
+            const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
+
+            // Run bidding rounds until nobody bids
+            let rounds = 0;
+            while (rounds < 50) { // safety cap
+                rounds++;
+                let anyBid = false;
+                for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
+                    if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
+                    const team = mockTeams[i];
+                    if (team.roster.length >= MOCK_ROSTER_SIZE) continue;
+                    const maxBid = getMaxBid(team);
+                    if (maxBid <= auction.currentBid) continue;
+                    const will = marketVal * aggMult * (1 + (Math.random()-0.5)*0.3);
+                    if (auction.currentBid < will && auction.currentBid + 1 <= maxBid) {
+                        const increment = Math.max(1, Math.floor(Math.random() * 2));
+                        auction.currentBid = Math.min(auction.currentBid + increment, maxBid, Math.ceil(will));
+                        auction.currentBidder = i;
+                        anyBid = true;
+                        break;
+                    }
+                }
+                if (!anyBid) break;
+            }
+
+            // Award the player
             awardPlayer();
         }
 
