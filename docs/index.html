@@ -1018,7 +1018,22 @@
             }
 
             // Look through alternatives for someone more expensive but affordable
-            const allCandidates = [slot.primary, ...(slot.alternatives || [])];
+            // Only consider players that are NOT taken
+            const takenSet = new Set(st.takenAlts || []);
+            const primaryTaken = st.status === 'taken';
+            // Also check mock draft — if player was drafted, skip them
+            const allDrafted = (typeof mockLog_ !== 'undefined') ? new Set(mockLog_.map(e => e.player)) : new Set();
+
+            const allCandidates = [];
+            if (!primaryTaken && !allDrafted.has(slot.primary.player)) {
+                allCandidates.push(slot.primary);
+            }
+            (slot.alternatives || []).forEach((alt, i) => {
+                if (!takenSet.has(i) && !allDrafted.has(alt.player)) {
+                    allCandidates.push(alt);
+                }
+            });
+
             let bestUpgrade = null;
             for (const candidate of allCandidates) {
                 if (candidate.player === currentBest.player) continue;
