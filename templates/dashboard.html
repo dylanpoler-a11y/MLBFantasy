@@ -2238,13 +2238,17 @@
         let _posBoardActivePos = null; // track selected position filter
         let _posBoardBadgeFilter = null; // 'breakout', 'expert', or null
 
-        let _posBoardSort = { col: 'fpts', dir: 'desc' }; // default sort by fpts descending
+        let _posBoardSort = { col: 'fpts', dir: 'desc', col2: null, dir2: null };
         function togglePosBoardSort(col) {
             if (_posBoardSort.col === col) {
+                // Same column — toggle direction
                 _posBoardSort.dir = _posBoardSort.dir === 'desc' ? 'asc' : 'desc';
             } else {
+                // New column — old primary becomes secondary
+                _posBoardSort.col2 = _posBoardSort.col;
+                _posBoardSort.dir2 = _posBoardSort.dir;
                 _posBoardSort.col = col;
-                _posBoardSort.dir = col === 'player' ? 'asc' : 'desc'; // alpha asc, numbers desc
+                _posBoardSort.dir = col === 'player' ? 'asc' : 'desc';
             }
             renderPositionBoard(mockCurrentAuction ? mockCurrentAuction.player : null, _posBoardActivePos);
         }
@@ -2304,16 +2308,25 @@
                 if (_posBoardBadgeFilter === 'expert') return posMatch && badges.includes('expert');
                 return posMatch;
             });
-            // Sort available by selected column
-            const sortDir = _posBoardSort.dir === 'asc' ? 1 : -1;
+            // Sort available by primary + secondary column
+            function getSortVal(p, col) {
+                if (col === 'player') return p.player || '';
+                if (col === 'fpts') return p.fpts || 0;
+                if (col === 'market') return getMarketValue(p);
+                if (col === 'steal') return getStealPrice(getMarketValue(p), p.fpts);
+                if (col === 'pos') return p.pos || '';
+                return p.fpts || 0;
+            }
+            function compareCol(a, b, col, dir) {
+                const va = getSortVal(a, col), vb = getSortVal(b, col);
+                const m = dir === 'asc' ? 1 : -1;
+                if (typeof va === 'string') return m * va.localeCompare(vb);
+                return m * (va - vb);
+            }
             available.sort((a, b) => {
-                const col = _posBoardSort.col;
-                if (col === 'player') return sortDir * (a.player || '').localeCompare(b.player || '');
-                if (col === 'fpts') return sortDir * ((a.fpts || 0) - (b.fpts || 0));
-                if (col === 'market') return sortDir * (getMarketValue(a) - getMarketValue(b));
-                if (col === 'steal') return sortDir * (getStealPrice(getMarketValue(a), a.fpts) - getStealPrice(getMarketValue(b), b.fpts));
-                if (col === 'pos') return sortDir * (a.pos || '').localeCompare(b.pos || '');
-                return sortDir * ((b.fpts || 0) - (a.fpts || 0));
+                const primary = compareCol(a, b, _posBoardSort.col, _posBoardSort.dir);
+                if (primary !== 0 || !_posBoardSort.col2) return primary;
+                return compareCol(a, b, _posBoardSort.col2, _posBoardSort.dir2);
             });
 
             html += '<div class="pos-board-tables">';
@@ -2349,8 +2362,12 @@
                 html += `<div style="font-size:0.72rem;color:var(--green);margin-bottom:4px;font-weight:600">All Breakout + Expert Targets (${available.length} available)</div>`;
             }
             function sortHeader(col, label) {
-                const arrow = _posBoardSort.col === col ? (_posBoardSort.dir === 'asc' ? ' ▲' : ' ▼') : '';
-                const activeClass = _posBoardSort.col === col ? ' sort-active' : '';
+                const isPrimary = _posBoardSort.col === col;
+                const isSecondary = _posBoardSort.col2 === col;
+                let arrow = '';
+                if (isPrimary) arrow = _posBoardSort.dir === 'asc' ? ' ▲' : ' ▼';
+                else if (isSecondary) arrow = _posBoardSort.dir2 === 'asc' ? ' △' : ' ▽';
+                const activeClass = isPrimary ? ' sort-active' : isSecondary ? ' sort-secondary' : '';
                 return `<th class="sortable${activeClass}" onclick="togglePosBoardSort('${col}')">${label}${arrow}</th>`;
             }
             const posCol = isAllTagged ? sortHeader('pos', 'Pos') : '';

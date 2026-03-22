@@ -1331,6 +1331,9 @@ header h1 span { color: var(--accent); }
 .pos-board-table th.sort-active {
     color: #fbbf24;
 }
+.pos-board-table th.sort-secondary {
+    color: #a78bfa;
+}
 
 /* ── Auction Highlight on Strategy Board ── */
 .slot-auction-active {
