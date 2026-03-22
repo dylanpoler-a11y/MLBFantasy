@@ -2150,10 +2150,119 @@
                 html += '</div>';
             }
 
+            // ── UNIVERSAL PRICE SCORE — shown for EVERY player ──
+            // Calculate market-adjusted bid/stretch/walk for this specific player
+            const uMarket = getMarketValue(player);
+            const uBreakout = player.max_breakout;
+            const uFpts = player.fpts || 0;
+
+            // Base prices anchored to market value
+            let uBid, uStretch, uWalk;
+            if (uBreakout) {
+                uBid = Math.round(uMarket * 1.15);
+                uStretch = Math.round(uMarket * 1.3);
+                uWalk = Math.round(uMarket * 1.5);
+            } else if (uFpts >= 600) {
+                // Elite players — slight premium acceptable
+                uBid = Math.round(uMarket * 1.1);
+                uStretch = Math.round(uMarket * 1.2);
+                uWalk = Math.round(uMarket * 1.3);
+            } else {
+                uBid = uMarket;
+                uStretch = Math.round(uMarket * 1.15);
+                uWalk = Math.round(uMarket * 1.25);
+            }
+            // Ensure minimums
+            uBid = Math.max(1, uBid);
+            uStretch = Math.max(uBid + 1, uStretch);
+            uWalk = Math.max(uStretch + 1, uWalk);
+
+            // Override with plan walk-away for anchors
+            if (activeMention && activeMention.role === 'primary') {
+                const planSlot = window._planData && window._planData[mockActivePlan] && window._planData[mockActivePlan].slots[activeMention.slotIdx];
+                if (planSlot && planSlot.is_anchor && planSlot.walk_away) {
+                    uBid = planSlot.walk_away.comfortable;
+                    uStretch = planSlot.walk_away.stretch;
+                    uWalk = planSlot.walk_away.walk_away;
+                }
+            }
+
+            // Market temperature adjustment — combines OTHER teams' overpay AND your own budget position
+            let tempAdj = 0;
+            let tempLabel = '';
+            let tempParts = [];
+
+            // 1) Other teams' inflation
+            let marketInflation = 0;
+            if (mockLog_.length >= 3) {
+                let otherOp = 0, otherCt = 0;
+                mockLog_.forEach(e => { if (!e.isUser) { otherOp += (e.price - (e.market || 1)); otherCt++; } });
+                marketInflation = otherCt > 0 ? otherOp / otherCt : 0;
+                if (marketInflation > 6) {
+                    tempAdj -= Math.round(uMarket * 0.12);
+                    tempParts.push('🔥MKT HOT');
+                } else if (marketInflation > 3) {
+                    tempAdj -= Math.round(uMarket * 0.06);
+                    tempParts.push('🔥MKT WARM');
+                } else if (marketInflation < -2) {
+                    tempAdj += Math.round(uMarket * 0.08);
+                    tempParts.push('❄️MKT COLD');
+                }
+            }
+
+            // 2) YOUR budget position — over/underspend vs plan
+            const userTeam = mockTeams[mockUserTeamIdx];
+            if (userTeam && userTeam.roster.length > 0) {
+                let yourOverspend = 0;
+                userTeam.roster.forEach(rp => {
+                    const rpMarket = rp.market || getMarketValue(rp);
+                    yourOverspend += (rp.price - rpMarket);
+                });
+                const spotsLeft = 22 - userTeam.roster.length;
+                const budgetLeft = 260 - userTeam.spent;
+                const avgPerSpot = spotsLeft > 0 ? budgetLeft / spotsLeft : 0;
+
+                if (yourOverspend > 10) {
+                    // You've overspent — need to tighten up
+                    tempAdj -= Math.round(uMarket * 0.1);
+                    tempParts.push(`📉YOU -$${yourOverspend}`);
+                } else if (yourOverspend > 3) {
+                    tempAdj -= Math.round(uMarket * 0.05);
+                    tempParts.push(`📉YOU -$${yourOverspend}`);
+                } else if (yourOverspend < -5) {
+                    // You've underspent — can be more aggressive
+                    tempAdj += Math.round(uMarket * 0.08);
+                    tempParts.push(`📈YOU +$${Math.abs(yourOverspend)}`);
+                } else if (yourOverspend < -2) {
+                    tempAdj += Math.round(uMarket * 0.04);
+                    tempParts.push(`📈YOU +$${Math.abs(yourOverspend)}`);
+                }
+            }
+
+            tempLabel = tempParts.join(' ');
+
+            const adjBid = Math.max(1, uBid + tempAdj);
+            const adjStretch = Math.max(adjBid + 1, uStretch + tempAdj);
+            const adjWalk = Math.max(adjStretch + 1, uWalk + tempAdj);
+
+            const adjColor = tempAdj < 0 ? 'green' : tempAdj > 0 ? '#ff6b6b' : '#888';
+            const adjSign = tempAdj < 0 ? '' : '+';
+            const adjText = tempAdj !== 0
+                ? ` <span style="color:${adjColor};font-weight:700">${adjSign}$${tempAdj} ${tempLabel}</span>`
+                : '';
+
+            html += `<div class="rec-score-card">` +
+                `💰 <strong>$${adjBid}</strong> · ` +
+                `⚠️ $${adjStretch} · ` +
+                `🛑 $${adjWalk}` +
+                `${adjText}` +
+                `<span class="score-market">(Market $${uMarket})</span>` +
+                `</div>`;
+
             if (html) {
                 recEl.innerHTML = html;
                 recEl.style.display = 'block';
-                recEl.className = 'mock-bid-rec rec-' + urgency;
+                recEl.className = 'mock-bid-rec rec-' + (urgency || 'info');
             } else {
                 recEl.style.display = 'none';
             }

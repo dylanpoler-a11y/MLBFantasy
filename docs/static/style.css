@@ -1468,6 +1468,26 @@ header h1 span { color: var(--accent); }
     border-color: rgba(59, 130, 246, 0.3);
     color: #93c5fd;
 }
+/* ── Universal Price Score Card ── */
+.rec-score-card {
+    background: rgba(100, 116, 139, 0.15);
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin: 6px 0 2px;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+.rec-score-card strong { color: #e2e8f0; }
+.score-market {
+    margin-left: auto;
+    color: #64748b;
+    font-size: 0.78rem;
+}
 
 .slot-walk-away {
     font-size: 0.68rem;
