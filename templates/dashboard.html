@@ -336,6 +336,16 @@
                                 <button class="btn btn-sm" onclick="mockPass()">Pass</button>
                             </div>
                             <div class="mock-bid-timer" id="mockBidTimer"></div>
+                            <!-- Live mode: manual resolve buttons -->
+                            <div id="mockLiveResolve" style="display:none;margin-top:8px;text-align:center">
+                                <div style="display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
+                                    <label style="color:var(--text-muted);font-size:0.85rem">Final price: $</label>
+                                    <input type="number" id="mockLiveFinalPrice" class="search-input" style="width:70px;text-align:center" min="1" max="260" value="1">
+                                    <label style="color:var(--text-muted);font-size:0.85rem">Won by:</label>
+                                    <select id="mockLiveWinner" class="search-input" style="width:150px"></select>
+                                    <button class="btn btn-primary btn-sm" onclick="mockLiveAward()" style="font-weight:700">Log Pick</button>
+                                </div>
+                            </div>
                         </div>
                         <!-- Position Board: drafted + available for current position -->
                         <div class="mock-pos-board" id="mockPosBoard" style="display:none">
@@ -2791,10 +2801,42 @@
                 try { renderPositionBoard(player); } catch(e) { console.error('renderPositionBoard error:', e); }
                 try { renderRosterBoard('mockRosterBoard'); } catch(e) { console.error('renderRosterBoard error:', e); }
                 try { updateMockUI(); } catch(e) { console.error('updateMockUI error:', e); }
-                runAIBidding();
+
+                if (mockLiveMode) {
+                    // Show live resolve panel instead of AI bidding
+                    document.getElementById('mockLiveResolve').style.display = 'block';
+                    document.getElementById('mockBidInput').parentElement.style.display = 'none';
+                    document.getElementById('mockLiveFinalPrice').value = Math.round(val);
+                    // Populate winner dropdown
+                    const sel = document.getElementById('mockLiveWinner');
+                    sel.innerHTML = '';
+                    mockTeams.forEach((t, i) => {
+                        if (t.roster.length < MOCK_ROSTER_SIZE) {
+                            const opt = document.createElement('option');
+                            opt.value = i;
+                            opt.textContent = t.name + (t.isUser ? ' (You)' : '');
+                            sel.appendChild(opt);
+                        }
+                    });
+                } else {
+                    document.getElementById('mockLiveResolve').style.display = 'none';
+                    document.getElementById('mockBidInput').parentElement.style.display = '';
+                    runAIBidding();
+                }
             } catch(e) {
                 console.error('startAuction fatal error:', e);
             }
+        }
+
+        function mockLiveAward() {
+            if (!mockCurrentAuction) return;
+            const price = parseInt(document.getElementById('mockLiveFinalPrice').value) || 1;
+            const winnerIdx = parseInt(document.getElementById('mockLiveWinner').value);
+            mockCurrentAuction.currentBid = price;
+            mockCurrentAuction.currentBidder = winnerIdx;
+            document.getElementById('mockLiveResolve').style.display = 'none';
+            document.getElementById('mockBidInput').parentElement.style.display = '';
+            awardPlayer();
         }
 
         function runAIBidding() {
@@ -2854,6 +2896,12 @@
 
         function showBidTimer(resumeCount) {
             const timer = document.getElementById('mockBidTimer');
+
+            // Live mode: no timer — user controls the flow
+            if (mockLiveMode) {
+                timer.style.display = 'none';
+                return;
+            }
 
             // Fast-forward: resolve entire auction instantly (no timers, no recursion)
             if (mockFastForward) {
