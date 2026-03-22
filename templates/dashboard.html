@@ -1481,12 +1481,27 @@
             if (!playerName) return '';
             const pool = (mockPlayerPool && mockPlayerPool.length > 0) ? mockPlayerPool : allPlayers;
             const p = pool.find(x => x.player === playerName);
-            if (!p || !p.badges || p.badges.length === 0) return '';
-            return p.badges.map(b => {
-                if (b.includes('Breakout')) return '<span class="badge-breakout">' + b + '</span>';
-                if (b.includes('Expert')) return '<span class="badge-expert">' + b + '</span>';
-                return '<span class="badge-breakout">' + b + '</span>';
-            }).join(' ');
+            if (!p) return '';
+            let html = '';
+            if (p.badges && p.badges.length > 0) {
+                html += p.badges.map(b => {
+                    if (b.includes('Finals')) return '<span class="badge-finals">' + b + '</span>';
+                    if (b.includes('Breakout')) return '<span class="badge-breakout">' + b + '</span>';
+                    if (b.includes('Expert')) return '<span class="badge-expert">' + b + '</span>';
+                    return '<span class="badge-breakout">' + b + '</span>';
+                }).join(' ');
+            }
+            if (p.max_breakout) {
+                html += ` <span class="badge-max-breakout" title="${p.max_breakout.archetype}: ceiling ${p.max_breakout.max_fpts} fpts, worth $${p.max_breakout.max_value}">⭐ Max $${p.max_breakout.max_value}</span>`;
+            }
+            return html;
+        }
+
+        // Get max breakout data for a player
+        function getMaxBreakout(playerName) {
+            const pool = (mockPlayerPool && mockPlayerPool.length > 0) ? mockPlayerPool : allPlayers;
+            const p = pool.find(x => x.player === playerName);
+            return p && p.max_breakout ? p.max_breakout : null;
         }
 
         async function loadMockPlayerPool() {
@@ -1769,6 +1784,12 @@
             if (!urgency && player.fpts >= 300) {
                 html = `<div class="rec-info">Market ~$${marketVal.toFixed(0)} · Steal ≤$${stealAt} · ${player.fpts.toFixed(0)} fpts</div>` + html;
                 urgency = 'info';
+            }
+
+            // Show Max Breakout ceiling if applicable
+            const breakoutData = getMaxBreakout(player.player);
+            if (breakoutData) {
+                html += `<div class="rec-breakout-ceiling">⭐ <strong>BREAKOUT CEILING:</strong> ${breakoutData.max_fpts} fpts (worth $${breakoutData.max_value}) — <em>${breakoutData.archetype}</em></div>`;
             }
 
             // Show mentions in other plans
