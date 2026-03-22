@@ -1256,6 +1256,18 @@ header h1 span { color: var(--accent); }
 .rec-max-spend strong { color: var(--green); }
 .rec-max-spend .text-muted { font-size: 0.72rem; }
 
+/* ── Fast Forward Button ── */
+.mock-ff-active {
+    background: #dc2626 !important;
+    color: #fff !important;
+    border-color: #dc2626 !important;
+    animation: ff-pulse 0.8s ease-in-out infinite;
+}
+@keyframes ff-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
 /* ── Position Filter Tabs ── */
 .pos-filter-tabs {
     display: flex;

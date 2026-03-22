@@ -279,6 +279,7 @@
                     <div class="mock-draft-controls">
                         <button class="btn btn-primary btn-sm" id="mockNominateBtn" onclick="showNominateUI()">Nominate</button>
                         <button class="btn btn-sm mock-ctrl-btn" id="mockPauseBtn" onclick="togglePauseDraft()">⏸ Pause</button>
+                        <button class="btn btn-sm mock-ctrl-btn" id="mockFfBtn" onclick="toggleFastForward()">⏩ Fast Forward</button>
                         <button class="btn btn-sm mock-ctrl-btn" id="mockSaveBtn" onclick="saveMockDraftSession()">💾 Save</button>
                         <button class="btn btn-sm mock-ctrl-btn mock-restart-btn" id="mockRestartBtn" onclick="confirmRestartDraft()">↺ Restart</button>
                     </div>
@@ -2137,6 +2138,10 @@
         }
 
         function showNominateUI() {
+            if (mockFastForward) {
+                ffAutoNominate();
+                return;
+            }
             document.getElementById('mockBidCard').style.display = 'none';
             document.getElementById('mockWaiting').style.display = 'none';
             document.getElementById('mockNominatePanel').style.display = 'block';
@@ -2286,6 +2291,40 @@
 
         function showBidTimer(resumeCount) {
             const timer = document.getElementById('mockBidTimer');
+
+            // Fast-forward: skip timer entirely, resolve immediately
+            if (mockFastForward) {
+                timer.style.display = 'none';
+                clearInterval(mockBidTimeout);
+                // Run one round of AI bidding then award
+                const auction = mockCurrentAuction;
+                if (!auction) return;
+                const marketVal = parseFloat(auction.player.auction_value) || 1;
+                const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
+                let anyBid = false;
+                for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
+                    if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
+                    const team = mockTeams[i];
+                    if (team.roster.length >= MOCK_ROSTER_SIZE) continue;
+                    const maxBid = getMaxBid(team);
+                    const will = marketVal * aggMult * (1 + (Math.random()-0.5)*0.2);
+                    if (auction.currentBid < will && auction.currentBid + 1 <= maxBid && Math.random() > 0.4) {
+                        auction.currentBid++;
+                        auction.currentBidder = i;
+                        anyBid = true;
+                        break;
+                    }
+                }
+                if (anyBid) {
+                    document.getElementById('mockCurrentBid').textContent = '$' + auction.currentBid;
+                    document.getElementById('mockBidder').textContent = mockTeams[auction.currentBidder].name;
+                    setTimeout(() => showBidTimer(), 5);
+                } else {
+                    awardPlayer();
+                }
+                return;
+            }
+
             let count = resumeCount || 10;
             mockTimerRemaining = count;
             timer.textContent = `Going once... (${count}s to bid)`;
@@ -2424,7 +2463,7 @@
             scorePlans();
 
             mockNominatorIdx = (mockNominatorIdx + 1) % MOCK_NUM_TEAMS;
-            setTimeout(() => nextMockNomination(), 600);
+            setTimeout(() => nextMockNomination(), mockFastForward ? 10 : 600);
         }
 
         function adaptPlanAfterPick(playerName, price, isUser) {
@@ -3192,6 +3231,7 @@
             mockRunning = false;
             mockDraftActive = false;
             mockPaused = false;
+            mockFastForward = false;
             mockSessionId = null;
             clearInterval(mockBidTimeout);
             loadSavedDraftsList();
@@ -3200,6 +3240,7 @@
         // ── Pause / Resume / Save / Restart ────────────────────
 
         let mockPaused = false;
+        let mockFastForward = false;
         let mockSessionId = null;
 
         function togglePauseDraft() {
@@ -3232,6 +3273,51 @@
                     nextMockNomination();
                 }
             }
+        }
+
+        function toggleFastForward() {
+            if (!mockDraftActive) return;
+            mockFastForward = !mockFastForward;
+            const btn = document.getElementById('mockFfBtn');
+            if (mockFastForward) {
+                btn.innerHTML = '⏹ Stop FF';
+                btn.classList.add('mock-ff-active');
+                // If paused, unpause
+                if (mockPaused) togglePauseDraft();
+                // If waiting for user to nominate or bid, auto-proceed
+                if (document.getElementById('mockNominatePanel').style.display === 'block') {
+                    ffAutoNominate();
+                } else if (mockCurrentAuction && mockCurrentAuction.currentBidder !== mockUserTeamIdx) {
+                    // AI is bidding, let timer run fast
+                } else if (mockCurrentAuction) {
+                    // User's turn to bid — auto-pass
+                    ffAutoBid();
+                } else {
+                    nextMockNomination();
+                }
+                showAdvisor('⏩ Fast Forward ON — simulating remaining picks automatically', 'savings');
+            } else {
+                btn.innerHTML = '⏩ Fast Forward';
+                btn.classList.remove('mock-ff-active');
+                showAdvisor('Fast Forward stopped. You have control again.', 'savings');
+            }
+        }
+
+        function ffAutoNominate() {
+            if (!mockFastForward) return;
+            // Auto-nominate the best available player by fpts
+            const best = mockAvailable.sort((a, b) => (b.fpts || 0) - (a.fpts || 0))[0];
+            if (best) {
+                document.getElementById('mockNominatePanel').style.display = 'none';
+                startAuction(best, mockUserTeamIdx);
+            }
+        }
+
+        function ffAutoBid() {
+            if (!mockFastForward || !mockCurrentAuction) return;
+            // In fast-forward, auto-pass — let AI teams battle it out
+            clearInterval(mockBidTimeout);
+            awardPlayer();
         }
 
         function confirmRestartDraft() {
