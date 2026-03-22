@@ -3412,35 +3412,106 @@
 
         function ffAutoNominate() {
             if (!mockFastForward) return;
-            // Auto-nominate the best available player by fpts
-            const best = mockAvailable.sort((a, b) => (b.fpts || 0) - (a.fpts || 0))[0];
-            if (best) {
+            // Nominate a plan target first, otherwise best available
+            const plan = window._planData && window._planData[mockActivePlan];
+            let target = null;
+            if (plan) {
+                // Find unfilled plan slots and nominate a primary/alt that's still available
+                for (const slot of plan.slots) {
+                    const st = mockPlanState[plan.slots.indexOf(slot)];
+                    if (st && st.status === 'got') continue;
+                    // Check primary
+                    const primaryAvail = mockAvailable.find(p => p.player === slot.primary.player);
+                    if (primaryAvail) { target = primaryAvail; break; }
+                    // Check alternatives
+                    for (const alt of (slot.alternatives || [])) {
+                        const altAvail = mockAvailable.find(p => p.player === alt.player);
+                        if (altAvail) { target = altAvail; break; }
+                    }
+                    if (target) break;
+                }
+            }
+            if (!target) {
+                target = mockAvailable.sort((a, b) => (b.fpts || 0) - (a.fpts || 0))[0];
+            }
+            if (target) {
                 document.getElementById('mockNominatePanel').style.display = 'none';
-                startAuction(best, mockUserTeamIdx);
+                startAuction(target, mockUserTeamIdx);
             }
         }
 
         function ffAutoBid() {
             if (!mockFastForward || !mockCurrentAuction) return;
-            // In fast-forward, auto-pass — let AI teams battle it out
             clearInterval(mockBidTimeout);
-            awardPlayer();
+            // Don't just pass — resolve with user bidding included
+            ffResolveAuction();
+        }
+
+        // Calculate how much the FF AI should bid for the user on a player
+        function ffUserWillingness(player) {
+            const user = mockTeams[mockUserTeamIdx];
+            if (user.roster.length >= MOCK_ROSTER_SIZE) return 0;
+            const maxBid = getMaxBid(user);
+
+            // Check if this player is in the active plan
+            const plan = window._planData && window._planData[mockActivePlan];
+            if (!plan) return 0;
+
+            let planPrice = 0;
+            let isPlanTarget = false;
+            for (const slot of plan.slots) {
+                const idx = plan.slots.indexOf(slot);
+                const st = mockPlanState[idx];
+                if (st && st.status === 'got') continue; // slot filled
+
+                if (slot.primary.player === player.player) {
+                    planPrice = slot.primary.est_price;
+                    isPlanTarget = true;
+                    break;
+                }
+                for (const alt of (slot.alternatives || [])) {
+                    if (alt.player === player.player) {
+                        planPrice = alt.est_price;
+                        isPlanTarget = true;
+                        break;
+                    }
+                }
+                if (isPlanTarget) break;
+            }
+
+            if (!isPlanTarget) {
+                // Not a plan target — only bid up to steal price
+                const val = parseFloat(player.auction_value) || 1;
+                const stealAt = getStealPrice(val, player.fpts);
+                return Math.min(stealAt, maxBid);
+            }
+
+            // Plan target — bid up to plan price + small premium, capped by max bid
+            const mws = calcMaxWillingToSpend(player);
+            const willing = Math.min(mws.maxWilling || planPrice, maxBid);
+            return willing;
         }
 
         function ffResolveAuction() {
-            // Resolve the entire auction instantly — simulate all bidding rounds in a loop
+            // Resolve the entire auction instantly — ALL teams bid including user
             const auction = mockCurrentAuction;
             if (!auction) return;
             const marketVal = parseFloat(auction.player.auction_value) || 1;
             const aggMult = mockAggLevel === 'low' ? 0.85 : mockAggLevel === 'high' ? 1.15 : 1.0;
 
-            // Run bidding rounds until nobody bids
+            // Calculate user's willingness for this player
+            const userWill = ffUserWillingness(auction.player);
+
+            // Run bidding rounds until nobody bids (including user)
             let rounds = 0;
-            while (rounds < 50) { // safety cap
+            while (rounds < 50) {
                 rounds++;
                 let anyBid = false;
+
+                // AI teams bid
                 for (let i = 0; i < MOCK_NUM_TEAMS; i++) {
-                    if (i === mockUserTeamIdx || i === auction.currentBidder) continue;
+                    if (i === auction.currentBidder) continue;
+                    if (i === mockUserTeamIdx) continue; // user bids separately below
                     const team = mockTeams[i];
                     if (team.roster.length >= MOCK_ROSTER_SIZE) continue;
                     const maxBid = getMaxBid(team);
@@ -3454,6 +3525,21 @@
                         break;
                     }
                 }
+
+                // User bids if willing
+                if (auction.currentBidder !== mockUserTeamIdx && auction.currentBid < userWill) {
+                    const userTeam = mockTeams[mockUserTeamIdx];
+                    if (userTeam.roster.length < MOCK_ROSTER_SIZE) {
+                        const userMax = getMaxBid(userTeam);
+                        const newBid = auction.currentBid + 1;
+                        if (newBid <= userWill && newBid <= userMax) {
+                            auction.currentBid = newBid;
+                            auction.currentBidder = mockUserTeamIdx;
+                            anyBid = true;
+                        }
+                    }
+                }
+
                 if (!anyBid) break;
             }
 
