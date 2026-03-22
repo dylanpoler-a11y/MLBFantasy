@@ -359,6 +359,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Full-screen Draft Results (shown after draft completes) -->
+        <div id="mockResults" class="draft-results" style="display:none"></div>
     </div>
 
     <script>
@@ -2890,6 +2893,273 @@
                 }).join('')}</tbody></table>`;
         }
 
+        // ── Draft Results View ────────────────────────────────────
+        function renderDraftResults() {
+            const container = document.getElementById('mockResults');
+            const user = mockTeams[mockUserTeamIdx];
+            const userRoster = user.roster || [];
+
+            // ── Calculate team stats ──
+            const teamStats = mockTeams.map((t, idx) => {
+                const fpts = t.roster.reduce((s, p) => s + (p.fpts || 0), 0);
+                const spent = MOCK_BUDGET - t.budget;
+                const avgFptsPerPlayer = t.roster.length > 0 ? fpts / t.roster.length : 0;
+                const avgFptsPerDollar = spent > 0 ? fpts / spent : 0;
+                return { team: t, idx, fpts, spent, remaining: t.budget, avgFptsPerPlayer, avgFptsPerDollar, isUser: t.isUser };
+            });
+            teamStats.sort((a, b) => b.fpts - a.fpts);
+
+            const userStats = teamStats.find(t => t.isUser);
+            const userRank = teamStats.indexOf(userStats) + 1;
+            const avgTeamFpts = teamStats.reduce((s, t) => s + t.fpts, 0) / teamStats.length;
+
+            // ── Calculate draft grade ──
+            // Value score (40%): user fpts vs average
+            const valuePct = avgTeamFpts > 0 ? (userStats.fpts / avgTeamFpts) : 1;
+            const valueScore = Math.min(100, Math.max(0, (valuePct - 0.7) / 0.6 * 100));
+
+            // Efficiency score (30%): avg fpts/$ across user picks
+            const userSpent = MOCK_BUDGET - user.budget;
+            const userFptsDollar = userSpent > 0 ? userStats.fpts / userSpent : 0;
+            const allFptsDollar = teamStats.map(t => t.spent > 0 ? t.fpts / t.spent : 0);
+            const maxFptsDollar = Math.max(...allFptsDollar, 1);
+            const efficiencyScore = Math.min(100, (userFptsDollar / maxFptsDollar) * 100);
+
+            // Steal count (15%): players acquired below steal price
+            let stealCount = 0;
+            let overpayCount = 0;
+            userRoster.forEach(p => {
+                const stealPrice = getStealPrice(parseFloat(p.auction_value || p.market || p.price) || 1, p.fpts || 0);
+                if (p.price <= stealPrice) stealCount++;
+                const mkt = parseFloat(p.auction_value || p.market) || p.price;
+                if (p.price > mkt + 3) overpayCount++;
+            });
+            const stealScore = Math.min(100, (stealCount / Math.max(userRoster.length, 1)) * 300);
+
+            // Position coverage (15%): key positions filled
+            const keyPositions = ['C', 'SS', 'SP', 'RP'];
+            const userPositions = new Set(userRoster.map(p => (p.pos || '').toUpperCase().replace(/[0-9]/g, '')));
+            let coveredCount = 0;
+            keyPositions.forEach(kp => { if (userPositions.has(kp)) coveredCount++; });
+            const spCount = userRoster.filter(p => (p.pos || '').toUpperCase().includes('SP')).length;
+            const coverageScore = Math.min(100, (coveredCount / keyPositions.length) * 70 + (Math.min(spCount, 3) / 3) * 30);
+
+            const totalScore = Math.round(valueScore * 0.4 + efficiencyScore * 0.3 + stealScore * 0.15 + coverageScore * 0.15);
+
+            // Map score to letter grade
+            function scoreToGrade(s) {
+                if (s >= 97) return 'A+';
+                if (s >= 93) return 'A';
+                if (s >= 90) return 'A-';
+                if (s >= 87) return 'B+';
+                if (s >= 83) return 'B';
+                if (s >= 80) return 'B-';
+                if (s >= 77) return 'C+';
+                if (s >= 73) return 'C';
+                if (s >= 70) return 'C-';
+                if (s >= 67) return 'D+';
+                if (s >= 63) return 'D';
+                if (s >= 60) return 'D-';
+                return 'F';
+            }
+            const grade = scoreToGrade(totalScore);
+            const gradeClass = grade.startsWith('A') ? 'grade-A' : grade.startsWith('B') ? 'grade-B' : grade.startsWith('C') ? 'grade-C' : grade.startsWith('D') ? 'grade-D' : 'grade-F';
+
+            // Generate summary sentence
+            const spDrafted = userRoster.filter(p => (p.pos || '').toUpperCase().includes('SP')).length;
+            const rpDrafted = userRoster.filter(p => (p.pos || '').toUpperCase().includes('RP')).length;
+            let summary = '';
+            if (totalScore >= 90) summary = 'Excellent draft! ';
+            else if (totalScore >= 80) summary = 'Solid draft overall. ';
+            else if (totalScore >= 70) summary = 'Decent draft with room for improvement. ';
+            else summary = 'Below average draft. ';
+
+            if (spDrafted >= 5) summary += 'Strong pitching foundation with elite SP depth.';
+            else if (spDrafted >= 3) summary += 'Adequate pitching rotation.';
+            else summary += 'Pitching depth is a concern.';
+
+            if (stealCount >= 4) summary += ' Several great value picks.';
+            else if (overpayCount >= 4) summary += ' Consider being more patient at the auction block.';
+
+            const missingPos = [];
+            if (!userPositions.has('C')) missingPos.push('C');
+            if (!userPositions.has('SS')) missingPos.push('SS');
+            if (spDrafted < 3) missingPos.push('SP');
+            if (rpDrafted < 1) missingPos.push('RP');
+            if (missingPos.length > 0) summary += ` Consider upgrading ${missingPos.join(', ')} next season.`;
+
+            // ── Build roster display ──
+            const rosterSlots = [
+                {label: 'C', accepts: ['C']}, {label: '1B', accepts: ['1B']}, {label: '2B', accepts: ['2B']},
+                {label: '3B', accepts: ['3B']}, {label: 'SS', accepts: ['SS']},
+                {label: 'LF', accepts: ['LF','OF']}, {label: 'CF', accepts: ['CF','OF']}, {label: 'RF', accepts: ['RF','OF']},
+                {label: 'UT', accepts: ['C','1B','2B','3B','SS','LF','CF','RF','OF','DH']},
+                {label: 'SP', accepts: ['SP']}, {label: 'SP', accepts: ['SP']}, {label: 'SP', accepts: ['SP']},
+                {label: 'SP', accepts: ['SP']}, {label: 'SP', accepts: ['SP']}, {label: 'SP', accepts: ['SP']}, {label: 'SP', accepts: ['SP']},
+                {label: 'RP', accepts: ['RP']}, {label: 'RP', accepts: ['RP']},
+                {label: 'RES', accepts: null}, {label: 'RES', accepts: null}, {label: 'RES', accepts: null}, {label: 'RES', accepts: null}
+            ];
+            const assigned = new Array(rosterSlots.length).fill(null);
+            const unassigned = [...userRoster];
+            function posMatches(playerPos, slotAccepts) {
+                if (!slotAccepts) return true;
+                const pPos = (playerPos || '').toUpperCase();
+                return slotAccepts.some(a => pPos.includes(a));
+            }
+            for (let pass = 0; pass < 2; pass++) {
+                for (let s = 0; s < rosterSlots.length; s++) {
+                    if (assigned[s]) continue;
+                    const slot = rosterSlots[s];
+                    if (pass === 0 && (slot.label === 'UT' || slot.label === 'RES')) continue;
+                    if (pass === 1 && slot.label !== 'UT' && slot.label !== 'RES') continue;
+                    for (let p = 0; p < unassigned.length; p++) {
+                        if (!unassigned[p]) continue;
+                        if (posMatches(unassigned[p].pos, slot.accepts)) {
+                            assigned[s] = unassigned[p];
+                            unassigned[p] = null;
+                            break;
+                        }
+                    }
+                }
+            }
+            const remaining2 = unassigned.filter(Boolean);
+            for (const pick of remaining2) {
+                const emptyIdx = assigned.findIndex(a => a === null);
+                if (emptyIdx >= 0) assigned[emptyIdx] = pick;
+            }
+
+            let rosterHtml = '';
+            let totalFpts = 0, totalPrice = 0, totalMarket = 0;
+            for (let i = 0; i < rosterSlots.length; i++) {
+                const pick = assigned[i];
+                if (!pick) continue;
+                const mkt = parseFloat(pick.auction_value || pick.market) || pick.price;
+                const stealAt = getStealPrice(mkt, pick.fpts || 0);
+                const savings = mkt - pick.price;
+                const isSteal = pick.price <= stealAt;
+                const isOverpay = pick.price > mkt + 3;
+                const rowClass = isSteal ? 'steal-pick' : isOverpay ? 'overpay-pick' : '';
+                const badges = getPlayerBadges(pick.player);
+                totalFpts += (pick.fpts || 0);
+                totalPrice += pick.price;
+                totalMarket += mkt;
+                rosterHtml += `<tr class="${rowClass}">
+                    <td>${rosterSlots[i].label}</td>
+                    <td>${pick.player} ${badges}</td>
+                    <td>${pick.team || pick.pos || ''}</td>
+                    <td>$${pick.price}</td>
+                    <td>${(pick.fpts || 0).toFixed(0)}</td>
+                    <td>$${mkt.toFixed(0)}</td>
+                    <td class="${savings >= 0 ? 'savings' : 'overpay'}">${savings >= 0 ? '+' : ''}$${savings.toFixed(0)}</td>
+                </tr>`;
+            }
+            rosterHtml += `<tr class="results-total-row">
+                <td colspan="2"><strong>TOTAL</strong></td>
+                <td></td>
+                <td><strong>$${totalPrice}</strong></td>
+                <td><strong>${totalFpts.toFixed(0)}</strong></td>
+                <td><strong>$${totalMarket.toFixed(0)}</strong></td>
+                <td class="${(totalMarket - totalPrice) >= 0 ? 'savings' : 'overpay'}"><strong>${(totalMarket - totalPrice) >= 0 ? '+' : ''}$${(totalMarket - totalPrice).toFixed(0)}</strong></td>
+            </tr>`;
+
+            // ── Build leaderboard ──
+            let lbHtml = teamStats.map((t, i) => {
+                const cls = t.isUser ? 'user-row' : '';
+                return `<tr class="${cls}">
+                    <td>${i + 1}</td>
+                    <td>${t.team.name}${t.isUser ? ' (You)' : ''}</td>
+                    <td>${t.team.roster.length}</td>
+                    <td>$${t.spent}</td>
+                    <td>$${t.remaining}</td>
+                    <td>${t.fpts.toFixed(0)}</td>
+                    <td>${t.avgFptsPerPlayer.toFixed(1)}</td>
+                </tr>`;
+            }).join('');
+
+            // ── Build pick log ──
+            const sortedLog = [...mockLog_].sort((a, b) => a.pick - b.pick);
+            let logHtml = sortedLog.map(e => {
+                const cls = e.isUser ? 'pick-user' : '';
+                const mkt = e.market || 0;
+                const deltaVal = e.price - mkt;
+                const deltaClass = deltaVal > 2 ? 'overpay' : deltaVal < -2 ? 'savings' : '';
+                const deltaStr = deltaVal >= 0 ? `+$${deltaVal.toFixed(0)}` : `-$${Math.abs(deltaVal).toFixed(0)}`;
+                return `<tr class="${cls}">
+                    <td>${e.isUser ? '<strong>#' + e.pick + '</strong>' : '#' + e.pick}</td>
+                    <td>${e.player}</td>
+                    <td>${e.pos}</td>
+                    <td>${e.team}</td>
+                    <td>$${e.price}</td>
+                    <td>$${mkt.toFixed(0)}</td>
+                    <td class="${deltaClass}">${deltaStr}</td>
+                    <td>${(e.fpts || 0).toFixed(0)}</td>
+                </tr>`;
+            }).join('');
+
+            // ── Assemble full results HTML ──
+            container.innerHTML = `
+                <div class="results-header">
+                    <h2>Draft Results</h2>
+                    <div class="results-actions">
+                        <button class="btn btn-primary" onclick="resetMockDraft()">New Mock Draft</button>
+                    </div>
+                </div>
+
+                <!-- Grade Section -->
+                <div class="results-section">
+                    <div class="draft-grade ${gradeClass}">
+                        <div class="grade-letter">${grade}</div>
+                        <div class="grade-score">${totalScore} / 100</div>
+                        <div class="grade-rank">Finished #${userRank} of ${mockTeams.length}</div>
+                    </div>
+                    <div class="grade-summary">${summary}</div>
+                    <div class="grade-breakdown">
+                        <div class="grade-stat"><span>Value</span><strong>${Math.round(valueScore)}</strong></div>
+                        <div class="grade-stat"><span>Efficiency</span><strong>${Math.round(efficiencyScore)}</strong></div>
+                        <div class="grade-stat"><span>Steals (${stealCount})</span><strong>${Math.round(stealScore)}</strong></div>
+                        <div class="grade-stat"><span>Coverage</span><strong>${Math.round(coverageScore)}</strong></div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="results-section">
+                    <h3 class="results-section-title">Leaderboard</h3>
+                    <div class="results-leaderboard">
+                        <table>
+                            <thead><tr><th>#</th><th>Team</th><th>Players</th><th>Spent</th><th>Remaining</th><th>Total FPts</th><th>Avg FPts</th></tr></thead>
+                            <tbody>${lbHtml}</tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- User Roster -->
+                <div class="results-section">
+                    <h3 class="results-section-title">Your Roster</h3>
+                    <div class="results-roster">
+                        <table>
+                            <thead><tr><th>Pos</th><th>Player</th><th>Team</th><th>Price</th><th>FPts</th><th>Market</th><th>Value</th></tr></thead>
+                            <tbody>${rosterHtml}</tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pick-by-Pick Log -->
+                <div class="results-section">
+                    <h3 class="results-section-title">Draft Log (All ${sortedLog.length} Picks)</h3>
+                    <div class="results-log">
+                        <table>
+                            <thead><tr><th>Pick</th><th>Player</th><th>Pos</th><th>Team</th><th>Price</th><th>Market</th><th>+/-</th><th>FPts</th></tr></thead>
+                            <tbody>${logHtml}</tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="results-footer">
+                    <button class="btn btn-primary" onclick="resetMockDraft()">New Mock Draft</button>
+                </div>
+            `;
+        }
+
         async function endMockDraft() {
             mockRunning = false;
             mockDraftActive = false;
@@ -2908,24 +3178,17 @@
                 if (data.success) mockSessionId = data.id;
             } catch(e) {}
 
-            document.getElementById('mockWaiting').innerHTML = `
-                <h3>Mock Draft Complete!</h3>
-                <p>Check the leaderboard to see how you did. Draft auto-saved.</p>
-                <button class="btn btn-primary" onclick="resetMockDraft()" style="margin-top:8px">New Mock Draft</button>
-            `;
-            document.getElementById('mockWaiting').style.display = 'block';
-            document.getElementById('mockNominateBtn').style.display = 'none';
-            document.getElementById('mockPauseBtn').style.display = 'none';
-            document.getElementById('mockSaveBtn').style.display = 'none';
-            document.getElementById('mockRestartBtn').style.display = 'none';
-            renderMockLeaderboard();
-            document.getElementById('mockLeaderboard').style.display = 'block';
-            document.getElementById('mockLog').style.display = 'none';
+            // Hide the active draft UI and show full results
+            document.getElementById('mockActive').style.display = 'none';
+            document.getElementById('mockResults').style.display = 'block';
+            renderDraftResults();
         }
 
         function resetMockDraft() {
             document.getElementById('mockSetup').style.display = 'block';
             document.getElementById('mockActive').style.display = 'none';
+            document.getElementById('mockResults').style.display = 'none';
+            document.getElementById('mockResults').innerHTML = '';
             mockRunning = false;
             mockDraftActive = false;
             mockPaused = false;

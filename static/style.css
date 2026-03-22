@@ -1397,3 +1397,210 @@ header h1 span { color: var(--accent); }
     color: #818cf8;
     border: 1px solid rgba(99, 102, 241, 0.4);
 }
+
+/* ── Draft Results View ────────────────────────────────── */
+.draft-results {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.results-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.results-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.results-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.results-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+/* Draft Grade */
+.draft-grade {
+    text-align: center;
+    padding: 20px 0 12px;
+}
+
+.grade-letter {
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.grade-score {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.grade-rank {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.grade-summary {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 600px;
+    margin: 12px auto 16px;
+    line-height: 1.5;
+}
+
+.grade-breakdown {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.grade-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: var(--surface-2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    min-width: 90px;
+}
+
+.grade-stat span {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grade-stat strong {
+    font-size: 20px;
+}
+
+/* Grade color coding */
+.grade-A .grade-letter { color: var(--green); }
+.grade-A .grade-stat strong { color: var(--green); }
+.grade-B .grade-letter { color: var(--accent); }
+.grade-B .grade-stat strong { color: var(--accent); }
+.grade-C .grade-letter { color: var(--yellow); }
+.grade-C .grade-stat strong { color: var(--yellow); }
+.grade-D .grade-letter { color: var(--orange); }
+.grade-D .grade-stat strong { color: var(--orange); }
+.grade-F .grade-letter { color: var(--red); }
+.grade-F .grade-stat strong { color: var(--red); }
+
+/* Results tables */
+.results-leaderboard,
+.results-roster,
+.results-log {
+    overflow-x: auto;
+}
+
+.results-leaderboard table,
+.results-roster table,
+.results-log table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.results-leaderboard th,
+.results-roster th,
+.results-log th {
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+.results-leaderboard td,
+.results-roster td,
+.results-log td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+/* User highlight rows */
+.user-row {
+    background: rgba(52, 211, 153, 0.12) !important;
+}
+
+.user-row td {
+    font-weight: 600;
+    color: var(--green);
+}
+
+.pick-user {
+    background: rgba(79, 143, 247, 0.1) !important;
+}
+
+.pick-user td {
+    color: var(--accent);
+}
+
+/* Steal / overpay rows */
+.steal-pick {
+    background: rgba(52, 211, 153, 0.08);
+}
+
+.overpay-pick {
+    background: rgba(248, 113, 113, 0.08);
+}
+
+.results-total-row {
+    background: var(--surface-2);
+}
+
+.results-total-row td {
+    border-top: 2px solid var(--border);
+    padding-top: 10px;
+}
+
+/* Results log: scrollable */
+.results-log {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Footer */
+.results-footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .draft-results { padding: 12px; }
+    .grade-breakdown { flex-wrap: wrap; gap: 8px; }
+    .grade-letter { font-size: 48px; }
+    .results-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+}
