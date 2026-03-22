@@ -1145,7 +1145,9 @@
                 html += `<div class="plan-slot ${statusClass}${auctionHighlight}">`;
                 html += `<div class="slot-header">`;
                 const isAnchor = slot.primary.anchor;
+                const priority = slot.priority;
                 html += `<span class="pos-tag ${slot.category}">${slot.slot}</span>`;
+                if (priority) html += `<span class="slot-priority">#${priority}</span>`;
                 if (isAnchor) html += `<span class="badge-anchor">⚓ Anchor</span>`;
 
                 if (st.status === 'acquired') {
@@ -1237,13 +1239,17 @@
                     const available = allPlayers.filter(p => !p.isTaken).slice(0, 4);
                     const taken = allPlayers.filter(p => p.isTaken);
 
-                    // Max spend header + upgrade suggestion
+                    // Max spend header + walk-away + upgrade suggestion
                     const upgradeInfo = getSlotUpgrade(plan, idx, maxSpend);
+                    const wa = slot.walk_away;
                     html += `<div class="slot-max-spend">Max: $${maxSpend}`;
                     if (upgradeInfo) {
                         html += ` <span class="upgrade-hint">⬆ Can afford ${upgradeInfo.player} ($${upgradeInfo.est_price})</span>`;
                     }
                     html += `</div>`;
+                    if (wa) {
+                        html += `<div class="slot-walk-away">💰$${wa.comfortable} ⚠️$${wa.stretch} 🛑$${wa.walk_away}</div>`;
+                    }
 
                     // Show available players (up to 4)
                     html += `<div class="slot-player-list">`;

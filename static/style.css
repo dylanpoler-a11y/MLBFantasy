@@ -1448,6 +1448,27 @@ header h1 span { color: var(--accent); }
     color: #94a3b8;
     border: 1px solid rgba(148, 163, 184, 0.3);
 }
+.slot-walk-away {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    margin: 2px 0 4px;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 4px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 8px;
+}
+.slot-priority {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 4px;
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    vertical-align: middle;
+}
 .budget-warning {
     background: rgba(239, 68, 68, 0.15);
     border: 1px solid rgba(239, 68, 68, 0.4);
