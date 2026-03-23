@@ -9,91 +9,127 @@
           "player": "Juan Soto",
           "price": 60,
           "pos": "LF,RF",
-          "fpts": 675
+          "fpts": 675,
+          "market": 37,
+          "value": -23
         },
         {
           "player": "Kyle Tucker",
           "price": 32,
           "pos": "RF",
-          "fpts": 586
+          "fpts": 586,
+          "market": 28,
+          "value": -4
         },
         {
           "player": "Pete Alonso",
           "price": 28,
           "pos": "1B",
-          "fpts": 607
+          "fpts": 607,
+          "market": 23,
+          "value": -5
         },
         {
-          "player": "Jesús Luzardo",
+          "player": "Jes\u00fas Luzardo",
           "price": 26,
           "pos": "P",
-          "fpts": 490
+          "fpts": 490,
+          "market": 8,
+          "value": -18
         },
         {
           "player": "Geraldo Perdomo",
           "price": 17,
           "pos": "SS",
-          "fpts": 540
+          "fpts": 540,
+          "market": 16,
+          "value": -1
         },
         {
           "player": "Cole Ragans",
           "price": 25,
           "pos": "P",
-          "fpts": 559
+          "fpts": 559,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 20,
+          "value": -5
         },
         {
           "player": "Riley Greene",
           "price": 16,
           "pos": "LF,CF,RF",
-          "fpts": 539
+          "fpts": 539,
+          "market": 16,
+          "value": 0
         },
         {
-          "player": "Eugenio Suárez",
+          "player": "Eugenio Su\u00e1rez",
           "price": 19,
           "pos": "3B",
-          "fpts": 558
+          "fpts": 558,
+          "market": 18,
+          "value": -1
         },
         {
           "player": "Robbie Ray",
           "price": 6,
           "pos": "P",
-          "fpts": 415
+          "fpts": 415,
+          "market": 4,
+          "value": -2
         },
         {
           "player": "Andy Pages",
           "price": 4,
           "pos": "LF,CF,RF",
-          "fpts": 474
+          "fpts": 474,
+          "market": 10,
+          "value": 6
         },
         {
-          "player": "Emilio Pagán",
+          "player": "Emilio Pag\u00e1n",
           "price": 7,
           "pos": "P",
-          "fpts": 283
+          "fpts": 283,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 1,
+          "value": -6
         },
         {
           "player": "Marcus Semien",
           "price": 1,
           "pos": "2B",
-          "fpts": 478
+          "fpts": 478,
+          "market": 9,
+          "value": 8
         },
         {
-          "player": "Ranger Suárez",
+          "player": "Ranger Su\u00e1rez",
           "price": 5,
           "pos": "P",
-          "fpts": 449
+          "fpts": 449,
+          "market": 4,
+          "value": -1
         },
         {
-          "player": "Agustín Ramírez",
+          "player": "Agust\u00edn Ram\u00edrez",
           "price": 1,
           "pos": "C",
-          "fpts": 394
+          "fpts": 394,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Jack Flaherty",
           "price": 1,
           "pos": "P",
-          "fpts": 424
+          "fpts": 424,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Riley O'Brien",
@@ -123,19 +159,25 @@
           "player": "Yusei Kikuchi",
           "price": 2,
           "pos": "P",
-          "fpts": 440
+          "fpts": 440,
+          "market": 4,
+          "value": 2
         },
         {
           "player": "Isaac Paredes",
           "price": 2,
           "pos": "3B",
-          "fpts": 375
+          "fpts": 375,
+          "market": 1,
+          "value": -1
         },
         {
           "player": "David Peterson",
           "price": 1,
           "pos": "P",
-          "fpts": 408
+          "fpts": 408,
+          "market": 4,
+          "value": 3
         }
       ],
       "isUser": false,
@@ -150,133 +192,192 @@
           "player": "Austin Riley",
           "price": 28,
           "pos": "3B",
-          "fpts": 526
+          "fpts": 526,
+          "market": 13,
+          "value": -15
         },
         {
           "player": "Roman Anthony",
           "price": 27,
           "pos": "LF,CF,RF",
-          "fpts": 578
+          "fpts": 578,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 22,
+          "value": -5
         },
         {
           "player": "Brice Turang",
           "price": 16,
           "pos": "2B",
-          "fpts": 509
+          "fpts": 509,
+          "market": 17,
+          "value": 1
         },
         {
           "player": "Bo Bichette",
           "price": 16,
           "pos": "SS",
-          "fpts": 485
+          "fpts": 485,
+          "market": 9,
+          "value": -7
         },
         {
           "player": "Brent Rooker",
           "price": 18,
           "pos": "LF,RF",
-          "fpts": 582
+          "fpts": 582,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 23,
+          "value": 5
         },
         {
           "player": "Wyatt Langford",
           "price": 20,
           "pos": "LF,CF",
-          "fpts": 494
+          "fpts": 494,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 14,
+          "value": -6
         },
         {
           "player": "Kyle Bradish",
           "price": 16,
           "pos": "P",
-          "fpts": 438
+          "fpts": 438,
+          "market": 4,
+          "value": -12
         },
         {
           "player": "Jackson Merrill",
           "price": 16,
           "pos": "CF",
-          "fpts": 533
+          "fpts": 533,
+          "market": 16,
+          "value": 0
         },
         {
           "player": "Aroldis Chapman",
           "price": 14,
           "pos": "P",
-          "fpts": 308
+          "fpts": 308,
+          "market": 1,
+          "value": -13
         },
         {
           "player": "Shea Langeliers",
           "price": 14,
           "pos": "C",
-          "fpts": 453
+          "fpts": 453,
+          "market": 10,
+          "value": -4
         },
         {
           "player": "Vinnie Pasquantino",
           "price": 11,
           "pos": "1B",
-          "fpts": 511
+          "fpts": 511,
+          "market": 12,
+          "value": 1
         },
         {
           "player": "Tyler Soderstrom",
           "price": 5,
           "pos": "1B,LF",
-          "fpts": 489
+          "fpts": 489,
+          "market": 12,
+          "value": 7
         },
         {
           "player": "Ryan Pepiot",
           "price": 10,
           "pos": "P",
-          "fpts": 467
+          "fpts": 467,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 8,
+          "value": -2
         },
         {
           "player": "Cade Horton",
           "price": 8,
           "pos": "P",
-          "fpts": 367
+          "fpts": 367,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 2,
+          "value": -6
         },
         {
           "player": "Shane Baz",
           "price": 6,
           "pos": "P",
-          "fpts": 397
+          "fpts": 397,
+          "market": 2,
+          "value": -4
         },
         {
           "player": "Luis Robert Jr.",
           "price": 5,
           "pos": "CF",
-          "fpts": 435
+          "fpts": 435,
+          "market": 11,
+          "value": 6
         },
         {
           "player": "Emmet Sheehan",
           "price": 7,
           "pos": "P",
-          "fpts": 372
+          "fpts": 372,
+          "market": 2,
+          "value": -5
         },
         {
           "player": "Pete Fairbanks",
           "price": 3,
           "pos": "P",
-          "fpts": 277
+          "fpts": 277,
+          "market": 1,
+          "value": -2
         },
         {
           "player": "Trevor Rogers",
           "price": 4,
           "pos": "P",
-          "fpts": 420
+          "fpts": 420,
+          "market": 4,
+          "value": 0
         },
         {
           "player": "Griffin Jax",
           "price": 7,
           "pos": "P",
-          "fpts": 234
+          "fpts": 234,
+          "market": 1,
+          "value": -6
         },
         {
-          "player": "José Soriano",
+          "player": "Jos\u00e9 Soriano",
           "price": 6,
           "pos": "P",
-          "fpts": 426
+          "fpts": 426,
+          "market": 4,
+          "value": -2
         },
         {
           "player": "Grant Taylor",
           "price": 3,
           "pos": "P",
-          "fpts": 0
+          "fpts": 0,
+          "market": 13,
+          "value": 10
         }
       ],
       "isUser": false,
@@ -291,127 +392,186 @@
           "player": "Elly De La Cruz",
           "price": 40,
           "pos": "SS",
-          "fpts": 579
+          "fpts": 579,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 29,
+          "value": -11
         },
         {
           "player": "Logan Webb",
           "price": 39,
           "pos": "P",
-          "fpts": 552
+          "fpts": 552,
+          "market": 20,
+          "value": -19
         },
         {
           "player": "Logan Gilbert",
           "price": 44,
           "pos": "P",
-          "fpts": 508
+          "fpts": 508,
+          "market": 14,
+          "value": -30
         },
         {
           "player": "Pete Crow-Armstrong",
           "price": 25,
           "pos": "CF",
-          "fpts": 564
+          "fpts": 564,
+          "market": 25,
+          "value": 0
         },
         {
           "player": "Jhoan Duran",
           "price": 18,
           "pos": "P",
-          "fpts": 363
+          "fpts": 363,
+          "market": 12,
+          "value": -6
         },
         {
           "player": "William Contreras",
           "price": 11,
           "pos": "C",
-          "fpts": 522
+          "fpts": 522,
+          "market": 14,
+          "value": 3
         },
         {
           "player": "Chase Burns",
           "price": 15,
           "pos": "P",
-          "fpts": 388
+          "fpts": 388,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 8,
+          "value": -7,
+          "max_breakout": {
+            "max_fpts": 620,
+            "max_value": 28,
+            "archetype": "Next Step Pitcher"
+          }
         },
         {
           "player": "Ryan Walker",
           "price": 7,
           "pos": "P",
-          "fpts": 246
+          "fpts": 246,
+          "market": 1,
+          "value": -6
         },
         {
           "player": "Cam Schlittler",
           "price": 8,
           "pos": "P",
-          "fpts": 376
+          "fpts": 376,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 2,
+          "value": -6
         },
         {
           "player": "Zack Wheeler",
           "price": 8,
           "pos": "P",
-          "fpts": 419
+          "fpts": 419,
+          "market": 4,
+          "value": -4
         },
         {
           "player": "Jacob Misiorowski",
           "price": 11,
           "pos": "P",
-          "fpts": 381
+          "fpts": 381,
+          "market": 2,
+          "value": -9
         },
         {
-          "player": "Yandy Díaz",
+          "player": "Yandy D\u00edaz",
           "price": 1,
           "pos": "1B",
-          "fpts": 516
+          "fpts": 516,
+          "market": 14,
+          "value": 13
         },
         {
           "player": "Matt McLain",
           "price": 7,
           "pos": "2B",
-          "fpts": 428
+          "fpts": 428,
+          "market": 7,
+          "value": 0
         },
         {
           "player": "Munetaka Murakami",
           "price": 9,
           "pos": "1B,3B",
-          "fpts": 440
+          "fpts": 440,
+          "market": 9,
+          "value": 0
         },
         {
           "player": "Trevor Megill",
           "price": 4,
           "pos": "P",
-          "fpts": 274
+          "fpts": 274,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 1,
+          "value": -3
         },
         {
           "player": "Bubba Chandler",
           "price": 5,
           "pos": "P",
-          "fpts": 342
+          "fpts": 342,
+          "market": 1,
+          "value": -4
         },
         {
           "player": "Heliot Ramos",
           "price": 1,
           "pos": "LF,CF,RF",
-          "fpts": 428
+          "fpts": 428,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Ian Happ",
           "price": 1,
           "pos": "LF",
-          "fpts": 496
+          "fpts": 496,
+          "market": 12,
+          "value": 11
         },
         {
           "player": "Mike Trout",
           "price": 1,
           "pos": "CF,RF",
-          "fpts": 408
+          "fpts": 408,
+          "market": 6,
+          "value": 5
         },
         {
           "player": "Nolan Arenado",
           "price": 1,
           "pos": "3B",
-          "fpts": 434
+          "fpts": 434,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Daylen Lile",
           "price": 3,
           "pos": "LF,RF",
-          "fpts": 438
+          "fpts": 438,
+          "market": 1,
+          "value": -2
         },
         {
           "player": "JJ Wetherholt",
@@ -432,109 +592,157 @@
           "player": "Fernando Tatis Jr.",
           "price": 37,
           "pos": "RF",
-          "fpts": 571
+          "fpts": 571,
+          "market": 24,
+          "value": -13
         },
         {
           "player": "Jackson Chourio",
           "price": 35,
           "pos": "LF,CF,RF",
-          "fpts": 578
+          "fpts": 578,
+          "market": 23,
+          "value": -12
         },
         {
           "player": "Jacob deGrom",
           "price": 30,
           "pos": "P",
-          "fpts": 539
+          "fpts": 539,
+          "market": 14,
+          "value": -16
         },
         {
           "player": "Maikel Garcia",
           "price": 34,
           "pos": "2B,3B,SS",
-          "fpts": 502
+          "fpts": 502,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 14,
+          "value": -20
         },
         {
           "player": "Corey Seager",
           "price": 14,
           "pos": "SS",
-          "fpts": 474
+          "fpts": 474,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 13,
+          "value": -1
         },
         {
           "player": "Ben Rice",
           "price": 11,
           "pos": "C,1B",
-          "fpts": 489
+          "fpts": 489,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 13,
+          "value": 2
         },
         {
           "player": "Luis Castillo",
           "price": 11,
           "pos": "P",
-          "fpts": 450
+          "fpts": 450,
+          "market": 4,
+          "value": -7
         },
         {
           "player": "Spencer Strider",
           "price": 11,
           "pos": "P",
-          "fpts": 452
+          "fpts": 452,
+          "market": 8,
+          "value": -3
         },
         {
           "player": "Tyler Glasnow",
           "price": 11,
           "pos": "P",
-          "fpts": 431
+          "fpts": 431,
+          "market": 4,
+          "value": -7
         },
         {
           "player": "Raisel Iglesias",
           "price": 10,
           "pos": "P",
-          "fpts": 320
+          "fpts": 320,
+          "market": 1,
+          "value": -9
         },
         {
           "player": "Drake Baldwin",
           "price": 1,
           "pos": "C",
-          "fpts": 454
+          "fpts": 454,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 9,
+          "value": 8
         },
         {
           "player": "Dansby Swanson",
           "price": 1,
           "pos": "SS",
-          "fpts": 523
+          "fpts": 523,
+          "market": 15,
+          "value": 14
         },
         {
           "player": "MacKenzie Gore",
           "price": 13,
           "pos": "P",
-          "fpts": 423
+          "fpts": 423,
+          "market": 4,
+          "value": -9
         },
         {
           "player": "Trey Yesavage",
           "price": 2,
           "pos": "P",
-          "fpts": 368
+          "fpts": 368,
+          "market": 2,
+          "value": 0
         },
         {
           "player": "Kazuma Okamoto",
           "price": 3,
           "pos": "1B,3B",
-          "fpts": 406
+          "fpts": 406,
+          "market": 4,
+          "value": 1
         },
         {
           "player": "Kenley Jansen",
           "price": 7,
           "pos": "P",
-          "fpts": 304
+          "fpts": 304,
+          "market": 4,
+          "value": -3
         },
         {
           "player": "Tanner Bibee",
           "price": 4,
           "pos": "P",
-          "fpts": 477
+          "fpts": 477,
+          "market": 8,
+          "value": 4
         },
         {
           "player": "Josh Hader",
           "price": 4,
           "pos": "P",
-          "fpts": 292
+          "fpts": 292,
+          "market": 6,
+          "value": 2
         },
         {
           "player": "Konnor Griffin",
@@ -546,19 +754,25 @@
           "player": "Blake Snell",
           "price": 8,
           "pos": "P",
-          "fpts": 425
+          "fpts": 425,
+          "market": 4,
+          "value": -4
         },
         {
-          "player": "Seranthony Domínguez",
+          "player": "Seranthony Dom\u00ednguez",
           "price": 3,
           "pos": "P",
-          "fpts": 221
+          "fpts": 221,
+          "market": 1,
+          "value": -2
         },
         {
           "player": "Gerrit Cole",
           "price": 7,
           "pos": "P",
-          "fpts": 306
+          "fpts": 306,
+          "market": 1,
+          "value": -6
         }
       ],
       "isUser": false,
@@ -573,73 +787,100 @@
           "player": "Yoshinobu Yamamoto",
           "price": 48,
           "pos": "P",
-          "fpts": 544
+          "fpts": 544,
+          "market": 14,
+          "value": -34
         },
         {
           "player": "Chris Sale",
           "price": 35,
           "pos": "P",
-          "fpts": 559
+          "fpts": 559,
+          "market": 20,
+          "value": -15
         },
         {
-          "player": "Edwin Díaz",
+          "player": "Edwin D\u00edaz",
           "price": 27,
           "pos": "P",
-          "fpts": 359
+          "fpts": 359,
+          "market": 10,
+          "value": -17
         },
         {
           "player": "Ketel Marte",
           "price": 29,
           "pos": "2B",
-          "fpts": 596
+          "fpts": 596,
+          "market": 24,
+          "value": -5
         },
         {
           "player": "Jarren Duran",
           "price": 19,
           "pos": "LF,CF",
-          "fpts": 510
+          "fpts": 510,
+          "market": 17,
+          "value": -2
         },
         {
           "player": "Freddie Freeman",
           "price": 21,
           "pos": "1B",
-          "fpts": 566
+          "fpts": 566,
+          "market": 22,
+          "value": 1
         },
         {
           "player": "Mason Miller",
           "price": 20,
           "pos": "P",
-          "fpts": 376
+          "fpts": 376,
+          "market": 16,
+          "value": -4
         },
         {
-          "player": "Andrés Muñoz",
+          "player": "Andr\u00e9s Mu\u00f1oz",
           "price": 20,
           "pos": "P",
-          "fpts": 366
+          "fpts": 366,
+          "market": 14,
+          "value": -6
         },
         {
           "player": "Xander Bogaerts",
           "price": 1,
           "pos": "SS",
-          "fpts": 432
+          "fpts": 432,
+          "market": 7,
+          "value": 6
         },
         {
-          "player": "Teoscar Hernández",
+          "player": "Teoscar Hern\u00e1ndez",
           "price": 6,
           "pos": "LF,RF",
-          "fpts": 504
+          "fpts": 504,
+          "market": 14,
+          "value": 8
         },
         {
           "player": "Willson Contreras",
           "price": 1,
           "pos": "1B",
-          "fpts": 445
+          "fpts": 445,
+          "market": 8,
+          "value": 7
         },
         {
           "player": "Alec Bohm",
           "price": 3,
           "pos": "1B,3B",
-          "fpts": 457
+          "fpts": 457,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 7,
+          "value": 4
         },
         {
           "player": "Alejandro Kirk",
@@ -651,49 +892,68 @@
           "player": "Wilyer Abreu",
           "price": 4,
           "pos": "LF,CF,RF",
-          "fpts": 414
+          "fpts": 414,
+          "market": 6,
+          "value": 2
         },
         {
           "player": "Drew Rasmussen",
           "price": 1,
           "pos": "P",
-          "fpts": 457
+          "fpts": 457,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 8,
+          "value": 7
         },
         {
           "player": "Shane McClanahan",
           "price": 7,
           "pos": "P",
-          "fpts": 380
+          "fpts": 380,
+          "market": 2,
+          "value": -5
         },
         {
           "player": "Robert Suarez",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 0,
+          "market": 18,
+          "value": 17
         },
         {
           "player": "Roki Sasaki",
           "price": 1,
           "pos": "P",
-          "fpts": 318
+          "fpts": 318,
+          "market": 1,
+          "value": 0
         },
         {
-          "player": "Carlos Rodón",
+          "player": "Carlos Rod\u00f3n",
           "price": 3,
           "pos": "P",
-          "fpts": 376
+          "fpts": 376,
+          "market": 2,
+          "value": -1
         },
         {
           "player": "Trent Grisham",
           "price": 1,
           "pos": "CF",
-          "fpts": 401
+          "fpts": 401,
+          "market": 3,
+          "value": 2
         },
         {
           "player": "Adley Rutschman",
           "price": 1,
           "pos": "C",
-          "fpts": 429
+          "fpts": 429,
+          "market": 3,
+          "value": 2
         },
         {
           "player": "Francisco Alvarez",
@@ -711,82 +971,114 @@
       "spent": 258,
       "players": [
         {
-          "player": "Ronald Acuña Jr.",
+          "player": "Ronald Acu\u00f1a Jr.",
           "price": 46,
           "pos": "RF",
-          "fpts": 616
+          "fpts": 616,
+          "market": 31,
+          "value": -15
         },
         {
           "player": "Vladimir Guerrero Jr.",
           "price": 39,
           "pos": "1B",
-          "fpts": 621
+          "fpts": 621,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 25,
+          "value": -14
         },
         {
           "player": "Hunter Brown",
           "price": 30,
           "pos": "P",
-          "fpts": 588
+          "fpts": 588,
+          "market": 20,
+          "value": -10
         },
         {
           "player": "Mookie Betts",
           "price": 21,
           "pos": "SS",
-          "fpts": 561
+          "fpts": 561,
+          "market": 19,
+          "value": -2
         },
         {
           "player": "Ozzie Albies",
           "price": 14,
           "pos": "2B",
-          "fpts": 482
+          "fpts": 482,
+          "market": 11,
+          "value": -3
         },
         {
           "player": "Kevin Gausman",
           "price": 20,
           "pos": "P",
-          "fpts": 505
+          "fpts": 505,
+          "market": 14,
+          "value": -6
         },
         {
           "player": "Dylan Cease",
           "price": 16,
           "pos": "P",
-          "fpts": 497
+          "fpts": 497,
+          "market": 8,
+          "value": -8
         },
         {
           "player": "Christian Yelich",
           "price": 7,
           "pos": "LF",
-          "fpts": 550
+          "fpts": 550,
+          "market": 23,
+          "value": 16
         },
         {
           "player": "Hunter Goodman",
           "price": 11,
           "pos": "C",
-          "fpts": 468
+          "fpts": 468,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 8,
+          "value": -3
         },
         {
           "player": "Devin Williams",
           "price": 15,
           "pos": "P",
-          "fpts": 339
+          "fpts": 339,
+          "market": 8,
+          "value": -7
         },
         {
           "player": "Luke Keaschall",
           "price": 3,
           "pos": "2B",
-          "fpts": 421
+          "fpts": 421,
+          "market": 8,
+          "value": 5
         },
         {
           "player": "Lawrence Butler",
           "price": 4,
           "pos": "CF,RF",
-          "fpts": 416
+          "fpts": 416,
+          "market": 5,
+          "value": 1
         },
         {
           "player": "Nathan Eovaldi",
           "price": 8,
           "pos": "P",
-          "fpts": 451
+          "fpts": 451,
+          "market": 8,
+          "value": 0
         },
         {
           "player": "Ryan McMahon",
@@ -798,49 +1090,68 @@
           "player": "Aaron Nola",
           "price": 5,
           "pos": "P",
-          "fpts": 417
+          "fpts": 417,
+          "market": 4,
+          "value": -1
         },
         {
           "player": "Justin Crawford",
           "price": 1,
           "pos": "Util",
-          "fpts": 320
+          "fpts": 320,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Andrew Painter",
           "price": 1,
           "pos": "P",
-          "fpts": 229
+          "fpts": 229,
+          "market": 1,
+          "value": 0
         },
         {
-          "player": "Adolis García",
+          "player": "Adolis Garc\u00eda",
           "price": 2,
           "pos": "RF",
-          "fpts": 466
+          "fpts": 466,
+          "market": 10,
+          "value": 8
         },
         {
           "player": "Jonathan Aranda",
           "price": 1,
           "pos": "1B",
-          "fpts": 424
+          "fpts": 424,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Brenton Doyle",
           "price": 2,
           "pos": "CF",
-          "fpts": 440
+          "fpts": 440,
+          "market": 8,
+          "value": 6
         },
         {
           "player": "Tatsuya Imai",
           "price": 8,
           "pos": "P",
-          "fpts": 449
+          "fpts": 449,
+          "market": 4,
+          "value": -4
         },
         {
           "player": "Ezequiel Tovar",
           "price": 1,
           "pos": "SS",
-          "fpts": 478
+          "fpts": 478,
+          "market": 8,
+          "value": 7
         }
       ],
       "isUser": false,
@@ -855,85 +1166,122 @@
           "player": "Shohei Ohtani",
           "price": 93,
           "pos": "Util",
-          "fpts": 760
+          "fpts": 760,
+          "market": 14,
+          "value": -79
         },
         {
           "player": "Nick Kurtz",
           "price": 31,
           "pos": "1B",
-          "fpts": 597
+          "fpts": 597,
+          "market": 25,
+          "value": -6
         },
         {
           "player": "Garrett Crochet",
           "price": 58,
           "pos": "P",
-          "fpts": 604
+          "fpts": 604,
+          "market": 30,
+          "value": -28
         },
         {
           "player": "Trea Turner",
           "price": 24,
           "pos": "SS",
-          "fpts": 578
+          "fpts": 578,
+          "market": 25,
+          "value": 1
         },
         {
           "player": "Manny Machado",
           "price": 21,
           "pos": "3B",
-          "fpts": 576
+          "fpts": 576,
+          "market": 22,
+          "value": 1
         },
         {
           "player": "Jo Adell",
           "price": 1,
           "pos": "CF,RF",
-          "fpts": 453
+          "fpts": 453,
+          "market": 9,
+          "value": 8
         },
         {
           "player": "Ivan Herrera",
           "price": 1,
           "pos": "C",
-          "fpts": 406
+          "fpts": 406,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Sandy Alcantara",
           "price": 5,
           "pos": "P",
-          "fpts": 392
+          "fpts": 392,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 2,
+          "value": -3
         },
         {
           "player": "Jeff Hoffman",
           "price": 11,
           "pos": "P",
-          "fpts": 309
+          "fpts": 309,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 1,
+          "value": -10
         },
         {
           "player": "Gavin Williams",
           "price": 3,
           "pos": "P",
-          "fpts": 434
+          "fpts": 434,
+          "market": 4,
+          "value": 1
         },
         {
           "player": "Brendan Donovan",
           "price": 1,
           "pos": "2B,SS,LF",
-          "fpts": 434
+          "fpts": 434,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Brandon Nimmo",
           "price": 1,
           "pos": "LF,CF",
-          "fpts": 518
+          "fpts": 518,
+          "market": 14,
+          "value": 13
         },
         {
           "player": "Bryan Abreu",
           "price": 1,
           "pos": "P",
-          "fpts": 254
+          "fpts": 254,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Robert Garcia",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 0,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 14,
+          "value": 13
         },
         {
           "player": "Paul Sewald",
@@ -945,43 +1293,60 @@
           "player": "Mitch Keller",
           "price": 1,
           "pos": "P",
-          "fpts": 415
+          "fpts": 415,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Grant Holmes",
           "price": 1,
           "pos": "P",
-          "fpts": 360
+          "fpts": 360,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Will Warren",
           "price": 1,
           "pos": "P",
-          "fpts": 291
+          "fpts": 291,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Jack Leiter",
           "price": 1,
           "pos": "P",
-          "fpts": 359
+          "fpts": 359,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Chris Bassitt",
           "price": 1,
           "pos": "P",
-          "fpts": 411
+          "fpts": 411,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Jorge Polanco",
           "price": 1,
           "pos": "2B,3B",
-          "fpts": 395
+          "fpts": 395,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 3,
+          "value": 2
         },
         {
-          "player": "Reynaldo López",
+          "player": "Reynaldo L\u00f3pez",
           "price": 1,
           "pos": "P",
-          "fpts": 333
+          "fpts": 333,
+          "market": 1,
+          "value": 0
         }
       ],
       "isUser": false,
@@ -996,133 +1361,191 @@
           "player": "Yordan Alvarez",
           "price": 28,
           "pos": "LF",
-          "fpts": 503
+          "fpts": 503,
+          "market": 15,
+          "value": -13
         },
         {
           "player": "Paul Skenes",
           "price": 58,
           "pos": "P",
-          "fpts": 680
+          "fpts": 680,
+          "market": 37,
+          "value": -21
         },
         {
-          "player": "Cristopher Sánchez",
+          "player": "Cristopher S\u00e1nchez",
           "price": 43,
           "pos": "P",
-          "fpts": 560
+          "fpts": 560,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 20,
+          "value": -23
         },
         {
           "player": "Junior Caminero",
           "price": 31,
           "pos": "3B",
-          "fpts": 585
+          "fpts": 585,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 23,
+          "value": -8,
+          "max_breakout": {
+            "max_fpts": 680,
+            "max_value": 38,
+            "archetype": "Elite Bat Speed"
+          }
         },
         {
           "player": "Joe Ryan",
           "price": 23,
           "pos": "P",
-          "fpts": 501
+          "fpts": 501,
+          "market": 14,
+          "value": -9
         },
         {
           "player": "Josh Naylor",
           "price": 6,
           "pos": "1B",
-          "fpts": 561
+          "fpts": 561,
+          "market": 22,
+          "value": 16
         },
         {
           "player": "Nolan McLean",
           "price": 16,
           "pos": "P",
-          "fpts": 449
+          "fpts": 449,
+          "market": 4,
+          "value": -12
         },
         {
           "player": "Jose Altuve",
           "price": 4,
           "pos": "2B,LF",
-          "fpts": 504
+          "fpts": 504,
+          "market": 14,
+          "value": 10
         },
         {
           "player": "Will Smith",
           "price": 6,
           "pos": "C",
-          "fpts": 441
+          "fpts": 441,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 8,
+          "value": 2
         },
         {
           "player": "Brandon Woodruff",
           "price": 4,
           "pos": "P",
-          "fpts": 403
+          "fpts": 403,
+          "market": 4,
+          "value": 0
         },
         {
-          "player": "Carlos Estévez",
+          "player": "Carlos Est\u00e9vez",
           "price": 7,
           "pos": "P",
-          "fpts": 297
+          "fpts": 297,
+          "market": 4,
+          "value": -3
         },
         {
           "player": "Ryan Helsley",
           "price": 9,
           "pos": "P",
-          "fpts": 317
+          "fpts": 317,
+          "market": 10,
+          "value": 1
         },
         {
           "player": "Taylor Ward",
           "price": 3,
           "pos": "LF",
-          "fpts": 519
+          "fpts": 519,
+          "market": 13,
+          "value": 10
         },
         {
           "player": "Jacob Wilson",
           "price": 2,
           "pos": "SS",
-          "fpts": 449
+          "fpts": 449,
+          "market": 6,
+          "value": 4
         },
         {
           "player": "Michael King",
           "price": 5,
           "pos": "P",
-          "fpts": 481
+          "fpts": 481,
+          "market": 8,
+          "value": 3
         },
         {
           "player": "Jakob Marsee",
           "price": 2,
           "pos": "LF,CF",
-          "fpts": 450
+          "fpts": 450,
+          "market": 10,
+          "value": 8
         },
         {
           "player": "Bryan Reynolds",
           "price": 1,
           "pos": "LF,CF,RF",
-          "fpts": 510
+          "fpts": 510,
+          "market": 12,
+          "value": 11
         },
         {
           "player": "Dennis Santana",
           "price": 4,
           "pos": "P",
-          "fpts": 255
+          "fpts": 255,
+          "market": 1,
+          "value": -3
         },
         {
           "player": "Shota Imanaga",
           "price": 2,
           "pos": "P",
-          "fpts": 423
+          "fpts": 423,
+          "market": 4,
+          "value": 2
         },
         {
           "player": "Kris Bubic",
           "price": 3,
           "pos": "P",
-          "fpts": 398
+          "fpts": 398,
+          "market": 2,
+          "value": -1
         },
         {
           "player": "Daulton Varsho",
           "price": 1,
           "pos": "LF,CF",
-          "fpts": 460
+          "fpts": 460,
+          "market": 10,
+          "value": 9
         },
         {
           "player": "Brady Singer",
           "price": 1,
           "pos": "P",
-          "fpts": 409
+          "fpts": 409,
+          "market": 4,
+          "value": 3
         }
       ],
       "isUser": false,
@@ -1134,118 +1557,156 @@
       "spent": 260,
       "players": [
         {
-          "player": "José Ramírez",
+          "player": "Jos\u00e9 Ram\u00edrez",
           "price": 40,
           "pos": "3B",
-          "fpts": 656
+          "fpts": 656,
+          "market": 37,
+          "value": -3
         },
         {
-          "player": "Julio Rodríguez",
+          "player": "Julio Rodr\u00edguez",
           "price": 38,
           "pos": "CF",
-          "fpts": 609
+          "fpts": 609,
+          "market": 29,
+          "value": -9
         },
         {
           "player": "Kyle Schwarber",
           "price": 31,
           "pos": "LF",
-          "fpts": 640
+          "fpts": 640,
+          "market": 29,
+          "value": -2
         },
         {
           "player": "Jazz Chisholm Jr.",
           "price": 25,
           "pos": "2B,3B",
-          "fpts": 530
+          "fpts": 530,
+          "market": 24,
+          "value": -1
         },
         {
           "player": "Francisco Lindor",
           "price": 27,
           "pos": "SS",
-          "fpts": 620
+          "fpts": 620,
+          "market": 28,
+          "value": 1
         },
         {
           "player": "Rafael Devers",
           "price": 20,
           "pos": "1B",
-          "fpts": 548
+          "fpts": 548,
+          "market": 17,
+          "value": -3
         },
         {
           "player": "George Springer",
           "price": 13,
           "pos": "LF,CF,RF",
-          "fpts": 512
+          "fpts": 512,
+          "market": 17,
+          "value": 4
         },
         {
           "player": "George Kirby",
           "price": 27,
           "pos": "P",
-          "fpts": 459
+          "fpts": 459,
+          "market": 8,
+          "value": -19
         },
         {
           "player": "Hunter Greene",
           "price": 10,
           "pos": "P",
-          "fpts": 216
+          "fpts": 216,
+          "market": 1,
+          "value": -9
         },
         {
           "player": "Salvador Perez",
           "price": 9,
           "pos": "C,1B",
-          "fpts": 480
+          "fpts": 480,
+          "market": 10,
+          "value": 1
         },
         {
           "player": "Kyle Stowers",
           "price": 6,
           "pos": "LF,CF,RF",
-          "fpts": 463
+          "fpts": 463,
+          "market": 11,
+          "value": 5
         },
         {
           "player": "Shohei Ohtani",
           "price": 1,
           "pos": "P",
-          "fpts": 760
+          "fpts": 760,
+          "market": 14,
+          "value": 13
         },
         {
           "player": "Noelvi Marte",
           "price": 2,
           "pos": "3B,RF",
-          "fpts": 416
+          "fpts": 416,
+          "market": 5,
+          "value": 3
         },
         {
           "player": "Xavier Edwards",
           "price": 2,
           "pos": "2B,SS",
-          "fpts": 432
+          "fpts": 432,
+          "market": 9,
+          "value": 7
         },
         {
           "player": "Steven Kwan",
           "price": 2,
           "pos": "LF",
-          "fpts": 483
+          "fpts": 483,
+          "market": 10,
+          "value": 8
         },
         {
           "player": "Edward Cabrera",
           "price": 1,
           "pos": "P",
-          "fpts": 352
+          "fpts": 352,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Merrill Kelly",
           "price": 1,
           "pos": "P",
-          "fpts": 444
+          "fpts": 444,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Ryne Nelson",
           "price": 1,
           "pos": "P",
-          "fpts": 381
+          "fpts": 381,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Shane Bieber",
           "price": 1,
           "pos": "P",
-          "fpts": 317
+          "fpts": 317,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Kevin McGonigle",
@@ -1257,13 +1718,20 @@
           "player": "Otto Lopez",
           "price": 1,
           "pos": "2B,SS",
-          "fpts": 424
+          "fpts": 424,
+          "market": 6,
+          "value": 5
         },
         {
           "player": "Sal Stewart",
           "price": 1,
           "pos": "1B",
-          "fpts": 398
+          "fpts": 398,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 5,
+          "value": 4
         }
       ],
       "isUser": false,
@@ -1278,85 +1746,122 @@
           "player": "Aaron Judge",
           "price": 67,
           "pos": "LF,CF,RF",
-          "fpts": 744
+          "fpts": 744,
+          "market": 47,
+          "value": -20
         },
         {
           "player": "Bobby Witt Jr.",
           "price": 50,
           "pos": "SS",
-          "fpts": 679
+          "fpts": 679,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 39,
+          "value": -11
         },
         {
           "player": "Corbin Carroll",
           "price": 36,
           "pos": "CF,RF",
-          "fpts": 598
+          "fpts": 598,
+          "market": 30,
+          "value": -6
         },
         {
           "player": "Framber Valdez",
           "price": 24,
           "pos": "P",
-          "fpts": 534
+          "fpts": 534,
+          "market": 14,
+          "value": -10
         },
         {
           "player": "Bryan Woo",
           "price": 37,
           "pos": "P",
-          "fpts": 534
+          "fpts": 534,
+          "market": 14,
+          "value": -23
         },
         {
           "player": "David Bednar",
           "price": 16,
           "pos": "P",
-          "fpts": 295
+          "fpts": 295,
+          "market": 1,
+          "value": -15
         },
         {
           "player": "Randy Arozarena",
           "price": 13,
           "pos": "LF,CF",
-          "fpts": 530
+          "fpts": 530,
+          "market": 17,
+          "value": 4
         },
         {
           "player": "Andrew Abbott",
           "price": 1,
           "pos": "P",
-          "fpts": 472
+          "fpts": 472,
+          "market": 8,
+          "value": 7
         },
         {
           "player": "Spencer Torkelson",
           "price": 3,
           "pos": "1B",
-          "fpts": 469
+          "fpts": 469,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 7,
+          "value": 4
         },
         {
           "player": "Bryson Stott",
           "price": 1,
           "pos": "2B,SS",
-          "fpts": 456
+          "fpts": 456,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 12,
+          "value": 11
         },
         {
           "player": "Caleb Durbin",
           "price": 1,
           "pos": "2B,3B",
-          "fpts": 430
+          "fpts": 430,
+          "market": 8,
+          "value": 7
         },
         {
           "player": "Colson Montgomery",
           "price": 1,
           "pos": "3B,SS",
-          "fpts": 474
+          "fpts": 474,
+          "market": 11,
+          "value": 10
         },
         {
-          "player": "Ramón Laureano",
+          "player": "Ram\u00f3n Laureano",
           "price": 1,
           "pos": "LF,CF,RF",
-          "fpts": 414
+          "fpts": 414,
+          "market": 6,
+          "value": 5
         },
         {
           "player": "Giancarlo Stanton",
           "price": 1,
           "pos": "LF,RF",
-          "fpts": 362
+          "fpts": 362,
+          "market": 3,
+          "value": 2
         },
         {
           "player": "Samuel Basallo",
@@ -1368,25 +1873,33 @@
           "player": "Joe Musgrove",
           "price": 1,
           "pos": "P",
-          "fpts": 396
+          "fpts": 396,
+          "market": 2,
+          "value": 1
         },
         {
           "player": "Cody Ponce",
           "price": 1,
           "pos": "P",
-          "fpts": 342
+          "fpts": 342,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Joey Cantillo",
           "price": 1,
           "pos": "P",
-          "fpts": 312
+          "fpts": 312,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Braxton Ashcraft",
           "price": 1,
           "pos": "P",
-          "fpts": 349
+          "fpts": 349,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Masyn Winn",
@@ -1398,13 +1911,17 @@
           "player": "Ian Seymour",
           "price": 1,
           "pos": "P",
-          "fpts": 324
+          "fpts": 324,
+          "market": 1,
+          "value": 0
         },
         {
           "player": "Chandler Simpson",
           "price": 1,
           "pos": "LF,CF",
-          "fpts": 341
+          "fpts": 341,
+          "market": 4,
+          "value": 3
         }
       ],
       "isUser": false,
@@ -1419,133 +1936,233 @@
           "player": "Cal Raleigh",
           "price": 32,
           "pos": "C",
-          "fpts": 586
+          "fpts": 586,
+          "market": 24,
+          "value": -8
         },
         {
           "player": "Gunnar Henderson",
           "price": 38,
           "pos": "SS",
-          "fpts": 592
+          "fpts": 592,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 25,
+          "value": -13
         },
         {
           "player": "Bryce Harper",
           "price": 25,
           "pos": "1B",
-          "fpts": 546
+          "fpts": 546,
+          "market": 20,
+          "value": -5
         },
         {
           "player": "James Wood",
           "price": 19,
           "pos": "LF",
-          "fpts": 533
+          "fpts": 533,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 18,
+          "value": -1
         },
         {
           "player": "Nick Pivetta",
           "price": 13,
           "pos": "P",
-          "fpts": 515
+          "fpts": 515,
+          "market": 14,
+          "value": 1
         },
         {
           "player": "Alex Bregman",
           "price": 13,
           "pos": "3B",
-          "fpts": 532
+          "fpts": 532,
+          "market": 13,
+          "value": 0
         },
         {
           "player": "CJ Abrams",
           "price": 15,
           "pos": "SS",
-          "fpts": 510
+          "fpts": 510,
+          "market": 19,
+          "value": 4
         },
         {
           "player": "Jac Caglianone",
           "price": 13,
           "pos": "1B,RF",
-          "fpts": 475
+          "fpts": 475,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 10,
+          "value": -3,
+          "max_breakout": {
+            "max_fpts": 580,
+            "max_value": 22,
+            "archetype": "Power Hitter"
+          }
         },
         {
           "player": "Sonny Gray",
           "price": 14,
           "pos": "P",
-          "fpts": 515
+          "fpts": 515,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 14,
+          "value": 0
         },
         {
           "player": "Oneil Cruz",
           "price": 13,
           "pos": "CF",
-          "fpts": 426
+          "fpts": 426,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 10,
+          "value": -3,
+          "max_breakout": {
+            "max_fpts": 600,
+            "max_value": 28,
+            "archetype": "All-Around"
+          }
         },
         {
           "player": "Gleyber Torres",
           "price": 7,
           "pos": "2B",
-          "fpts": 493
+          "fpts": 493,
+          "market": 9,
+          "value": 2
         },
         {
-          "player": "Eury Pérez",
+          "player": "Eury P\u00e9rez",
           "price": 19,
           "pos": "P",
-          "fpts": 414
+          "fpts": 414,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 8,
+          "value": -11,
+          "max_breakout": {
+            "max_fpts": 600,
+            "max_value": 25,
+            "archetype": "Pure Stuff"
+          }
         },
         {
           "player": "Willy Adames",
           "price": 2,
           "pos": "SS",
-          "fpts": 555
+          "fpts": 555,
+          "market": 18,
+          "value": 16
         },
         {
-          "player": "Jeremy Peña",
+          "player": "Jeremy Pe\u00f1a",
           "price": 2,
           "pos": "SS",
-          "fpts": 495
+          "fpts": 495,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 14,
+          "value": 12
         },
         {
           "player": "Luis Arraez",
           "price": 2,
           "pos": "1B,2B",
-          "fpts": 462
+          "fpts": 462,
+          "market": 5,
+          "value": 3
         },
         {
           "player": "Nick Lodolo",
           "price": 5,
           "pos": "P",
-          "fpts": 445
+          "fpts": 445,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 4,
+          "value": -1
         },
         {
           "player": "Michael Busch",
           "price": 5,
           "pos": "1B",
-          "fpts": 494
+          "fpts": 494,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 13,
+          "value": 8
         },
         {
           "player": "Seiya Suzuki",
           "price": 4,
           "pos": "LF,RF",
-          "fpts": 509
+          "fpts": 509,
+          "market": 16,
+          "value": 12
         },
         {
           "player": "Alec Burleson",
           "price": 2,
           "pos": "1B,LF,RF",
-          "fpts": 442
+          "fpts": 442,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 7,
+          "value": 5
         },
         {
           "player": "Reid Detmers",
           "price": 1,
           "pos": "P",
-          "fpts": 319
+          "fpts": 319,
+          "badges": [
+            "\ud83d\udd25 Finals Breakout"
+          ],
+          "market": 1,
+          "value": 0,
+          "max_breakout": {
+            "max_fpts": 520,
+            "max_value": 15,
+            "archetype": "Next Step Pitcher"
+          }
         },
         {
           "player": "Daniel Palencia",
           "price": 15,
           "pos": "P",
-          "fpts": 267
+          "fpts": 267,
+          "badges": [
+            "\ud83c\udfaf Expert Target"
+          ],
+          "market": 1,
+          "value": -14
         },
         {
           "player": "Zac Gallen",
           "price": 1,
           "pos": "P",
-          "fpts": 437
+          "fpts": 437,
+          "market": 4,
+          "value": 3
         }
       ],
       "isUser": true,
@@ -1560,121 +2177,164 @@
           "player": "Tarik Skubal",
           "price": 59,
           "pos": "P",
-          "fpts": 703
+          "fpts": 703,
+          "market": 47,
+          "value": -12
         },
         {
           "player": "Max Fried",
           "price": 42,
           "pos": "P",
-          "fpts": 537
+          "fpts": 537,
+          "market": 14,
+          "value": -28
         },
         {
           "player": "Matt Olson",
           "price": 26,
           "pos": "1B",
-          "fpts": 596
+          "fpts": 596,
+          "market": 20,
+          "value": -6
         },
         {
           "player": "Zach Neto",
           "price": 23,
           "pos": "SS",
-          "fpts": 535
+          "fpts": 535,
+          "badges": [
+            "\ud83d\udd25 Breakout"
+          ],
+          "market": 19,
+          "value": -4
         },
         {
           "player": "Cody Bellinger",
           "price": 26,
           "pos": "LF,CF,RF",
-          "fpts": 525
+          "fpts": 525,
+          "market": 17,
+          "value": -9
         },
         {
           "player": "Freddy Peralta",
           "price": 25,
           "pos": "P",
-          "fpts": 536
+          "fpts": 536,
+          "market": 14,
+          "value": -11
         },
         {
           "player": "Nico Hoerner",
           "price": 12,
           "pos": "2B",
-          "fpts": 497
+          "fpts": 497,
+          "market": 14,
+          "value": 2
         },
         {
           "player": "Cade Smith",
           "price": 15,
           "pos": "P",
-          "fpts": 352
+          "fpts": 352,
+          "market": 6,
+          "value": -9
         },
         {
           "player": "Trevor Story",
           "price": 4,
           "pos": "SS",
-          "fpts": 449
+          "fpts": 449,
+          "market": 10,
+          "value": 6
         },
         {
           "player": "Michael Harris II",
           "price": 2,
           "pos": "CF",
-          "fpts": 454
+          "fpts": 454,
+          "market": 10,
+          "value": 8
         },
         {
           "player": "Matt Chapman",
           "price": 4,
           "pos": "3B",
-          "fpts": 490
+          "fpts": 490,
+          "market": 11,
+          "value": 7
         },
         {
           "player": "Ceddanne Rafaela",
           "price": 4,
           "pos": "2B,CF",
-          "fpts": 432
+          "fpts": 432,
+          "market": 6,
+          "value": 2
         },
         {
           "player": "Byron Buxton",
           "price": 7,
           "pos": "CF",
-          "fpts": 488
+          "fpts": 488,
+          "market": 15,
+          "value": 8
         },
         {
           "player": "Yainer Diaz",
           "price": 1,
           "pos": "C",
-          "fpts": 442
+          "fpts": 442,
+          "market": 7,
+          "value": 6
         },
         {
           "player": "Abner Uribe",
           "price": 2,
           "pos": "P",
-          "fpts": 225
+          "fpts": 225,
+          "market": 1,
+          "value": -1
         },
         {
           "player": "Matthew Boyd",
           "price": 2,
           "pos": "P",
-          "fpts": 426
+          "fpts": 426,
+          "market": 4,
+          "value": 2
         },
         {
           "player": "Christian Walker",
           "price": 1,
           "pos": "1B",
-          "fpts": 504
+          "fpts": 504,
+          "market": 13,
+          "value": 12
         },
         {
           "player": "Kerry Carpenter",
           "price": 1,
           "pos": "LF,RF",
-          "fpts": 414
+          "fpts": 414,
+          "market": 6,
+          "value": 5
         },
         {
           "player": "Noah Cameron",
           "price": 1,
           "pos": "P",
-          "fpts": 329
+          "fpts": 329,
+          "market": 1,
+          "value": 0
         },
         {
-          "player": "José Caballero",
+          "player": "Jos\u00e9 Caballero",
           "price": 1,
           "pos": "2B,3B,SS,LF,RF",
-          "fpts": 336
+          "fpts": 336,
+          "market": 4,
+          "value": 3
         },
         {
           "player": "Dylan Crews",
@@ -1683,10 +2343,12 @@
           "fpts": 338
         },
         {
-          "player": "Luis García Jr.",
+          "player": "Luis Garc\u00eda Jr.",
           "price": 1,
           "pos": "2B",
-          "fpts": 416
+          "fpts": 416,
+          "market": 6,
+          "value": 5
         }
       ],
       "isUser": false,
