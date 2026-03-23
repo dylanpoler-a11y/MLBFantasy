@@ -1958,3 +1958,248 @@ header h1 span { color: var(--accent); }
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 10px; padding: 10px; max-height: 300px; overflow-y: auto;
 }
+
+/* ── Yahoo Draft Results ──────────────────────────── */
+
+.yahoo-section { padding: 20px 24px; max-width: 1600px; margin: 0 auto; }
+
+.yahoo-title {
+    font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; color: var(--text);
+}
+
+/* Leaderboard */
+.yahoo-leaderboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.yahoo-lb-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.15s;
+}
+.yahoo-lb-card:hover { transform: translateY(-2px); }
+
+.yahoo-lb-user {
+    border-color: var(--yellow);
+    background: rgba(251, 191, 36, 0.06);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.1);
+}
+
+.yahoo-lb-rank {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.yahoo-lb-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.yahoo-grade-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--bg);
+    width: fit-content;
+}
+
+.yahoo-lb-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+.yahoo-lb-fpts { font-weight: 600; color: var(--green); }
+.yahoo-lb-spent { font-weight: 600; }
+
+/* Sub-tabs */
+.yahoo-subtabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.yahoo-subtab {
+    padding: 6px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.yahoo-subtab:hover { color: var(--text); background: var(--surface-2); }
+.yahoo-subtab.active { color: var(--accent); background: var(--accent-dim); border-color: rgba(79, 143, 247, 0.3); }
+
+.yahoo-view { display: none; }
+.yahoo-view.active { display: block; }
+
+/* Team Cards Grid */
+.yahoo-teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+}
+
+.yahoo-team-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.yahoo-team-user {
+    border-color: var(--yellow);
+    box-shadow: 0 0 16px rgba(251, 191, 36, 0.12);
+}
+
+.yahoo-team-header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.yahoo-team-name { font-weight: 700; font-size: 0.92rem; }
+.yahoo-team-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+.yahoo-roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+.yahoo-roster-table thead th {
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+}
+.yahoo-roster-table tbody td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(46, 51, 72, 0.4);
+}
+.yahoo-roster-table tbody tr:last-child td { border-bottom: none; }
+.yahoo-roster-table tbody tr:hover { background: rgba(79, 143, 247, 0.04); }
+
+.yahoo-pos {
+    font-weight: 600;
+    font-size: 0.72rem;
+    color: var(--accent);
+}
+
+/* Price color coding */
+.yahoo-price-value { color: var(--green); font-weight: 600; }
+.yahoo-price-overpay { color: var(--red); font-weight: 600; }
+.yahoo-price-fair { color: var(--yellow); font-weight: 600; }
+
+/* Draft Board */
+.yahoo-draft-board-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.yahoo-draft-board {
+    display: flex;
+    flex-direction: column;
+    min-width: max-content;
+}
+
+.yahoo-board-row {
+    display: flex;
+    border-bottom: 1px solid rgba(46, 51, 72, 0.4);
+}
+.yahoo-board-row:last-child { border-bottom: none; }
+
+.yahoo-board-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--surface-2);
+}
+
+.yahoo-board-cell {
+    min-width: 120px;
+    max-width: 140px;
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    border-right: 1px solid rgba(46, 51, 72, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.yahoo-board-cell:last-child { border-right: none; }
+
+.yahoo-board-pick-num {
+    min-width: 36px;
+    max-width: 36px;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yahoo-board-team-header {
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+.yahoo-board-user-header {
+    color: var(--yellow);
+    background: rgba(251, 191, 36, 0.08);
+}
+
+.yahoo-board-user-cell {
+    background: rgba(251, 191, 36, 0.04);
+}
+
+.yahoo-board-player {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.yahoo-board-price {
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.yahoo-board-empty {
+    color: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .yahoo-leaderboard { grid-template-columns: repeat(2, 1fr); }
+    .yahoo-teams-grid { grid-template-columns: 1fr; }
+    .yahoo-board-cell { min-width: 100px; }
+}

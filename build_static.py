@@ -23,7 +23,7 @@ os.makedirs(os.path.join(DOCS, "static"), exist_ok=True)
 shutil.copy2(os.path.join(BASE, "static", "style.css"), os.path.join(DOCS, "static", "style.css"))
 
 # Copy data files
-for f in ["draft_plans_data.json", "custom_rankings.json", "draft_plans.md"]:
+for f in ["draft_plans_data.json", "custom_rankings.json", "draft_plans.md", "yahoo_draft_results.json"]:
     src = os.path.join(DATA, f)
     if os.path.exists(src):
         shutil.copy2(src, os.path.join(DOCS, "data", f))
@@ -153,6 +153,11 @@ FETCH_INTERCEPTOR = '''
             return _originalFetch('data/custom_rankings.json').then(r => r.json()).then(players => {
                 return new Response(JSON.stringify({players: players}), {status: 200, headers: {'Content-Type': 'application/json'}});
             });
+        }
+
+        // GET /api/yahoo-draft-results → static file
+        if (urlStr === '/api/yahoo-draft-results' && method === 'GET') {
+            return _originalFetch('data/yahoo_draft_results.json');
         }
 
         // ── Mock Draft Sessions (localStorage) ──

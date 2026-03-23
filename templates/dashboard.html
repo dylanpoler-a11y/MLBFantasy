@@ -16,6 +16,7 @@
             <button class="tab" data-tab="plans" onclick="switchTab('plans')">Draft Plans</button>
             <button class="tab" data-tab="mock" onclick="switchTab('mock')">Mock Draft</button>
             <button class="tab" data-tab="live" onclick="switchTab('live')">Live Draft</button>
+            <button class="tab" data-tab="yahoo" onclick="switchTab('yahoo')">Yahoo Results</button>
         </nav>
         <div class="connection-status">
             <div class="status-dot checking" id="statusDot"></div>
@@ -508,6 +509,34 @@
         </div>
     </div>
 
+    <!-- ═══════ TAB: YAHOO RESULTS ═══════ -->
+    <div class="tab-content" id="tab-yahoo">
+        <div class="yahoo-section">
+            <h2 class="yahoo-title" id="yahooDraftTitle">Yahoo Mock Draft Results</h2>
+
+            <!-- Leaderboard -->
+            <div class="yahoo-leaderboard" id="yahooLeaderboard"></div>
+
+            <!-- Sub-tabs for Team Cards vs Draft Board -->
+            <div class="yahoo-subtabs">
+                <button class="yahoo-subtab active" onclick="switchYahooView('teams')">Team Cards</button>
+                <button class="yahoo-subtab" onclick="switchYahooView('board')">Draft Board</button>
+            </div>
+
+            <!-- Team Cards Grid -->
+            <div class="yahoo-view active" id="yahoo-teams">
+                <div class="yahoo-teams-grid" id="yahooTeamsGrid"></div>
+            </div>
+
+            <!-- Draft Board -->
+            <div class="yahoo-view" id="yahoo-board">
+                <div class="yahoo-draft-board-wrap">
+                    <div class="yahoo-draft-board" id="yahooDraftBoard"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const LEAGUE_ID = "{{ league_id }}";
         let allPlayers = [];
@@ -532,6 +561,7 @@
             if (tab === "plans") { loadPlanTracker(); if (!mockPlayerPool.length) loadMockPlayerPool(); }
             if (tab === "mock") { if (!mockPlayerPool.length) loadMockPlayerPool(); loadSavedDraftsList(); }
             if (tab === "live") { initLiveDraftTab(); }
+            if (tab === "yahoo") { loadYahooDraftResults(); }
         }
 
         // ── Connection ──────────────────────────────────────
@@ -5250,6 +5280,134 @@
                     <span class="${dCls}">${delta >= 0 ? '+' : ''}$${delta.toFixed(0)}</span>
                 </div>`;
             }).join('');
+        }
+
+        // ── Yahoo Draft Results ─────────────────────────────
+        let yahooDataLoaded = false;
+        let yahooData = null;
+
+        function switchYahooView(view) {
+            document.querySelectorAll('.yahoo-subtab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.yahoo-view').forEach(v => v.classList.remove('active'));
+            document.querySelector(`.yahoo-subtab[onclick*="${view}"]`).classList.add('active');
+            document.getElementById('yahoo-' + view).classList.add('active');
+        }
+
+        async function loadYahooDraftResults() {
+            if (yahooDataLoaded) return;
+            try {
+                const resp = await fetch('/api/yahoo-draft-results');
+                yahooData = await resp.json();
+            } catch(e) {
+                try {
+                    const resp = await fetch('data/yahoo_draft_results.json');
+                    yahooData = await resp.json();
+                } catch(e2) {
+                    document.getElementById('yahooLeaderboard').innerHTML = '<p style="color:var(--red)">Failed to load Yahoo draft results.</p>';
+                    return;
+                }
+            }
+            yahooDataLoaded = true;
+            document.getElementById('yahooDraftTitle').textContent = yahooData.draft_name || 'Yahoo Mock Draft Results';
+            renderYahooLeaderboard();
+            renderYahooTeamCards();
+            renderYahooDraftBoard();
+        }
+
+        function gradeColor(grade) {
+            if (grade.startsWith('A+')) return 'var(--yellow)';
+            if (grade.startsWith('A')) return 'var(--green)';
+            if (grade.startsWith('B')) return 'var(--accent)';
+            return 'var(--text-muted)';
+        }
+
+        function priceClass(price) {
+            const avg = 21.7; // $260 / 12 avg pick
+            if (price <= avg * 0.6) return 'yahoo-price-value';
+            if (price >= avg * 1.5) return 'yahoo-price-overpay';
+            return 'yahoo-price-fair';
+        }
+
+        function renderYahooLeaderboard() {
+            const teams = Object.entries(yahooData.teams).sort((a,b) => a[1].rank - b[1].rank);
+            const html = teams.map(([name, t]) => {
+                const isUser = t.isUser;
+                return `<div class="yahoo-lb-card ${isUser ? 'yahoo-lb-user' : ''}">
+                    <div class="yahoo-lb-rank">#${t.rank}</div>
+                    <div class="yahoo-lb-name">${isUser ? '\u{1F3C6} ' : ''}${name}</div>
+                    <span class="yahoo-grade-badge" style="background:${gradeColor(t.grade)}">${t.grade}</span>
+                    <div class="yahoo-lb-stats">
+                        <span class="yahoo-lb-fpts">${t.fpts.toLocaleString()} pts</span>
+                        <span class="yahoo-lb-spent">$${t.spent}</span>
+                    </div>
+                </div>`;
+            }).join('');
+            document.getElementById('yahooLeaderboard').innerHTML = html;
+        }
+
+        function renderYahooTeamCards() {
+            const teams = Object.entries(yahooData.teams).sort((a,b) => a[1].rank - b[1].rank);
+            const html = teams.map(([name, t]) => {
+                const isUser = t.isUser;
+                const rows = t.players.map(p => {
+                    const pc = priceClass(p.price);
+                    return `<tr>
+                        <td class="yahoo-pos">${p.pos}</td>
+                        <td>${p.player}</td>
+                        <td class="${pc}">$${p.price}</td>
+                        <td>${p.fpts}</td>
+                    </tr>`;
+                }).join('');
+                return `<div class="yahoo-team-card ${isUser ? 'yahoo-team-user' : ''}">
+                    <div class="yahoo-team-header">
+                        <div>
+                            <span class="yahoo-team-name">${isUser ? '\u{1F3C6} ' : ''}${name}</span>
+                            <span class="yahoo-grade-badge" style="background:${gradeColor(t.grade)}">${t.grade}</span>
+                        </div>
+                        <div class="yahoo-team-meta">#${t.rank} &middot; ${t.fpts.toLocaleString()} pts &middot; $${t.spent}</div>
+                    </div>
+                    <table class="yahoo-roster-table">
+                        <thead><tr><th>Pos</th><th>Player</th><th>$</th><th>FPts</th></tr></thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>`;
+            }).join('');
+            document.getElementById('yahooTeamsGrid').innerHTML = html;
+        }
+
+        function renderYahooDraftBoard() {
+            const teams = Object.entries(yahooData.teams).sort((a,b) => a[1].rank - b[1].rank);
+            const maxPlayers = Math.max(...teams.map(([,t]) => t.players.length));
+
+            let headerRow = '<div class="yahoo-board-row yahoo-board-header">';
+            headerRow += '<div class="yahoo-board-cell yahoo-board-pick-num">#</div>';
+            teams.forEach(([name, t]) => {
+                const isUser = t.isUser;
+                headerRow += `<div class="yahoo-board-cell yahoo-board-team-header ${isUser ? 'yahoo-board-user-header' : ''}">${name}</div>`;
+            });
+            headerRow += '</div>';
+
+            let rows = '';
+            for (let i = 0; i < maxPlayers; i++) {
+                rows += '<div class="yahoo-board-row">';
+                rows += `<div class="yahoo-board-cell yahoo-board-pick-num">${i + 1}</div>`;
+                teams.forEach(([name, t]) => {
+                    const p = t.players[i];
+                    if (p) {
+                        const pc = priceClass(p.price);
+                        const isUser = t.isUser;
+                        rows += `<div class="yahoo-board-cell ${pc} ${isUser ? 'yahoo-board-user-cell' : ''}">
+                            <span class="yahoo-board-player">${p.player}</span>
+                            <span class="yahoo-board-price">$${p.price}</span>
+                        </div>`;
+                    } else {
+                        rows += '<div class="yahoo-board-cell yahoo-board-empty">--</div>';
+                    }
+                });
+                rows += '</div>';
+            }
+
+            document.getElementById('yahooDraftBoard').innerHTML = headerRow + rows;
         }
 
         // ── Init ────────────────────────────────────────────

@@ -457,6 +457,16 @@ def _save_live_draft(state):
         json.dump(state, f)
 
 
+@app.route("/api/yahoo-draft-results")
+def get_yahoo_draft_results():
+    """Return Yahoo mock draft results from static JSON."""
+    path = os.path.join(DATA_DIR, "yahoo_draft_results.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            return jsonify(json.load(f))
+    return jsonify({"error": "No Yahoo draft results found"}), 404
+
+
 @app.route("/api/live-draft")
 def get_live_draft():
     """Get current live draft state."""
