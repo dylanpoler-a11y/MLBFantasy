@@ -1,147 +1,1698 @@
 {
   "draft_name": "Yahoo Mock Draft - March 22, 2026",
   "teams": {
-    "Golden Glove Dylan": {"rank": 1, "grade": "A+", "fpts": 10563, "spent": 260, "players": [
-      {"player": "Cal Raleigh", "price": 32, "pos": "C", "fpts": 586},
-      {"player": "Bryce Harper", "price": 25, "pos": "1B", "fpts": 546},
-      {"player": "Gleyber Torres", "price": 7, "pos": "2B", "fpts": 493},
-      {"player": "Alex Bregman", "price": 13, "pos": "3B", "fpts": 532},
-      {"player": "Gunnar Henderson", "price": 38, "pos": "SS", "fpts": 592},
-      {"player": "James Wood", "price": 19, "pos": "LF", "fpts": 533},
-      {"player": "Alec Burleson", "price": 2, "pos": "CF", "fpts": 442},
-      {"player": "Jac Caglianone", "price": 13, "pos": "RF", "fpts": 475},
-      {"player": "Oneil Cruz", "price": 13, "pos": "UT", "fpts": 426},
-      {"player": "Nick Pivetta", "price": 13, "pos": "SP", "fpts": 515},
-      {"player": "Sonny Gray", "price": 14, "pos": "SP", "fpts": 515},
-      {"player": "Eury Perez", "price": 19, "pos": "SP", "fpts": 414},
-      {"player": "Nick Lodolo", "price": 5, "pos": "SP", "fpts": 445},
-      {"player": "Reid Detmers", "price": 1, "pos": "SP", "fpts": 319},
-      {"player": "Zac Gallen", "price": 1, "pos": "SP", "fpts": 437},
-      {"player": "Michael Busch", "price": 5, "pos": "SP", "fpts": 494},
-      {"player": "Daniel Palencia", "price": 15, "pos": "RP", "fpts": 267},
-      {"player": "Seiya Suzuki", "price": 4, "pos": "RP", "fpts": 509},
-      {"player": "CJ Abrams", "price": 15, "pos": "RES", "fpts": 510},
-      {"player": "Willy Adames", "price": 2, "pos": "RES", "fpts": 555},
-      {"player": "Jeremy Pena", "price": 2, "pos": "RES", "fpts": 495},
-      {"player": "Luis Arraez", "price": 2, "pos": "RES", "fpts": 462}
-    ], "isUser": true},
-    "SangaCaribe": {"rank": 2, "grade": "A+", "fpts": 10153, "spent": 235, "players": [
-      {"player": "Jose Ramirez", "price": 40, "pos": "3B", "fpts": 656},
-      {"player": "Julio Rodriguez", "price": 38, "pos": "CF", "fpts": 609},
-      {"player": "Kyle Schwarber", "price": 20, "pos": "LF", "fpts": 640},
-      {"player": "Hunter Greene", "price": 27, "pos": "SP", "fpts": 398},
-      {"player": "George Kirby", "price": 27, "pos": "SP", "fpts": 459},
-      {"player": "Francisco Lindor", "price": 23, "pos": "SS", "fpts": 620},
-      {"player": "Jazz Chisholm Jr.", "price": 20, "pos": "2B", "fpts": 530},
-      {"player": "Salvador Perez", "price": 9, "pos": "C", "fpts": 482},
-      {"player": "Byron Buxton", "price": 7, "pos": "CF", "fpts": 452},
-      {"player": "Kyle Stowers", "price": 6, "pos": "RF", "fpts": 380},
-      {"player": "Ceddanne Rafaela", "price": 4, "pos": "SS", "fpts": 420},
-      {"player": "Steven Kwan", "price": 2, "pos": "LF", "fpts": 483},
-      {"player": "Noelvi Marte", "price": 2, "pos": "3B", "fpts": 410},
-      {"player": "Xavier Edwards", "price": 2, "pos": "2B", "fpts": 380}
-    ]},
-    "Cocaine cowboys": {"rank": 3, "grade": "A", "fpts": 9823, "spent": 260, "players": [
-      {"player": "Austin Riley", "price": 28, "pos": "3B", "fpts": 543},
-      {"player": "Roman Anthony", "price": 27, "pos": "LF", "fpts": 578},
-      {"player": "Brice Turang", "price": 16, "pos": "2B", "fpts": 420},
-      {"player": "Bo Bichette", "price": 16, "pos": "SS", "fpts": 490},
-      {"player": "Brent Rooker", "price": 18, "pos": "RF", "fpts": 582},
-      {"player": "Wyatt Langford", "price": 20, "pos": "LF", "fpts": 494},
-      {"player": "Kyle Bradish", "price": 16, "pos": "SP", "fpts": 470},
-      {"player": "Jackson Merrill", "price": 16, "pos": "CF", "fpts": 533},
-      {"player": "Shea Langeliers", "price": 14, "pos": "C", "fpts": 453},
-      {"player": "Vinnie Pasquantino", "price": 11, "pos": "1B", "fpts": 511}
-    ]},
-    "Jose's Torches": {"rank": 4, "grade": "A", "fpts": 9598, "spent": 264, "players": [
-      {"player": "Yoshinobu Yamamoto", "price": 48, "pos": "SP", "fpts": 544},
-      {"player": "Chris Sale", "price": 35, "pos": "SP", "fpts": 559},
-      {"player": "Cristopher Sanchez", "price": 23, "pos": "SP", "fpts": 560},
-      {"player": "Mason Miller", "price": 15, "pos": "RP", "fpts": 376},
-      {"player": "Francisco Lindor", "price": 25, "pos": "SS", "fpts": 620},
-      {"player": "Trea Turner", "price": 27, "pos": "SS", "fpts": 578},
-      {"player": "Corbin Burnes", "price": 28, "pos": "SP", "fpts": 520},
-      {"player": "Randy Arozarena", "price": 14, "pos": "LF", "fpts": 530},
-      {"player": "Cody Bellinger", "price": 12, "pos": "CF", "fpts": 525}
-    ]},
-    "Chivo": {"rank": 5, "grade": "A", "fpts": 9436, "spent": 257, "players": [
-      {"player": "Ronald Acuna Jr.", "price": 46, "pos": "RF", "fpts": 616},
-      {"player": "Vladimir Guerrero Jr.", "price": 39, "pos": "1B", "fpts": 621},
-      {"player": "Garrett Crochet", "price": 58, "pos": "SP", "fpts": 604},
-      {"player": "Anthony Volpe", "price": 17, "pos": "SS", "fpts": 440},
-      {"player": "Hunter Brown", "price": 19, "pos": "SP", "fpts": 588},
-      {"player": "Salvador Perez", "price": 14, "pos": "C", "fpts": 482},
-      {"player": "Christian Yelich", "price": 7, "pos": "LF", "fpts": 502}
-    ]},
-    "Alan's Legends": {"rank": 6, "grade": "A", "fpts": 9394, "spent": 279, "players": [
-      {"player": "Fernando Tatis Jr.", "price": 37, "pos": "RF", "fpts": 571},
-      {"player": "Jackson Chourio", "price": 35, "pos": "LF", "fpts": 578},
-      {"player": "Corey Seager", "price": 32, "pos": "SS", "fpts": 535},
-      {"player": "Matt Olson", "price": 22, "pos": "1B", "fpts": 596},
-      {"player": "Junior Caminero", "price": 17, "pos": "3B", "fpts": 585},
-      {"player": "Freddie Freeman", "price": 10, "pos": "1B", "fpts": 556},
-      {"player": "Spencer Strider", "price": 18, "pos": "SP", "fpts": 452}
-    ]},
-    "Kevin's Hits": {"rank": 7, "grade": "A", "fpts": 9168, "spent": 259, "players": [
-      {"player": "Elly De La Cruz", "price": 40, "pos": "SS", "fpts": 579},
-      {"player": "Logan Webb", "price": 39, "pos": "SP", "fpts": 552},
-      {"player": "Logan Gilbert", "price": 44, "pos": "SP", "fpts": 508},
-      {"player": "Pete Crow-Armstrong", "price": 25, "pos": "CF", "fpts": 564},
-      {"player": "Chase Burns", "price": 15, "pos": "SP", "fpts": 388},
-      {"player": "Jhoan Duran", "price": 18, "pos": "RP", "fpts": 363},
-      {"player": "William Contreras", "price": 11, "pos": "C", "fpts": 522}
-    ]},
-    "Alan Bencid's Dugout Crew": {"rank": 8, "grade": "B+", "fpts": 8916, "spent": 219, "players": [
-      {"player": "Tarik Skubal", "price": 59, "pos": "SP", "fpts": 703},
-      {"player": "Max Fried", "price": 42, "pos": "SP", "fpts": 537},
-      {"player": "Freddie Freeman", "price": 29, "pos": "1B", "fpts": 556},
-      {"player": "Corbin Carroll", "price": 22, "pos": "CF", "fpts": 598},
-      {"player": "Manny Machado", "price": 16, "pos": "3B", "fpts": 576},
-      {"player": "Brandon Nimmo", "price": 15, "pos": "LF", "fpts": 518}
-    ]},
-    "Mayer L.'s Fireballs": {"rank": 9, "grade": "B+", "fpts": 8769, "spent": 215, "players": [
-      {"player": "Paul Skenes", "price": 58, "pos": "SP", "fpts": 680},
-      {"player": "Yordan Alvarez", "price": 28, "pos": "LF", "fpts": 503},
-      {"player": "Ketel Marte", "price": 31, "pos": "2B", "fpts": 596},
-      {"player": "Jose Altuve", "price": 20, "pos": "2B", "fpts": 520},
-      {"player": "Randy Arozarena", "price": 14, "pos": "LF", "fpts": 530}
-    ]},
-    "Helvettia": {"rank": 10, "grade": "B+", "fpts": 8694, "spent": 257, "players": [
-      {"player": "Juan Soto", "price": 60, "pos": "LF", "fpts": 675},
-      {"player": "Kyle Tucker", "price": 32, "pos": "RF", "fpts": 586},
-      {"player": "Pete Alonso", "price": 28, "pos": "1B", "fpts": 607},
-      {"player": "Jesus Luzardo", "price": 26, "pos": "SP", "fpts": 420},
-      {"player": "Cole Ragans", "price": 25, "pos": "SP", "fpts": 559},
-      {"player": "Riley Greene", "price": 16, "pos": "CF", "fpts": 539}
-    ]},
-    "daniel cohen's Flyballs": {"rank": 11, "grade": "C+", "fpts": 6903, "spent": 224, "players": [
-      {"player": "Aaron Judge", "price": 67, "pos": "LF", "fpts": 744},
-      {"player": "Bobby Witt Jr.", "price": 50, "pos": "SS", "fpts": 679},
-      {"player": "Max Fried", "price": 32, "pos": "SP", "fpts": 537},
-      {"player": "Jordan Westburg", "price": 25, "pos": "3B", "fpts": 520},
-      {"player": "Emmanuel Clase", "price": 19, "pos": "RP", "fpts": 340}
-    ]},
-    "Perfect Pitch AbrahamL": {"rank": 12, "grade": "C+", "fpts": 6622, "spent": 143, "players": [
-      {"player": "Shohei Ohtani", "price": 93, "pos": "Util", "fpts": 760},
-      {"player": "Nick Kurtz", "price": 31, "pos": "1B", "fpts": 597}
-    ]}
+    "Perfect Pitch Abr..": {
+      "grade": "A",
+      "fpts": 9385,
+      "spent": 260,
+      "players": [
+        {
+          "player": "Shohei Ohtani",
+          "price": 93,
+          "pos": "Util",
+          "fpts": 760
+        },
+        {
+          "player": "Nick Kurtz",
+          "price": 31,
+          "pos": "1B",
+          "fpts": 597
+        },
+        {
+          "player": "Garrett Crochet",
+          "price": 58,
+          "pos": "P",
+          "fpts": 604
+        },
+        {
+          "player": "Trea Turner",
+          "price": 24,
+          "pos": "SS",
+          "fpts": 578
+        },
+        {
+          "player": "Manny Machado",
+          "price": 21,
+          "pos": "3B",
+          "fpts": 576
+        },
+        {
+          "player": "Jo Adell",
+          "price": 1,
+          "pos": "CF,RF",
+          "fpts": 453
+        },
+        {
+          "player": "Ivan Herrera",
+          "price": 1,
+          "pos": "C",
+          "fpts": 406
+        },
+        {
+          "player": "Sandy Alcantara",
+          "price": 5,
+          "pos": "P",
+          "fpts": 392
+        },
+        {
+          "player": "Jeff Hoffman",
+          "price": 11,
+          "pos": "P",
+          "fpts": 309
+        },
+        {
+          "player": "Gavin Williams",
+          "price": 3,
+          "pos": "P",
+          "fpts": 434
+        },
+        {
+          "player": "Brendan Donovan",
+          "price": 1,
+          "pos": "2B,SS,LF",
+          "fpts": 434
+        },
+        {
+          "player": "Brandon Nimmo",
+          "price": 1,
+          "pos": "LF,CF",
+          "fpts": 518
+        },
+        {
+          "player": "Bryan Abreu",
+          "price": 1,
+          "pos": "P",
+          "fpts": 254
+        },
+        {
+          "player": "Robert Garcia",
+          "price": 1,
+          "pos": "P",
+          "fpts": 502
+        },
+        {
+          "player": "Paul Sewald",
+          "price": 1,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "Mitch Keller",
+          "price": 1,
+          "pos": "P",
+          "fpts": 415
+        },
+        {
+          "player": "Grant Holmes",
+          "price": 1,
+          "pos": "P",
+          "fpts": 360
+        },
+        {
+          "player": "Will Warren",
+          "price": 1,
+          "pos": "P",
+          "fpts": 291
+        },
+        {
+          "player": "Jack Leiter",
+          "price": 1,
+          "pos": "P",
+          "fpts": 359
+        },
+        {
+          "player": "Chris Bassitt",
+          "price": 1,
+          "pos": "P",
+          "fpts": 411
+        },
+        {
+          "player": "Jorge Polanco",
+          "price": 1,
+          "pos": "2B,3B",
+          "fpts": 395
+        },
+        {
+          "player": "Dylan Crews",
+          "price": 1,
+          "pos": "CF,RF",
+          "fpts": 338
+        }
+      ],
+      "isUser": false,
+      "rank": 8
+    },
+    "Cocodi": {
+      "grade": "A",
+      "fpts": 9670,
+      "spent": 263,
+      "players": [
+        {
+          "player": "Aaron Judge",
+          "price": 67,
+          "pos": "LF,CF,RF",
+          "fpts": 744
+        },
+        {
+          "player": "Bobby Witt Jr.",
+          "price": 50,
+          "pos": "SS",
+          "fpts": 679
+        },
+        {
+          "player": "Austin Riley",
+          "price": 28,
+          "pos": "3B",
+          "fpts": 526
+        },
+        {
+          "player": "Roman Anthony",
+          "price": 27,
+          "pos": "LF",
+          "fpts": 578
+        },
+        {
+          "player": "Jordan Westburg",
+          "price": 25,
+          "pos": "3B,SS",
+          "fpts": 340
+        },
+        {
+          "player": "Max Fried",
+          "price": 32,
+          "pos": "P",
+          "fpts": 537
+        },
+        {
+          "player": "Emmanuel Clase",
+          "price": 19,
+          "pos": "P",
+          "fpts": 340
+        },
+        {
+          "player": "Bo Bichette",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 485
+        },
+        {
+          "player": "Jake Cronenworth",
+          "price": 1,
+          "pos": "1B,2B",
+          "fpts": 422
+        },
+        {
+          "player": "Ramon Laureano",
+          "price": 1,
+          "pos": "CF,RF",
+          "fpts": 414
+        },
+        {
+          "player": "Vinnie Pasquantino",
+          "price": 1,
+          "pos": "1B",
+          "fpts": 511
+        },
+        {
+          "player": "Joe Musgrove",
+          "price": 1,
+          "pos": "P",
+          "fpts": 396
+        },
+        {
+          "player": "Samuel Basallo",
+          "price": 1,
+          "pos": "C",
+          "fpts": 356
+        },
+        {
+          "player": "Ian Seymour",
+          "price": 1,
+          "pos": "P",
+          "fpts": 324
+        },
+        {
+          "player": "Chandler Simpson",
+          "price": 1,
+          "pos": "LF,CF",
+          "fpts": 341
+        },
+        {
+          "player": "Jose Caballero",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 336
+        },
+        {
+          "player": "Otto Lopez",
+          "price": 1,
+          "pos": "2B,SS,LF,RF",
+          "fpts": 424
+        },
+        {
+          "player": "Cody Ponce",
+          "price": 1,
+          "pos": "P",
+          "fpts": 342
+        },
+        {
+          "player": "Luis Garcia Jr.",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 416
+        },
+        {
+          "player": "David Peterson",
+          "price": 1,
+          "pos": "P",
+          "fpts": 408
+        },
+        {
+          "player": "Masyn Winn",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 417
+        },
+        {
+          "player": "Reynaldo Lopez",
+          "price": 1,
+          "pos": "P",
+          "fpts": 333
+        }
+      ],
+      "isUser": false,
+      "rank": 5
+    },
+    "Helvettia": {
+      "grade": "B+",
+      "fpts": 8694,
+      "spent": 257,
+      "players": [
+        {
+          "player": "Juan Soto",
+          "price": 60,
+          "pos": "LF,RF",
+          "fpts": 675
+        },
+        {
+          "player": "Kyle Tucker",
+          "price": 32,
+          "pos": "RF",
+          "fpts": 586
+        },
+        {
+          "player": "Pete Alonso",
+          "price": 28,
+          "pos": "1B",
+          "fpts": 607
+        },
+        {
+          "player": "Jesus Luzardo",
+          "price": 26,
+          "pos": "P",
+          "fpts": 490
+        },
+        {
+          "player": "Cole Ragans",
+          "price": 25,
+          "pos": "P",
+          "fpts": 559
+        },
+        {
+          "player": "Geraldo Perdomo",
+          "price": 17,
+          "pos": "SS",
+          "fpts": 540
+        },
+        {
+          "player": "Eugenio Suarez",
+          "price": 19,
+          "pos": "3B",
+          "fpts": 558
+        },
+        {
+          "player": "Riley Greene",
+          "price": 16,
+          "pos": "CF",
+          "fpts": 539
+        },
+        {
+          "player": "Emilio Pagan",
+          "price": 7,
+          "pos": "P",
+          "fpts": 283
+        },
+        {
+          "player": "Robbie Ray",
+          "price": 6,
+          "pos": "P",
+          "fpts": 415
+        },
+        {
+          "player": "Ranger Suarez",
+          "price": 5,
+          "pos": "P",
+          "fpts": 449
+        },
+        {
+          "player": "Andy Pages",
+          "price": 4,
+          "pos": "CF,RF",
+          "fpts": 474
+        },
+        {
+          "player": "Isaac Paredes",
+          "price": 2,
+          "pos": "1B,3B",
+          "fpts": 375
+        },
+        {
+          "player": "Yusei Kikuchi",
+          "price": 2,
+          "pos": "P",
+          "fpts": 440
+        },
+        {
+          "player": "Marcus Semien",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 478
+        },
+        {
+          "player": "Agustin Ramirez",
+          "price": 1,
+          "pos": "C",
+          "fpts": 394
+        },
+        {
+          "player": "Jack Flaherty",
+          "price": 1,
+          "pos": "P",
+          "fpts": 424
+        },
+        {
+          "player": "Riley OBrien",
+          "price": 1,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "Kevin Ginkel",
+          "price": 1,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "Kirby Yates",
+          "price": 1,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "Clayton Beeter",
+          "price": 1,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "David Peterson",
+          "price": 1,
+          "pos": "P",
+          "fpts": 408
+        }
+      ],
+      "isUser": false,
+      "rank": 12
+    },
+    "Alan Bencid's Dug..": {
+      "grade": "A",
+      "fpts": 9830,
+      "spent": 246,
+      "players": [
+        {
+          "player": "Tarik Skubal",
+          "price": 59,
+          "pos": "P",
+          "fpts": 703
+        },
+        {
+          "player": "Max Fried",
+          "price": 42,
+          "pos": "P",
+          "fpts": 537
+        },
+        {
+          "player": "Freddie Freeman",
+          "price": 29,
+          "pos": "1B",
+          "fpts": 566
+        },
+        {
+          "player": "Corbin Carroll",
+          "price": 22,
+          "pos": "CF",
+          "fpts": 598
+        },
+        {
+          "player": "Manny Machado",
+          "price": 16,
+          "pos": "3B",
+          "fpts": 576
+        },
+        {
+          "player": "Brandon Nimmo",
+          "price": 15,
+          "pos": "LF,CF",
+          "fpts": 518
+        },
+        {
+          "player": "Dansby Swanson",
+          "price": 12,
+          "pos": "SS",
+          "fpts": 523
+        },
+        {
+          "player": "Ryan Walker",
+          "price": 7,
+          "pos": "P",
+          "fpts": 246
+        },
+        {
+          "player": "Ozzie Albies",
+          "price": 23,
+          "pos": "2B",
+          "fpts": 482
+        },
+        {
+          "player": "Abner Uribe",
+          "price": 2,
+          "pos": "P",
+          "fpts": 225
+        },
+        {
+          "player": "Matthew Boyd",
+          "price": 2,
+          "pos": "P",
+          "fpts": 426
+        },
+        {
+          "player": "Christian Walker",
+          "price": 1,
+          "pos": "1B",
+          "fpts": 504
+        },
+        {
+          "player": "Kerry Carpenter",
+          "price": 1,
+          "pos": "LF",
+          "fpts": 414
+        },
+        {
+          "player": "Noah Cameron",
+          "price": 1,
+          "pos": "P",
+          "fpts": 329
+        },
+        {
+          "player": "Jose Caballero",
+          "price": 2,
+          "pos": "2B,SS",
+          "fpts": 336
+        },
+        {
+          "player": "Reid Detmers",
+          "price": 1,
+          "pos": "P",
+          "fpts": 319
+        },
+        {
+          "player": "Dylan Crews",
+          "price": 1,
+          "pos": "CF,RF",
+          "fpts": 338
+        },
+        {
+          "player": "Alec Burleson",
+          "price": 2,
+          "pos": "1B,LF,RF",
+          "fpts": 442
+        },
+        {
+          "player": "Luis Garcia Jr.",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 416
+        },
+        {
+          "player": "Zac Gallen",
+          "price": 1,
+          "pos": "P",
+          "fpts": 437
+        },
+        {
+          "player": "Luis Arraez",
+          "price": 2,
+          "pos": "1B,2B",
+          "fpts": 462
+        },
+        {
+          "player": "Ceddanne Rafaela",
+          "price": 4,
+          "pos": "2B,CF",
+          "fpts": 432
+        }
+      ],
+      "isUser": false,
+      "rank": 3
+    },
+    "Mayer L.'s Fireballs": {
+      "grade": "A",
+      "fpts": 9118,
+      "spent": 216,
+      "players": [
+        {
+          "player": "Yordan Alvarez",
+          "price": 28,
+          "pos": "LF",
+          "fpts": 503
+        },
+        {
+          "player": "Paul Skenes",
+          "price": 58,
+          "pos": "P",
+          "fpts": 680
+        },
+        {
+          "player": "Ketel Marte",
+          "price": 31,
+          "pos": "2B",
+          "fpts": 596
+        },
+        {
+          "player": "Jose Altuve",
+          "price": 20,
+          "pos": "2B",
+          "fpts": 504
+        },
+        {
+          "player": "Nolan McLean",
+          "price": 16,
+          "pos": "P",
+          "fpts": 449
+        },
+        {
+          "player": "Bryan Reynolds",
+          "price": 11,
+          "pos": "LF,CF,RF",
+          "fpts": 510
+        },
+        {
+          "player": "Randy Arozarena",
+          "price": 14,
+          "pos": "LF,RF",
+          "fpts": 530
+        },
+        {
+          "player": "Michael King",
+          "price": 5,
+          "pos": "P",
+          "fpts": 481
+        },
+        {
+          "player": "Jakob Marsee",
+          "price": 2,
+          "pos": "LF,CF,RF",
+          "fpts": 450
+        },
+        {
+          "player": "Dennis Santana",
+          "price": 1,
+          "pos": "P",
+          "fpts": 255
+        },
+        {
+          "player": "Shota Imanaga",
+          "price": 1,
+          "pos": "P",
+          "fpts": 423
+        },
+        {
+          "player": "Kris Bubic",
+          "price": 3,
+          "pos": "P",
+          "fpts": 398
+        },
+        {
+          "player": "Edward Cabrera",
+          "price": 2,
+          "pos": "P",
+          "fpts": 352
+        },
+        {
+          "player": "Ryne Nelson",
+          "price": 1,
+          "pos": "P",
+          "fpts": 381
+        },
+        {
+          "player": "Shane Bieber",
+          "price": 1,
+          "pos": "P",
+          "fpts": 317
+        },
+        {
+          "player": "Kevin McGonigle",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 0
+        },
+        {
+          "player": "Masyn Winn",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 417
+        },
+        {
+          "player": "Ian Seymour",
+          "price": 1,
+          "pos": "P",
+          "fpts": 324
+        },
+        {
+          "player": "Brady Singer",
+          "price": 1,
+          "pos": "P",
+          "fpts": 409
+        },
+        {
+          "player": "Cody Ponce",
+          "price": 1,
+          "pos": "P",
+          "fpts": 342
+        },
+        {
+          "player": "Nolan McLean",
+          "price": 16,
+          "pos": "P",
+          "fpts": 449
+        },
+        {
+          "player": "Braxton Ashcraft",
+          "price": 1,
+          "pos": "P",
+          "fpts": 349
+        }
+      ],
+      "isUser": false,
+      "rank": 11
+    },
+    "Kevin's Hits": {
+      "grade": "A",
+      "fpts": 9168,
+      "spent": 259,
+      "players": [
+        {
+          "player": "Elly De La Cruz",
+          "price": 40,
+          "pos": "SS",
+          "fpts": 579
+        },
+        {
+          "player": "Logan Webb",
+          "price": 39,
+          "pos": "P",
+          "fpts": 552
+        },
+        {
+          "player": "Logan Gilbert",
+          "price": 44,
+          "pos": "P",
+          "fpts": 508
+        },
+        {
+          "player": "Pete Crow-Armstrong",
+          "price": 25,
+          "pos": "CF",
+          "fpts": 564
+        },
+        {
+          "player": "Jhoan Duran",
+          "price": 18,
+          "pos": "P",
+          "fpts": 363
+        },
+        {
+          "player": "William Contreras",
+          "price": 11,
+          "pos": "C",
+          "fpts": 522
+        },
+        {
+          "player": "Chase Burns",
+          "price": 15,
+          "pos": "P",
+          "fpts": 388
+        },
+        {
+          "player": "Munetaka Murakami",
+          "price": 9,
+          "pos": "1B",
+          "fpts": 440
+        },
+        {
+          "player": "Heliot Ramos",
+          "price": 1,
+          "pos": "LF",
+          "fpts": 428
+        },
+        {
+          "player": "Mike Trout",
+          "price": 1,
+          "pos": "CF,RF",
+          "fpts": 408
+        },
+        {
+          "player": "Nolan Arenado",
+          "price": 1,
+          "pos": "3B",
+          "fpts": 434
+        },
+        {
+          "player": "Ian Happ",
+          "price": 1,
+          "pos": "LF",
+          "fpts": 496
+        },
+        {
+          "player": "Daylen Lile",
+          "price": 3,
+          "pos": "LF,RF",
+          "fpts": 438
+        },
+        {
+          "player": "Matt McLain",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 428
+        },
+        {
+          "player": "Emmet Sheehan",
+          "price": 7,
+          "pos": "P",
+          "fpts": 372
+        },
+        {
+          "player": "JJ Wetherholt",
+          "price": 1,
+          "pos": "2B",
+          "fpts": 260
+        },
+        {
+          "player": "Ryan Walker",
+          "price": 7,
+          "pos": "P",
+          "fpts": 246
+        },
+        {
+          "player": "Konnor Griffin",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 284
+        },
+        {
+          "player": "Nolan McLean",
+          "price": 16,
+          "pos": "P",
+          "fpts": 449
+        },
+        {
+          "player": "Blake Snell",
+          "price": 8,
+          "pos": "P",
+          "fpts": 425
+        },
+        {
+          "player": "Gerrit Cole",
+          "price": 7,
+          "pos": "P",
+          "fpts": 306
+        },
+        {
+          "player": "Pete Fairbanks",
+          "price": 3,
+          "pos": "P",
+          "fpts": 277
+        }
+      ],
+      "isUser": false,
+      "rank": 10
+    },
+    "Chivo": {
+      "grade": "A",
+      "fpts": 9216,
+      "spent": 257,
+      "players": [
+        {
+          "player": "Ronald Acuna Jr.",
+          "price": 46,
+          "pos": "RF",
+          "fpts": 616
+        },
+        {
+          "player": "Vladimir Guerrero Jr.",
+          "price": 39,
+          "pos": "1B",
+          "fpts": 621
+        },
+        {
+          "player": "Garrett Crochet",
+          "price": 58,
+          "pos": "P",
+          "fpts": 604
+        },
+        {
+          "player": "Anthony Volpe",
+          "price": 17,
+          "pos": "SS",
+          "fpts": 339
+        },
+        {
+          "player": "Hunter Brown",
+          "price": 19,
+          "pos": "P",
+          "fpts": 588
+        },
+        {
+          "player": "Salvador Perez",
+          "price": 14,
+          "pos": "C",
+          "fpts": 480
+        },
+        {
+          "player": "Christian Yelich",
+          "price": 7,
+          "pos": "LF",
+          "fpts": 550
+        },
+        {
+          "player": "Hunter Goodman",
+          "price": 11,
+          "pos": "C,1B",
+          "fpts": 468
+        },
+        {
+          "player": "Adolis Garcia",
+          "price": 1,
+          "pos": "RF",
+          "fpts": 466
+        },
+        {
+          "player": "Colton Cowser",
+          "price": 5,
+          "pos": "LF,RF",
+          "fpts": 381
+        },
+        {
+          "player": "Andrew Painter",
+          "price": 1,
+          "pos": "P",
+          "fpts": 229
+        },
+        {
+          "player": "Justin Crawford",
+          "price": 1,
+          "pos": "LF,CF",
+          "fpts": 320
+        },
+        {
+          "player": "Carlos Rodon",
+          "price": 3,
+          "pos": "P",
+          "fpts": 376
+        },
+        {
+          "player": "Trent Grisham",
+          "price": 5,
+          "pos": "CF,RF",
+          "fpts": 401
+        },
+        {
+          "player": "Steven Kwan",
+          "price": 2,
+          "pos": "LF",
+          "fpts": 483
+        },
+        {
+          "player": "Francisco Alvarez",
+          "price": 7,
+          "pos": "C",
+          "fpts": 335
+        },
+        {
+          "player": "Drew Rasmussen",
+          "price": 1,
+          "pos": "P",
+          "fpts": 457
+        },
+        {
+          "player": "Ryan McMahon",
+          "price": 3,
+          "pos": "2B,3B",
+          "fpts": 350
+        },
+        {
+          "player": "Tatsuya Imai",
+          "price": 8,
+          "pos": "P",
+          "fpts": 449
+        },
+        {
+          "player": "Gerrit Cole",
+          "price": 7,
+          "pos": "P",
+          "fpts": 306
+        },
+        {
+          "player": "Sam Hilliard",
+          "price": 1,
+          "pos": "LF,RF",
+          "fpts": 0
+        },
+        {
+          "player": "Sal Stewart",
+          "price": 1,
+          "pos": "3B",
+          "fpts": 398
+        }
+      ],
+      "isUser": false,
+      "rank": 9
+    },
+    "SangaCaribe": {
+      "grade": "A+",
+      "fpts": 10497,
+      "spent": 250,
+      "players": [
+        {
+          "player": "Jose Ramirez",
+          "price": 40,
+          "pos": "3B",
+          "fpts": 656
+        },
+        {
+          "player": "Julio Rodriguez",
+          "price": 38,
+          "pos": "CF",
+          "fpts": 609
+        },
+        {
+          "player": "Kyle Schwarber",
+          "price": 20,
+          "pos": "LF",
+          "fpts": 640
+        },
+        {
+          "player": "Hunter Greene",
+          "price": 27,
+          "pos": "P",
+          "fpts": 216
+        },
+        {
+          "player": "George Kirby",
+          "price": 27,
+          "pos": "P",
+          "fpts": 459
+        },
+        {
+          "player": "Francisco Lindor",
+          "price": 23,
+          "pos": "SS",
+          "fpts": 620
+        },
+        {
+          "player": "Jazz Chisholm Jr.",
+          "price": 20,
+          "pos": "2B,3B,SS",
+          "fpts": 530
+        },
+        {
+          "player": "Salvador Perez",
+          "price": 9,
+          "pos": "C",
+          "fpts": 480
+        },
+        {
+          "player": "Byron Buxton",
+          "price": 7,
+          "pos": "CF",
+          "fpts": 488
+        },
+        {
+          "player": "Kyle Stowers",
+          "price": 6,
+          "pos": "LF,RF",
+          "fpts": 463
+        },
+        {
+          "player": "Ceddanne Rafaela",
+          "price": 4,
+          "pos": "2B,CF",
+          "fpts": 432
+        },
+        {
+          "player": "Steven Kwan",
+          "price": 2,
+          "pos": "LF",
+          "fpts": 483
+        },
+        {
+          "player": "Noelvi Marte",
+          "price": 2,
+          "pos": "3B",
+          "fpts": 416
+        },
+        {
+          "player": "Xavier Edwards",
+          "price": 2,
+          "pos": "2B,SS",
+          "fpts": 432
+        },
+        {
+          "player": "Merrill Kelly",
+          "price": 1,
+          "pos": "P",
+          "fpts": 444
+        },
+        {
+          "player": "Edward Cabrera",
+          "price": 1,
+          "pos": "P",
+          "fpts": 352
+        },
+        {
+          "player": "Ryne Nelson",
+          "price": 1,
+          "pos": "P",
+          "fpts": 381
+        },
+        {
+          "player": "Shohei Ohtani",
+          "price": 1,
+          "pos": "P",
+          "fpts": 760
+        },
+        {
+          "player": "Kerry Carpenter",
+          "price": 1,
+          "pos": "LF",
+          "fpts": 414
+        },
+        {
+          "player": "Otto Lopez",
+          "price": 1,
+          "pos": "2B,SS,LF,RF",
+          "fpts": 424
+        },
+        {
+          "player": "Jose Caballero",
+          "price": 1,
+          "pos": "2B,SS",
+          "fpts": 336
+        },
+        {
+          "player": "Daulton Varsho",
+          "price": 16,
+          "pos": "C,LF,CF",
+          "fpts": 460
+        }
+      ],
+      "isUser": false,
+      "rank": 2
+    },
+    "Jose's Torches": {
+      "grade": "A",
+      "fpts": 9713,
+      "spent": 264,
+      "players": [
+        {
+          "player": "Yoshinobu Yamamoto",
+          "price": 48,
+          "pos": "P",
+          "fpts": 544
+        },
+        {
+          "player": "Chris Sale",
+          "price": 35,
+          "pos": "P",
+          "fpts": 559
+        },
+        {
+          "player": "Cristopher Sanchez",
+          "price": 23,
+          "pos": "P",
+          "fpts": 560
+        },
+        {
+          "player": "Francisco Lindor",
+          "price": 25,
+          "pos": "SS",
+          "fpts": 620
+        },
+        {
+          "player": "Corbin Burnes",
+          "price": 28,
+          "pos": "P",
+          "fpts": 0
+        },
+        {
+          "player": "Trea Turner",
+          "price": 27,
+          "pos": "SS",
+          "fpts": 578
+        },
+        {
+          "player": "Mason Miller",
+          "price": 15,
+          "pos": "P",
+          "fpts": 376
+        },
+        {
+          "player": "Randy Arozarena",
+          "price": 14,
+          "pos": "LF,RF",
+          "fpts": 530
+        },
+        {
+          "player": "Cody Bellinger",
+          "price": 12,
+          "pos": "CF",
+          "fpts": 525
+        },
+        {
+          "player": "George Springer",
+          "price": 9,
+          "pos": "CF,RF",
+          "fpts": 512
+        },
+        {
+          "player": "Shane McClanahan",
+          "price": 7,
+          "pos": "P",
+          "fpts": 380
+        },
+        {
+          "player": "Aaron Nola",
+          "price": 5,
+          "pos": "P",
+          "fpts": 417
+        },
+        {
+          "player": "Teoscar Hernandez",
+          "price": 6,
+          "pos": "LF,RF",
+          "fpts": 504
+        },
+        {
+          "player": "Brenton Doyle",
+          "price": 2,
+          "pos": "CF",
+          "fpts": 440
+        },
+        {
+          "player": "Roki Sasaki",
+          "price": 1,
+          "pos": "P",
+          "fpts": 318
+        },
+        {
+          "player": "Robert Suarez",
+          "price": 1,
+          "pos": "P",
+          "fpts": 558
+        },
+        {
+          "player": "Jonathan Aranda",
+          "price": 1,
+          "pos": "1B,2B",
+          "fpts": 424
+        },
+        {
+          "player": "Ezequiel Tovar",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 478
+        },
+        {
+          "player": "Jorge Polanco",
+          "price": 1,
+          "pos": "2B,3B",
+          "fpts": 395
+        },
+        {
+          "player": "Reynaldo Lopez",
+          "price": 1,
+          "pos": "P",
+          "fpts": 333
+        },
+        {
+          "player": "Alejandro Kirk",
+          "price": 1,
+          "pos": "C",
+          "fpts": 344
+        },
+        {
+          "player": "Justin Crawford",
+          "price": 1,
+          "pos": "LF,CF",
+          "fpts": 320
+        }
+      ],
+      "isUser": false,
+      "rank": 4
+    },
+    "Alan's Legends": {
+      "grade": "A",
+      "fpts": 9394,
+      "spent": 279,
+      "players": [
+        {
+          "player": "Fernando Tatis Jr.",
+          "price": 37,
+          "pos": "RF",
+          "fpts": 571
+        },
+        {
+          "player": "Jackson Chourio",
+          "price": 35,
+          "pos": "LF",
+          "fpts": 578
+        },
+        {
+          "player": "Corey Seager",
+          "price": 32,
+          "pos": "SS",
+          "fpts": 474
+        },
+        {
+          "player": "Marcell Ozuna",
+          "price": 23,
+          "pos": "LF,RF",
+          "fpts": 400
+        },
+        {
+          "player": "Matt Olson",
+          "price": 22,
+          "pos": "1B",
+          "fpts": 596
+        },
+        {
+          "player": "Bryce Miller",
+          "price": 22,
+          "pos": "P",
+          "fpts": 289
+        },
+        {
+          "player": "Spencer Strider",
+          "price": 18,
+          "pos": "P",
+          "fpts": 452
+        },
+        {
+          "player": "Junior Caminero",
+          "price": 17,
+          "pos": "3B",
+          "fpts": 585
+        },
+        {
+          "player": "Adley Rutschman",
+          "price": 12,
+          "pos": "C",
+          "fpts": 429
+        },
+        {
+          "player": "Freddie Freeman",
+          "price": 10,
+          "pos": "1B",
+          "fpts": 566
+        },
+        {
+          "player": "Luis Castillo",
+          "price": 11,
+          "pos": "P",
+          "fpts": 450
+        },
+        {
+          "player": "Ben Rice",
+          "price": 11,
+          "pos": "C,1B",
+          "fpts": 489
+        },
+        {
+          "player": "Kenley Jansen",
+          "price": 7,
+          "pos": "P",
+          "fpts": 304
+        },
+        {
+          "player": "Tanner Bibee",
+          "price": 4,
+          "pos": "P",
+          "fpts": 477
+        },
+        {
+          "player": "Kazuma Okamoto",
+          "price": 4,
+          "pos": "1B,3B",
+          "fpts": 406
+        },
+        {
+          "player": "Josh Hader",
+          "price": 4,
+          "pos": "P",
+          "fpts": 292
+        },
+        {
+          "player": "Jordan Walker",
+          "price": 3,
+          "pos": "LF,RF",
+          "fpts": 335
+        },
+        {
+          "player": "Seranthy Dominguez",
+          "price": 3,
+          "pos": "P",
+          "fpts": 400
+        },
+        {
+          "player": "Nolan Jones",
+          "price": 1,
+          "pos": "LF,RF",
+          "fpts": 225
+        },
+        {
+          "player": "Braxton Ashcraft",
+          "price": 1,
+          "pos": "P",
+          "fpts": 349
+        },
+        {
+          "player": "Joey Cantillo",
+          "price": 1,
+          "pos": "P",
+          "fpts": 312
+        },
+        {
+          "player": "Masyn Winn",
+          "price": 1,
+          "pos": "SS",
+          "fpts": 417
+        }
+      ],
+      "isUser": false,
+      "rank": 7
+    },
+    "Golden Glove Dylan": {
+      "grade": "A+",
+      "fpts": 10563,
+      "spent": 260,
+      "players": [
+        {
+          "player": "Cal Raleigh",
+          "price": 32,
+          "pos": "C",
+          "fpts": 586
+        },
+        {
+          "player": "Gunnar Henderson",
+          "price": 38,
+          "pos": "SS",
+          "fpts": 592
+        },
+        {
+          "player": "Bryce Harper",
+          "price": 25,
+          "pos": "1B",
+          "fpts": 546
+        },
+        {
+          "player": "James Wood",
+          "price": 19,
+          "pos": "LF",
+          "fpts": 533
+        },
+        {
+          "player": "Nick Pivetta",
+          "price": 13,
+          "pos": "P",
+          "fpts": 515
+        },
+        {
+          "player": "Alex Bregman",
+          "price": 13,
+          "pos": "3B",
+          "fpts": 532
+        },
+        {
+          "player": "CJ Abrams",
+          "price": 15,
+          "pos": "SS",
+          "fpts": 510
+        },
+        {
+          "player": "Jac Caglianone",
+          "price": 13,
+          "pos": "1B,RF",
+          "fpts": 475
+        },
+        {
+          "player": "Sonny Gray",
+          "price": 14,
+          "pos": "P",
+          "fpts": 515
+        },
+        {
+          "player": "Oneil Cruz",
+          "price": 13,
+          "pos": "CF",
+          "fpts": 426
+        },
+        {
+          "player": "Gleyber Torres",
+          "price": 7,
+          "pos": "2B",
+          "fpts": 493
+        },
+        {
+          "player": "Eury Perez",
+          "price": 19,
+          "pos": "P",
+          "fpts": 414
+        },
+        {
+          "player": "Willy Adames",
+          "price": 2,
+          "pos": "SS",
+          "fpts": 555
+        },
+        {
+          "player": "Jeremy Pena",
+          "price": 2,
+          "pos": "SS",
+          "fpts": 495
+        },
+        {
+          "player": "Luis Arraez",
+          "price": 2,
+          "pos": "1B,2B",
+          "fpts": 462
+        },
+        {
+          "player": "Nick Lodolo",
+          "price": 5,
+          "pos": "P",
+          "fpts": 445
+        },
+        {
+          "player": "Michael Busch",
+          "price": 5,
+          "pos": "1B",
+          "fpts": 494
+        },
+        {
+          "player": "Seiya Suzuki",
+          "price": 4,
+          "pos": "LF,RF",
+          "fpts": 509
+        },
+        {
+          "player": "Alec Burleson",
+          "price": 2,
+          "pos": "1B,LF,RF",
+          "fpts": 442
+        },
+        {
+          "player": "Reid Detmers",
+          "price": 1,
+          "pos": "P",
+          "fpts": 319
+        },
+        {
+          "player": "Daniel Palencia",
+          "price": 15,
+          "pos": "P",
+          "fpts": 267
+        },
+        {
+          "player": "Zac Gallen",
+          "price": 1,
+          "pos": "P",
+          "fpts": 437
+        }
+      ],
+      "isUser": true,
+      "rank": 1
+    },
+    "Cocaine cowboys": {
+      "grade": "A",
+      "fpts": 9601,
+      "spent": 209,
+      "players": [
+        {
+          "player": "Brent Rooker",
+          "price": 18,
+          "pos": "LF,RF",
+          "fpts": 582
+        },
+        {
+          "player": "Wyatt Langford",
+          "price": 20,
+          "pos": "LF,RF",
+          "fpts": 494
+        },
+        {
+          "player": "Kyle Bradish",
+          "price": 16,
+          "pos": "P",
+          "fpts": 438
+        },
+        {
+          "player": "Jackson Merrill",
+          "price": 16,
+          "pos": "CF",
+          "fpts": 533
+        },
+        {
+          "player": "Brice Turang",
+          "price": 16,
+          "pos": "2B",
+          "fpts": 509
+        },
+        {
+          "player": "Shea Langeliers",
+          "price": 14,
+          "pos": "C",
+          "fpts": 453
+        },
+        {
+          "player": "Vinnie Pasquantino",
+          "price": 11,
+          "pos": "1B",
+          "fpts": 511
+        },
+        {
+          "player": "Ryan Pepiot",
+          "price": 10,
+          "pos": "P",
+          "fpts": 467
+        },
+        {
+          "player": "Cade Horton",
+          "price": 8,
+          "pos": "P",
+          "fpts": 367
+        },
+        {
+          "player": "Pete Fairbanks",
+          "price": 3,
+          "pos": "P",
+          "fpts": 277
+        },
+        {
+          "player": "Aroldis Chapman",
+          "price": 14,
+          "pos": "P",
+          "fpts": 308
+        },
+        {
+          "player": "Griffin Jax",
+          "price": 7,
+          "pos": "P",
+          "fpts": 234
+        },
+        {
+          "player": "Shane Baz",
+          "price": 6,
+          "pos": "P",
+          "fpts": 397
+        },
+        {
+          "player": "Tyler Soderstrom",
+          "price": 5,
+          "pos": "C,1B",
+          "fpts": 489
+        },
+        {
+          "player": "Luis Robert Jr.",
+          "price": 5,
+          "pos": "CF",
+          "fpts": 435
+        },
+        {
+          "player": "Emmet Sheehan",
+          "price": 7,
+          "pos": "P",
+          "fpts": 372
+        },
+        {
+          "player": "Bo Bichette",
+          "price": 16,
+          "pos": "SS",
+          "fpts": 485
+        },
+        {
+          "player": "Trevor Rogers",
+          "price": 4,
+          "pos": "P",
+          "fpts": 420
+        },
+        {
+          "player": "Jose Soriano",
+          "price": 6,
+          "pos": "P",
+          "fpts": 426
+        },
+        {
+          "player": "Grant Taylor",
+          "price": 3,
+          "pos": "P",
+          "fpts": 519
+        },
+        {
+          "player": "Adolis Garcia",
+          "price": 2,
+          "pos": "RF",
+          "fpts": 466
+        },
+        {
+          "player": "Noelvi Marte",
+          "price": 2,
+          "pos": "3B",
+          "fpts": 416
+        }
+      ],
+      "isUser": false,
+      "rank": 6
+    }
   },
-  "draft_order": [
-    {"pick": 1, "player": "Shohei Ohtani", "team": "Perfect Pitch AbrahamL", "price": 93},
-    {"pick": 2, "player": "Aaron Judge", "team": "daniel cohen's Flyballs", "price": 67},
-    {"pick": 3, "player": "Juan Soto", "team": "Helvettia", "price": 60},
-    {"pick": 4, "player": "Tarik Skubal", "team": "Alan Bencid's Dugout Crew", "price": 59},
-    {"pick": 5, "player": "Paul Skenes", "team": "Mayer L.'s Fireballs", "price": 58},
-    {"pick": 6, "player": "Garrett Crochet", "team": "Chivo", "price": 58},
-    {"pick": 7, "player": "Bobby Witt Jr.", "team": "daniel cohen's Flyballs", "price": 50},
-    {"pick": 8, "player": "Yoshinobu Yamamoto", "team": "Jose's Torches", "price": 48},
-    {"pick": 9, "player": "Ronald Acuna Jr.", "team": "Chivo", "price": 46},
-    {"pick": 10, "player": "Elly De La Cruz", "team": "Kevin's Hits", "price": 40},
-    {"pick": 11, "player": "Jose Ramirez", "team": "SangaCaribe", "price": 40},
-    {"pick": 12, "player": "Logan Gilbert", "team": "Kevin's Hits", "price": 44},
-    {"pick": 13, "player": "Fernando Tatis Jr.", "team": "Alan's Legends", "price": 37},
-    {"pick": 14, "player": "Julio Rodriguez", "team": "SangaCaribe", "price": 38},
-    {"pick": 15, "player": "Gunnar Henderson", "team": "Golden Glove Dylan", "price": 38},
-    {"pick": 16, "player": "Cal Raleigh", "team": "Golden Glove Dylan", "price": 32}
-  ]
+  "draft_order": []
 }
