@@ -344,6 +344,7 @@
                                     <label style="color:var(--text-muted);font-size:0.85rem">Won by:</label>
                                     <select id="mockLiveWinner" class="search-input" style="width:150px"></select>
                                     <button class="btn btn-primary btn-sm" onclick="mockLiveAward()" style="font-weight:700">Log Pick</button>
+                                    <button class="btn btn-sm" onclick="mockLiveSkip()" style="background:#555;margin-left:8px">Skip / Next Player</button>
                                 </div>
                             </div>
                         </div>
@@ -2712,27 +2713,37 @@
         }
 
         function mockFilterNominees() {
-            const q = document.getElementById('mockNominateSearch').value.toLowerCase();
+            const q = document.getElementById('mockNominateSearch').value.toLowerCase().trim();
             const list = document.getElementById('mockNominateList');
-            // Sort: plan targets first, then by fpts
-            const scored = mockAvailable.map(p => {
-                const mentions = getPlayerPlanInfo(p.player);
-                const inActive = mentions.find(m => m.planId === mockActivePlan && m.role === 'primary');
-                const inAny = mentions.length > 0;
-                let score = p.fpts || 0;
-                if (inActive) score += 10000;
-                else if (inAny) score += 5000;
-                return {...p, _score: score, _mentions: mentions, _inActive: inActive};
-            });
-            const filtered = scored.filter(p => !q || p.player.toLowerCase().includes(q))
-                .sort((a, b) => b._score - a._score).slice(0, 40);
 
-            list.innerHTML = filtered.map(p => {
+            // In live mode, require at least 2 chars to avoid rendering 170+ players
+            if (mockLiveMode && q.length < 2) {
+                list.innerHTML = '<div style="padding:12px;color:var(--text-muted);text-align:center">Type a player name to search...</div>';
+                return;
+            }
+
+            // Sort: plan targets first, then by fpts
+            const scored = mockAvailable
+                .filter(p => !q || p.player.toLowerCase().includes(q))
+                .map(p => {
+                    const mentions = getPlayerPlanInfo(p.player);
+                    const inActive = mentions.find(m => m.planId === (mockActivePlan || planState.active_plan) && m.role === 'primary');
+                    const inAny = mentions.length > 0;
+                    let score = p.fpts || 0;
+                    if (inActive) score += 10000;
+                    else if (inAny) score += 5000;
+                    return {...p, _score: score, _mentions: mentions, _inActive: inActive};
+                })
+                .sort((a, b) => b._score - a._score)
+                .slice(0, mockLiveMode ? 15 : 40);
+
+            list.innerHTML = scored.map(p => {
                 const val = getMarketValue(p);
+                const badges = getPlayerBadges(p.player);
                 const tag = p._inActive ? '<span class="nom-tag nom-target">TARGET</span>' :
                             p._mentions.length ? '<span class="nom-tag nom-plan">IN PLAN</span>' : '';
                 return `<div class="mock-nominee-row" onclick="userNominate('${p.player.replace(/'/g, "\\'")}')">
-                    <span class="mock-nominee-name">${tag}${p.player}</span>
+                    <span class="mock-nominee-name">${tag}${p.player} ${badges}</span>
                     <span class="mock-nominee-pos">${p.pos} · ${p.team}</span>
                     <span class="mock-nominee-val">${p.fpts.toFixed(0)} fpts · ~$${val.toFixed(0)} · steal ≤$${getStealPrice(val, p.fpts)}</span>
                 </div>`;
@@ -2826,6 +2837,29 @@
             } catch(e) {
                 console.error('startAuction fatal error:', e);
             }
+        }
+
+        function mockLiveSkip() {
+            // Skip this player without logging — go back to nomination search
+            mockCurrentAuction = null;
+            document.getElementById('mockLiveResolve').style.display = 'none';
+            document.getElementById('mockBidInput').parentElement.style.display = '';
+            document.getElementById('mockBidCard').style.display = 'none';
+            try { document.getElementById('mockAdvice').innerHTML = ''; } catch(e) {}
+            // Show nomination panel directly without heavy rendering
+            document.getElementById('mockWaiting').style.display = 'none';
+            const panel = document.getElementById('mockNominatePanel');
+            panel.style.display = 'block';
+            const search = document.getElementById('mockNominateSearch');
+            search.value = '';
+            if (mockLiveMode) {
+                document.getElementById('mockNominateList').innerHTML = '<div style="padding:12px;color:var(--text-muted);text-align:center">Type a player name to search...</div>';
+                document.getElementById('mockNominateTitle').textContent = 'Who was nominated? (Pick #' + (mockPickNum + 1) + ')';
+                document.getElementById('mockNominateCancelBtn').style.display = 'none';
+            } else {
+                mockFilterNominees();
+            }
+            setTimeout(() => search.focus(), 50);
         }
 
         function mockLiveAward() {
@@ -5220,6 +5254,15 @@
 
         // ── Init ────────────────────────────────────────────
         checkConnection();
+
+        // Protect against accidental refresh during active draft
+        window.addEventListener('beforeunload', function(e) {
+            if (mockDraftActive || (liveDraftState && liveDraftState.picks && liveDraftState.picks.length > 0)) {
+                e.preventDefault();
+                e.returnValue = 'Draft in progress! Are you sure you want to leave?';
+                return e.returnValue;
+            }
+        });
     </script>
 </body>
 </html>
