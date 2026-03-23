@@ -5563,13 +5563,13 @@
                         </div>
                         <div class="yahoo-team-meta">#${t.rank} &middot; ${t.fpts.toLocaleString()} pts &middot; $${t.spent}</div>
                     </div>
-                    <table class="yahoo-roster-table">
+                    <table class="yahoo-roster-table" data-team="${name.replace(/'/g, '&#39;')}">
                         <thead><tr>
-                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','pos')">Pos ${st && st.col==='pos' ? (st.asc ? '▲' : '▼') : ''}</th>
-                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','player')">Player ${st && st.col==='player' ? (st.asc ? '▲' : '▼') : ''}</th>
-                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','price')">$ ${st && st.col==='price' ? (st.asc ? '▲' : '▼') : ''}</th>
-                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','value')">+/- ${st && st.col==='value' ? (st.asc ? '▲' : '▼') : ''}</th>
-                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','fpts')">FPts ${st && st.col==='fpts' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam(this.closest('table').dataset.team,'pos')">Pos ${st && st.col==='pos' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam(this.closest('table').dataset.team,'player')">Player ${st && st.col==='player' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam(this.closest('table').dataset.team,'price')">$ ${st && st.col==='price' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam(this.closest('table').dataset.team,'value')">+/- ${st && st.col==='value' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam(this.closest('table').dataset.team,'fpts')">FPts ${st && st.col==='fpts' ? (st.asc ? '▲' : '▼') : ''}</th>
                         </tr></thead>
                         <tbody>${rows}</tbody>
                         <tfoot><tr class="yahoo-totals-row">
