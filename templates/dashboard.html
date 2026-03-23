@@ -5351,10 +5351,27 @@
                 const isUser = t.isUser;
                 const rows = t.players.map(p => {
                     const pc = priceClass(p.price);
+                    // Badges
+                    let badgeHtml = '';
+                    if (p.badges) {
+                        p.badges.forEach(b => {
+                            if (b.includes('Finals')) badgeHtml += '<span class="badge-finals">🔥 Finals</span>';
+                            else if (b.includes('Breakout')) badgeHtml += '<span class="badge-breakout">🔥</span>';
+                            else if (b.includes('Expert')) badgeHtml += '<span class="badge-expert">🎯</span>';
+                        });
+                    }
+                    if (p.max_breakout) badgeHtml += `<span class="badge-max">⭐$${p.max_breakout.max_value}</span>`;
+                    // Value spread
+                    let valHtml = '';
+                    if (p.value !== undefined && p.value !== 0) {
+                        const sign = p.value > 0 ? '+' : '';
+                        const cls = p.value > 0 ? 'yahoo-val-good' : 'yahoo-val-bad';
+                        valHtml = `<span class="${cls}">${sign}${p.value}</span>`;
+                    }
                     return `<tr>
                         <td class="yahoo-pos">${p.pos}</td>
-                        <td>${p.player}</td>
-                        <td class="${pc}">$${p.price}</td>
+                        <td>${p.player} ${badgeHtml}</td>
+                        <td class="${pc}">$${p.price} ${valHtml}</td>
                         <td>${p.fpts}</td>
                     </tr>`;
                 }).join('');
