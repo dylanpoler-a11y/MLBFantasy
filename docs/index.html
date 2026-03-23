@@ -5457,6 +5457,7 @@
                     return;
                 }
             }
+            if (!mockPlayerPool.length) await loadMockPlayerPool();
             yahooDataLoaded = true;
             document.getElementById('yahooDraftTitle').textContent = yahooData.draft_name || 'Yahoo Mock Draft Results';
             renderYahooLeaderboard();
@@ -5497,13 +5498,26 @@
 
         function renderYahooTeamCards() {
             const teams = Object.entries(yahooData.teams).sort((a,b) => a[1].rank - b[1].rank);
+            const pool = (mockPlayerPool && mockPlayerPool.length > 0) ? mockPlayerPool : allPlayers;
             const html = teams.map(([name, t]) => {
                 const isUser = t.isUser;
                 const rows = t.players.map(p => {
                     const pc = priceClass(p.price);
+                    const badges = getPlayerBadges(p.player);
+                    const poolPlayer = pool.find(x => x.player === p.player);
+                    let mvHtml = '';
+                    if (poolPlayer && poolPlayer.auction_value) {
+                        const mv = parseFloat(poolPlayer.auction_value);
+                        const diff = p.price - mv;
+                        if (diff >= 1) {
+                            mvHtml = ` <span style="color:var(--red);font-size:0.7rem;font-weight:600">-$${Math.round(diff)}</span>`;
+                        } else if (diff <= -1) {
+                            mvHtml = ` <span style="color:var(--green);font-size:0.7rem;font-weight:600">+$${Math.round(-diff)}</span>`;
+                        }
+                    }
                     return `<tr>
                         <td class="yahoo-pos">${p.pos}</td>
-                        <td>${p.player}</td>
+                        <td>${p.player}${badges}${mvHtml}</td>
                         <td class="${pc}">$${p.price}</td>
                         <td>${p.fpts}</td>
                     </tr>`;
