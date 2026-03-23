@@ -2112,8 +2112,12 @@ header h1 span { color: var(--accent); }
 .badge-expert { font-size: 0.7rem; margin-left: 2px; }
 .badge-max { background: rgba(168, 85, 247, 0.2); color: #a855f7; font-size: 0.6rem; padding: 1px 4px; border-radius: 3px; font-weight: 700; margin-left: 3px; white-space: nowrap; }
 /* Value spread +/- */
-.yahoo-val-good { color: #4ade80; font-size: 0.7rem; font-weight: 700; margin-left: 3px; }
-.yahoo-val-bad { color: #ff6b6b; font-size: 0.7rem; font-weight: 700; margin-left: 3px; }
+.yahoo-val-good { color: #4ade80; font-weight: 700; }
+.yahoo-val-bad { color: #ff6b6b; font-weight: 700; }
+.yahoo-val-even { color: var(--text-muted); }
+/* Sortable headers */
+.yahoo-sort-header { cursor: pointer; user-select: none; }
+.yahoo-sort-header:hover { color: var(--accent); }
 
 /* Price color coding */
 .yahoo-price-value { color: var(--green); font-weight: 600; }

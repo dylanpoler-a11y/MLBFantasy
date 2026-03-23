@@ -5345,11 +5345,34 @@
             document.getElementById('yahooLeaderboard').innerHTML = html;
         }
 
+        // Track sort state per team card
+        const yahooSortState = {};
+
+        function sortYahooTeam(teamName, col) {
+            if (!yahooSortState[teamName]) yahooSortState[teamName] = { col: null, asc: true };
+            const st = yahooSortState[teamName];
+            if (st.col === col) { st.asc = !st.asc; } else { st.col = col; st.asc = col === 'player' ? true : false; }
+            renderYahooTeamCards();
+        }
+
         function renderYahooTeamCards() {
             const teams = Object.entries(yahooData.teams).sort((a,b) => a[1].rank - b[1].rank);
             const html = teams.map(([name, t]) => {
                 const isUser = t.isUser;
-                const rows = t.players.map(p => {
+                // Sort players if sort state exists
+                let players = [...t.players];
+                const st = yahooSortState[name];
+                if (st && st.col) {
+                    players.sort((a, b) => {
+                        let va, vb;
+                        if (st.col === 'player') { va = a.player; vb = b.player; return st.asc ? va.localeCompare(vb) : vb.localeCompare(va); }
+                        if (st.col === 'price') { va = a.price; vb = b.price; }
+                        else if (st.col === 'fpts') { va = a.fpts; vb = b.fpts; }
+                        else if (st.col === 'value') { va = a.value || 0; vb = b.value || 0; }
+                        return st.asc ? va - vb : vb - va;
+                    });
+                }
+                const rows = players.map(p => {
                     const pc = priceClass(p.price);
                     // Badges
                     let badgeHtml = '';
@@ -5361,17 +5384,16 @@
                         });
                     }
                     if (p.max_breakout) badgeHtml += `<span class="badge-max">⭐$${p.max_breakout.max_value}</span>`;
-                    // Value spread
-                    let valHtml = '';
-                    if (p.value !== undefined && p.value !== 0) {
-                        const sign = p.value > 0 ? '+' : '';
-                        const cls = p.value > 0 ? 'yahoo-val-good' : 'yahoo-val-bad';
-                        valHtml = `<span class="${cls}">${sign}${p.value}</span>`;
-                    }
+                    // Value spread — own column
+                    const val = p.value || 0;
+                    const valSign = val > 0 ? '+' : '';
+                    const valCls = val > 0 ? 'yahoo-val-good' : val < 0 ? 'yahoo-val-bad' : 'yahoo-val-even';
+                    const valText = val !== 0 ? `${valSign}${val}` : '—';
                     return `<tr>
                         <td class="yahoo-pos">${p.pos}</td>
                         <td>${p.player} ${badgeHtml}</td>
-                        <td class="${pc}">$${p.price} ${valHtml}</td>
+                        <td class="${pc}">$${p.price}</td>
+                        <td class="${valCls}">${valText}</td>
                         <td>${p.fpts}</td>
                     </tr>`;
                 }).join('');
@@ -5384,7 +5406,13 @@
                         <div class="yahoo-team-meta">#${t.rank} &middot; ${t.fpts.toLocaleString()} pts &middot; $${t.spent}</div>
                     </div>
                     <table class="yahoo-roster-table">
-                        <thead><tr><th>Pos</th><th>Player</th><th>$</th><th>FPts</th></tr></thead>
+                        <thead><tr>
+                            <th>Pos</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','player')">Player ${st && st.col==='player' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','price')">$ ${st && st.col==='price' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','value')">+/- ${st && st.col==='value' ? (st.asc ? '▲' : '▼') : ''}</th>
+                            <th class="yahoo-sort-header" onclick="sortYahooTeam('${name}','fpts')">FPts ${st && st.col==='fpts' ? (st.asc ? '▲' : '▼') : ''}</th>
+                        </tr></thead>
                         <tbody>${rows}</tbody>
                     </table>
                 </div>`;
