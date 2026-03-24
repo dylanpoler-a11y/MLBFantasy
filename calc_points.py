@@ -172,7 +172,7 @@ def main():
         })
 
     # Add top pitchers
-    for i, p in enumerate(pitchers[:200]):
+    for i, p in enumerate(pitchers[:400]):
         all_players.append({
             "rank": 0,
             "player": p.get("Player", ""),

@@ -2,7 +2,7 @@
   "draft_name": "Yahoo Draft Results - March 22, 2026",
   "teams": {
     "Helvettia": {
-      "fpts": 8694,
+      "fpts": 9511,
       "spent": 257,
       "players": [
         {
@@ -135,25 +135,25 @@
           "player": "Riley O'Brien",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 207
         },
         {
           "player": "Kevin Ginkel",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 208
         },
         {
           "player": "Kirby Yates",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 212
         },
         {
           "player": "Clayton Beeter",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 190
         },
         {
           "player": "Yusei Kikuchi",
@@ -181,11 +181,11 @@
         }
       ],
       "isUser": false,
-      "rank": 12,
-      "grade": "C"
+      "rank": 7,
+      "grade": "B"
     },
     "Cocaine cowboys": {
-      "fpts": 9301,
+      "fpts": 9475,
       "spent": 260,
       "players": [
         {
@@ -375,14 +375,14 @@
           "player": "Grant Taylor",
           "price": 3,
           "pos": "P",
-          "fpts": 0,
+          "fpts": 174,
           "market": 13,
           "value": 10
         }
       ],
       "isUser": false,
       "rank": 8,
-      "grade": "C+"
+      "grade": "B"
     },
     "Kevin's Hits": {
       "fpts": 9362,
@@ -581,8 +581,8 @@
         }
       ],
       "isUser": false,
-      "rank": 7,
-      "grade": "B"
+      "rank": 9,
+      "grade": "B-"
     },
     "Alan's Legends": {
       "fpts": 9289,
@@ -776,11 +776,11 @@
         }
       ],
       "isUser": false,
-      "rank": 9,
-      "grade": "C+"
+      "rank": 11,
+      "grade": "C"
     },
     "Jose's Torches": {
-      "fpts": 9168,
+      "fpts": 9359,
       "spent": 251,
       "players": [
         {
@@ -919,7 +919,7 @@
           "player": "Robert Suarez",
           "price": 1,
           "pos": "P",
-          "fpts": 0,
+          "fpts": 191,
           "market": 18,
           "value": 17
         },
@@ -1159,7 +1159,7 @@
       "grade": "B+"
     },
     "Perfect Pitch AbrahamL": {
-      "fpts": 8879,
+      "fpts": 9264,
       "spent": 260,
       "players": [
         {
@@ -1276,7 +1276,7 @@
           "player": "Robert Garcia",
           "price": 1,
           "pos": "P",
-          "fpts": 0,
+          "fpts": 215,
           "badges": [
             "\ud83c\udfaf Expert Target"
           ],
@@ -1287,7 +1287,7 @@
           "player": "Paul Sewald",
           "price": 1,
           "pos": "P",
-          "fpts": 0
+          "fpts": 170
         },
         {
           "player": "Mitch Keller",
@@ -1350,7 +1350,7 @@
         }
       ],
       "isUser": false,
-      "rank": 11,
+      "rank": 12,
       "grade": "C"
     },
     "Mayer L.'s Fireballs": {
@@ -1549,11 +1549,11 @@
         }
       ],
       "isUser": false,
-      "rank": 2,
-      "grade": "A"
+      "rank": 3,
+      "grade": "A-"
     },
     "SangaCaribe": {
-      "fpts": 10140,
+      "fpts": 10358,
       "spent": 260,
       "players": [
         {
@@ -1712,7 +1712,7 @@
           "player": "Kevin McGonigle",
           "price": 1,
           "pos": "SS",
-          "fpts": 0
+          "fpts": 218
         },
         {
           "player": "Otto Lopez",
@@ -1735,7 +1735,7 @@
         }
       ],
       "isUser": false,
-      "rank": 3,
+      "rank": 2,
       "grade": "A"
     },
     "Cocodi": {
@@ -1926,7 +1926,7 @@
       ],
       "isUser": false,
       "rank": 6,
-      "grade": "B"
+      "grade": "B+"
     },
     "Golden Glove Dylan": {
       "fpts": 10562,
@@ -2167,7 +2167,7 @@
       ],
       "isUser": true,
       "rank": 1,
-      "grade": "A+"
+      "grade": "A"
     },
     "Alan Bencid's Dugout Crew": {
       "fpts": 10024,
